@@ -16,6 +16,7 @@ And enjoy our A1 star class service!
 Ficticious group project for [Make It Real](https://www.makeitreal.camp/) NOT ACTUALLY USABLE
 - [JIRA](https://s-luis-s.atlassian.net/jira/software/projects/QC/boards/3/backlog)
 - [Figma](https://www.figma.com/file/gUpnX4CYP2dnjUrSVnWz4i/Quick-Call?node-id=0%3A1)
+- [Excel Sheet](https://docs.google.com/spreadsheets/d/1Md0WhraTWOK_sZnqcSV540STrOez5bus2ajY8BjOb3I/edit?usp=sharing)
 - More to come ...
 
 ## Collaborators
