@@ -1,0 +1,191 @@
+@import url('https://fonts.googleapis.com/css2?family=League+Gothic&family=Open+Sans:wght@300;400&display=swap');
+
+$blue: #18A0FB;
+$light-blue: #C0E4EA;
+$dark-purple: #483786;
+$purple: #5956E9;
+$dark-grey: #4B4B4B;
+$light-grey: #A6C1DE;
+
+$font-body: 'Open Sans', sans-serif;
+$font-weight-body: lighter;
+
+$font-link: 'League Gothic', sans-serif; 
+$letter-spacing-link: 1px;
+
+$font-size-big-title: 5rem;
+$font-size-title: 3rem;
+$font-size-sub-title: 2rem;
+$font-size-inline-title: 1.5rem;
+$font-size-body: 1.125rem;
+
+body {
+    margin: 0; 
+    padding: 0;
+}
+
+.header-menu {
+    height: 116px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 1em;
+    background-color: $dark-purple;
+}
+
+.logo {
+    min-width: 170px;
+    max-width: 40%;
+}
+
+.icon__search {
+    width: 25px;
+}
+
+.icon__menu {
+    width: 20px;
+}
+
+.container {
+    width: 85%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+.profile-picture {
+    width: 272px;
+    height: 272px;
+    margin-top: 2em;
+    background-color: gray;
+    border-radius: 50%;
+    border: 1px solid black;
+}
+
+.button {
+    min-width: 130px;
+    padding: .75em 1.25em;
+    border-radius: 20px;
+    border: 0;
+    background-color: $purple;
+    box-shadow: inset 0 0 10px $blue;
+}
+
+.button__link {
+    text-decoration: none;
+    font-family: $font-link;
+    font-size: $font-size-body;
+    letter-spacing: 1.5px;
+    color: $light-blue;
+}
+
+.profile-name {
+    margin: 0;
+    padding-bottom: 12px;
+    font-family: $font-body;
+    font-size: $font-size-sub-title;
+    text-align: center;
+    border-bottom: 3px solid $purple;
+}
+
+.container-boxes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.container-box {
+    min-width: calc(272px - 4em);
+    max-width: calc(272px - 4em);
+    padding: 0.5em 2em;
+    background-color: $dark-grey;
+    border-radius: 30px;
+}
+
+.box__title {
+    margin: 0;
+    font-family: $font-body;
+    font-size: $font-size-inline-title;
+    color: $blue;
+    text-align: center;
+    font-weight: 400;
+}
+
+.box__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.list__item {
+    margin: 1em 0;
+    font-family: $font-body;
+    font-size: $font-size-body;
+    font-weight: $font-weight-body;
+    color: $light-grey;
+}
+
+.icon__selected {
+    width: 25px;
+    text-align: center;
+}
+
+.favorites__link {
+    font-family: $font-link;
+    font-size: $font-size-body;
+    color: $light-blue;
+    text-decoration: none;
+    letter-spacing: 1.5px;
+    float: right;
+}
+
+.container-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 2.75em;
+}
+
+.footer-menu {
+    background-color: $dark-grey;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.125em;
+    justify-content: center;
+    align-items: center;
+}
+
+.container-footer {
+    font-family: $font-body;
+    color: $light-blue;
+}
+
+.contact__title {
+    font-size: $font-size-inline-title;
+    font-weight: 400;
+}
+
+.contact__copyright {
+    font-size: $font-size-inline-title;
+    font-weight: 400;
+    text-align: center;
+}
+
+.contact__item {
+    font-size: $font-size-body;
+    font-weight: $font-weight-body;
+}
+
+.social-networks__icons {
+    margin: 1.75em 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.icon__whatsapp, .icon__email, .icon__facebook, .icon__linkedin {
+    width: 35px;
+}
