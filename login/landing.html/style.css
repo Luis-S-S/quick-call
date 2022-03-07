@@ -1,0 +1,16 @@
+header{
+    display:flex;
+    flex-direction: column;
+}
+
+header div div{
+    
+}
+
+.hero_image{
+  background-image: url("https://placeimg.com/2000/1000/animals");
+  background-repeat:repeat;
+  min-height: 100vh;
+  display: flex;
+    justify-content: space-around;
+}
