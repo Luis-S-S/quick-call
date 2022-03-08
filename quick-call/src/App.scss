@@ -1,38 +1,115 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=League+Gothic&family=Open+Sans:wght@300;400&display=swap');
+
+$blue: #18A0FB;
+$light-blue: #C0E4EA;
+$dark-purple: #483786;
+$purple: #5956E9;
+$black: #000000;
+$white: #FFFFFF;
+$dark-grey: #4B4B4B;
+$light-grey: #A6C1DE;
+
+$letter-spacing: -0.02em;
+
+@mixin text-big-title {
+  font-family: 'League Gothic', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 64px;
+  line-height: 90px;
+  letter-spacing: $letter-spacing;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+@mixin text-title {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 48px;
+  line-height: 65px;
+  letter-spacing: $letter-spacing;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+@mixin text-title-bold {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: bold;
+  font-size: 40px;
+  line-height: 54px;
+  letter-spacing: 0.02em;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+@mixin text-sub-title {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 32px;
+  line-height: 44px;
+  letter-spacing: -0.015em;
 }
 
-.App-link {
-  color: #61dafb;
+@mixin text-inline-title {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 33px;
+  letter-spacing: -0.015em;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+@mixin text-body {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 300;
+  font-size: 20px;
+  line-height: 27px;
+  letter-spacing: -0.015em;
+}
+
+@mixin link-big-title {
+  font-family: 'League Gothic';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 80px;
+  line-height: 97px;
+  letter-spacing: 0.02em;
+}
+
+@mixin link-title {
+  font-family: 'League Gothic';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 48px;
+  line-height: 58px;
+  letter-spacing: 0.02em;
+} 
+
+@mixin link-sub-title {
+  font-family: 'League Gothic';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 32px;
+  line-height: 39px;
+  letter-spacing: 0.02em;
+} 
+
+@mixin link-inline-title {
+  font-family: 'League Gothic';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 29px;
+  letter-spacing: 0.02em;
+}
+
+@mixin link-body {
+  font-family: 'League Gothic';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: 0.02em;
+}
+
+p {
+  @include link-body();
 }
