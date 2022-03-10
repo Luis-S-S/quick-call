@@ -1,8 +1,11 @@
 import './App.scss';
+import NavBar from './components/Navbar/NavigationBar';
 
 function App() {
   return (
-    <p>Text example</p>
+    <>
+      <NavBar />
+    </>
   );
 }
 
