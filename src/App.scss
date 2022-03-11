@@ -81,7 +81,7 @@ $letter-spacing: -0.02em;
   font-size: 48px;
   line-height: 58px;
   letter-spacing: 0.02em;
-} 
+}
 
 @mixin link-sub-title {
   font-family: 'League Gothic';
@@ -90,7 +90,7 @@ $letter-spacing: -0.02em;
   font-size: 32px;
   line-height: 39px;
   letter-spacing: 0.02em;
-} 
+}
 
 @mixin link-inline-title {
   font-family: 'League Gothic';
@@ -108,8 +108,4 @@ $letter-spacing: -0.02em;
   font-size: 20px;
   line-height: 24px;
   letter-spacing: 0.02em;
-}
-
-p {
-  @include link-body();
 }
