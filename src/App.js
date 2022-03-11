@@ -1,4 +1,5 @@
 import './App.scss';
+import NavBar from './Components/Navbar/NavigationBar';
 
 import React from "react";
 import "./App.scss";
@@ -12,6 +13,7 @@ function App() {
   return (
     <div className="App">
       <Router>
+        <NavBar />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/Signup" element={<Signup />} />
