@@ -34,7 +34,7 @@
 .footer__container {
     display: flex;
     flex-direction: column;
-    margin: 1.25rem 0;
+    margin: .75rem 0;
     gap: 1rem;
 }
 
@@ -68,6 +68,7 @@
 @media (min-width: 768px) {
     .footer__container {
         flex-direction: row;
+        margin: 1.25em 0;
         gap: 2rem;
     }
 }
