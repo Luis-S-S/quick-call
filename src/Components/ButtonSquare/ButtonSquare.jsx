@@ -4,7 +4,7 @@ import './button-square.scss';
 
 function ButtonSquare({text, link}) {
     return (
-        <Link to={link}>{text}</Link>
+        <Link className="button-square" to={link}>{text}</Link>
     )
 }
 
