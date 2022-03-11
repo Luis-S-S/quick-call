@@ -22,6 +22,22 @@ img {
   padding: 0 20px;
 }
 
+#search {
+  width: 407px;
+  height: 40px;
+  font-size: 20px;
+  border-radius: 20px;
+  border: none;
+  position: absolute;
+  top: 40px;
+  margin-left: 200px;
+}
+
+input::placeholder {
+  color: $dark-grey;
+  padding-left: 10px;
+}
+
 nav ul {
   float: right;
   margin-right: 25px;
