@@ -4,7 +4,7 @@ import './button-round.scss';
 
 function ButtonRound({text, link}) {
     return (
-        <Link to={link}>{text}</Link>
+        <Link className="button-round" to={link}>{text}</Link>
     )
 }
 
