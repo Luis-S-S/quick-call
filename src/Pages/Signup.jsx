@@ -7,6 +7,6 @@ export const Signup = () => {
             <Link to="/Login"> Ir a Login</Link>
             <main>Esto es el registro(sign up)</main>
             <Link to="/"> Ir a Home</Link>
-      </div>
+        </div>
     );
-  }
+}
