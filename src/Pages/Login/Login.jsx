@@ -6,7 +6,10 @@ export const Login = () => {
     return (
         <div>
             <Link to="/Signup"> Ir a Registro</Link>
-            <Forms/>
+            <div class="formulario">
+            <div class="name"> Full name</div>
+            <div class="name"> Password</div>
+            </div>
             <Link to="/"> Ir a Home</Link>
       </div>
     );

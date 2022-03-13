@@ -1,0 +1,161 @@
+* {
+    box-sizing: border-box;
+  }
+
+  .imagen {
+    display: none;
+  }
+
+  .Registro_imagen{
+    height: auto;
+    width: auto;
+
+    display: flex;
+  }
+  body {
+    font-family: Poppins;
+    color: #8B8B8B;
+    font-size: 14px;
+    width: 100vw;
+    height: 100vh;
+
+  }
+
+  .principal {
+    width: 100vw;
+    height: 100vh;
+  }
+
+  .regresar {
+    width: 30px;
+    height: 30px;
+    background: #ebf2f0;
+    border-radius: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 25px;
+  }
+
+  .register {
+    display: flex;
+    justify-content: center;
+  }
+
+  .register1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+
+  .titulo_register {
+    color: rgba(23, 65, 43, 1);
+    font-size: 36px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .texto_register {
+    color: rgba(139, 139, 139, 1);
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .ramita img {
+    width: 122px;
+    height: 121px;
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
+
+  .formulario {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .name img {
+    padding: 10px;
+  }
+  .name {
+    height: 50px;
+    width: auto;
+    background-color: #ebf2f0;
+    margin-top: 30px;
+    margin-right: 40px;
+    margin-left:40px;
+    border-radius: 10px;
+    font-size: 14px;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  .signing {
+    display:flex;
+    justify-content: s;
+    margin:40px;
+    justify-content: center;
+  }
+  .signing1 {
+    color: rgba(23, 65, 43, 1);
+    text-align: center;
+
+  }
+
+  .boton {
+    height:50px ;
+    background: rgba(66, 110, 82, 1);
+    margin-left: 40px;
+    margin-right: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100px;
+    color: rgba(255, 255, 255, 1);
+  }
+
+  .footer {
+    height:50px;
+    margin-left: 40px;
+    margin-right: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+
+  .redes_sociales{
+    display: flex;
+    margin: 50px;
+    margin-top: 30px;
+    justify-content: space-evenly;
+  }
+  .redes_sociales img{
+    margin: 20px;
+  }
+
+  @media (min-width: 720px) {
+    body {
+      display: flex;
+    }
+
+
+    .principal {
+      width: 100vw;
+      margin: 20px;
+    }
+
+    .Registro_imagen{
+      display:none;
+    }
+    .imagen {
+      width: 400px;
+      display:flex;
+      background-repeat: no-repeat;
+      background-position: center center;
+    }
+  }
