@@ -1,8 +1,8 @@
 import React from "react";
-import NavigationBar from '../Components/Navbar/NavigationBar'
-import { Footer } from '../Components/Footer/Footer';
-import ButtonSquare from "../Components/ButtonSquare/ButtonSquare";
-import ButtonRound from "../Components/ButtonRound/ButtonRound";
+import NavigationBar from '../../Components/Navbar/NavigationBar'
+import { Footer } from '../../Components/Footer/Footer';
+import ButtonSquare from "../../Components/ButtonSquare/ButtonSquare";
+import ButtonRound from "../../Components/ButtonRound/ButtonRound";
 
 export const Home = () => {
     return (

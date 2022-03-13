@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { ProCard } from "../Components/Procard/ProCard";
+import { ProCard } from "../../Components/Procard/ProCard";
 
 export const Search = () => {
   return (
