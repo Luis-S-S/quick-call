@@ -1,0 +1,34 @@
+[ {
+        "tipo":"profesional",
+        "nombre":"Jose Rodriguez",
+        "email":"jorodriguez@gmail.com",
+        "contraseña":"12345",
+        "telefono celular":"3123020303",
+        "ciudad":"cali",
+        "especilidad":{
+            "acreditado":["plomero","electricista"],
+            "enProceso":["albañil"],
+            "noAcreditado":["mecanico","veterinario"]
+        },
+        "experiencia":[
+            {
+                "Prestadoa":"Pedrito Gonzales",
+                "tiempo":"3 meses",
+                "funciones":"Electricista",
+                "Objetivos":"Instalacion de tomas y enchufes en domicilio",
+                "Completado":"Verdadero"
+            }
+        ],
+        "image":{
+            "perfil":["perfil.png","perfil2.png"],
+            "misTrabajos":["mitrabajo1.png","mitrabajo2.png"]
+        },
+        "seguridad_social":{
+            "eps":"saludcoop",
+            "arl":"positiva"
+        },
+        "disponiblidad":{
+            "tiempo":"8am-7pm",
+            "24horas":"falso"
+        }
+]
