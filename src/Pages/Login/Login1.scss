@@ -18,7 +18,9 @@
     font-size: 14px;
     width: 100vw;
     height: 100vh;
-
+    display: grid;
+    grid-template-rows: 50% 50%;
+grid-template-columns: auto;
   }
 
   .principal {
@@ -74,12 +76,13 @@
   .formulario {
     display: flex;
     flex-direction: column;
+
   }
 
   .name img {
     padding: 10px;
   }
-  .name {
+  input {
     height: 50px;
     width: auto;
     background-color: #ebf2f0;

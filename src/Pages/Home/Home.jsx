@@ -1,4 +1,5 @@
 import React from "react";
+import './Home.scss'
 import NavigationBar from '../../Components/Navbar/NavigationBar'
 import { Footer } from '../../Components/Footer/Footer';
 import ButtonSquare from "../../Components/ButtonSquare/ButtonSquare";
