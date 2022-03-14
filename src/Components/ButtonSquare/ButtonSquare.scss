@@ -1,18 +1,15 @@
+@import '../../App.scss';
+
 .button-square {
+    @include link-body;
+    border: 3px solid $dark-purple;
+    color: $dark-purple;
     display: inline-block;
-    text-decoration: none;
-    color: #483786;
-    font-family: 'League Gothic';
-    font-style: normal;
-    font-weight: normal;
-    font-size: 20px;
-    line-height: 24px;
-    letter-spacing: 0.02em;
-    border: 3px solid #483786;
     padding: 0.25em .75em;
+    text-decoration: none;
 }
 
 .button-square:hover {
+    background-color: $dark-purple;
     color: white;
-    background-color: #483786;
 }

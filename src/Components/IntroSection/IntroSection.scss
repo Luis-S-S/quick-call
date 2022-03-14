@@ -1,33 +1,30 @@
+@import '../../App.scss';
+
 .intro-section {
-    width: 90%;
     margin: 2em auto 1em auto;
+    width: 90%;
 }
 
 .intro-section__description {
+    align-items: flex-start;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: flex-start;
 }
 
 .intro-description__title {
+    @include text-sub-title;
+    color: $blue;
     text-align: center;
-    font-family: 'Open Sans';
-    font-style: normal;
-    font-weight: normal;
-    font-size: 32px;
-    line-height: 44px;
-    letter-spacing: -0.015em;
-    color: #18A0FB;
 }
 
 .intro-description__item {
-    margin: 1em;
+    align-items: center;
     display: flex;
     flex-direction: column;
     gap: .5em;
     justify-content: center;
-    align-items: center;
+    margin: 1em;
 }
 
 .intro-item__img {
@@ -35,12 +32,7 @@
 }
 
 .intro-item__text {
-    font-family: 'Open Sans';
-    font-style: normal;
-    font-weight: 300;
-    font-size: 20px;
-    line-height: 27px;
-    letter-spacing: -0.015em;
+    @include text-body;
 }
 
 .intro-section__bg {
@@ -49,11 +41,11 @@
 
 @media (min-width: 768px) {
     .intro-section {
-        width: 100%;
+        align-items: center;
         display: grid;
         grid-template-columns: repeat(2, 50%);
         overflow: hidden;
-        align-items: center;
+        width: 100%;
     }
 
     .intro-section__description {
@@ -61,35 +53,25 @@
     }
 
     .intro-description__item {
-        flex-direction: row;
         align-items: center;
+        flex-direction: row;
         gap: 1em;
     }
 
     .intro-section__bg {
         display: inline-block;
-        opacity: .5;
         height: 70%;
+        opacity: .5;
     }
 }
 
 @media (min-width: 1440px) {
     .intro-description__title {
-        font-family: 'League Gothic', sans-serif;
-        font-style: normal;
-        font-weight: 600;
-        font-size: 64px;
-        line-height: 90px;
-        letter-spacing: 0.02em;
+        @include text-big-title;
     }
 
     .intro-item__text {
-        font-family: 'Open Sans';
-        font-style: normal;
-        font-weight: normal;
-        font-size: 24px;
-        line-height: 33px;
-        letter-spacing: -0.015em;
+        @include text-inline-title
     }
 
     .intro-section__description {
@@ -98,7 +80,7 @@
 
     .intro-section__bg {
         display: inline-block;
-        opacity: .5;
         height: 100%;
+        opacity: .5;
     }
 }

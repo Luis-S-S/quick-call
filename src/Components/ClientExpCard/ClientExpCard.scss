@@ -1,48 +1,40 @@
+@import '../../App.scss';
+
 .client-card {
-    width: 288px;
-    margin: .75em;
-    border: 3px solid black;
+    align-items: center;
     border-radius: 30px;
-    padding: 1.75em;
+    border: 3px solid black;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    margin: .75em;
+    padding: 1.75em;
+    width: 288px;
 }
 
 .client-card__header {
+    align-items: center;
     display: flex;
     flex-direction: column;
-    align-items: center;
 }
 
 .client-card__profile {
-    width: 165px;
+    border-radius: 50%;
     height: 165px;
     padding: 0;
-    border-radius: 50%;
+    width: 165px;
 }
 
 .client-card__title {
-    font-family: 'Open Sans';
-    font-style: normal;
-    font-weight: normal;
-    font-size: 24px;
-    line-height: 33px;
-    letter-spacing: -0.015em;
-    color: #18A0FB;
+    @include text-inline-title;
+    color: $blue;
     text-align: center;
 }
 
 .client-card__body {
-    font-family: 'Open Sans';
-    font-style: normal;
-    font-weight: 300;
-    font-size: 20px;
-    line-height: 27px;
-    letter-spacing: -0.015em;
-    text-overflow: ellipsis;
-    overflow: hidden;
+    @include text-body;
     max-height: 191px;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 @media (min-width: 1024px) {
@@ -51,10 +43,10 @@
     }
 
     .client-card__header {
+        align-items: center;
         display: flex;
         flex-direction: row;
         gap: 10px;
-        align-items: center;
     }
 
     .client-card__title {
