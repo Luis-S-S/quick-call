@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import './button-round.scss';
+import './ButtonRound.scss';
 
 function ButtonRound({text, link}) {
     return (
