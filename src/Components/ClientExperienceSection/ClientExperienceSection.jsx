@@ -4,9 +4,15 @@ import './ClientExperienceSection.scss'
 function ClientExperienceSection() {
     return (
     <div className="client-experience-section">
-        <ClientExpCard/>
-        <ClientExpCard/>
-        <ClientExpCard/>
+        <span className="organize-display">
+            <ClientExpCard/>
+        </span>
+        <span className="organize-display">
+            <ClientExpCard/>
+        </span>
+        <span>
+            <ClientExpCard/>
+        </span>
     </div>
     )
 }

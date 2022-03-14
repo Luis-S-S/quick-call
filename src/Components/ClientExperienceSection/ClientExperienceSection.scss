@@ -3,3 +3,13 @@
     justify-content: center;
     margin: 1.5em;
 }
+
+.organize-display {
+    display: none;
+}
+
+@media (min-width: 1440px) {
+    .organize-display {
+        display: block;
+    }
+}
