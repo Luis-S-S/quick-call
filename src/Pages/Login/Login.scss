@@ -1,4 +1,5 @@
-* {
+.login {
+  * {
     box-sizing: border-box;
   }
 
@@ -20,7 +21,7 @@
     height: 100vh;
     display: grid;
     grid-template-rows: 50% 50%;
-grid-template-columns: auto;
+    grid-template-columns: auto;
   }
 
   .principal {
@@ -162,3 +163,4 @@ grid-template-columns: auto;
       background-position: center center;
     }
   }
+}

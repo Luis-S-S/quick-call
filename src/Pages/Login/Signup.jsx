@@ -1,10 +1,10 @@
-import "./Login1.scss";
+import "./Login.scss";
 import React from "react";
 import { Link } from "react-router-dom";
 
 export const Signup = () => {
   return (
-    <body>
+    <div class="Login">
       <div><img class="imagen" src="/images/IMAGEN.png" alt="" /></div>
       <div className="principal">
         <div className="regresar">
@@ -37,6 +37,6 @@ export const Signup = () => {
           Already have an account? <Link to="/login"> Login</Link>
         </span>
       </div>
-    </body>
+    </div>
   );
 };

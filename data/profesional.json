@@ -5,6 +5,7 @@
         "contraseña":"12345",
         "telefono celular":"3123020303",
         "ciudad":"cali",
+        "midescripcion":"breve descripcion",
         "especilidad":{
             "acreditado":["plomero","electricista"],
             "enProceso":["albañil"],
