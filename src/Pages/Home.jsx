@@ -8,7 +8,7 @@ import ClientExperienceSection from "../Components/ClientExperienceSection/Clien
 export const Home = () => {
     return (
       <>
-       {/* <NavigationBar/> */}
+       <NavigationBar/>
        <IntroSection/>
        <FeaturedSection/>
        <ClientExperienceSection/>
