@@ -1,9 +1,9 @@
 import React from "react";
 import './Footer.scss';
 
-export const Footer = () => {
+function Footer() {
   return (
-    <footer className="footer">
+    <div className="footer">
       <img src="logo/quick-call-logo--mobile--colored.svg" alt="Quick Call logo" />
       <div className="footer__container">
         <div className="footer__contact">
@@ -31,6 +31,8 @@ export const Footer = () => {
         </div>
         <h2 className="footer--title">&copy; Quick Call. 2022</h2>
       </div>
-    </footer>
+    </div>
   );
-};
+}
+
+export default Footer;
