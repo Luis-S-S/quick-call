@@ -11,7 +11,7 @@ export const Home = () => {
        <main>Esto es el Home</main>
        <ButtonSquare text="Signup" link="/Signup" />
        <ButtonRound text="Log in" link="/Login" />
-       <Footer/>
+       {/* <Footer/> */}
       </div>
     );
   }
