@@ -1,20 +1,17 @@
+@import '../../App.scss';
+
 .button-round {
-    display: inline-block;
-    text-decoration: none;
-    color: white;
-    background-color: #18A0FB;
-    font-family: 'League Gothic';
-    font-style: normal;
-    font-weight: normal;
-    font-size: 20px;
-    line-height: 24px;
-    letter-spacing: 0.02em;
-    padding: 0.25em .75em;
+    @include link-body;
+    background-color: $blue;
     border-radius: 0.5em;
-    border: 3px solid #18A0FB;
+    border: 3px solid $blue;
+    color: white;
+    display: inline-block;
+    padding: 0.25em .75em;
+    text-decoration: none;
 }
 
 .button-round:hover {
-    color: #18A0FB;
     background-color: white;
+    color: $blue;
 }
