@@ -1,17 +1,18 @@
 import React from "react";
 import NavigationBar from '../Components/Navbar/NavigationBar'
-import { Footer } from '../Components/Footer/Footer';
-import ButtonSquare from "../Components/ButtonSquare/ButtonSquare";
-import ButtonRound from "../Components/ButtonRound/ButtonRound";
+import Footer from '../Components/Footer/Footer';
+import IntroSection from "../Components/IntroSection/IntroSection";
+import FeaturedSection from "../Components/FeaturedSection/FeaturedSection";
+import ClientExperienceSection from "../Components/ClientExperienceSection/ClientExperienceSection";
 
 export const Home = () => {
     return (
-      <div>
+      <>
        <NavigationBar/>
-       <main>Esto es el Home</main>
-       <ButtonSquare text="Signup" link="/Signup" />
-       <ButtonRound text="Log in" link="/Login" />
-       {/* <Footer/> */}
-      </div>
+       <IntroSection/>
+       <FeaturedSection/>
+       <ClientExperienceSection/>
+       <Footer/>
+      </>
     );
   }
