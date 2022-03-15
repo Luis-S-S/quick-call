@@ -1,5 +1,12 @@
 .Menulateral {
     display:grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 2fr;
+    padding: 30px;
 
+    li{
+        display:block;
+        padding:"40px";
+    }
 }
+
+

@@ -1,6 +1,6 @@
 import {Link} from 'react-router-dom';
 import React from 'react';
-import Usuario  from '../../../../data/Usuario';
+import Usuario from '../../../../data/Usuario';
 
 export const Proceso = ()=> {
   return (
@@ -10,19 +10,29 @@ export const Proceso = ()=> {
         <thead>
           <tr>
             <th>Nombre</th>
+            <th></th>
             <th>Reforma</th>
+            <th></th>
             <th>Fecha de inicio</th>
+            <th></th>
             <th>Fecha de finalizacion</th>
+            <th>Listo paa evaluar</th>
           </tr>
         </thead>
         <tbody>
-          
+        {Usuario.map((Usuarios) => (
             <tr>
-              <td>{Usuario}</td>
+              <td>{Usuarios.nombre}</td>
+              <td></td>
+              <td>{Usuarios.email}</td>
+              <td></td>
+              <td>{Usuarios.contrasena}</td>
+              <td></td>
+              <td>{Usuarios.ciudad}</td>
+              <td>VEr detalle</td>
             </tr>
-
+          ))}
         </tbody>
       </table>
     </>
-
     )}

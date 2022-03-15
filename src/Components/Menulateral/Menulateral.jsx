@@ -10,6 +10,7 @@ import { Contratos } from "./VistaMenu/Contratos/Contratos";
 import { Favoritos } from "./VistaMenu/Favoritos/Favoritos";
 import { Pagos } from "./VistaMenu/Pagos/Pagos";
 import { Visibilidad } from "./VistaMenu/Visibilidad/Visibilidad";
+import './Menulateral.scss'
 
 
 export const MenuLateral= ()=> {

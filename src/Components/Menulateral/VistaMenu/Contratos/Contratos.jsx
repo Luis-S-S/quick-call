@@ -3,6 +3,7 @@ import {useState} from 'react';
 import React from 'react';
 import { Historico } from './Historico';
 import { Proceso } from './Proceso';
+import '../VistaMenu.scss';
 
 export const Contratos = ()=> {
   const vector = {'Historico':'','Proceso':''}
@@ -12,15 +13,16 @@ export const Contratos = ()=> {
   }
 
   return (
-    <>
-    <ul>
-          <li><Link to='' name="Historico" onClick={click}>-- Mis Historico</Link></li>
-          <li><Link to='' name="Proceso" onClick={click}>-- Proceso</Link></li>
-    </ul>
-    <ul>
+
+    <div className='VistaMenu'>
+    <div className='Cabezera'>
+          <li><Link to='' name="Historico" onClick={click}>Mis Historico de contrato</Link></li>
+          <li><Link to='' name="Proceso" onClick={click}>Contratos en Proceso</Link></li>
+    </div>
+    <div className='Cuerpo'>
           {state.Historico ? (<Historico/>):<></>}
           {state.Proceso ?(<Proceso/>):<></>}
-    </ul>
-    </>
+    </div>
+    </div>
 
     )}
