@@ -1,0 +1,11 @@
+[
+    {
+        "usuario":"gonzalesJuan@hotmail.com",
+        "titulo":"Solitud de PQR por trabajo de Jose Vega",
+        "descripcion":"Breve descricion de PQR",
+        "Evidencias":{
+            "videos":["video.mp4","video1.mp4"],
+            "fotos":["fotos.png","foto2.pgn"]
+        }
+    }
+]
