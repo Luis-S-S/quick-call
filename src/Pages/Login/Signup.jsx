@@ -1,11 +1,10 @@
-import "./Login.scss";
-import React from "react";
-import { Link } from "react-router-dom";
+import './Login.scss';
+import { Link } from 'react-router-dom';
 
-export const Signup = () => {
+function Signup() {
   return (
-    <div class="Login">
-      <div><img class="imagen" src="/images/IMAGEN.png" alt="" /></div>
+    <div className="Login">
+      <div><img className="imagen" src="/images/IMAGEN.png" alt="" /></div>
       <div className="principal">
         <div className="regresar">
           <div>
@@ -29,14 +28,20 @@ export const Signup = () => {
         </div>
 
         <span className="signing">
-          By signing up you’ve agree to Our{" "}
-          <span className="signing1">Terms of Use And Privacy Notice </span>{" "}
+          By signing up you agree to Our
+          {' '}
+          <span className="signing1">Terms of Use And Privacy Notice </span>
+          {' '}
         </span>
 
         <span className="footer">
-          Already have an account? <Link to="/login"> Login</Link>
+          Already have an account?
+          {' '}
+          <Link to="/login"> Login</Link>
         </span>
       </div>
     </div>
   );
-};
+}
+
+export default Signup;
