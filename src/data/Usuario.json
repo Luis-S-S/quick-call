@@ -1,0 +1,30 @@
+[
+    {
+    "tipo":"usuario",
+    "nombre":"Juan Gonzalez",
+    "email":"gonzalesJuan@hotmail.com",
+    "contrasena":"54321",
+    "telefono celular":"3120100121",
+    "ciudad":"cali",
+    "perfil":["perfil.png","perfil2.png"],
+    "mipago":{
+        "numerotarjeta":"1234 5678 1234 8765",
+        "fechavencimiento":"01/03/2024",
+        "codigo":"123"
+    }
+    },
+    {
+        "tipo":"usuario",
+        "nombre":"Luis Perrea",
+        "email":"PerreaL@hotmail.com",
+        "contrasena":"54321",
+        "telefono celular":"3120100121",
+        "ciudad":"cali",
+        "perfil":["perfil.png","perfil2.png"],
+        "mipago":{
+            "numerotarjeta":"1234 5678 1234 8765",
+            "fechavencimiento":"01/03/2024",
+            "codigo":"123"
+        }
+        }
+]

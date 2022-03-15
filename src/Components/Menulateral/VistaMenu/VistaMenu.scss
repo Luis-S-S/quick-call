@@ -1,0 +1,9 @@
+.VistaMenu {
+  display: grid;
+  grid-template-columns: 1fr;
+  .Cabezera{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+  }
+}
