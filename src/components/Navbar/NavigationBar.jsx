@@ -3,11 +3,11 @@ import {Link} from 'react-router-dom';
 
 function NavBar() {
   return (
-    <>
+    <div className='navbar'>
       <nav>
         <input type="checkbox" id="check" />
         <label for="check" className='checkbtn'>&#9776;</label>
-        <Link to='/'><img src='logo/quick-call-logo--colored.svg' alt="logo"/></Link>
+        <Link to='/'><img className='logo' src='logo/quick-call-logo--colored.svg' alt="logo"/></Link>
         <input type="" placeholder="   ¿Qué necesitas?..." id='search'/>
         <ul>
           <li><Link to='/'>Servicios</Link></li>
@@ -15,7 +15,7 @@ function NavBar() {
           <li><Link to='/Login'>Iniciar Sesión</Link></li>
         </ul>
       </nav>
-    </>
+    </div>
   )
 }
 
