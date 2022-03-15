@@ -1,4 +1,3 @@
-import React from 'react';
 import './ProCard.scss';
 
 function ProCard() {
