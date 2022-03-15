@@ -1,4 +1,3 @@
-import React from "react";
 import './Footer.scss';
 
 function Footer() {
@@ -24,10 +23,10 @@ function Footer() {
       <div className="footer__copyright">
         <p className="footer--body">Siguenos en nuestras redes sociales</p>
         <div className="copyright__social-media">
-          <a href="https://web.whatsapp.com/" target="_blank"><img src="icons/whatsapp-logo-white.svg" alt="whatsapp" /></a>
-          <a href="https://web.facebook.com/" target="_blank"><img src="icons/facebook-icon-white.svg" alt="facebook" /></a>
-          <a href="https://twitter.com/" target="_blank"><img src="icons/twitter-icon-white.svg" alt="twitter" /></a>
-          <a href="https://www.linkedin.com/" target="_blank"><img src="icons/linkedin-logo-white.svg" alt="linkedin" /></a>
+          <a href="https://web.whatsapp.com/" target="_blank" rel="noreferrer"><img src="icons/whatsapp-logo-white.svg" alt="whatsapp" /></a>
+          <a href="https://web.facebook.com/" target="_blank" rel="noreferrer"><img src="icons/facebook-icon-white.svg" alt="facebook" /></a>
+          <a href="https://twitter.com/" target="_blank" rel="noreferrer"><img src="icons/twitter-icon-white.svg" alt="twitter" /></a>
+          <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer"><img src="icons/linkedin-logo-white.svg" alt="linkedin" /></a>
         </div>
         <h2 className="footer--title">&copy; Quick Call. 2022</h2>
       </div>

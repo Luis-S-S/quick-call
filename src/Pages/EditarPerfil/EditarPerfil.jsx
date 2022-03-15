@@ -1,12 +1,12 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { MenuLateral } from "../../Components/Menulateral/Menulateral";
+import { MenuLateral } from '../../Components/Menulateral/Menulateral';
 
-export const EditarPerfil = () => {
+function EditarPerfil() {
   return (
     <div>
-      <MenuLateral/>
+      <MenuLateral />
     </div>
 
   );
 }
+
+export default EditarPerfil;
