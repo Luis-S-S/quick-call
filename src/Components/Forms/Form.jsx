@@ -1,14 +1,31 @@
 import React from 'react';
 
-function Form () {
-    return (
+function Form() {
+  return (
     <>
-    <div classname="name"><img src="images/user.png"/> Full name</div>
-            <div classname="name"><img src="images/mensaje.png"/> michelle@example.com</div>
-            <div classname="name"><img src="images/password.png"/> Password</div>
-            <div classname="name"><img src="images/password.png"/> Repeat password</div>
-    <input ><img src="images/user.png"/></input>
+      <div className="name">
+        <img src="images/user.png" alt="user" />
+        {' '}
+        Full name
+      </div>
+      <div className="name">
+        <img src="images/mensaje.png" alt="mensaje" />
+        {' '}
+        michelle@example.com
+      </div>
+      <div className="name">
+        <img src="images/password.png" alt="password" />
+        {' '}
+        Password
+      </div>
+      <div className="name">
+        <img src="images/password.png" alt="password" />
+        {' '}
+        Repeat password
+      </div>
+      <input type="text" />
     </>
-)}
+  );
+}
 
-export default Form
+export default Form;

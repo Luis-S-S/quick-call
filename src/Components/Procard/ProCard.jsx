@@ -16,10 +16,18 @@ function ProCard() {
             </h1>
             <p>Lorem ipsum is simple dummy text on the printing and typesetting industry.</p>
             <ul>
-              <li><a href="#"><i className="fa fa-commenting-o" aria-hidden="true" /></a></li>
-              <li><a href="#"><i className="fa fa-user" aria-hidden="true" /></a></li>
               <li>
-                <a href="#">
+                <a href="google.com">
+                  <i className="fa fa-commenting-o" aria-hidden="true" />
+                </a>
+              </li>
+              <li>
+                <a href="google.com">
+                  <i className="fa fa-user" aria-hidden="true" />
+                </a>
+              </li>
+              <li>
+                <a href="google.com">
                   <i className="fa fa-star" aria-hidden="true" />
                   <i className="fa fa-star-half-o" aria-hidden="true" />
                 </a>

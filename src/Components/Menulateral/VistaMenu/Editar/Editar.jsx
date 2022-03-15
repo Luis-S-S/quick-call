@@ -1,24 +1,30 @@
-import {Link} from 'react-router-dom';
-import {useState} from 'react';
-import React from 'react';
+import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
 
-export const Editar= ()=> {
-  const vector = {'Contratos':'','Calificaciones':'','Chats':''}
-  const[state,setState]= useState({vector});
-  function click(e){
-    setState({...vector,[e.target.name]:true})
+function Editar() {
+  const vector = { Contratos: '', Calificaciones: '', Chats: '' };
+  const [setState] = useState({ vector });
+  function click(e) {
+    setState({ ...vector, [e.target.name]: true });
   }
 
   return (
     <>
-    <ul>
-          <li><Link to='' name="Contratos" onClick={click}>Mis contratos</Link></li>
-          <li><Link to='' name="Calificaciones" onClick={click}>Mis calificaciones</Link></li>
-          <li><Link to='' name="Chats" onClick={click}>Mis chats</Link></li>
-    </ul>
-    <ul>
-         
-    </ul>
+      <ul>
+        <li>
+          <button type="button" onClick={click}><Link to="google.com" name="Contratos">Mis contratos</Link></button>
+        </li>
+        <li>
+          <button type="button" onClick={click}><Link to="google.com" name="Calificaciones">Mis calificaciones</Link></button>
+        </li>
+        <li>
+          <button type="button" onClick={click}><Link to="google.com" name="Chats">Mis chats</Link></button>
+        </li>
+      </ul>
+      <ul />
     </>
 
-    )}
+  );
+}
+
+export default Editar;

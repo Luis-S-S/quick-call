@@ -1,50 +1,78 @@
-import {Link} from 'react-router-dom';
-import {useState} from 'react';
-import React from 'react';
-import { DarseAlta } from './VistaMenu/DarseAlta/DarseAlta';
-import { Editar } from "./VistaMenu/Editar/Editar";
-import { Historial } from "./VistaMenu/Historial/Historial";
-import { Calificaciones } from "./VistaMenu/Calificaciones/Calificaciones";
-import { Chats } from "./VistaMenu/Chats/Chats";
-import { Contratos } from "./VistaMenu/Contratos/Contratos";
-import { Favoritos } from "./VistaMenu/Favoritos/Favoritos";
-import { Pagos } from "./VistaMenu/Pagos/Pagos";
-import { Visibilidad } from "./VistaMenu/Visibilidad/Visibilidad";
-import './Menulateral.scss'
+import { useState } from 'react';
+// Verificar state en los componentes
+import { Link } from 'react-router-dom';
+import DarseAlta from './VistaMenu/DarseAlta/DarseAlta';
+import Editar from './VistaMenu/Editar/Editar';
+import Historial from './VistaMenu/Historial/Historial';
+import Calificaciones from './VistaMenu/Calificaciones/Calificaciones';
+import Chats from './VistaMenu/Chats/Chats';
+import Contratos from './VistaMenu/Contratos/Contratos';
+import Favoritos from './VistaMenu/Favoritos/Favoritos';
+import Pagos from './VistaMenu/Pagos/Pagos';
+import Visibilidad from './VistaMenu/Visibilidad/Visibilidad';
+import './Menulateral.scss';
 
-
-export const MenuLateral= ()=> {
-  const vector = {'Contratos':'','Calificaciones':'','Chats':'','Editar':'',
-  'Visibilidad':'','Favoritos':'','Pago':'','Historial':'','DarseAlta':''}
-  const[state,setState]= useState({vector});
-  function click(e){
-    setState({...vector,[e.target.name]:true})
+function MenuLateral() {
+  const vector = {
+    Contratos: '',
+    Calificaciones: '',
+    Chats: '',
+    Editar: '',
+    Visibilidad: '',
+    Favoritos: '',
+    Pago: '',
+    Historial: '',
+    DarseAlta: '',
+  };
+  const [state, setState] = useState({ vector });
+  function click(e) {
+    setState({ ...vector, [e.target.name]: true });
   }
-  console.log("este es el state:",state)
   return (
-    <div className='Menulateral'>
-    <div>
-          <li><Link to='' name="Contratos" onClick={click}>Mis contratos</Link></li>
-          <li><Link to='' name="Calificaciones" onClick={click}>Mis calificaciones</Link></li>
-          <li><Link to='' name="Chats" onClick={click}>Mis chats</Link></li>
-          <li><Link to='' name="Editar" onClick={click}>Editar perfil</Link></li>
-          <li><Link to='' name="Visibilidad" onClick={click}>Mi visibilidad</Link></li>
-          <li><Link to='' name="Favoritos" onClick={click}>Mis favoritos</Link></li>
-          <li><Link to='' name="Pago" onClick={click}>Mi informacion de pago</Link></li>
-          <li><Link to='' name="Historial" onClick={click}>Historial de compras</Link></li>
-          <li><Link to='' name="DarseAlta" onClick={click}>Darse de alta en pagina</Link></li>
-    </div>
-    <div>
-          {state.Contratos ? (<Contratos/>):<></>}
-          {state.Calificaciones ?(<Calificaciones/>):<></>}
-          {state.Chats ?  (<Chats/>):<></>}
-          {state.Editar ?  (<Editar/>):<></>}
-          {state.Visibilidad ?  (<Visibilidad/>):<></>}
-          {state.Favoritos ?  (<Favoritos/>):<></>}
-          {state.Pago ?  (<Pagos/>):<></>}
-          {state.Historial ? ( <Historial/>):<></>}
-          {state.DarseAlta ? (<DarseAlta/>):<></>}
-    </div>
+    <div className="Menulateral">
+      <div>
+        <li>
+          <button type="button" onClick={click}><Link to="google.com" name="Contratos">Mis contratos</Link></button>
+        </li>
+        <li>
+          <button type="button" onClick={click}><Link to="google.com" name="Calificaciones">Mis calificaciones</Link></button>
+        </li>
+        <li>
+          <button type="button" onClick={click}><Link to="google.com" name="Chats">Mis chats</Link></button>
+        </li>
+        <li>
+          <button type="button" onClick={click}><Link to="google.com" name="Editar">Editar perfil</Link></button>
+        </li>
+        <li>
+          <button type="button" onClick={click}><Link to="google.com" name="Visibilidad">Mi visibilidad</Link></button>
+        </li>
+        <li>
+          <button type="button" onClick={click}><Link to="google.com" name="Favoritos">Mis favoritos</Link></button>
+        </li>
+        <li>
+          <button type="button" onClick={click}><Link to="google.com" name="Pago">Mi informacion de pago</Link></button>
+        </li>
+        <li>
+          <button type="button" onClick={click}><Link to="google.com" name="Historial">Historial de compras</Link></button>
+        </li>
+        <li>
+          <button type="button" onClick={click}><Link to="google.com" name="DarseAlta">Darse de alta en pagina</Link></button>
+        </li>
+      </div>
+      <div>
+        {state.Contratos ? (<Contratos />) : <div />}
+        {state.Calificaciones ? (<Calificaciones />) : <div />}
+        {state.Chats ? (<Chats />) : <div /> }
+        {state.Editar ? (<Editar />) : <div /> }
+        {state.Visibilidad ? (<Visibilidad />) : <div /> }
+        {state.Favoritos ? (<Favoritos />) : <div /> }
+        {state.Pago ? (<Pagos />) : <div />}
+        {state.Historial ? (<Historial />) : <div /> }
+        {state.DarseAlta ? (<DarseAlta />) : <div /> }
+      </div>
     </div>
 
-    )}
+  );
+}
+
+export default MenuLateral;
