@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { ProCard } from '../../Components/Procard/ProCard';
+import ProCard from '../../Components/Procard/ProCard';
 
 function Search() {
   return (

@@ -1,11 +1,13 @@
 import React from 'react';
 
-export const DarseAlta = ()=> {
+function DarseAlta() {
   return (
     <>
-            <h2>Desea realmente eliminar? </h2>
-            <span>Aceptar  Cancelar</span>
+      <h2>Desea realmente eliminar? </h2>
+      <span>Aceptar  Cancelar</span>
     </>
 
-)}
+  );
+}
 
+export default DarseAlta;

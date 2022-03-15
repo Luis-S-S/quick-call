@@ -1,23 +1,23 @@
-import {Link} from 'react-router-dom';
-import {useState} from 'react';
-import React from 'react';
+import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
 
-export const Calificaciones= ()=> {
-  const vector = {'HistoricoCalificaciones':'','PorCalificar':''}
-  const[state,setState]= useState({vector});
-  function click(e){
-    setState({...vector,[e.target.name]:true})
+function Calificaciones() {
+  const vector = { HistoricoCalificaciones: '', PorCalificar: '' };
+  const [setState] = useState({ vector });
+  function click(e) {
+    setState({ ...vector, [e.target.name]: true });
   }
 
   return (
     <>
-    <ul>
-          <li><Link to='' name="HistoricoCalificaciones" onClick={click}>-- Mi historico de calificaciones</Link></li>
-          <li><Link to='' name="PorCalificar" onClick={click}>-- Trabajos por calificar</Link></li>
-    </ul>
-    <ul>
-
-    </ul>
+      <ul>
+        <li><button type="button" onClick={click}><Link to="google.com" name="HistoricoCalificaciones">-- Mi historico de calificaciones</Link></button></li>
+        <li><button type="button" onClick={click}><Link to="google.com" name="PorCalificar">-- Trabajos por calificar</Link></button></li>
+      </ul>
+      <ul />
     </>
 
-    )}
+  );
+}
+
+export default Calificaciones;

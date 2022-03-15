@@ -1,14 +1,12 @@
 import './App.scss';
 
-import React from "react";
-import "./App.scss";
-import {BrowserRouter as Router, Routes,Route} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-import { Home } from "./Pages/Home/Home";
-import { Login } from "./Pages/Login/Login";
-import { Signup } from "./Pages/Login/Signup";
-import { Search } from "./Pages/Search/Search";
-import { EditarPerfil } from './Pages/EditarPerfil/EditarPerfil';
+import Home from './Pages/Home/Home';
+import Login from './Pages/Login/Login';
+import Signup from './Pages/Login/Signup';
+import Search from './Pages/Search/Search';
+import EditarPerfil from './Pages/EditarPerfil/EditarPerfil';
 
 function App() {
   return (
