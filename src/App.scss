@@ -17,7 +17,7 @@ $letter-spacing: -0.02em;
   font-weight: 600;
   font-size: 64px;
   line-height: 90px;
-  letter-spacing: $letter-spacing;
+  letter-spacing: 0.02em;
 }
 
 @mixin text-title {

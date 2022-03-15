@@ -1,0 +1,59 @@
+@import '../../App.scss';
+
+.client-card {
+    align-items: center;
+    border-radius: 30px;
+    border: 3px solid black;
+    display: flex;
+    flex-direction: column;
+    margin: .75em;
+    padding: 1.75em;
+    width: 288px;
+}
+
+.client-card__header {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.client-card__profile {
+    border-radius: 50%;
+    height: 165px;
+    padding: 0;
+    width: 165px;
+}
+
+.client-card__title {
+    @include text-inline-title;
+    color: $blue;
+    text-align: center;
+}
+
+.client-card__body {
+    @include text-body;
+    max-height: 191px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+@media (min-width: 1024px) {
+    .client-card {
+        width: 368px;
+    }
+
+    .client-card__header {
+        align-items: center;
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+    }
+
+    .client-card__title {
+        order: 0;
+    }
+
+    .client-card__profile {
+        order: 1;
+    }
+}

@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import './button-square.scss';
+import './ButtonSquare.scss';
 
 function ButtonSquare({text, link}) {
     return (

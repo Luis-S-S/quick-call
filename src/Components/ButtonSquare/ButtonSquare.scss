@@ -1,0 +1,15 @@
+@import '../../App.scss';
+
+.button-square {
+    @include link-body;
+    border: 3px solid $dark-purple;
+    color: $dark-purple;
+    display: inline-block;
+    padding: 0.25em .75em;
+    text-decoration: none;
+}
+
+.button-square:hover {
+    background-color: $dark-purple;
+    color: white;
+}
