@@ -19,7 +19,6 @@ function Signup() {
       ...form, profile: 'imagen.png',
     };
     createUsuarios(datatosend);
-    console.log(datatosend);
   };
 
   return (
@@ -40,7 +39,7 @@ function Signup() {
             <img src="images/ramita.png" alt="" />
           </div>
         </div>
-        <form className="formulario" onClick={handleSubmit}>
+        <form className="formulario" onSubmit={handleSubmit}>
           <input name="name" placeholder="Full name" type="text" onChange={handleChange} />
           <input name="email" placeholder="Michelle@example.com" type="email" onChange={handleChange} />
           <input name="password" placeholder="Password" type="password" onChange={handleChange} />
