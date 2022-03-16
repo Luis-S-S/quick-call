@@ -1,30 +1,28 @@
 import React from 'react';
 import Usuario from '../../../../data/Usuario.json';
 
-export default function PorCalificar() {
+export default function Chatsabiertos() {
   return (
     <>
-      <h2>Mis Trabajos por calificar</h2>
+      <h2>Mis chats</h2>
       <table className="table">
         <thead>
           <tr>
             <th>Profesional</th>
             <th>Reforma</th>
-            <th>Estado</th>
-            <th>Ver detalle</th>
-            <th>Calificar</th>
+            <th>Estado reforma</th>
+            <th>Estado de chat</th>
+            <td />
           </tr>
         </thead>
         <tbody>
           {Usuario.map((Usuarios) => (
             <tr>
               <td>{Usuarios.nombre}</td>
-              <td />
               <td>{Usuarios.email}</td>
-              <td />
               <td>{Usuarios.contrasena}</td>
-              <td />
               <td>{Usuarios.ciudad}</td>
+              <td>Abrir chats</td>
             </tr>
           ))}
         </tbody>
