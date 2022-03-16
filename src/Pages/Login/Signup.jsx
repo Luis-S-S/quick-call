@@ -1,7 +1,27 @@
 import './Login.scss';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { createUsuarios } from '../../Services/Usuario';
 
 function Signup() {
+  const [form, setForm] = useState({});
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setForm({
+      ...form,
+      [name]: value,
+    });
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const datatosend = {
+      ...form, profile: 'imagen.png',
+    };
+    createUsuarios(datatosend);
+    console.log(datatosend);
+  };
+
   return (
     <div className="Login">
       <div><img className="imagen" src="/images/IMAGEN.png" alt="" /></div>
@@ -20,12 +40,13 @@ function Signup() {
             <img src="images/ramita.png" alt="" />
           </div>
         </div>
-        <div className="formulario">
-          <input placeholder="Full name" type="text" />
-          <input placeholder="Michelle@example.com" type="email" />
-          <input placeholder="Password" type="password" />
-          <input placeholder="Repeat password" type="password" />
-        </div>
+        <form className="formulario" onClick={handleSubmit}>
+          <input name="name" placeholder="Full name" type="text" onChange={handleChange} />
+          <input name="email" placeholder="Michelle@example.com" type="email" onChange={handleChange} />
+          <input name="password" placeholder="Password" type="password" onChange={handleChange} />
+          <input name="password2" placeholder="Repeat password" type="password" onChange={handleChange} />
+          <button type="submit">Enviar</button>
+        </form>
 
         <span className="signing">
           By signing up you agree to Our

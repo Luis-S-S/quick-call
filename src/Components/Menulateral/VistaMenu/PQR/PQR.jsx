@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import React, { useState } from 'react';
 
-function Historial() {
+export default function PQR() {
   const vector = { Contratos: '', Calificaciones: '', Chats: '' };
   const [setState] = useState({ vector });
   function click(e) {
@@ -26,5 +26,3 @@ function Historial() {
 
   );
 }
-
-export default Historial;
