@@ -1,18 +1,30 @@
+import { useEffect, useState } from 'react';
+import Carousel from 'react-elastic-carousel';
 import ClientExpCard from '../ClientExpCard/ClientExpCard';
+import { GetAllClientExperience } from '../../Services/client_experience';
 import './ClientExperienceSection.scss';
 
+const breakPoints = [
+  { width: 1, itemsToShow: 1 },
+  { width: 768, itemsToShow: 2 },
+  { width: 1024, itemsToShow: 3 },
+];
+
 function ClientExperienceSection() {
+  const [experiences, setExperiences] = useState([]);
+
+  useEffect(() => {
+    GetAllClientExperience()
+      .then((response) => {
+        setExperiences(response);
+      });
+  }, []);
+
   return (
     <div className="client-experience-section">
-      <span className="organize-display">
-        <ClientExpCard />
-      </span>
-      <span className="organize-display">
-        <ClientExpCard />
-      </span>
-      <span>
-        <ClientExpCard />
-      </span>
+      <Carousel breakPoints={breakPoints}>
+        {experiences.map((item) => <ClientExpCard key={item.id} details={item} />)}
+      </Carousel>
     </div>
   );
 }
