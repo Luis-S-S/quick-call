@@ -1,0 +1,77 @@
+{
+  "profesional": [
+    {
+      "name": "Jose Rodriguez",
+      "email": "Jorodriguez@gmail.com",
+      "password": "12345",
+      "telefono celular": "3123020303",
+      "ciudad": "cali",
+      "midescripcion": "breve descripcion",
+      "especilidad": {
+        "acreditado": [
+          "plomero",
+          "electricista"
+        ],
+        "enProceso": [
+          "albañil"
+        ],
+        "noAcreditado": [
+          "mecanico",
+          "veterinario"
+        ]
+      },
+      "image": {
+        "perfil": [
+          "perfil.png",
+          "perfil2.png"
+        ],
+        "misTrabajos": [
+          "mitrabajo1.png",
+          "mitrabajo2.png"
+        ]
+      },
+      "seguridad_social": {
+        "eps": "saludcoop",
+        "arl": "positiva"
+      },
+      "disponiblidad": {
+        "tiempo": "8am-7pm",
+        "24horas": "falso"
+      }
+    }
+  ],
+  "Usuarios": [
+    {
+      "id": "1",
+      "name": "Luis Perrea",
+      "email": "PerreaL@hotmail.com",
+      "password": "54321",
+      "cellphone": "3120100121",
+      "city": "cali",
+      "profile": [
+        "perfil.png",
+        "perfil2.png"
+      ],
+      "payment": {
+        "cardnumber": "1234 5678 1234 8765",
+        "expdate": "01/03/2024",
+        "cvv": "123"
+      }
+    },
+    {
+      "id": "ZKLrHmZ"
+    },
+    {
+      "id": "q-TZ6Yg"
+    },
+    {
+      "id": "juT6ACZ"
+    },
+    {
+      "id": "fls9hmm"
+    },
+    {
+      "id": "5wD5za5"
+    }
+  ]
+}

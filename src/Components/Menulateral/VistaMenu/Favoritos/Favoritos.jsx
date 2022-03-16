@@ -1,30 +1,32 @@
-import { Link } from 'react-router-dom';
-import React, { useState } from 'react';
+import React from 'react';
+import Misfavoritos from '../../../../data/Misfavoritos.json';
 
-function Favoritos() {
-  const vector = { Contratos: '', Calificaciones: '', Chats: '' };
-  const [setState] = useState({ vector });
-  function click(e) {
-    setState({ ...vector, [e.target.name]: true });
-  }
-
+export default function Favoritos() {
   return (
     <>
-      <ul>
-        <li>
-          <button type="button" onClick={click}><Link to="google.com" name="Contratos">Mis contratos</Link></button>
-        </li>
-        <li>
-          <button type="button" onClick={click}><Link to="google.com" name="Calificaciones">Mis calificaciones</Link></button>
-        </li>
-        <li>
-          <button type="button" onClick={click}><Link to="google.com" name="Chats">Mis chats</Link></button>
-        </li>
-      </ul>
-      <ul />
-    </>
+      <h2>Mis profesionales favoritos</h2>
+      <table className="table">
+        <thead>
+          <tr>
+            <th>Profesional</th>
+            <th>Especialidad</th>
+            <th>Horario disponibilidad</th>
+            <th>Disponibilidad</th>
+          </tr>
+        </thead>
+        <tbody>
+          {Misfavoritos.map((Favorito) => (
+            <tr>
+              <td>{Favorito.nombre}</td>
+              <td>{Favorito.email}</td>
+              <td>{Favorito.contrasena}</td>
+              <td>{Favorito.ciudad}</td>
+              <td>Quitar</td>
 
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </>
   );
 }
-
-export default Favoritos;

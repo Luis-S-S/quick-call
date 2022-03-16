@@ -1,24 +1,27 @@
 import { Link } from 'react-router-dom';
 import React, { useState } from 'react';
+import Chatsabiertos from './Chatsabiertos';
+import Historicodechats from './Historicodechats';
 
-function Chats() {
-  const vector = { Contratos: '', Calificaciones: '', Chats: '' };
-  const [setState] = useState({ vector });
+export default function Chats() {
+  const vector = { Historicodechats: '', Chatsabiertos: '', Chats: '' };
+  const [state, setState] = useState({ vector });
   function click(e) {
     setState({ ...vector, [e.target.name]: true });
   }
 
   return (
-    <>
-      <ul>
-        <li><button type="button" onClick={click}><Link to="google.com" name="Contratos">Mis contratos</Link></button></li>
-        <li><button type="button" onClick={click}><Link to="google.com" name="Calificaciones">Mis calificaciones</Link></button></li>
+    <div className="VistaMenu">
+      <div className="Cabezera">
+        <li><button type="button" onClick={click}><Link to="google.com" name="Chatsabiertos">Mis chats</Link></button></li>
+        <li><button type="button" onClick={click}><Link to="google.com" name="Historicodechats">Lista de Chat cerrados</Link></button></li>
         <li><button type="button" onClick={click}><Link to="google.com" name="Chats">Mis chats</Link></button></li>
-      </ul>
-      <ul />
-    </>
+      </div>
+      <div className="Cuerpo">
+        {state.Historico ? (<Chatsabiertos />) : <div />}
+        {state.Proceso ? (<Historicodechats />) : <div />}
+      </div>
+    </div>
 
   );
 }
-
-export default Chats;

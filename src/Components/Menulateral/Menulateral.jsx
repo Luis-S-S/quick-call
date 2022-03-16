@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import DarseAlta from './VistaMenu/DarseAlta/DarseAlta';
 import Editar from './VistaMenu/Editar/Editar';
-import Historial from './VistaMenu/Historial/Historial';
+import PQR from './VistaMenu/PQR/PQR';
 import Calificaciones from './VistaMenu/Calificaciones/Calificaciones';
 import Chats from './VistaMenu/Chats/Chats';
 import Contratos from './VistaMenu/Contratos/Contratos';
@@ -67,7 +67,7 @@ function MenuLateral() {
         {state.Visibilidad ? (<Visibilidad />) : <div /> }
         {state.Favoritos ? (<Favoritos />) : <div /> }
         {state.Pago ? (<Pagos />) : <div />}
-        {state.Historial ? (<Historial />) : <div /> }
+        {state.Historial ? (<PQR />) : <div /> }
         {state.DarseAlta ? (<DarseAlta />) : <div /> }
       </div>
     </div>

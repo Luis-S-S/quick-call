@@ -1,29 +1,21 @@
-import { Link } from 'react-router-dom';
-import React, { useState } from 'react';
+import React from 'react';
+import Usuario from '../../../../data/Usuario.json';
 
-function Pagos() {
-  const vector = { Contratos: '', Calificaciones: '', Chats: '' };
-  const [setState] = useState({ vector });
-  function click(e) {
-    setState({ ...vector, [e.target.name]: true });
-  }
-
+export default function Pagos() {
+  console.log(Usuario);
   return (
     <>
-      <ul>
-        <li>
-          <button type="button" onClick={click}><Link to="google.com" name="Contratos">Mis contratos</Link></button>
-        </li>
-        <li>
-          <button type="button" onClick={click}><Link to="google.com" name="Calificaciones">Mis calificaciones</Link></button>
-        </li>
-        <li>
-          <button type="button" onClick={click}><Link to="google.com" name="Chats">Mis chats</Link></button>
-        </li>
-      </ul>
-      <ul />
+      <h2 className="Titulo">Mis datos de pago</h2>
+      <h4>Numero de tarjeta</h4>
+      <div className="Editar">
+        <div>{Usuario[0].mipago.numerotarjeta}</div>
+        <div>Editar</div>
+      </div>
+      <h4>Fecha de vencimiento</h4>
+      <div className="Editar"><div>{Usuario[0].mipago.fechavencimiento}</div></div>
+      <h4>Codigo</h4>
+      <div className="Editar"><div>{Usuario[0].mipago.codigo}</div></div>
+
     </>
   );
 }
-
-export default Pagos;
