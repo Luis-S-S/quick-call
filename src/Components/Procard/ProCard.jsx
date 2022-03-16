@@ -1,43 +1,28 @@
 import './ProCard.scss';
-import { Link } from 'react-router-dom';
+
+import ButtonSquare from '../ButtonSquare/ButtonSquare';
 
 function ProCard() {
   return (
-    <div className="procard">
-      <div className="card">
-        <div className="image">
-          <img src="./images/img/constructor.jpeg" alt="constructor" />
-        </div>
-        <div className="details">
-          <div className="center">
-            <h1>
-              Pepito Perez
-              <br />
-              <span>Constructor</span>
-            </h1>
-            <p>Lorem ipsum is simple dummy text on the printing and typesetting industry.</p>
-            <ul>
-              <li>
-                <a href="google.com">
-                  <i className="fa fa-commenting-o" aria-hidden="true" />
-                </a>
-              </li>
-              <li>
-                <Link to="/ProfilePro">
-                  <i className="fa fa-user" aria-hidden="true" />
-                </Link>
-              </li>
-              <li>
-                <a href="google.com">
-                  <i className="fa fa-star" aria-hidden="true" />
-                  <i className="fa fa-star-half-o" aria-hidden="true" />
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
+    <div className="pro-card">
+      <div className="pro-card__header">
+        <img className="pro-card__profile" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Black_from_a_camera.jpg/1200px-Black_from_a_camera.jpg" alt="profile" />
+        <h1 className="pro-card__title">Pepito Perez</h1>
+      </div>
+      <p className="pro-card__body">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime nihil quod quo illo.</p>
+      <div className="calification">
+        <span className="fa fa-star" />
+        <span className="fa fa-star" />
+        <span className="fa fa-star" />
+        <span className="fa fa-star" />
+        <span className="fa fa-star-half-o" />
+      </div>
+      <div className="buttons">
+        <ButtonSquare text="Ver Perfil" to="/ProfilePro" />
+        <ButtonSquare text="Iniciar Chat" />
       </div>
     </div>
+
   );
 }
 

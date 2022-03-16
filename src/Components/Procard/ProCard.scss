@@ -1,92 +1,75 @@
-.procard {
-  body {
-    margin: 0;
-    padding: 0;
-    background: #d3d3d3;
-    font-family: 'League Gothic';
+@import '../../App.scss';
+
+.pro-card {
+  align-items: center;
+  border: 2px solid black;
+  display: flex;
+  flex-direction: column;
+  margin: .75em;
+  padding: 1.75em;
+  width: 288px;
+  background-color: $light-grey;
+}
+
+.pro-card__header {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.pro-card__profile {
+  height: 165px;
+  padding: 0;
+  width: 165px;
+}
+
+.pro-card__title {
+  @include text-inline-title;
+  color: $black;
+  text-align: center;
+}
+
+.pro-card__body {
+  @include text-body;
+  max-height: 191px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-top: 20px;
+  text-align: center;
+}
+
+.calification {
+  column-count: 1;
+  padding-top: 20px;
+  color: orange;
+  text-align: center;
+  padding-right: 110px;
+  padding-left: 90px;
+}
+
+.buttons {
+  column-count: 2;
+  padding-top: 30px;
+  padding-left: 30px;
+}
+
+@media (min-width: 1024px) {
+  .pro-card {
+      width: 368px;
   }
-  .card {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 360px;
-    height: 400px;
-    left: 250px;
-    background: #000;
+
+  .pro-card__header {
+      align-items: center;
+      display: flex;
+      flex-direction: row;
+      gap: 10px;
   }
-  .card .image {
-    overflow: hidden;
+
+  .pro-card__title {
+      order: 0;
   }
-  .card .image img {
-    width: 100%;
-    height: 400px;
-    transition: 0.5s;
-  }
-  .card:hover .image img {
-    opacity: 0.5;
-    transform: translateX(30%); /*100%*/
-  }
-  .card .details {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 70%; /*100%*/
-    height: 100%;
-    background: #a6c1de;
-    transition: 0.5s;
-    transform-origin: left;
-    transform: perspective(2000px) rotateY(-90deg);
-  }
-  .card:hover .details {
-    transform: perspective(2000px) rotateY(0deg);
-  }
-  .card .details .center {
-    padding: 20px;
-    text-align: center;
-    background: #fff;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-  }
-  .card .details .center h1 {
-    margin: 0;
-    padding: 0;
-    color: #483786;
-    line-height: 20px;
-    font-size: 20px;
-    text-transform: uppercase;
-  }
-  .card .details .center h1 span {
-    font-size: 14px;
-    color: #262626;
-  }
-  .card .details .center p {
-    margin: 10px 0;
-    padding: 0;
-    color: #262626;
-  }
-  .card .details .center ul {
-    margin: 10px auto 0;
-    padding: 0;
-    display: table;
-  }
-  .card .details .center ul li {
-    list-style: none;
-    margin: 0 5px;
-    float: left;
-  }
-  .card .details .center ul li a {
-    display: block;
-    background: #262626;
-    color: #fff;
-    width: 30px;
-    height: 30px;
-    line-height: 30px;
-    text-align: center;
-    transform: 0.5s;
-  }
-  .card .details .center ul li a:hover {
-    background: #C0E4EA;
+
+  .pro-card__profile {
+      order: 1;
   }
 }
