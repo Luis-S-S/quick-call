@@ -11,6 +11,10 @@ $light-grey: #A6C1DE;
 
 $letter-spacing: -0.02em;
 
+body {
+  margin: 0
+}
+
 @mixin text-big-title {
   font-family: 'League Gothic', sans-serif;
   font-style: normal;

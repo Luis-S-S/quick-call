@@ -21,6 +21,10 @@
     width: 100%;
 }
 
+.footer__logo {
+    width: 320px;
+}
+
 .footer__container {
     display: flex;
     flex-direction: column;
@@ -39,6 +43,10 @@
     flex-direction: column;
     gap: 1rem;
     margin: 1.25rem 0;
+}
+
+.footer__copyright > .footer--body {
+    text-align: center;
 }
 
 .copyright__social-media {
