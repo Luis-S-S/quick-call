@@ -1,11 +1,12 @@
 import './ProCard.scss';
+import { Link } from 'react-router-dom';
 
 function ProCard() {
   return (
     <div className="procard">
       <div className="card">
         <div className="image">
-          <img src="pro/constructor.jpeg" alt="constructor" />
+          <img src="./images/img/constructor.jpeg" alt="constructor" />
         </div>
         <div className="details">
           <div className="center">
@@ -22,9 +23,9 @@ function ProCard() {
                 </a>
               </li>
               <li>
-                <a href="google.com">
+                <Link to="/ProfilePro">
                   <i className="fa fa-user" aria-hidden="true" />
-                </a>
+                </Link>
               </li>
               <li>
                 <a href="google.com">
