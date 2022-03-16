@@ -1,0 +1,11 @@
+@import '../../App.scss';
+
+.interest {
+  text-align: center;
+  color: $white;
+  background-color: $purple;
+  padding-top: 30px;
+  @include text-title;
+  font-size: 20px;
+
+}

@@ -6,6 +6,7 @@ import Home from './Pages/Home/Home';
 import Login from './Pages/Login/Login';
 import Signup from './Pages/Login/Signup';
 import Search from './Pages/Search/Search';
+import ProfilePro from './Pages/ProfilePro/ProfilePro';
 import EditarPerfil from './Pages/EditarPerfil/EditarPerfil';
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
           <Route path="/Signup" element={<Signup />} />
           <Route path="/Login" element={<Login />} />
           <Route path="/Search" element={<Search />} />
+          <Route path="/ProfilePro" element={<ProfilePro />} />
           <Route path="/EditarPerfil" element={<EditarPerfil />} />
         </Routes>
       </Router>
