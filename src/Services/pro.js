@@ -1,8 +1,8 @@
 const API_URL = 'http://localhost:3004/api'; // Actualizar a 3004 antes del pull && localmente (luis) solo sirve en 8080
 
-export async function getAllClientExperience() {
+export async function getAllPro() {
   try {
-    const response = await fetch(`${API_URL}/client_experience`);
+    const response = await fetch(`${API_URL}/profesional`);
     const data = await response.json();
     return data;
   } catch (error) {
