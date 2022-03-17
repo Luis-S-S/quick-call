@@ -34,7 +34,7 @@ function ProfileProDescription() {
             <span className="fa fa-star" />
             <span className="fa fa-star-half-o" />
             <br />
-            <ButtonSquare text="Iniciar Chat" />
+            <ButtonSquare>Iniciar Chat</ButtonSquare>
           </div>
         </div>
       </div>

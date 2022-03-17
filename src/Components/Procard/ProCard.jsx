@@ -19,8 +19,8 @@ function ProCard({ details: { name, midescripcion, image } }) {
         <span className="fa fa-star-half-o" />
       </div>
       <div className="buttons">
-        <ButtonSquare text="Ver Perfil" link="/ProfilePro" />
-        <ButtonSquare text="Iniciar Chat" />
+        <ButtonSquare link="/ProfilePro">Ver Perfil</ButtonSquare>
+        <ButtonSquare>Iniciar Chat</ButtonSquare>
       </div>
     </div>
 

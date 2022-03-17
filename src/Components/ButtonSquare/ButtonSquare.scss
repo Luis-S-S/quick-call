@@ -2,14 +2,34 @@
 
 .button-square {
     @include link-body;
-    border: 3px solid $dark-purple;
-    color: $dark-purple;
-    display: inline-block;
+    display: flex;
+    align-items: center;
     padding: 0.25em .75em;
     text-decoration: none;
 }
 
-.button-square:hover {
+.white {
+    border: 3px solid $white;
+    color: $white;
+}
+
+.white:hover {
+    background-color: $white;
+    color: $dark-purple;
+}
+
+.dark-purple:hover {
     background-color: $dark-purple;
     color: white;
+}
+
+.dark-purple {
+    border: 3px solid $dark-purple;
+    color: $dark-purple;
+}
+
+@media (min-width: 1024px) {
+    .button-square {
+        @include link-sub-title;
+    }
 }
