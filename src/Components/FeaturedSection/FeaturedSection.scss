@@ -1,8 +1,48 @@
 @import '../../App.scss';
 
 .home__mid-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
     background-color: #acabf4;
     padding: 2em 0;
+    gap: 2em;
+}
+
+.mid-section__title {
+    @include link-sub-title;
+    color: $white;
+    text-align: center;
+}
+
+.mid-section__left {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.mid-section__right {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 2.5em;
+}
+
+.mid-section__icon {
+    width: 45px;
+    margin-right: 0.75em;
+}
+
+@media (min-width: 1440px) {
+    .home__mid-section {
+        gap: 1em;
+    }
+
+    .mid-section__title {
+        @include text-title-bold;
+    }
 }
 
 

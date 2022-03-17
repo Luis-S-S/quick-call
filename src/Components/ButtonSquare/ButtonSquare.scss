@@ -2,7 +2,8 @@
 
 .button-square {
     @include link-body;
-    display: inline-block;
+    display: flex;
+    align-items: center;
     padding: 0.25em .75em;
     text-decoration: none;
 }
@@ -25,4 +26,10 @@
 .dark-purple {
     border: 3px solid $dark-purple;
     color: $dark-purple;
+}
+
+@media (min-width: 1024px) {
+    .button-square {
+        @include link-sub-title;
+    }
 }
