@@ -15,3 +15,9 @@
     background-color: white;
     color: $blue;
 }
+
+@media (min-width: 1024px) {
+    .button-round {
+        @include link-sub-title;
+    }
+}
