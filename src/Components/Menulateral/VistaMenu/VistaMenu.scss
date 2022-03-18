@@ -1,9 +1,16 @@
 .VistaMenu {
-  display: grid;
-  grid-template-columns: 1fr;
   .Cabezera{
     display: grid;
     grid-template-columns: 1fr 1fr;
 
   }
+  .Editar{
+    display: flex;
+    justify-content: space-between;
+
+  }
+  .Titulo{
+    text-align: center;
+  }
 }
+

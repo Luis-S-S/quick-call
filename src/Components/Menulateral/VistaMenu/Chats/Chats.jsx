@@ -1,3 +1,5 @@
+/* eslint-disable react/jsx-no-bind */
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import { Link } from 'react-router-dom';
 import React, { useState } from 'react';
 import Chatsabiertos from './Chatsabiertos';
@@ -13,9 +15,8 @@ export default function Chats() {
   return (
     <div className="VistaMenu">
       <div className="Cabezera">
-        <li><button type="button" onClick={click}><Link to="google.com" name="Chatsabiertos">Mis chats</Link></button></li>
-        <li><button type="button" onClick={click}><Link to="google.com" name="Historicodechats">Lista de Chat cerrados</Link></button></li>
-        <li><button type="button" onClick={click}><Link to="google.com" name="Chats">Mis chats</Link></button></li>
+        <Link to="" onClick={click} name="Chatsabiertos">Mis chats</Link>
+        <Link to="" onClick={click} name="Historicodechats">Lista de Chat cerrados</Link>
       </div>
       <div className="Cuerpo">
         {state.Historico ? (<Chatsabiertos />) : <div />}

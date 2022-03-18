@@ -4,7 +4,7 @@ import Usuario from '../../../../data/Usuario.json';
 export default function Historicodechats() {
   return (
     <>
-      <h2>Mis chats dc gestion</h2>
+      <h2 className="Titulo">Mis chats dc gestion</h2>
       <table className="table">
         <thead>
           <tr>

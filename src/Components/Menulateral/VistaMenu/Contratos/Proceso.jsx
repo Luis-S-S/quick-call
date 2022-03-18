@@ -4,7 +4,7 @@ import Usuario from '../../../../data/Usuario.json';
 function Proceso() {
   return (
     <>
-      <h2>Pagos por Evaluar</h2>
+      <h2 className="Titulo">Pagos por Evaluar</h2>
       <table className="table">
         <thead>
           <tr>
@@ -12,20 +12,17 @@ function Proceso() {
             <th>Reforma</th>
             <th>Fecha de inicio</th>
             <th>Fecha de finalizacion</th>
-            <th>Listo paa evaluar</th>
+            <th>Listo para evaluar</th>
           </tr>
         </thead>
         <tbody>
           {Usuario.map((Usuarios) => (
             <tr>
               <td>{Usuarios.nombre}</td>
-              <td />
               <td>{Usuarios.email}</td>
-              <td />
               <td>{Usuarios.contrasena}</td>
-              <td />
               <td>{Usuarios.ciudad}</td>
-              <td>VEr detalle</td>
+              <td>Ver detalle</td>
             </tr>
           ))}
         </tbody>

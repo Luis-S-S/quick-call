@@ -1,12 +1,18 @@
 .Menulateral {
     display:grid;
     grid-template-columns: 1fr 2fr;
-    padding: 30px;
-
-    li{
-        display:block;
-        padding:"40px";
+    padding: 20px;
+    div{
+        display:grid;
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    p {
+        background-color: aqua;
     }
 }
+
+
+
 
 

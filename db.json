@@ -320,10 +320,8 @@
         "24horas": "falso"
       }
     }
-
   ],
-
-  "Usuarios": [
+  "user": [
     {
       "id": "1",
       "name": "Luis Perrea",
@@ -340,15 +338,8 @@
         "expdate": "01/03/2024",
         "cvv": "123"
       }
-    },
-    {
-      "id": "ZKLrHmZ"
-    },
-    {
-      "id": "q-TZ6Yg"
     }
   ],
-
   "client_experience": [
     {
       "id": 1,

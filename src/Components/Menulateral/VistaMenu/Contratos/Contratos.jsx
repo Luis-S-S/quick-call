@@ -1,3 +1,5 @@
+/* eslint-disable react/jsx-no-bind */
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Historico from './Historico';
@@ -15,12 +17,12 @@ function Contratos() {
 
     <div className="VistaMenu">
       <div className="Cabezera">
-        <li><button type="button" onClick={click}><Link to="google.com" name="Historico">Mis Historico de contrato</Link></button></li>
-        <li><button type="button" onClick={click}><Link to="google.com" name="Proceso">Contratos en Proceso</Link></button></li>
+        <Link to="" onClick={click} name="Historico">Mis Historico de contrato</Link>
+        <Link to="" onClick={click} name="Proceso">Contratos en Proceso</Link>
       </div>
       <div className="Cuerpo">
-        {state.Historico ? (<Historico />) : <div />}
-        {state.Proceso ? (<Proceso />) : <div />}
+        {state.Historico ? (<Historico />) : <span />}
+        {state.Proceso ? (<Proceso />) : <span />}
       </div>
     </div>
 

@@ -1,3 +1,5 @@
+/* eslint-disable react/jsx-no-bind */
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import HistoricoCalificaciones from './HistoricoCalificaciones';
@@ -13,13 +15,13 @@ export default function Calificaciones() {
   return (
     <div className="VistaMenu">
       <div className="Cabezera">
-        <li><button type="button" onClick={click}><Link to="google.com" name="HistoricoCalificaciones">-- Mi historico de calificaciones</Link></button></li>
-        <li><button type="button" onClick={click}><Link to="google.com" name="PorCalificar">-- Trabajos por calificar</Link></button></li>
+        <Link to="" onClick={click} name="HistoricoCalificaciones">Mi historico de calificaciones</Link>
+        <Link to="" onClick={click} name="PorCalificar">Trabajos por calificar</Link>
       </div>
       <div>
         <div className="Cuerpo">
-          {state.Historico ? (<HistoricoCalificaciones />) : <div />}
-          {state.Proceso ? (<PorCalificar />) : <div />}
+          {state.Historico ? (<HistoricoCalificaciones />) : <span />}
+          {state.Proceso ? (<PorCalificar />) : <span />}
         </div>
       </div>
     </div>

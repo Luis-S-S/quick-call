@@ -1,3 +1,5 @@
+/* eslint-disable react/jsx-no-bind */
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import { Link } from 'react-router-dom';
 import React, { useState } from 'react';
 
@@ -11,15 +13,9 @@ export default function PQR() {
   return (
     <>
       <ul>
-        <li>
-          <button type="button" onClick={click}><Link to="google.com" name="Contratos">Mis contratos</Link></button>
-        </li>
-        <li>
-          <button type="button" onClick={click}><Link to="google.com" name="Calificaciones">Mis calificaciones</Link></button>
-        </li>
-        <li>
-          <button type="button" onClick={click}><Link to="google.com" name="Chats">Mis chats</Link></button>
-        </li>
+        <Link to="" onClick={click} name="Contratos">Mis contratos</Link>
+        <Link to="" onClick={click} name="Calificaciones">Mis calificaciones</Link>
+        <Link to="" onClick={click} name="Chats">Mis chats</Link>
       </ul>
       <ul />
     </>

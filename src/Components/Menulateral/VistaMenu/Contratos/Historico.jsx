@@ -4,7 +4,7 @@ import Usuario from '../../../../data/Usuario.json';
 function Historico() {
   return (
     <>
-      <h2>Mi historico de pagos</h2>
+      <h2 className="Titulo">Mi historico de pagos</h2>
       <table className="table">
         <thead>
           <tr>
@@ -18,11 +18,8 @@ function Historico() {
           {Usuario.map((Usuarios) => (
             <tr>
               <td>{Usuarios.nombre}</td>
-              <td />
               <td>{Usuarios.email}</td>
-              <td />
               <td>{Usuarios.contrasena}</td>
-              <td />
               <td>{Usuarios.ciudad}</td>
             </tr>
           ))}

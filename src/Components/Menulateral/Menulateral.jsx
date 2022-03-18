@@ -1,6 +1,4 @@
 import { useState } from 'react';
-// Verificar state en los componentes
-import { Link } from 'react-router-dom';
 import DarseAlta from './VistaMenu/DarseAlta/DarseAlta';
 import Editar from './VistaMenu/Editar/Editar';
 import PQR from './VistaMenu/PQR/PQR';
@@ -11,64 +9,52 @@ import Favoritos from './VistaMenu/Favoritos/Favoritos';
 import Pagos from './VistaMenu/Pagos/Pagos';
 import Visibilidad from './VistaMenu/Visibilidad/Visibilidad';
 import './Menulateral.scss';
+import Historico from './VistaMenu/Contratos/Historico';
 
 function MenuLateral() {
-  const vector = {
-    Contratos: '',
-    Calificaciones: '',
-    Chats: '',
-    Editar: '',
-    Visibilidad: '',
-    Favoritos: '',
-    Pago: '',
-    Historial: '',
-    DarseAlta: '',
-  };
-  const [state, setState] = useState({ vector });
+  const [state, setState] = useState('Contratos');
   function click(e) {
-    setState({ ...vector, [e.target.name]: true });
+    setState(e.target.name);
+  }
+  function renderDashboard(vista) {
+    switch (vista) {
+      case 'Contratos':
+        return (<Contratos />);
+      case 'Calificaciones':
+        return (<Calificaciones />);
+      case 'Chats':
+        return (<Chats />);
+      case 'Editar':
+        return (<Editar />);
+      case 'Favoritos':
+        return (<Favoritos />);
+      case 'Pago':
+        return (<Pagos />);
+      case 'Historial':
+        return (<Historico />);
+      case 'DarseAlta':
+        return (<DarseAlta />);
+      case 'Visibilidad':
+        return (<Visibilidad />);
+      default:
+        return Error;
+    }
   }
   return (
     <div className="Menulateral">
       <div>
-        <li>
-          <button type="button" onClick={click}><Link to="google.com" name="Contratos">Mis contratos</Link></button>
-        </li>
-        <li>
-          <button type="button" onClick={click}><Link to="google.com" name="Calificaciones">Mis calificaciones</Link></button>
-        </li>
-        <li>
-          <button type="button" onClick={click}><Link to="google.com" name="Chats">Mis chats</Link></button>
-        </li>
-        <li>
-          <button type="button" onClick={click}><Link to="google.com" name="Editar">Editar perfil</Link></button>
-        </li>
-        <li>
-          <button type="button" onClick={click}><Link to="google.com" name="Visibilidad">Mi visibilidad</Link></button>
-        </li>
-        <li>
-          <button type="button" onClick={click}><Link to="google.com" name="Favoritos">Mis favoritos</Link></button>
-        </li>
-        <li>
-          <button type="button" onClick={click}><Link to="google.com" name="Pago">Mi informacion de pago</Link></button>
-        </li>
-        <li>
-          <button type="button" onClick={click}><Link to="google.com" name="Historial">Historial de compras</Link></button>
-        </li>
-        <li>
-          <button type="button" onClick={click}><Link to="google.com" name="DarseAlta">Darse de alta en pagina</Link></button>
-        </li>
+        <button type="button" onClick={click} name="Contratos">Mis contratos</button>
+        <button type="button" onClick={click} name="Calificaciones">Mis calificaciones</button>
+        <button type="button" onClick={click} name="Chats">Mis chats</button>
+        <button type="button" onClick={click} name="Editar">Editar perfil</button>
+        <button type="button" onClick={click} name="Visibilidad">Mi visibilidad</button>
+        <button type="button" onClick={click} name="Favoritos">Mis favoritos</button>
+        <button type="button" onClick={click} name="Pago">Mi informacion de pago</button>
+        <button type="button" onClick={click} name="Historial">Historial de compras</button>
+        <button type="button" onClick={click} name="DarseAlta">Darse de alta en pagina</button>
       </div>
       <div>
-        {state.Contratos ? (<Contratos />) : <div />}
-        {state.Calificaciones ? (<Calificaciones />) : <div />}
-        {state.Chats ? (<Chats />) : <div /> }
-        {state.Editar ? (<Editar />) : <div /> }
-        {state.Visibilidad ? (<Visibilidad />) : <div /> }
-        {state.Favoritos ? (<Favoritos />) : <div /> }
-        {state.Pago ? (<Pagos />) : <div />}
-        {state.Historial ? (<PQR />) : <div /> }
-        {state.DarseAlta ? (<DarseAlta />) : <div /> }
+        {renderDashboard(state)}
       </div>
     </div>
 

@@ -4,7 +4,7 @@ import Usuario from '../../../../data/Usuario.json';
 export default function Chatsabiertos() {
   return (
     <>
-      <h2>Mis chats</h2>
+      <h2 className="Titulo">Mis chats</h2>
       <table className="table">
         <thead>
           <tr>

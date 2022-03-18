@@ -4,8 +4,8 @@ import '../VistaMenu.scss';
 
 export default function Editar() {
   return (
-    <>
-      <h2>Mis datos</h2>
+    <div className="VistaMenu">
+      <h2 className="Titulo">Mis datos</h2>
       <h4>Nombre</h4>
       <div className="Editar">
         <div>{Usuario[0].nombre}</div>
@@ -41,6 +41,6 @@ export default function Editar() {
         <div>Eliminar</div>
       </div>
 
-    </>
+    </div>
   );
 }

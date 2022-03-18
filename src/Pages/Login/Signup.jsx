@@ -1,7 +1,7 @@
 import './Login.scss';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { createUsuarios } from '../../Services/Usuario';
+import { createUsuarios } from '../../Services/user';
 
 function Signup() {
   const [form, setForm] = useState({});
@@ -12,17 +12,18 @@ function Signup() {
       [name]: value,
     });
   };
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-
-    const datatosend = {
-      ...form, profile: 'imagen.png',
-    };
-    createUsuarios(datatosend);
+    // const datatosend = {
+    //   ...form, profile: 'imagen.png',
+    // };
+    await createUsuarios(form);
+    setForm({});
+    document.querySelector('form').reset();
   };
 
   return (
-    <div className="Login">
+    <div className="login">
       <div><img className="imagen" src="/images/IMAGEN.png" alt="" /></div>
       <div className="principal">
         <div className="regresar">
