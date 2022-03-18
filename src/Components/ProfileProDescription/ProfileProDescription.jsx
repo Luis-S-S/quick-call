@@ -1,7 +1,16 @@
+import { useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import './ProfileProDescription.scss';
 import ButtonSquare from '../ButtonSquare/ButtonSquare';
+import { getSinglePro } from '../../Services/pro';
 
 function ProfileProDescription() {
+  const { id } = useParams();
+  const [pro, setPro] = useState([]);
+
+  useEffect(() => {
+    getSinglePro(id).then((data) => setPro(data));
+  }, []);
   return (
     <div className="profileDescription">
       <div className="row">
@@ -10,21 +19,15 @@ function ProfileProDescription() {
         </div>
         <div className="column">
           <div className="description">
-            <h1>Pepito Perez</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras vel nisi nisi.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras vel nisi nisi.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras vel nisi nisi.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras vel nisi nisi.</p>
+            <h1>{pro.name}</h1>
+            <p>{pro.myDescription}</p>
           </div>
           <div className="categories">
             <h1>Mis especialidades</h1>
             <div className="categoriesList">
-              <h4>Categoria</h4>
-              <h4>Categoria</h4>
-              <h4>Categoria</h4>
-              <h4>Categoria</h4>
-              <h4>Categoria</h4>
-              <h4>Categoria</h4>
+              <h4>categorias</h4>
+              <h4>categorias</h4>
+              {/* <h4>{pro.specialty.certified[1]}</h4> */}
             </div>
           </div>
           <div className="calification">
