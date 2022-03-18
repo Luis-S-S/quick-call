@@ -1,8 +1,8 @@
 const API_URL = 'http://localhost:3004/api';
 
-export async function getAllUsuarios() {
+export async function getAllUsers() {
   try {
-    const response = await fetch(`${API_URL}/Usuarios`);
+    const response = await fetch(`${API_URL}/users`);
     const data = await response.json();
     return data;
   } catch (error) {
@@ -10,9 +10,9 @@ export async function getAllUsuarios() {
   }
 }
 
-export async function getSingleUsuarios(id) {
+export async function getSingleUsers(id) {
   try {
-    const response = await fetch(`${API_URL}/Usuarios/${id}`);
+    const response = await fetch(`${API_URL}/users/${id}`);
     const data = await response.json();
     return data;
   } catch (error) {
@@ -20,7 +20,7 @@ export async function getSingleUsuarios(id) {
   }
 }
 
-export async function createUsuarios(usuario) {
+export async function createUsers(usuario) {
   const payload = {
     method: 'POST',
     headers: {
@@ -29,7 +29,7 @@ export async function createUsuarios(usuario) {
     body: JSON.stringify(usuario),
   };
   try {
-    const response = await fetch(`${API_URL}/Usuarios`, payload);
+    const response = await fetch(`${API_URL}/users`, payload);
     const data = await response.json();
     return data;
   } catch (error) {
@@ -37,10 +37,10 @@ export async function createUsuarios(usuario) {
   }
 }
 
-export async function updateUsuarios(id, usuario) {
+export async function updateUsers(id, usuario) {
   return { id, ...usuario };
 }
 
-export async function deleteUsuarios(id) {
+export async function deleteUsers(id) {
   return id;
 }

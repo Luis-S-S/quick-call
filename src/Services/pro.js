@@ -2,7 +2,7 @@ const API_URL = 'http://localhost:3004/api'; // Actualizar a 3004 antes del pull
 
 export async function getAllPro() {
   try {
-    const response = await fetch(`${API_URL}/profesional`);
+    const response = await fetch(`${API_URL}/professional`);
     const data = await response.json();
     return data;
   } catch (error) {

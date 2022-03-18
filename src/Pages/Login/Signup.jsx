@@ -1,7 +1,7 @@
 import './Login.scss';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { createUsuarios } from '../../Services/Usuario';
+import { createUsers } from '../../Services/Usuario';
 
 function Signup() {
   const [form, setForm] = useState({});
@@ -18,7 +18,7 @@ function Signup() {
     const datatosend = {
       ...form, profile: 'imagen.png',
     };
-    createUsuarios(datatosend);
+    createUsers(datatosend);
   };
 
   return (

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import Carousel from 'react-elastic-carousel';
 import ClientExpCard from '../ClientExpCard/ClientExpCard';
-import { getAllClientExperience } from '../../Services/client_experience';
+import { getAllClientExperience } from '../../Services/clientExperience';
 import './ClientExperienceSection.scss';
 
 const breakPoints = [
