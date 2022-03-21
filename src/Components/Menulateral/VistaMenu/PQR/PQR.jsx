@@ -11,8 +11,8 @@ export default function PQR() {
   return (
     <div className="VistaMenu">
       <div className="Cabezera">
-        <button type="button" onClick={click} name="HacerPQR">Hacer nuevo PQR</button>
         <button type="button" onClick={click} name="MisPQR">Mis PQR</button>
+        <button type="button" onClick={click} name="HacerPQR">Hacer nuevo PQR</button>
       </div>
       <div className="Cuerpo">
         {state.MisPQR && (<MisPQR />) }

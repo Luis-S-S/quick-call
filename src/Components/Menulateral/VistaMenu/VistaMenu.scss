@@ -1,32 +1,89 @@
-@import '../../../App.scss';
+@import "../../../App.scss";
 
 .VistaMenu {
-    text-align: center;
-  .Cabezera{
+  text-align: center;
+  .Titulo {
+    @include text-inline-title;
+  }
+  .Cabezera {
     display: flex;
     justify-content: space-around;
     padding-bottom: 20px;
   }
-  .Cuerpo{
-
+  .Cuerpo {
     display: flex;
     flex-direction: column;
-
-    .Editar{
+    .titulo1 {
+      text-align:left;
+      margin-left:10%;
+      @include text-inline-title;
+    }
+    .Editar {
+      @include text-body;
+      margin-bottom: 15px;
+      margin-left:10%;
+      margin-right:10%;
       display: flex;
       justify-content: space-between;
-
+      .Editar1{
+        @include link-body;
+        border: none;
+        background-color: white;
+        &:hover{
+          color:aqua;
+        }
+      }
     }
   }
-  .Titulo{
-    @include text-inline-title;
+
+  .table {
+    width: 100%;
+    margin: 15px;
+    border-spacing: 0px 10px;
+    th {
+      border-bottom: 1px solid $dark-purple;
+      border-top: 1px solid $dark-purple;
+      margin-top: 20px;
+      @include text-inline-title;
+    }
+    td {
+      @include text-body;
+    }
+
+    .tr {
+      border: 1px solid $dark-purple;
+    }
   }
 
-  th{
-    @include text-inline-title
+
+  .FormularioAbajo {
+    margin: 30px;
+    display: flex;
+    justify-content: space-around;
   }
-  td{
-    @include text-body
+
+  .formulario {
+
+    span{
+      @include text-inline-title;
+      margin-bottom: 20px;
+    }
+    display: flex;
+    flex-direction: column;
+    padding-left: 5vw;
+    padding-right: 5vw;
+    input {
+      display:block;
+      @include text-body;
+      width: auto;
+      height: 50px;
+      display: flex;
+      background-color: $light-blue;
+      border-radius: 10px;
+      margin-bottom: 30px;
+    }
+
   }
+
 
 }

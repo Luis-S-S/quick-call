@@ -1,29 +1,46 @@
 {
+  "PQR":[
+    {
+      "usuario":"gonzalesJuan@hotmail.com",
+      "id":"23456",
+      "fecha":"11 de marzo",
+      "profesional":"RuizErnesto@hotmail.com",
+      "titulo":"Solitud de PQR por trabajo de Jose Vega",
+      "descripcion":"Breve descricion de PQR",
+      "evidencias":{
+          "videos":["video.mp4","video1.mp4"],
+          "fotos":["fotos.png","foto2.pgn"]
+      }
+  }
+  ],
   "trabajos":[
     {
       "id":"12345",
       "usuario":"gonzalesJuan@hotmail.com",
       "profesional":"jorodriguez@gmail.com",
       "fechaInicio":"13 de marzo",
-      "tiempoEjecucion":"Enero",
+      "fechaFinal":"",
+      "tiempoEjecucion":"2 meses 3 dias",
       "funciones":"Electricista",
       "Objetivos":"Instalacion de tomas y enchufes en domicilio",
       "condiciones":["El profesional dispondra de las herramientas","el usuario dispondra de los materiales"],
-      "Estado":"Enproceso",
-      "Comentario":"",
-      "Puntuaciones":""
+      "Estado":"EnProceso",
+      "Comentario":"nulo",
+      "Puntuaciones":"nulo"
   },
   {
       "id":"23456",
       "usuario":"gonzalesJuan@hotmail.com",
       "profesional":"jorodriguez@gmail.com",
-      "tiempo":"3 meses",
+      "fechaInicio":"13 de marzo",
+      "fechaFinal":"14 de agosto",
+      "tiempoEjecucion":"2 meses 3 dias",
       "funciones":"Electricista",
       "Objetivos":"Instalacion de tomas y enchufes en domicilio",
       "condiciones":["El profesional dispondra de las herramientas","el usuario dispondra de los materiales"],
       "Estado":"Finalizado",
-      "Comentario":"",
-      "Puntuaciones":""
+      "Comentario":"nulo",
+      "Puntuaciones":"nulo"
   }
   ],
   "profesional": [

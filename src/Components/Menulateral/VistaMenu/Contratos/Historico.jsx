@@ -3,27 +3,26 @@ import { useSelector, useDispatch } from 'react-redux';
 import data from '../../../../data/db.json';
 import { detalle } from '../../../../store/actions';
 
-function Historico() {
-  const email = useSelector((state) => state.user);
+export default function Historico() {
   const dispatch = useDispatch();
 
-  const handleAdd = (usuario) => {
-    console.log(usuario)
-    dispatch(detalle(usuario));
-  };
+  function handleAdd(usuario) {
+    dispatch(detalle(['Detalle', usuario.target.name]));
+  }
+
+  const email = useSelector((state) => state.user);
+
   return (
     <>
       <h2 className="Titulo">Contratos finalizados</h2>
-      <table className="Table">
+      <table className="table">
         <thead>
           <tr>
             <th>Nombre</th>
             <th>Reforma</th>
             <th>Fecha de inicio</th>
             <th>Fecha de finalizacion</th>
-            <th>Calificacion</th>
-            <th>-</th>
-            <th>-</th>
+            <th>Detalle</th>
           </tr>
         </thead>
         <tbody>
@@ -32,10 +31,9 @@ function Historico() {
               <tr>
                 <td>{usuario.profesional}</td>
                 <td>{usuario.funciones}</td>
-                <td>{usuario.tiempo}</td>
-                <td>nulo</td>
-                <td><button type="button" onClick={handleAdd(usuario)}>Ver detalles</button></td>
-                <td>Calificar</td>
+                <td>{usuario.fechaInicio}</td>
+                <td>{usuario.fechaFinal}</td>
+                <td><button type="button" name={usuario.id} onClick={handleAdd}>Ver detalles</button></td>
               </tr>
           ))}
         </tbody>
@@ -43,5 +41,3 @@ function Historico() {
     </>
   );
 }
-
-export default Historico;

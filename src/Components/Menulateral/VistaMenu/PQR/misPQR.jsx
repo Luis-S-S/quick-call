@@ -1,30 +1,43 @@
 import React from 'react';
-import Usuario from '../../../../data/Usuario.json';
+import { useSelector, useDispatch } from 'react-redux';
+import data from '../../../../data/db.json';
+import { detalle } from '../../../../store/actions';
 
-export default function MisPQR() {
+function Proceso() {
+  const dispatch = useDispatch();
+
+  function handlePQR(usuario) {
+    dispatch(detalle(['VerPQR', usuario.target.name]));
+  }
+
+  const email = useSelector((state) => state.user);
+
   return (
     <>
-      <h2 className="Titulo">Mi historico de pagos</h2>
+      <h2 className="Titulo">Mis PQR</h2>
       <table className="table">
         <thead>
           <tr>
-            <th>Nombre</th>
-            <th>Reforma</th>
-            <th>Fecha de inicio</th>
-            <th>Fecha de finalizacion</th>
+            <th>Id</th>
+            <th>Profesional</th>
+            <th>Fecha</th>
+            <th>Detalle</th>
           </tr>
         </thead>
         <tbody>
-          {Usuario.map((Usuarios) => (
-            <tr>
-              <td>{Usuarios.nombre}</td>
-              <td>{Usuarios.email}</td>
-              <td>{Usuarios.contrasena}</td>
-              <td>{Usuarios.ciudad}</td>
-            </tr>
+          {data.PQR.filter((PQRs) => (
+            PQRs.usuario === email)).map((usuario) => (
+              <tr>
+                <td>{usuario.id}</td>
+                <td>{usuario.profesional}</td>
+                <td>{usuario.fecha}</td>
+                <button type="button" name={usuario.id} onClick={handlePQR}> Ver detalle </button>
+              </tr>
           ))}
         </tbody>
       </table>
     </>
   );
 }
+
+export default Proceso;

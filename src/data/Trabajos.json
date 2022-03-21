@@ -1,13 +1,16 @@
 [{
     "id":"12345",
-    "usuario":"gonzalesJuan@hotmail.com",
-    "profesional":"jorodriguez@gmail.com",
-    "tiempo":"3 meses",
-    "funciones":"Electricista",
-    "Objetivos":"Instalacion de tomas y enchufes en domicilio",
-    "condiciones":["El profesional dispondra de las herramientas","el usuario dispondra de los materiales"],
-    "Estado":"En proceso",
-    "comentoriaopuntuaciones":""
+      "usuario":"gonzalesJuan@hotmail.com",
+      "profesional":"jorodriguez@gmail.com",
+      "fechaInicio":"13 de marzo",
+      "fechaFinal":"14 de agosto",
+      "tiempoEjecucion":"2 meses 3 dias",
+      "funciones":"Electricista",
+      "Objetivos":"Instalacion de tomas y enchufes en domicilio",
+      "condiciones":["El profesional dispondra de las herramientas","el usuario dispondra de los materiales"],
+      "Estado":"EnProceso",
+      "Comentario":"nulo",
+      "Puntuaciones":"nulo"
 },
 {
     "id":"23456",

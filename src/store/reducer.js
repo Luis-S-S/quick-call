@@ -2,7 +2,7 @@
 const initiaState = {
   user: 'gonzalesJuan@hotmail.com',
   vista: 'Contratos',
-  datos: { hola: 'hola' },
+  id: '',
 };
 
 function reducer(state = initiaState, action) {
@@ -10,12 +10,13 @@ function reducer(state = initiaState, action) {
     case 'trabajo':
       return {
         ...state,
-        vista: action.payload
+        vista: action.payload,
       };
-    case 'REMOVE':
+    case 'detalle':
       return {
         ...state,
-        count: state.count - 1,
+        vista: action.payload[0],
+        id: action.payload[1],
       };
     case 'MULTIPLICAR':
       return {
