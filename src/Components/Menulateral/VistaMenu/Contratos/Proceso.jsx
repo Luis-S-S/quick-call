@@ -1,29 +1,34 @@
 import React from 'react';
-import Usuario from '../../../../data/Usuario.json';
+import { useSelector } from 'react-redux';
+import data from '../../../../data/db.json';
 
 function Proceso() {
+  const email = useSelector((state) => state.user);
   return (
     <>
-      <h2 className="Titulo">Pagos por Evaluar</h2>
+      <h2 className="Titulo">Contratos activos</h2>
       <table className="table">
         <thead>
           <tr>
-            <th>Nombre</th>
+            <th>Profesional</th>
             <th>Reforma</th>
             <th>Fecha de inicio</th>
-            <th>Fecha de finalizacion</th>
-            <th>Listo para evaluar</th>
+            <th>Calificado</th>
+            <th>-</th>
+            <th>-</th>
           </tr>
         </thead>
         <tbody>
-          {Usuario.map((Usuarios) => (
-            <tr>
-              <td>{Usuarios.nombre}</td>
-              <td>{Usuarios.email}</td>
-              <td>{Usuarios.contrasena}</td>
-              <td>{Usuarios.ciudad}</td>
-              <td>Ver detalle</td>
-            </tr>
+          {data.trabajos.filter((users) => (
+            users.usuario === email && users.Estado === 'Finalizado')).map((usuario) => (
+              <tr>
+                <td>{usuario.profesional}</td>
+                <td>{usuario.funciones}</td>
+                <td>{usuario.tiempo}</td>
+                <td>nulo</td>
+                <td keys={usuario.id}>Ver detalle</td>
+                <td keys={usuario.id}>Calificar</td>
+              </tr>
           ))}
         </tbody>
       </table>

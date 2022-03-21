@@ -1,4 +1,31 @@
 {
+  "trabajos":[
+    {
+      "id":"12345",
+      "usuario":"gonzalesJuan@hotmail.com",
+      "profesional":"jorodriguez@gmail.com",
+      "fechaInicio":"13 de marzo",
+      "tiempoEjecucion":"Enero",
+      "funciones":"Electricista",
+      "Objetivos":"Instalacion de tomas y enchufes en domicilio",
+      "condiciones":["El profesional dispondra de las herramientas","el usuario dispondra de los materiales"],
+      "Estado":"Enproceso",
+      "Comentario":"",
+      "Puntuaciones":""
+  },
+  {
+      "id":"23456",
+      "usuario":"gonzalesJuan@hotmail.com",
+      "profesional":"jorodriguez@gmail.com",
+      "tiempo":"3 meses",
+      "funciones":"Electricista",
+      "Objetivos":"Instalacion de tomas y enchufes en domicilio",
+      "condiciones":["El profesional dispondra de las herramientas","el usuario dispondra de los materiales"],
+      "Estado":"Finalizado",
+      "Comentario":"",
+      "Puntuaciones":""
+  }
+  ],
   "profesional": [
     {
       "id": 1,
@@ -338,12 +365,6 @@
         "expdate": "01/03/2024",
         "cvv": "123"
       }
-    },
-    {
-      "id": "hxWA6f6"
-    },
-    {
-      "id": "drzuAYo"
     }
   ],
   "client_experience": [
@@ -390,4 +411,5 @@
       "experience": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
     }
   ]
+
 }

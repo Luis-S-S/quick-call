@@ -1,0 +1,122 @@
+@import '../../App.scss';
+
+.login {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+
+  .imagen {
+    display: none;
+  }
+
+  .regresar {
+    @include link-inline-title;
+    width: 60px;
+    height: 30px;
+    background: $light-blue;
+    border-radius: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 25px;
+  }
+
+  .texto {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 50px;
+    .titulo_register {@include text-big-title;}
+    .texto_register {@include text-body}
+  }
+
+  .formulario {
+    display: flex;
+    flex-direction: column;
+    padding-left: 5vw;
+    padding-right: 5vw;
+  }
+
+  input {
+    display:block;
+    @include text-body;
+    width: auto;
+    height: 50px;
+    display: flex;
+    background-color: $light-blue;
+    border-radius: 10px;
+    margin-bottom: 30px;
+  }
+
+  .signing {
+    @include link-body;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+  }
+  .signing1 {
+    @include link-inline-title;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .boton {
+    height:50px ;
+    background: $purple;
+    margin-left: 40px;
+    margin-right: 40px;
+    margin-bottom: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100px;
+    @include text-body;
+    color: $white;
+  }
+
+  .footer {
+    height:70px;
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @include text-body
+  }
+
+
+  .redes_sociales{
+    display: flex;
+    margin-top: 10px;
+    margin-left: 40px;
+    margin-right: 40px;
+    justify-content: space-evenly;
+    img{
+      height: 50px;
+      width: 50px;
+      margin: 20px;
+    }
+  }
+
+
+  @media (min-width: 720px) {
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    align-items: center;
+
+
+
+    .Registro_imagen{
+      display:none;
+    }
+    .imagen {
+      display:flex;
+      background-repeat: no-repeat;
+      background-position: center center;
+    }
+  }
+}

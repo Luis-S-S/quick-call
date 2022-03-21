@@ -4,7 +4,7 @@ import Usuario from '../../../../data/Usuario.json';
 export default function HistoricoCalificaciones() {
   return (
     <>
-      <h2>Mi historico de calificaciones</h2>
+      <h2 className="Titulo">Mi historico de calificaciones</h2>
       <table className="table">
         <thead>
           <tr>

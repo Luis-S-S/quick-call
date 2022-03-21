@@ -2,12 +2,12 @@ import './App.scss';
 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-import Home from './Pages/Home/Home';
-import Login from './Pages/Login/Login';
-import Signup from './Pages/Login/Signup';
-import Search from './Pages/Search/Search';
-import ProfilePro from './Pages/ProfilePro/ProfilePro';
-import EditarPerfil from './Pages/EditarPerfil/EditarPerfil';
+import Home from './Pages/Home';
+import Login from './Components/Login/Login';
+import Signup from './Components/Login/Signup';
+import Search from './Pages/Search';
+import ProfilePro from './Pages/ProfilePro';
+import EditarPerfil from './Pages/EditarPerfil';
 
 function App() {
   return (

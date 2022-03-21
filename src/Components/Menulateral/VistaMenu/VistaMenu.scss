@@ -1,16 +1,32 @@
+@import '../../../App.scss';
+
 .VistaMenu {
+    text-align: center;
   .Cabezera{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-
-  }
-  .Editar{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
+    padding-bottom: 20px;
+  }
+  .Cuerpo{
 
+    display: flex;
+    flex-direction: column;
+
+    .Editar{
+      display: flex;
+      justify-content: space-between;
+
+    }
   }
   .Titulo{
-    text-align: center;
+    @include text-inline-title;
   }
-}
 
+  th{
+    @include text-inline-title
+  }
+  td{
+    @include text-body
+  }
+
+}

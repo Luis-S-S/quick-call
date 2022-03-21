@@ -4,7 +4,7 @@ import Usuario from '../../../../data/Usuario.json';
 export default function PorCalificar() {
   return (
     <>
-      <h2>Mis Trabajos por calificar</h2>
+      <h2 className="Titulo">Mis Trabajos por calificar</h2>
       <table className="table">
         <thead>
           <tr>

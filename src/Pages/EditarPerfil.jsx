@@ -1,4 +1,4 @@
-import MenuLateral from '../../Components/Menulateral/Menulateral';
+import MenuLateral from '../Components/Menulateral/Menulateral';
 
 function EditarPerfil() {
   return (

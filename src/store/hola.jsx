@@ -1,9 +1,8 @@
 import React from 'react';
 
-export default function HacerPQR() {
+export default function Hola() {
   return (
     <>
-      formulario
     </>
   );
 }
