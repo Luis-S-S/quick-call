@@ -1,32 +1,44 @@
 import React from 'react';
-import Usuario from '../../../../data/Usuario.json';
+import { useSelector, useDispatch } from 'react-redux';
+import data from '../../../../data/db.json';
+import { detalle } from '../../../../store/actions';
 
 function Proceso() {
+  const dispatch = useDispatch();
+
+  function handleAdd(usuario) {
+    dispatch(detalle(['Detalle', usuario.target.name]));
+  }
+
+  function handleCalificar(usuario) {
+    dispatch(detalle(['Calificar', usuario.target.name]));
+  }
+
+  const email = useSelector((state) => state.user);
+
   return (
     <>
-      <h2>Pagos por Evaluar</h2>
+      <h2 className="Titulo">Contratos activos</h2>
       <table className="table">
         <thead>
           <tr>
             <th>Nombre</th>
-            <th>Reforma</th>
+            <th>Funciones</th>
             <th>Fecha de inicio</th>
-            <th>Fecha de finalizacion</th>
-            <th>Listo paa evaluar</th>
+            <th>Ver detalle</th>
+            <th>Calificacion</th>
           </tr>
         </thead>
         <tbody>
-          {Usuario.map((Usuarios) => (
-            <tr>
-              <td>{Usuarios.nombre}</td>
-              <td />
-              <td>{Usuarios.email}</td>
-              <td />
-              <td>{Usuarios.contrasena}</td>
-              <td />
-              <td>{Usuarios.ciudad}</td>
-              <td>VEr detalle</td>
-            </tr>
+          {data.trabajos.filter((users) => (
+            users.usuario === email && users.Estado === 'EnProceso')).map((usuario) => (
+              <tr>
+                <td>{usuario.profesional}</td>
+                <td>{usuario.funciones}</td>
+                <td>{usuario.fechaInicio}</td>
+                <td><button type="button" name={usuario.id} onClick={handleAdd}>Ver detalles</button></td>
+                <button type="button" name={usuario.id} onClick={handleCalificar}> Calificar </button>
+              </tr>
           ))}
         </tbody>
       </table>

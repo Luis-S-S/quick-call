@@ -1,12 +1,34 @@
+@import '../../App.scss';
+
+
 .Menulateral {
     display:grid;
-    grid-template-columns: 1fr 2fr;
-    padding: 30px;
+    grid-template-columns: 1fr 3fr;
+    padding: 40px;
 
-    li{
-        display:block;
-        padding:"40px";
+    .Menulateral1 {
+        display:flex;
+        font-size: large;
+        flex-direction: column;
+        align-items: flex-start;
+        padding-left: 40px;
+        border: 1px solid $dark-purple;
+        button{
+            padding: 15px;
+        }
     }
+
+    button{
+        @include link-body;
+        border: none;
+        background-color: white;
+        &:hover{
+          color:aqua;
+        }
+      }
 }
+
+
+
 
 
