@@ -38,7 +38,7 @@ function Proceso() {
                 <td>{usuario.fechaInicio}</td>
                 <td><button type="button" name={usuario.id} onClick={handleAdd}>Ver detalles</button></td>
                 <button type="button" name={usuario.id} onClick={handleCalificar}> Calificar </button>
-                </tr>
+              </tr>
           ))}
         </tbody>
       </table>

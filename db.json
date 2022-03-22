@@ -321,12 +321,8 @@
       }
     }
   ],
-<<<<<<< HEAD
-  "user": [
-=======
 
   "users": [
->>>>>>> a49d939a1cc6d325042c2085d411ccac8a766ac1
     {
       "id": "1",
       "name": "Luis Perrea",
@@ -351,12 +347,8 @@
       "id": "drzuAYo"
     }
   ],
-<<<<<<< HEAD
-  "client_experience": [
-=======
 
   "clientExperience": [
->>>>>>> a49d939a1cc6d325042c2085d411ccac8a766ac1
     {
       "id": 1,
       "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Black_from_a_camera.jpg/1200px-Black_from_a_camera.jpg",
