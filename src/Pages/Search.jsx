@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import ProCard from '../../Components/Procard/ProCard';
-import { getAllPro } from '../../Services/pro';
+import ProCard from '../Components/Procard/ProCard';
+import { getAllPro } from '../Services/pro';
 
 function Search() {
   const [pro, setPro] = useState([]);

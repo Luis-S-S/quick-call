@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Chatsabiertos() {
+export default function Hola() {
   return (
     <>
     </>
