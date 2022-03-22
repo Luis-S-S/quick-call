@@ -1,74 +1,59 @@
-import { useState } from 'react';
-// Verificar state en los componentes
-import { Link } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
 import DarseAlta from './VistaMenu/DarseAlta/DarseAlta';
 import Editar from './VistaMenu/Editar/Editar';
 import PQR from './VistaMenu/PQR/PQR';
-import Calificaciones from './VistaMenu/Calificaciones/Calificaciones';
+import VerPQR from './VistaMenu/PQR/VerPQR';
+import FormPQR from './VistaMenu/PQR/FormPQR';
 import Chats from './VistaMenu/Chats/Chats';
 import Contratos from './VistaMenu/Contratos/Contratos';
+import Detalle from './VistaMenu/Contratos/Detalle';
+import Calificar from './VistaMenu/Contratos/Calificar';
 import Favoritos from './VistaMenu/Favoritos/Favoritos';
 import Pagos from './VistaMenu/Pagos/Pagos';
 import Visibilidad from './VistaMenu/Visibilidad/Visibilidad';
 import './Menulateral.scss';
+import { trabajo } from '../../store/actions';
 
 function MenuLateral() {
-  const vector = {
-    Contratos: '',
-    Calificaciones: '',
-    Chats: '',
-    Editar: '',
-    Visibilidad: '',
-    Favoritos: '',
-    Pago: '',
-    Historial: '',
-    DarseAlta: '',
-  };
-  const [state, setState] = useState({ vector });
+  const states = useSelector((state) => state.vista);
+  const id = useSelector((state) => state.id);
+  const dispatch = useDispatch();
+  console.log(states);
+
   function click(e) {
-    setState({ ...vector, [e.target.name]: true });
+    dispatch(trabajo(e.target.name));
+  }
+  function renderDashboard(vista) {
+    switch (vista) {
+      case 'Contratos': return (<Contratos />);
+      case 'Chats': return (<Chats />);
+      case 'Editar': return (<Editar />);
+      case 'Favoritos': return (<Favoritos />);
+      case 'Pago': return (<Pagos />);
+      case 'PQR': return (<PQR />);
+      case 'DarseAlta': return (<DarseAlta />);
+      case 'Visibilidad': return (<Visibilidad />);
+      case 'Detalle': return (<Detalle id={id} />);
+      case 'Calificar': return (<Calificar id={id} />);
+      case 'VerPQR': return (<VerPQR id={id} />);
+      case 'FormPQR': return (<FormPQR id={id} />);
+      default: return Error;
+    }
   }
   return (
     <div className="Menulateral">
-      <div>
-        <li>
-          <button type="button" onClick={click}><Link to="google.com" name="Contratos">Mis contratos</Link></button>
-        </li>
-        <li>
-          <button type="button" onClick={click}><Link to="google.com" name="Calificaciones">Mis calificaciones</Link></button>
-        </li>
-        <li>
-          <button type="button" onClick={click}><Link to="google.com" name="Chats">Mis chats</Link></button>
-        </li>
-        <li>
-          <button type="button" onClick={click}><Link to="google.com" name="Editar">Editar perfil</Link></button>
-        </li>
-        <li>
-          <button type="button" onClick={click}><Link to="google.com" name="Visibilidad">Mi visibilidad</Link></button>
-        </li>
-        <li>
-          <button type="button" onClick={click}><Link to="google.com" name="Favoritos">Mis favoritos</Link></button>
-        </li>
-        <li>
-          <button type="button" onClick={click}><Link to="google.com" name="Pago">Mi informacion de pago</Link></button>
-        </li>
-        <li>
-          <button type="button" onClick={click}><Link to="google.com" name="Historial">Historial de compras</Link></button>
-        </li>
-        <li>
-          <button type="button" onClick={click}><Link to="google.com" name="DarseAlta">Darse de alta en pagina</Link></button>
-        </li>
+      <div className="Menulateral1">
+        <button type="button" onClick={click} name="Contratos">Mis contratos</button>
+        <button type="button" onClick={click} name="Chats">Mis chats</button>
+        <button type="button" onClick={click} name="Editar">Editar perfil</button>
+        <button type="button" onClick={click} name="Visibilidad">Mi visibilidad</button>
+        <button type="button" onClick={click} name="Favoritos">Mis favoritos</button>
+        <button type="button" onClick={click} name="Pago">Mi pago</button>
+        <button type="button" onClick={click} name="PQR">PQR</button>
+        <button type="button" onClick={click} name="DarseAlta">Darse de alta</button>
       </div>
       <div>
-        {state.Contratos ? (<Contratos />) : <div />}
-        {state.Calificaciones ? (<Calificaciones />) : <div />}
-        {state.Chats ? (<Chats />) : <div /> }
-        {state.Editar ? (<Editar />) : <div /> }
-        {state.Visibilidad ? (<Visibilidad />) : <div /> }
-        {state.Favoritos ? (<Favoritos />) : <div /> }
-        {state.Pago ? (<Pagos />) : <div />}
-        {state.Historial ? (<PQR />) : <div /> }
-        {state.DarseAlta ? (<DarseAlta />) : <div /> }
+        {renderDashboard(states)}
       </div>
     </div>
 

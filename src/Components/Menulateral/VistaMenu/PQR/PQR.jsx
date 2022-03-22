@@ -1,28 +1,24 @@
-import { Link } from 'react-router-dom';
 import React, { useState } from 'react';
+import HacerPQR from './HacerPQR';
+import MisPQR from './MisPQR';
 
 export default function PQR() {
-  const vector = { Contratos: '', Calificaciones: '', Chats: '' };
-  const [setState] = useState({ vector });
+  const [state, setState] = useState({ MisPQR: true });
   function click(e) {
-    setState({ ...vector, [e.target.name]: true });
+    setState({ [e.target.name]: true });
   }
 
   return (
-    <>
-      <ul>
-        <li>
-          <button type="button" onClick={click}><Link to="google.com" name="Contratos">Mis contratos</Link></button>
-        </li>
-        <li>
-          <button type="button" onClick={click}><Link to="google.com" name="Calificaciones">Mis calificaciones</Link></button>
-        </li>
-        <li>
-          <button type="button" onClick={click}><Link to="google.com" name="Chats">Mis chats</Link></button>
-        </li>
-      </ul>
-      <ul />
-    </>
+    <div className="VistaMenu">
+      <div className="Cabezera">
+        <button type="button" onClick={click} name="MisPQR">Mis PQR</button>
+        <button type="button" onClick={click} name="HacerPQR">Hacer nuevo PQR</button>
+      </div>
+      <div className="Cuerpo">
+        {state.MisPQR && (<MisPQR />) }
+        {state.HacerPQR && (<HacerPQR />) }
+      </div>
+    </div>
 
   );
 }

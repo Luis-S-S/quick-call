@@ -1,26 +1,24 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
 import Historico from './Historico';
 import Proceso from './Proceso';
 import '../VistaMenu.scss';
 
 function Contratos() {
-  const vector = { Historico: '', Proceso: '' };
-  const [state, setState] = useState({ vector });
+  const [state, setState] = useState({ Proceso: true });
   function click(e) {
-    setState({ ...vector, [e.target.name]: true });
+    setState({ [e.target.name]: true });
   }
 
   return (
 
     <div className="VistaMenu">
       <div className="Cabezera">
-        <li><button type="button" onClick={click}><Link to="google.com" name="Historico">Mis Historico de contrato</Link></button></li>
-        <li><button type="button" onClick={click}><Link to="google.com" name="Proceso">Contratos en Proceso</Link></button></li>
+        <button type="button" onClick={click} name="Proceso">Contratos activos</button>
+        <button type="button" onClick={click} name="Historico">Contratos finalizados</button>
       </div>
       <div className="Cuerpo">
-        {state.Historico ? (<Historico />) : <div />}
-        {state.Proceso ? (<Proceso />) : <div />}
+        {state.Historico && (<Historico />) }
+        {state.Proceso && (<Proceso />) }
       </div>
     </div>
 
