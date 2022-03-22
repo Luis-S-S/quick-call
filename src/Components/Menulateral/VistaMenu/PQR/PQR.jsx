@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import HacerPQR from './HacerPQR';
-import MisPQR from './MisPQR';
+import MisPQR from './misPQR';
 
 export default function PQR() {
   const [state, setState] = useState({ MisPQR: true });

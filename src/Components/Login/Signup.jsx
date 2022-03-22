@@ -1,11 +1,7 @@
 import './Login.scss';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-<<<<<<< HEAD:src/Components/Login/Signup.jsx
 import { createUsuarios } from '../../Services/user';
-=======
-import { createUsers } from '../../Services/Usuario';
->>>>>>> a49d939a1cc6d325042c2085d411ccac8a766ac1:src/Pages/Login/Signup.jsx
 
 function Signup() {
   const [form, setForm] = useState({});
@@ -18,20 +14,12 @@ function Signup() {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-<<<<<<< HEAD:src/Components/Login/Signup.jsx
     // const datatosend = {
     //   ...form, profile: 'imagen.png',
     // };
     await createUsuarios(form);
     setForm({});
     document.querySelector('form').reset();
-=======
-
-    const datatosend = {
-      ...form, profile: 'imagen.png',
-    };
-    createUsers(datatosend);
->>>>>>> a49d939a1cc6d325042c2085d411ccac8a766ac1:src/Pages/Login/Signup.jsx
   };
 
   return (
