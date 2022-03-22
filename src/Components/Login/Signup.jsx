@@ -27,11 +27,11 @@ function Signup() {
       <img className="imagen" src="images/logo/quick-call-logo--colored.svg" alt="" />
       <div className="principal">
         <div className="regresar">
-          <Link to="/">Back</Link>
+          <Link to="/">Atras</Link>
         </div>
         <div className="texto">
-          <span className="titulo_register">Register</span>
-          <span className="texto_register">Create your new account</span>
+          <span className="titulo_register">Registrarse</span>
+          <span className="texto_register">Crea tu nueva cuenta</span>
         </div>
         <div className="redes_sociales">
           <img src="images/icons/whatsapp-logo.svg" alt="whatsapp" />
@@ -57,8 +57,8 @@ function Signup() {
           {' '}
         </span>
         <span className="footer">
-          Already have an account?
-          <Link to="/login"> Login</Link>
+          Ya tienes un cuenta?
+          <Link to="/login"> Ingresar</Link>
         </span>
       </div>
     </div>
