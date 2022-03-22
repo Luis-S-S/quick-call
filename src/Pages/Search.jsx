@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import ProCard from '../Components/Procard/ProCard';
 import { getAllPro } from '../Services/pro';
+import NavigationBar from '../Components/Navbar/NavigationBar';
+import Footer from '../Components/Footer/Footer';
 
 function Search() {
   const [pro, setPro] = useState([]);
@@ -11,11 +12,13 @@ function Search() {
   }, []);
 
   return (
-    <div>
-      <Link to="/">Ir a Home</Link>
-      {pro.map((item) => <ProCard key={item.id} details={item} />)}
-    </div>
-
+    <>
+      <NavigationBar />
+      <div className="grid">
+        {pro.map((item) => <ProCard key={item.id} details={item} />)}
+      </div>
+      <Footer />
+    </>
   );
 }
 

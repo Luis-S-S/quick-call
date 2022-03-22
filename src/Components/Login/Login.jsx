@@ -25,8 +25,8 @@ function Login() {
           <Link to="/">Back</Link>
         </div>
         <div className="texto">
-          <span className="titulo_register"> Welcome back </span>
-          <span className="texto_register">Login in your accounts</span>
+          <span className="titulo_register"> Hola de nuevo! </span>
+          <span className="texto_register">Ingresar a tu cuenta</span>
         </div>
         <form className="formulario" onSubmit={handleSubmit}>
           <input name="email" placeholder="Input your E-mail" type="email" onChange={handleChange} />
@@ -43,8 +43,8 @@ function Login() {
           <img src="images/icons/linkedin-logo.svg" alt="linkedin" />
         </div>
         <span className="footer">
-          ¿Dont have an account?
-          <Link to="/Signup"> GO Sign Up</Link>
+          ¿No tienes una cuenta?
+          <Link to="/Signup"> Ir a registro</Link>
         </span>
       </div>
     </div>

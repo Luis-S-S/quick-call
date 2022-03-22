@@ -1,11 +1,7 @@
 import './Login.scss';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-<<<<<<< HEAD:src/Components/Login/Signup.jsx
 import { createUsuarios } from '../../Services/user';
-=======
-import { createUsers } from '../../Services/Usuario';
->>>>>>> a49d939a1cc6d325042c2085d411ccac8a766ac1:src/Pages/Login/Signup.jsx
 
 function Signup() {
   const [form, setForm] = useState({});
@@ -18,20 +14,12 @@ function Signup() {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-<<<<<<< HEAD:src/Components/Login/Signup.jsx
     // const datatosend = {
     //   ...form, profile: 'imagen.png',
     // };
     await createUsuarios(form);
     setForm({});
     document.querySelector('form').reset();
-=======
-
-    const datatosend = {
-      ...form, profile: 'imagen.png',
-    };
-    createUsers(datatosend);
->>>>>>> a49d939a1cc6d325042c2085d411ccac8a766ac1:src/Pages/Login/Signup.jsx
   };
 
   return (
@@ -39,11 +27,11 @@ function Signup() {
       <img className="imagen" src="images/logo/quick-call-logo--colored.svg" alt="" />
       <div className="principal">
         <div className="regresar">
-          <Link to="/">Back</Link>
+          <Link to="/">Atras</Link>
         </div>
         <div className="texto">
-          <span className="titulo_register">Register</span>
-          <span className="texto_register">Create your new account</span>
+          <span className="titulo_register">Registrarse</span>
+          <span className="texto_register">Crea tu nueva cuenta</span>
         </div>
         <div className="redes_sociales">
           <img src="images/icons/whatsapp-logo.svg" alt="whatsapp" />
@@ -69,8 +57,8 @@ function Signup() {
           {' '}
         </span>
         <span className="footer">
-          Already have an account?
-          <Link to="/login"> Login</Link>
+          Ya tienes un cuenta?
+          <Link to="/login"> Ingresar</Link>
         </span>
       </div>
     </div>
