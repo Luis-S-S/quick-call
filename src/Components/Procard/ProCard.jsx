@@ -1,9 +1,12 @@
 import './ProCard.scss';
 import PropTypes from 'prop-types';
-
 import ButtonSquare from '../ButtonSquare/ButtonSquare';
 
-function ProCard({ details: { name, myDescription, image } }) {
+function ProCard({
+  details: {
+    name, myDescription, image, id,
+  },
+}) {
   return (
     <div className="pro-card">
       <div className="pro-card__header">
@@ -19,7 +22,7 @@ function ProCard({ details: { name, myDescription, image } }) {
         <span className="fa fa-star-half-o" />
       </div>
       <div className="buttons">
-        <ButtonSquare link="/ProfilePro">Ver Perfil</ButtonSquare>
+        <ButtonSquare link={`/ProfilePro/${id}`}>Ver Perfil</ButtonSquare>
         <ButtonSquare>Iniciar Chat</ButtonSquare>
       </div>
     </div>
@@ -34,6 +37,7 @@ ProCard.propTypes = {
     image: PropTypes.shape({
       profile: PropTypes.shape([]),
     }),
+    id: PropTypes.number,
   }),
 };
 
@@ -46,6 +50,7 @@ ProCard.defaultProps = {
         'url',
       ],
     },
+    id: 1,
   },
 };
 

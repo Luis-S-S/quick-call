@@ -7,7 +7,7 @@
       "password": "12345",
       "phoneNumber": "3123020303",
       "city": "cali",
-      "myDescription": "breve descripcion",
+      "myDescription": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.",
       "specialty": {
         "certified": [
           "plomero",
@@ -47,7 +47,7 @@
       "password": "12345",
       "phoneNumber": "3123020303",
       "city": "cali",
-      "myDescription": "breve descripcion",
+      "myDescription": "breve descripcion2",
       "specialty": {
         "certified": [
           "plomero",
@@ -87,7 +87,7 @@
       "password": "12345",
       "phoneNumber": "3123020303",
       "city": "cali",
-      "myDescription": "breve descripcion",
+      "myDescription": "breve descripcion3",
       "specialty": {
         "certified": [
           "plomero",
@@ -127,7 +127,7 @@
       "password": "12345",
       "phoneNumber": "3123020303",
       "city": "cali",
-      "myDescription": "breve descripcion",
+      "myDescription": "breve descripcion4",
       "specialty": {
         "certified": [
           "plomero",
@@ -167,7 +167,7 @@
       "password": "12345",
       "phoneNumber": "3123020303",
       "city": "cali",
-      "myDescription": "breve descripcion",
+      "myDescription": "breve descripcion5",
       "specialty": {
         "certified": [
           "plomero",
@@ -207,7 +207,7 @@
       "password": "12345",
       "phoneNumber": "3123020303",
       "city": "cali",
-      "myDescription": "breve descripcion",
+      "myDescription": "breve descripcion6",
       "specialty": {
         "certified": [
           "plomero",
@@ -247,7 +247,7 @@
       "password": "12345",
       "phoneNumber": "3123020303",
       "city": "cali",
-      "myDescription": "breve descripcion",
+      "myDescription": "breve descripcion7",
       "specialty": {
         "certified": [
           "plomero",
@@ -287,7 +287,7 @@
       "password": "12345",
       "phoneNumber": "3123020303",
       "city": "cali",
-      "myDescription": "breve descripcion",
+      "myDescription": "breve descripcion8",
       "specialty": {
         "certified": [
           "plomero",
