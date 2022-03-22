@@ -1,8 +1,12 @@
 const API_URL = 'http://localhost:3004/api';
 
-export async function getAllUsuarios() {
+export async function getAllUsers() {
   try {
+<<<<<<< HEAD:src/Services/user.js
     const response = await fetch(`${API_URL}/user`);
+=======
+    const response = await fetch(`${API_URL}/users`);
+>>>>>>> a49d939a1cc6d325042c2085d411ccac8a766ac1:src/Services/Usuario.js
     const data = await response.json();
     return data;
   } catch (error) {
@@ -10,9 +14,13 @@ export async function getAllUsuarios() {
   }
 }
 
-export async function getSingleUsuarios(id) {
+export async function getSingleUsers(id) {
   try {
+<<<<<<< HEAD:src/Services/user.js
     const response = await fetch(`${API_URL}/user/${id}`);
+=======
+    const response = await fetch(`${API_URL}/users/${id}`);
+>>>>>>> a49d939a1cc6d325042c2085d411ccac8a766ac1:src/Services/Usuario.js
     const data = await response.json();
     return data;
   } catch (error) {
@@ -20,8 +28,12 @@ export async function getSingleUsuarios(id) {
   }
 }
 
+<<<<<<< HEAD:src/Services/user.js
 export async function createUsuarios(user) {
   console.log(user);
+=======
+export async function createUsers(usuario) {
+>>>>>>> a49d939a1cc6d325042c2085d411ccac8a766ac1:src/Services/Usuario.js
   const payload = {
     method: 'POST',
     headers: {
@@ -30,7 +42,11 @@ export async function createUsuarios(user) {
     body: JSON.stringify(user),
   };
   try {
+<<<<<<< HEAD:src/Services/user.js
     const response = await fetch(`${API_URL}/user`, payload);
+=======
+    const response = await fetch(`${API_URL}/users`, payload);
+>>>>>>> a49d939a1cc6d325042c2085d411ccac8a766ac1:src/Services/Usuario.js
     const data = await response.json();
 
     return data;
@@ -39,10 +55,10 @@ export async function createUsuarios(user) {
   }
 }
 
-export async function updateUsuarios(id, usuario) {
+export async function updateUsers(id, usuario) {
   return { id, ...usuario };
 }
 
-export async function deleteUsuarios(id) {
+export async function deleteUsers(id) {
   return id;
 }

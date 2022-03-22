@@ -1,16 +1,19 @@
 import './ProCard.scss';
 import PropTypes from 'prop-types';
-
 import ButtonSquare from '../ButtonSquare/ButtonSquare';
 
-function ProCard({ details: { name, midescripcion, image } }) {
+function ProCard({
+  details: {
+    name, myDescription, image, id,
+  },
+}) {
   return (
     <div className="pro-card">
       <div className="pro-card__header">
-        <img className="pro-card__profile" src={image.perfil[0]} alt="profile" />
+        <img className="pro-card__profile" src={image.profile[0]} alt="profile" />
         <h1 className="pro-card__title">{name}</h1>
       </div>
-      <p className="pro-card__body">{midescripcion}</p>
+      <p className="pro-card__body">{myDescription}</p>
       <div className="calification">
         <span className="fa fa-star" />
         <span className="fa fa-star" />
@@ -19,8 +22,8 @@ function ProCard({ details: { name, midescripcion, image } }) {
         <span className="fa fa-star-half-o" />
       </div>
       <div className="buttons">
-        <ButtonSquare text="Ver Perfil" link="/ProfilePro" />
-        <ButtonSquare text="Iniciar Chat" />
+        <ButtonSquare link={`/ProfilePro/${id}`}>Ver Perfil</ButtonSquare>
+        <ButtonSquare>Iniciar Chat</ButtonSquare>
       </div>
     </div>
 
@@ -30,22 +33,24 @@ function ProCard({ details: { name, midescripcion, image } }) {
 ProCard.propTypes = {
   details: PropTypes.shape({
     name: PropTypes.string,
-    midescripcion: PropTypes.string,
+    myDescription: PropTypes.string,
     image: PropTypes.shape({
-      perfil: PropTypes.shape([]),
+      profile: PropTypes.shape([]),
     }),
+    id: PropTypes.number,
   }),
 };
 
 ProCard.defaultProps = {
   details: {
     name: 'Pepito Perez default',
-    midescripcion: 'Que hubo default',
+    myDescription: 'Que hubo default',
     image: {
-      perfil: [
+      profile: [
         'url',
       ],
     },
+    id: 1,
   },
 };
 

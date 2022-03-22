@@ -1,43 +1,43 @@
 {
-  "profesional": [
+  "professional": [
     {
       "id": 1,
       "name": "Jose Rodriguez",
       "email": "Jorodriguez@gmail.com",
       "password": "12345",
-      "telefono celular": "3123020303",
-      "ciudad": "cali",
-      "midescripcion": "breve descripcion",
-      "especilidad": {
-        "acreditado": [
+      "phoneNumber": "3123020303",
+      "city": "cali",
+      "myDescription": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.",
+      "specialty": {
+        "certified": [
           "plomero",
           "electricista"
         ],
-        "enProceso": [
+        "inProgress": [
           "albañil"
         ],
-        "noAcreditado": [
+        "nonCertified": [
           "mecanico",
           "veterinario"
         ]
       },
       "image": {
-        "perfil": [
+        "profile": [
           "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Black_from_a_camera.jpg/1200px-Black_from_a_camera.jpg",
-          "perfil2.png"
+          "https://upload.wikimedia.org"
         ],
-        "misTrabajos": [
+        "myJobs": [
           "mitrabajo1.png",
           "mitrabajo2.png"
         ]
       },
-      "seguridad_social": {
+      "socialSecurity": {
         "eps": "saludcoop",
         "arl": "positiva"
       },
-      "disponiblidad": {
-        "tiempo": "8am-7pm",
-        "24horas": "falso"
+      "availability": {
+        "schedule": "8am-7pm",
+        "fullAvailability": "falso"
       }
     },
     {
@@ -45,39 +45,39 @@
       "name": "Jose Rodriguez2",
       "email": "Jorodriguez@gmail.com",
       "password": "12345",
-      "telefono celular": "3123020303",
-      "ciudad": "cali",
-      "midescripcion": "breve descripcion",
-      "especilidad": {
-        "acreditado": [
+      "phoneNumber": "3123020303",
+      "city": "cali",
+      "myDescription": "breve descripcion2",
+      "specialty": {
+        "certified": [
           "plomero",
           "electricista"
         ],
-        "enProceso": [
+        "inProgress": [
           "albañil"
         ],
-        "noAcreditado": [
+        "nonCertified": [
           "mecanico",
           "veterinario"
         ]
       },
       "image": {
-        "perfil": [
+        "profile": [
           "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Black_from_a_camera.jpg/1200px-Black_from_a_camera.jpg",
-          "perfil2.png"
+          "https://upload.wikimedia.org"
         ],
-        "misTrabajos": [
+        "myJobs": [
           "mitrabajo1.png",
           "mitrabajo2.png"
         ]
       },
-      "seguridad_social": {
+      "socialSecurity": {
         "eps": "saludcoop",
         "arl": "positiva"
       },
-      "disponiblidad": {
-        "tiempo": "8am-7pm",
-        "24horas": "falso"
+      "availability": {
+        "schedule": "8am-7pm",
+        "fullAvailability": "falso"
       }
     },
     {
@@ -85,39 +85,39 @@
       "name": "Jose Rodriguez3",
       "email": "Jorodriguez@gmail.com",
       "password": "12345",
-      "telefono celular": "3123020303",
-      "ciudad": "cali",
-      "midescripcion": "breve descripcion",
-      "especilidad": {
-        "acreditado": [
+      "phoneNumber": "3123020303",
+      "city": "cali",
+      "myDescription": "breve descripcion3",
+      "specialty": {
+        "certified": [
           "plomero",
           "electricista"
         ],
-        "enProceso": [
+        "inProgress": [
           "albañil"
         ],
-        "noAcreditado": [
+        "nonCertified": [
           "mecanico",
           "veterinario"
         ]
       },
       "image": {
-        "perfil": [
+        "profile": [
           "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Black_from_a_camera.jpg/1200px-Black_from_a_camera.jpg",
-          "perfil2.png"
+          "https://upload.wikimedia.org"
         ],
-        "misTrabajos": [
+        "myJobs": [
           "mitrabajo1.png",
           "mitrabajo2.png"
         ]
       },
-      "seguridad_social": {
+      "socialSecurity": {
         "eps": "saludcoop",
         "arl": "positiva"
       },
-      "disponiblidad": {
-        "tiempo": "8am-7pm",
-        "24horas": "falso"
+      "availability": {
+        "schedule": "8am-7pm",
+        "fullAvailability": "falso"
       }
     },
     {
@@ -125,39 +125,39 @@
       "name": "Jose Rodriguez4",
       "email": "Jorodriguez@gmail.com",
       "password": "12345",
-      "telefono celular": "3123020303",
-      "ciudad": "cali",
-      "midescripcion": "breve descripcion",
-      "especilidad": {
-        "acreditado": [
+      "phoneNumber": "3123020303",
+      "city": "cali",
+      "myDescription": "breve descripcion4",
+      "specialty": {
+        "certified": [
           "plomero",
           "electricista"
         ],
-        "enProceso": [
+        "inProgress": [
           "albañil"
         ],
-        "noAcreditado": [
+        "nonCertified": [
           "mecanico",
           "veterinario"
         ]
       },
       "image": {
-        "perfil": [
+        "profile": [
           "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Black_from_a_camera.jpg/1200px-Black_from_a_camera.jpg",
-          "perfil2.png"
+          "https://upload.wikimedia.org"
         ],
-        "misTrabajos": [
+        "myJobs": [
           "mitrabajo1.png",
           "mitrabajo2.png"
         ]
       },
-      "seguridad_social": {
+      "socialSecurity": {
         "eps": "saludcoop",
         "arl": "positiva"
       },
-      "disponiblidad": {
-        "tiempo": "8am-7pm",
-        "24horas": "falso"
+      "availability": {
+        "schedule": "8am-7pm",
+        "fullAvailability": "falso"
       }
     },
     {
@@ -165,39 +165,39 @@
       "name": "Jose Rodriguez5",
       "email": "Jorodriguez@gmail.com",
       "password": "12345",
-      "telefono celular": "3123020303",
-      "ciudad": "cali",
-      "midescripcion": "breve descripcion",
-      "especilidad": {
-        "acreditado": [
+      "phoneNumber": "3123020303",
+      "city": "cali",
+      "myDescription": "breve descripcion5",
+      "specialty": {
+        "certified": [
           "plomero",
           "electricista"
         ],
-        "enProceso": [
+        "inProgress": [
           "albañil"
         ],
-        "noAcreditado": [
+        "nonCertified": [
           "mecanico",
           "veterinario"
         ]
       },
       "image": {
-        "perfil": [
+        "profile": [
           "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Black_from_a_camera.jpg/1200px-Black_from_a_camera.jpg",
-          "perfil2.png"
+          "https://upload.wikimedia.org"
         ],
-        "misTrabajos": [
+        "myJobs": [
           "mitrabajo1.png",
           "mitrabajo2.png"
         ]
       },
-      "seguridad_social": {
+      "socialSecurity": {
         "eps": "saludcoop",
         "arl": "positiva"
       },
-      "disponiblidad": {
-        "tiempo": "8am-7pm",
-        "24horas": "falso"
+      "availability": {
+        "schedule": "8am-7pm",
+        "fullAvailability": "falso"
       }
     },
     {
@@ -205,39 +205,39 @@
       "name": "Jose Rodriguez6",
       "email": "Jorodriguez@gmail.com",
       "password": "12345",
-      "telefono celular": "3123020303",
-      "ciudad": "cali",
-      "midescripcion": "breve descripcion",
-      "especilidad": {
-        "acreditado": [
+      "phoneNumber": "3123020303",
+      "city": "cali",
+      "myDescription": "breve descripcion6",
+      "specialty": {
+        "certified": [
           "plomero",
           "electricista"
         ],
-        "enProceso": [
+        "inProgress": [
           "albañil"
         ],
-        "noAcreditado": [
+        "nonCertified": [
           "mecanico",
           "veterinario"
         ]
       },
       "image": {
-        "perfil": [
+        "profile": [
           "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Black_from_a_camera.jpg/1200px-Black_from_a_camera.jpg",
-          "perfil2.png"
+          "https://upload.wikimedia.org"
         ],
-        "misTrabajos": [
+        "myJobs": [
           "mitrabajo1.png",
           "mitrabajo2.png"
         ]
       },
-      "seguridad_social": {
+      "socialSecurity": {
         "eps": "saludcoop",
         "arl": "positiva"
       },
-      "disponiblidad": {
-        "tiempo": "8am-7pm",
-        "24horas": "falso"
+      "availability": {
+        "schedule": "8am-7pm",
+        "fullAvailability": "falso"
       }
     },
     {
@@ -245,39 +245,39 @@
       "name": "Jose Rodriguez7",
       "email": "Jorodriguez@gmail.com",
       "password": "12345",
-      "telefono celular": "3123020303",
-      "ciudad": "cali",
-      "midescripcion": "breve descripcion",
-      "especilidad": {
-        "acreditado": [
+      "phoneNumber": "3123020303",
+      "city": "cali",
+      "myDescription": "breve descripcion7",
+      "specialty": {
+        "certified": [
           "plomero",
           "electricista"
         ],
-        "enProceso": [
+        "inProgress": [
           "albañil"
         ],
-        "noAcreditado": [
+        "nonCertified": [
           "mecanico",
           "veterinario"
         ]
       },
       "image": {
-        "perfil": [
+        "profile": [
           "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Black_from_a_camera.jpg/1200px-Black_from_a_camera.jpg",
-          "perfil2.png"
+          "https://upload.wikimedia.org"
         ],
-        "misTrabajos": [
+        "myJobs": [
           "mitrabajo1.png",
           "mitrabajo2.png"
         ]
       },
-      "seguridad_social": {
+      "socialSecurity": {
         "eps": "saludcoop",
         "arl": "positiva"
       },
-      "disponiblidad": {
-        "tiempo": "8am-7pm",
-        "24horas": "falso"
+      "availability": {
+        "schedule": "8am-7pm",
+        "fullAvailability": "falso"
       }
     },
     {
@@ -285,53 +285,58 @@
       "name": "Jose Rodriguez8",
       "email": "Jorodriguez@gmail.com",
       "password": "12345",
-      "telefono celular": "3123020303",
-      "ciudad": "cali",
-      "midescripcion": "breve descripcion",
-      "especilidad": {
-        "acreditado": [
+      "phoneNumber": "3123020303",
+      "city": "cali",
+      "myDescription": "breve descripcion8",
+      "specialty": {
+        "certified": [
           "plomero",
           "electricista"
         ],
-        "enProceso": [
+        "inProgress": [
           "albañil"
         ],
-        "noAcreditado": [
+        "nonCertified": [
           "mecanico",
           "veterinario"
         ]
       },
       "image": {
-        "perfil": [
+        "profile": [
           "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Black_from_a_camera.jpg/1200px-Black_from_a_camera.jpg",
-          "perfil2.png"
+          "https://upload.wikimedia.org"
         ],
-        "misTrabajos": [
+        "myJobs": [
           "mitrabajo1.png",
           "mitrabajo2.png"
         ]
       },
-      "seguridad_social": {
+      "socialSecurity": {
         "eps": "saludcoop",
         "arl": "positiva"
       },
-      "disponiblidad": {
-        "tiempo": "8am-7pm",
-        "24horas": "falso"
+      "availability": {
+        "schedule": "8am-7pm",
+        "fullAvailability": "falso"
       }
     }
   ],
+<<<<<<< HEAD
   "user": [
+=======
+
+  "users": [
+>>>>>>> a49d939a1cc6d325042c2085d411ccac8a766ac1
     {
       "id": "1",
       "name": "Luis Perrea",
       "email": "PerreaL@hotmail.com",
       "password": "54321",
-      "cellphone": "3120100121",
+      "phoneNumber": "3120100121",
       "city": "cali",
       "profile": [
-        "perfil.png",
-        "perfil2.png"
+        "https://upload.wikimedia.org",
+        "https://upload.wikimedia.org"
       ],
       "payment": {
         "cardnumber": "1234 5678 1234 8765",
@@ -346,7 +351,12 @@
       "id": "drzuAYo"
     }
   ],
+<<<<<<< HEAD
   "client_experience": [
+=======
+
+  "clientExperience": [
+>>>>>>> a49d939a1cc6d325042c2085d411ccac8a766ac1
     {
       "id": 1,
       "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Black_from_a_camera.jpg/1200px-Black_from_a_camera.jpg",

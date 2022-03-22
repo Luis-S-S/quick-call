@@ -2,14 +2,14 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import './ButtonRound.scss';
 
-function ButtonRound({ text, link }) {
+function ButtonRound({ children, link }) {
   return (
-    <Link className="button-round" to={link}>{text}</Link>
+    <Link className="button-round" to={link}>{children}</Link>
   );
 }
 
 ButtonRound.propTypes = {
-  text: PropTypes.string.isRequired,
+  children: PropTypes.element.isRequired,
   link: PropTypes.string,
 };
 

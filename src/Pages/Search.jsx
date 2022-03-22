@@ -12,7 +12,7 @@ function Search() {
 
   return (
     <div>
-      <Link to="/"> Ir a Home</Link>
+      <Link to="/">Ir a Home</Link>
       {pro.map((item) => <ProCard key={item.id} details={item} />)}
     </div>
 
