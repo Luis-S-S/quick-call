@@ -42,10 +42,10 @@ function Signup() {
           <img src="images/icons/linkedin-logo.svg" alt="linkedin" />
         </div>
         <form className="formulario" onSubmit={handleSubmit}>
-          <input name="name" placeholder="Full name" type="text" onChange={handleChange} />
-          <input name="email" placeholder="Michelle@example.com" type="email" onChange={handleChange} />
-          <input name="password" placeholder="Password" type="password" onChange={handleChange} />
-          <input name="password2" placeholder="Repeat password" type="password" onChange={handleChange} />
+          <input name="name" placeholder="Ingresa tu nombre" type="text" onChange={handleChange} />
+          <input name="email" placeholder="Michelle@ejemplo.com" type="email" onChange={handleChange} />
+          <input name="password" placeholder="Ingresa tu contraseña" type="password" onChange={handleChange} />
+          <input name="password2" placeholder="Repite tu contraseña" type="password" onChange={handleChange} />
           <div className="footer1">
             <span className="footer11">
               Ya tienes un cuenta?

@@ -1,6 +1,6 @@
-import { Link } from "react-router-dom";
-import "./Login.scss";
-import { useState } from "react";
+import { Link } from 'react-router-dom';
+import './Login.scss';
+import { useState } from 'react';
 
 function Login() {
   const [form, setForm] = useState({});
@@ -24,25 +24,15 @@ function Login() {
       </div>
       <div className="principal">
         <Link to="/">
-          <img className="logo" src="images/logo/quick-call-logo--colored.svg" alt=""/>
+          <img className="logo" src="images/logo/quick-call-logo--colored.svg" alt="" />
         </Link>
         <div className="texto">
           <span className="titulo_register"> Hola de nuevo! </span>
           <span className="texto_register">Ingresar a tu cuenta</span>
         </div>
         <form className="formulario" onSubmit={handleSubmit}>
-          <input
-            name="email"
-            placeholder="Ingresa tu E-mail"
-            type="email"
-            onChange={handleChange}
-          />
-          <input
-            name="password"
-            placeholder="Ingresa tu Contraseña"
-            type="password"
-            onChange={handleChange}
-          />
+          <input name="email" placeholder="Ingresa tu E-mail" type="email" onChange={handleChange} />
+          <input name="password" placeholder="Ingresa tu Contraseña" type="password" onChange={handleChange} />
           <div className="redes_sociales">
             <img src="images/icons/whatsapp-logo.svg" alt="whatsapp" />
             <img src="images/icons/facebook-icon.svg" alt="facebook" />

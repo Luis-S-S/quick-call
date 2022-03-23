@@ -18,7 +18,7 @@ export default function Signup0() {
         <form className="formulario">
           <div className="boton11">
             <Link to="/Signup1"><button className="boton1" type="submit"> Profesional</button></Link>
-            <Link to="/Signup"><button className="boton1" type="submit"> cliente</button></Link>
+            <Link to="/Signup"><button className="boton1" type="submit"> Cliente</button></Link>
           </div>
           <div className="redes_sociales">
             <img src="images/icons/whatsapp-logo.svg" alt="whatsapp" />
