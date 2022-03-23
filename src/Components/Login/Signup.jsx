@@ -24,11 +24,13 @@ function Signup() {
 
   return (
     <div className="login">
-      <img className="imagen" src="images/logo/quick-call-logo--colored.svg" alt="" />
+      <div>
+        <img className="imagen" src="images/img/planta.png" alt="" />
+      </div>
       <div className="principal">
-        <div className="regresar">
-          <Link to="/">Atras</Link>
-        </div>
+        <Link to="/">
+          <img className="logo" src="images/logo/quick-call-logo--colored.svg" alt="" />
+        </Link>
         <div className="texto">
           <span className="titulo_register">Registrarse</span>
           <span className="texto_register">Crea tu nueva cuenta</span>
@@ -44,22 +46,16 @@ function Signup() {
           <input name="email" placeholder="Michelle@example.com" type="email" onChange={handleChange} />
           <input name="password" placeholder="Password" type="password" onChange={handleChange} />
           <input name="password2" placeholder="Repeat password" type="password" onChange={handleChange} />
-          <button className="boton" type="submit">Enviar</button>
+          <div className="footer1">
+            <span className="footer11">
+              Ya tienes un cuenta?
+              <Link to="/login">Ingresa</Link>
+            </span>
+            <button className="boton" type="submit">
+              Registrarse
+            </button>
+          </div>
         </form>
-
-        <span className="signing">
-          {' '}
-          By signing up you agree to Our.
-          <Link to="/login">
-            Terms of Use And Privacy Notice
-            {' '}
-          </Link>
-          {' '}
-        </span>
-        <span className="footer">
-          Ya tienes un cuenta?
-          <Link to="/login"> Ingresar</Link>
-        </span>
       </div>
     </div>
   );

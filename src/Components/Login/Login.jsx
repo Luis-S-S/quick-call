@@ -1,6 +1,6 @@
-import { Link } from 'react-router-dom';
-import './Login.scss';
-import { useState } from 'react';
+import { Link } from "react-router-dom";
+import "./Login.scss";
+import { useState } from "react";
 
 function Login() {
   const [form, setForm] = useState({});
@@ -19,33 +19,46 @@ function Login() {
   };
   return (
     <div className="login">
-      <img className="imagen" src="images/logo/quick-call-logo--colored.svg" alt="" />
+      <div>
+        <img className="imagen" src="images/img/planta.png" alt="" />
+      </div>
       <div className="principal">
-        <div className="regresar">
-          <Link to="/">Back</Link>
-        </div>
+        <Link to="/">
+          <img className="logo" src="images/logo/quick-call-logo--colored.svg" alt=""/>
+        </Link>
         <div className="texto">
           <span className="titulo_register"> Hola de nuevo! </span>
           <span className="texto_register">Ingresar a tu cuenta</span>
         </div>
         <form className="formulario" onSubmit={handleSubmit}>
-          <input name="email" placeholder="Input your E-mail" type="email" onChange={handleChange} />
-          <input name="password" placeholder="Input your Password" type="password" onChange={handleChange} />
-          <button className="boton" type="submit">Enviar</button>
+          <input
+            name="email"
+            placeholder="Ingresa tu E-mail"
+            type="email"
+            onChange={handleChange}
+          />
+          <input
+            name="password"
+            placeholder="Ingresa tu Contraseña"
+            type="password"
+            onChange={handleChange}
+          />
+          <div className="redes_sociales">
+            <img src="images/icons/whatsapp-logo.svg" alt="whatsapp" />
+            <img src="images/icons/facebook-icon.svg" alt="facebook" />
+            <img src="images/icons/twitter-icon.svg" alt="twitter" />
+            <img src="images/icons/linkedin-logo.svg" alt="linkedin" />
+          </div>
+          <div className="footer1">
+            <span className="footer11">
+              ¿No tienes una cuenta?.
+              <Link to="/Signup0">Registrate aqui</Link>
+            </span>
+            <button className="boton" type="submit">
+              Log in
+            </button>
+          </div>
         </form>
-        <div className="formulario" />
-
-        <span className="signing">Usar login social </span>
-        <div className="redes_sociales">
-          <img src="images/icons/whatsapp-logo.svg" alt="whatsapp" />
-          <img src="images/icons/facebook-icon.svg" alt="facebook" />
-          <img src="images/icons/twitter-icon.svg" alt="twitter" />
-          <img src="images/icons/linkedin-logo.svg" alt="linkedin" />
-        </div>
-        <span className="footer">
-          ¿No tienes una cuenta?
-          <Link to="/Signup"> Ir a registro</Link>
-        </span>
       </div>
     </div>
   );
