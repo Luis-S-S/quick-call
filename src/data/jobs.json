@@ -1,0 +1,16 @@
+[
+  {
+    "id":"12345",
+    "client":"gonzalesJuan@hotmail.com",
+    "professional":"jorodriguez@gmail.com",
+    "startDate":"13 de marzo",
+    "completionDate":"",
+    "expectedCompletionTime":"2 meses 3 dias",
+    "roles":"Electricista",
+    "objectives":"Instalacion de tomas y enchufes en domicilio",
+    "conditions":["El professional dispondra de las herramientas","el cliente dispondra de los materiales"],
+    "status":"En progreso",
+    "comments":"nulo",
+    "clientFeedback":"nulo"
+  }
+]

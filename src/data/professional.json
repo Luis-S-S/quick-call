@@ -1,0 +1,44 @@
+[
+    {
+        "id": 1,
+        "name": "Jose Rodriguez",
+        "email": "Jorodriguez@gmail.com",
+        "password": "12345",
+        "phoneNumber": "3123020303",
+        "city": "cali",
+        "myDescription": "breve descripcion",
+        "specialty": {
+          "certified": [
+            "plomero",
+            "electricista"
+          ],
+          "inProgress": [
+            "albañil"
+          ],
+          "nonCertified": [
+            "mecanico",
+            "veterinario"
+          ]
+        },
+        "image": {
+          "profile": [
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Black_from_a_camera.jpg/1200px-Black_from_a_camera.jpg",
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Black_from_a_camera.jpg/1200px-Black_from_a_camera.jpg"
+          ],
+          "myJobs": [
+            "mitrabajo1.png",
+            "mitrabajo2.png"
+          ]
+        },
+        "socialSecurity": {
+          "eps": "saludcoop",
+          "arl": "positiva"
+        },
+        "availability": {
+          "schedule": "8am-7pm",
+          "fullAvailability": "falso"
+        }
+      }
+]
+
+

@@ -322,7 +322,7 @@
     }
   ],
 
-  "users": [
+  "client": [
     {
       "id": "1",
       "name": "Luis Perrea",
@@ -335,8 +335,8 @@
         "https://upload.wikimedia.org"
       ],
       "payment": {
-        "cardnumber": "1234 5678 1234 8765",
-        "expdate": "01/03/2024",
+        "cardNumber": "1234 5678 1234 8765",
+        "expDate": "01/03/2024",
         "cvv": "123"
       }
     },

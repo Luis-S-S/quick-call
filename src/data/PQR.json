@@ -1,14 +1,14 @@
 [
   {
-    "usuario": "gonzalesJuan@hotmail.com",
-    "id": "23456",
-    "fecha": "11 de marzo",
-    "profesional": "RuizErnesto@hotmail.com",
-    "titulo": "Solitud de PQR por trabajo de Jose Vega",
-    "descripcion": "Breve descricion de PQR",
-    "evidencias": {
-      "videos": ["video.mp4", "video1.mp4"],
-      "fotos": ["fotos.png", "foto2.pgn"]
+    "client":"gonzalesJuan@hotmail.com",
+    "id":"23456",
+    "date":"11 de marzo",
+    "professional":"RuizErnesto@hotmail.com",
+    "subject":"Solitud de PQR por trabajo de Jose Vega",
+    "description":"Breve descricion de PQR",
+    "evidence":{
+        "videos":["video.mp4","video1.mp4"],
+        "photos":["fotos.png","foto2.png"]
     }
   }
 ]

@@ -1,87 +1,89 @@
 {
-  "PQR":[
+  "PQR": [
     {
-      "usuario":"gonzalesJuan@hotmail.com",
+      "client":"gonzalesJuan@hotmail.com",
       "id":"23456",
-      "fecha":"11 de marzo",
-      "profesional":"RuizErnesto@hotmail.com",
-      "titulo":"Solitud de PQR por trabajo de Jose Vega",
-      "descripcion":"Breve descricion de PQR",
-      "evidencias":{
+      "date":"11 de marzo",
+      "professional":"RuizErnesto@hotmail.com",
+      "subject":"Solitud de PQR por trabajo de Jose Vega",
+      "description":"Breve descricion de PQR",
+      "evidence":{
           "videos":["video.mp4","video1.mp4"],
-          "fotos":["fotos.png","foto2.pgn"]
+          "photos":["fotos.png","foto2.png"]
       }
-  }
+    }
   ],
-  "trabajos":[
+
+  "job": [
     {
       "id":"12345",
-      "usuario":"gonzalesJuan@hotmail.com",
-      "profesional":"jorodriguez@gmail.com",
-      "fechaInicio":"13 de marzo",
-      "fechaFinal":"",
-      "tiempoEjecucion":"2 meses 3 dias",
-      "funciones":"Electricista",
-      "Objetivos":"Instalacion de tomas y enchufes en domicilio",
-      "condiciones":["El profesional dispondra de las herramientas","el usuario dispondra de los materiales"],
-      "Estado":"EnProceso",
-      "Comentario":"nulo",
-      "Puntuaciones":"nulo"
-  },
-  {
+      "client":"gonzalesJuan@hotmail.com",
+      "professional":"jorodriguez@gmail.com",
+      "startDate":"13 de marzo",
+      "completionDate":"",
+      "expectedCompletionTime":"2 meses 3 dias",
+      "roles":"Electricista",
+      "objectives":"Instalacion de tomas y enchufes en domicilio",
+      "conditions":["El professional dispondra de las herramientas","el cliente dispondra de los materiales"],
+      "status":"En progreso",
+      "comments":"nulo",
+      "clientFeedback":"nulo"
+    },
+    {
       "id":"23456",
-      "usuario":"gonzalesJuan@hotmail.com",
-      "profesional":"jorodriguez@gmail.com",
-      "fechaInicio":"13 de marzo",
-      "fechaFinal":"14 de agosto",
-      "tiempoEjecucion":"2 meses 3 dias",
-      "funciones":"Electricista",
-      "Objetivos":"Instalacion de tomas y enchufes en domicilio",
-      "condiciones":["El profesional dispondra de las herramientas","el usuario dispondra de los materiales"],
-      "Estado":"Finalizado",
-      "Comentario":"nulo",
-      "Puntuaciones":"nulo"
-  }
+      "client":"gonzalesJuan@hotmail.com",
+      "professional":"jorodriguez@gmail.com",
+      "startDate":"13 de marzo",
+      "completionDate":"14 de agosto",
+      "expectedCompletionTime":"2 meses 3 dias",
+      "roles":"Electricista",
+      "objectives":"Instalacion de tomas y enchufes en domicilio",
+      "conditions":["El professional dispondra de las herramientas","el cliente dispondra de los materiales"],
+      "status":"Finalizado",
+      "comments":"nulo",
+      "clientFeedback":"nulo"
+    }
   ],
-  "profesional": [
+
+  "professional": [
     {
       "id": 1,
       "name": "Jose Rodriguez",
       "email": "Jorodriguez@gmail.com",
       "password": "12345",
-      "telefono celular": "3123020303",
-      "ciudad": "cali",
-      "midescripcion": "breve descripcion",
-      "especilidad": {
-        "acreditado": [
+      "phoneNumber": "3123020303",
+      "city": "cali",
+      "myDescription": "breve descripcion",
+      "specialty": {
+        "certified": [
           "plomero",
           "electricista"
         ],
-        "enProceso": [
+        "inProgress": [
           "albañil"
         ],
-        "noAcreditado": [
+        "nonCertified": [
           "mecanico",
           "veterinario"
         ]
       },
       "image": {
-        "perfil": [
+        "profile": [
           "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Black_from_a_camera.jpg/1200px-Black_from_a_camera.jpg",
-          "perfil2.png"
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Black_from_a_camera.jpg/1200px-Black_from_a_camera.jpg"
         ],
-        "misTrabajos": [
+        "myJobs": [
           "mitrabajo1.png",
           "mitrabajo2.png"
         ]
       },
-      "seguridad_social": {
+      "socialSecurity": {
         "eps": "saludcoop",
         "arl": "positiva"
       },
-      "disponiblidad": {
-        "tiempo": "8am-7pm",
-        "24horas": "falso"
+      "availability": {
+        "schedule": "8am-7pm",
+        "fullAvailability": "falso"
       }
     },
     {
@@ -89,39 +91,39 @@
       "name": "Jose Rodriguez2",
       "email": "Jorodriguez@gmail.com",
       "password": "12345",
-      "telefono celular": "3123020303",
-      "ciudad": "cali",
-      "midescripcion": "breve descripcion",
-      "especilidad": {
-        "acreditado": [
+      "phoneNumber": "3123020303",
+      "city": "cali",
+      "myDescription": "breve descripcion",
+      "specialty": {
+        "certified": [
           "plomero",
           "electricista"
         ],
-        "enProceso": [
+        "inProgress": [
           "albañil"
         ],
-        "noAcreditado": [
+        "nonCertified": [
           "mecanico",
           "veterinario"
         ]
       },
       "image": {
-        "perfil": [
+        "profile": [
           "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Black_from_a_camera.jpg/1200px-Black_from_a_camera.jpg",
-          "perfil2.png"
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Black_from_a_camera.jpg/1200px-Black_from_a_camera.jpg"
         ],
-        "misTrabajos": [
+        "myJobs": [
           "mitrabajo1.png",
           "mitrabajo2.png"
         ]
       },
-      "seguridad_social": {
+      "socialSecurity": {
         "eps": "saludcoop",
         "arl": "positiva"
       },
-      "disponiblidad": {
-        "tiempo": "8am-7pm",
-        "24horas": "falso"
+      "availability": {
+        "schedule": "8am-7pm",
+        "fullAvailability": "falso"
       }
     },
     {
@@ -129,39 +131,39 @@
       "name": "Jose Rodriguez3",
       "email": "Jorodriguez@gmail.com",
       "password": "12345",
-      "telefono celular": "3123020303",
-      "ciudad": "cali",
-      "midescripcion": "breve descripcion",
-      "especilidad": {
-        "acreditado": [
+      "phoneNumber": "3123020303",
+      "city": "cali",
+      "myDescription": "breve descripcion",
+      "specialty": {
+        "certified": [
           "plomero",
           "electricista"
         ],
-        "enProceso": [
+        "inProgress": [
           "albañil"
         ],
-        "noAcreditado": [
+        "nonCertified": [
           "mecanico",
           "veterinario"
         ]
       },
       "image": {
-        "perfil": [
+        "profile": [
           "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Black_from_a_camera.jpg/1200px-Black_from_a_camera.jpg",
-          "perfil2.png"
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Black_from_a_camera.jpg/1200px-Black_from_a_camera.jpg"
         ],
-        "misTrabajos": [
+        "myJobs": [
           "mitrabajo1.png",
           "mitrabajo2.png"
         ]
       },
-      "seguridad_social": {
+      "socialSecurity": {
         "eps": "saludcoop",
         "arl": "positiva"
       },
-      "disponiblidad": {
-        "tiempo": "8am-7pm",
-        "24horas": "falso"
+      "availability": {
+        "schedule": "8am-7pm",
+        "fullAvailability": "falso"
       }
     },
     {
@@ -169,39 +171,39 @@
       "name": "Jose Rodriguez4",
       "email": "Jorodriguez@gmail.com",
       "password": "12345",
-      "telefono celular": "3123020303",
-      "ciudad": "cali",
-      "midescripcion": "breve descripcion",
-      "especilidad": {
-        "acreditado": [
+      "phoneNumber": "3123020303",
+      "city": "cali",
+      "myDescription": "breve descripcion",
+      "specialty": {
+        "certified": [
           "plomero",
           "electricista"
         ],
-        "enProceso": [
+        "inProgress": [
           "albañil"
         ],
-        "noAcreditado": [
+        "nonCertified": [
           "mecanico",
           "veterinario"
         ]
       },
       "image": {
-        "perfil": [
+        "profile": [
           "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Black_from_a_camera.jpg/1200px-Black_from_a_camera.jpg",
-          "perfil2.png"
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Black_from_a_camera.jpg/1200px-Black_from_a_camera.jpg"
         ],
-        "misTrabajos": [
+        "myJobs": [
           "mitrabajo1.png",
           "mitrabajo2.png"
         ]
       },
-      "seguridad_social": {
+      "socialSecurity": {
         "eps": "saludcoop",
         "arl": "positiva"
       },
-      "disponiblidad": {
-        "tiempo": "8am-7pm",
-        "24horas": "falso"
+      "availability": {
+        "schedule": "8am-7pm",
+        "fullAvailability": "falso"
       }
     },
     {
@@ -209,39 +211,39 @@
       "name": "Jose Rodriguez5",
       "email": "Jorodriguez@gmail.com",
       "password": "12345",
-      "telefono celular": "3123020303",
-      "ciudad": "cali",
-      "midescripcion": "breve descripcion",
-      "especilidad": {
-        "acreditado": [
+      "phoneNumber": "3123020303",
+      "city": "cali",
+      "myDescription": "breve descripcion",
+      "specialty": {
+        "certified": [
           "plomero",
           "electricista"
         ],
-        "enProceso": [
+        "inProgress": [
           "albañil"
         ],
-        "noAcreditado": [
+        "nonCertified": [
           "mecanico",
           "veterinario"
         ]
       },
       "image": {
-        "perfil": [
+        "profile": [
           "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Black_from_a_camera.jpg/1200px-Black_from_a_camera.jpg",
-          "perfil2.png"
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Black_from_a_camera.jpg/1200px-Black_from_a_camera.jpg"
         ],
-        "misTrabajos": [
+        "myJobs": [
           "mitrabajo1.png",
           "mitrabajo2.png"
         ]
       },
-      "seguridad_social": {
+      "socialSecurity": {
         "eps": "saludcoop",
         "arl": "positiva"
       },
-      "disponiblidad": {
-        "tiempo": "8am-7pm",
-        "24horas": "falso"
+      "availability": {
+        "schedule": "8am-7pm",
+        "fullAvailability": "falso"
       }
     },
     {
@@ -249,39 +251,39 @@
       "name": "Jose Rodriguez6",
       "email": "Jorodriguez@gmail.com",
       "password": "12345",
-      "telefono celular": "3123020303",
-      "ciudad": "cali",
-      "midescripcion": "breve descripcion",
-      "especilidad": {
-        "acreditado": [
+      "phoneNumber": "3123020303",
+      "city": "cali",
+      "myDescription": "breve descripcion",
+      "specialty": {
+        "certified": [
           "plomero",
           "electricista"
         ],
-        "enProceso": [
+        "inProgress": [
           "albañil"
         ],
-        "noAcreditado": [
+        "nonCertified": [
           "mecanico",
           "veterinario"
         ]
       },
       "image": {
-        "perfil": [
+        "profile": [
           "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Black_from_a_camera.jpg/1200px-Black_from_a_camera.jpg",
-          "perfil2.png"
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Black_from_a_camera.jpg/1200px-Black_from_a_camera.jpg"
         ],
-        "misTrabajos": [
+        "myJobs": [
           "mitrabajo1.png",
           "mitrabajo2.png"
         ]
       },
-      "seguridad_social": {
+      "socialSecurity": {
         "eps": "saludcoop",
         "arl": "positiva"
       },
-      "disponiblidad": {
-        "tiempo": "8am-7pm",
-        "24horas": "falso"
+      "availability": {
+        "schedule": "8am-7pm",
+        "fullAvailability": "falso"
       }
     },
     {
@@ -289,39 +291,39 @@
       "name": "Jose Rodriguez7",
       "email": "Jorodriguez@gmail.com",
       "password": "12345",
-      "telefono celular": "3123020303",
-      "ciudad": "cali",
-      "midescripcion": "breve descripcion",
-      "especilidad": {
-        "acreditado": [
+      "phoneNumber": "3123020303",
+      "city": "cali",
+      "myDescription": "breve descripcion",
+      "specialty": {
+        "certified": [
           "plomero",
           "electricista"
         ],
-        "enProceso": [
+        "inProgress": [
           "albañil"
         ],
-        "noAcreditado": [
+        "nonCertified": [
           "mecanico",
           "veterinario"
         ]
       },
       "image": {
-        "perfil": [
+        "profile": [
           "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Black_from_a_camera.jpg/1200px-Black_from_a_camera.jpg",
-          "perfil2.png"
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Black_from_a_camera.jpg/1200px-Black_from_a_camera.jpg"
         ],
-        "misTrabajos": [
+        "myJobs": [
           "mitrabajo1.png",
           "mitrabajo2.png"
         ]
       },
-      "seguridad_social": {
+      "socialSecurity": {
         "eps": "saludcoop",
         "arl": "positiva"
       },
-      "disponiblidad": {
-        "tiempo": "8am-7pm",
-        "24horas": "falso"
+      "availability": {
+        "schedule": "8am-7pm",
+        "fullAvailability": "falso"
       }
     },
     {
@@ -329,62 +331,64 @@
       "name": "Jose Rodriguez8",
       "email": "Jorodriguez@gmail.com",
       "password": "12345",
-      "telefono celular": "3123020303",
-      "ciudad": "cali",
-      "midescripcion": "breve descripcion",
-      "especilidad": {
-        "acreditado": [
+      "phoneNumber": "3123020303",
+      "city": "cali",
+      "myDescription": "breve descripcion",
+      "specialty": {
+        "certified": [
           "plomero",
           "electricista"
         ],
-        "enProceso": [
+        "inProgress": [
           "albañil"
         ],
-        "noAcreditado": [
+        "nonCertified": [
           "mecanico",
           "veterinario"
         ]
       },
       "image": {
-        "perfil": [
+        "profile": [
           "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Black_from_a_camera.jpg/1200px-Black_from_a_camera.jpg",
-          "perfil2.png"
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Black_from_a_camera.jpg/1200px-Black_from_a_camera.jpg"
         ],
-        "misTrabajos": [
+        "myJobs": [
           "mitrabajo1.png",
           "mitrabajo2.png"
         ]
       },
-      "seguridad_social": {
+      "socialSecurity": {
         "eps": "saludcoop",
         "arl": "positiva"
       },
-      "disponiblidad": {
-        "tiempo": "8am-7pm",
-        "24horas": "falso"
+      "availability": {
+        "schedule": "8am-7pm",
+        "fullAvailability": "falso"
       }
     }
   ],
-  "user": [
+
+  "client": [
     {
       "id": "1",
       "name": "Luis Perrea",
       "email": "PerreaL@hotmail.com",
       "password": "54321",
-      "cellphone": "3120100121",
+      "phoneNumber": "3120100121",
       "city": "cali",
       "profile": [
-        "perfil.png",
-        "perfil2.png"
+        "https://upload.wikimedia.org",
+        "https://upload.wikimedia.org"
       ],
       "payment": {
-        "cardnumber": "1234 5678 1234 8765",
-        "expdate": "01/03/2024",
+        "cardNumber": "1234 5678 1234 8765",
+        "expDate": "01/03/2024",
         "cvv": "123"
       }
     }
   ],
-  "client_experience": [
+
+  "clientExperience": [
     {
       "id": 1,
       "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Black_from_a_camera.jpg/1200px-Black_from_a_camera.jpg",
@@ -428,5 +432,4 @@
       "experience": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
     }
   ]
-
 }
