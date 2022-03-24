@@ -30,7 +30,9 @@ function IntroSection() {
           </p>
         </div>
       </div>
-      <img src="images/img/bg-home.png" alt="background" className="intro-section__bg" />
+      <div className="intro-section__bg">
+        <img src="images/img/bg-home.png" alt="background" />
+      </div>
     </div>
   );
 }
