@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import './Login.scss';
 import { useState } from 'react';
+import ButtonRound from '../ButtonRound/ButtonRound';
 
 function Login() {
   const [form, setForm] = useState({});
@@ -24,7 +25,7 @@ function Login() {
       </div>
       <div className="principal">
         <Link to="/">
-          <img className="logo" src="images/logo/quick-call-logo--colored.svg" alt="" />
+          <img className="logo" src="images/logo/quick-call-logo.svg" alt="" />
         </Link>
         <div className="texto">
           <span className="titulo_register"> Hola de nuevo! </span>
@@ -42,11 +43,11 @@ function Login() {
           <div className="footer1">
             <span className="footer11">
               ¿No tienes una cuenta?.
-              <Link to="/Signup0">Registrate aqui</Link>
+              <Link to="/signup">Registrate aqui</Link>
             </span>
-            <button className="boton" type="submit">
+            <ButtonRound type="submit">
               Log in
-            </button>
+            </ButtonRound>
           </div>
         </form>
       </div>

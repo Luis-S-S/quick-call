@@ -5,7 +5,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './Pages/Home';
 import Login from './Components/Login/Login';
 import Signup from './Components/Login/Signup';
-import Signup0 from './Components/Login/Signup0';
+import SignupProfessional from './Components/Login/SignupProfessional';
+import SignupClient from './Components/Login/SignupClient';
 import Search from './Pages/Search';
 import ProfilePro from './Pages/ProfilePro';
 import EditarPerfil from './Pages/EditarPerfil';
@@ -17,7 +18,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/signup" element={<Signup />} />
-          <Route path="/signup0" element={<Signup0 />} />
+          <Route path="/signup_client" element={<SignupClient />} />
+          <Route path="/signup_professional" element={<SignupProfessional />} />
           <Route path="/login" element={<Login />} />
           <Route path="/search" element={<Search />} />
           <Route path="/profilePro/:id" element={<ProfilePro />} />
