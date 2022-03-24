@@ -1,5 +1,5 @@
 import React from 'react';
-import Usuario from '../../../../data/Usuario.json';
+import Usuario from '../../../../data/client.json';
 import '../VistaMenu.scss';
 
 export default function Editar() {

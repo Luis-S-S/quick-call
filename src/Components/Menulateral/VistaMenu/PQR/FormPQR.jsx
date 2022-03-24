@@ -1,11 +1,12 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import PropTypes from 'prop-types';
 import { createUsuarios } from '../../../../Services/user';
 import '../VistaMenu.scss';
 import data from '../../../../data/db.json';
 import { detalle } from '../../../../store/actions';
 
-export default function FormPQR({ id }) {
+function FormPQR({ id }) {
   const detalles = data.trabajos.filter((trabajoses) => (trabajoses.id === id))[0];
   const [form, setForm] = useState({});
   const dispatch = useDispatch();
@@ -51,3 +52,9 @@ export default function FormPQR({ id }) {
     </div>
   );
 }
+
+FormPQR.propTypes = {
+  id: PropTypes.number.isRequired,
+};
+
+export default FormPQR;

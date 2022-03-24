@@ -18,7 +18,6 @@ function MenuLateral() {
   const states = useSelector((state) => state.vista);
   const id = useSelector((state) => state.id);
   const dispatch = useDispatch();
-  console.log(states);
 
   function click(e) {
     dispatch(trabajo(e.target.name));

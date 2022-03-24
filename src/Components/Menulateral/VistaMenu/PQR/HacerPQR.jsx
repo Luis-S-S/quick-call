@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import data from '../../../../data/db.json';
 import { detalle } from '../../../../store/actions';
 
-export default function HacerPQR() {
+function HacerPQR() {
   const dispatch = useDispatch();
 
   function handlePQR(usuario) {
@@ -41,3 +41,5 @@ export default function HacerPQR() {
     </>
   );
 }
+
+export default HacerPQR;

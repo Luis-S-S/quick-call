@@ -1,9 +1,10 @@
 import '../VistaMenu.scss';
+import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import data from '../../../../data/db.json';
 import { trabajo } from '../../../../store/actions';
 
-export default function Detalle({ id }) {
+function Detalle({ id }) {
   const PQR = data.PQR.filter((PQRS) => (PQRS.id === id))[0];
   const dispatch = useDispatch();
 
@@ -50,3 +51,9 @@ export default function Detalle({ id }) {
     </div>
   );
 }
+
+Detalle.propTypes = {
+  id: PropTypes.number.isRequired,
+};
+
+export default Detalle;

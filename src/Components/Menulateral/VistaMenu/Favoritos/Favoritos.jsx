@@ -1,8 +1,10 @@
 import React from 'react';
 
-export default function Favoritos() {
+function Favoritos() {
   return (
     <>
     </>
   );
 }
+
+export default Favoritos;
