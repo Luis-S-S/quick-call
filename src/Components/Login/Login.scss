@@ -29,6 +29,7 @@
     flex-direction: column;
     padding-left: 5vw;
     padding-right: 5vw;
+
     input {
       display:block;
       @include text-body;
@@ -38,6 +39,7 @@
       border: 1px solid $blue;
       border-radius: 10px;
       margin-bottom: 30px;
+      padding: 0.25em 0.5em;
     }
   }
 
@@ -48,6 +50,7 @@
     margin-left: 80px;
     margin-right: 80px;
     justify-content: space-evenly;
+
     img{
       height: 50px;
       width: 50px;
