@@ -1,8 +1,8 @@
 import React from 'react';
-import Usuario from '../../../../data/Usuario.json';
+import Usuario from '../../../../data/client.json';
 import '../VistaMenu.scss';
 
-export default function Pagos() {
+function Pagos() {
   return (
     <div className="VistaMenu">
       <h2 className="Titulo">Mis datos de pago</h2>
@@ -21,3 +21,5 @@ export default function Pagos() {
     </div>
   );
 }
+
+export default Pagos;

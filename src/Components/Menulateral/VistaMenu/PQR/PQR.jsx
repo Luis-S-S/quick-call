@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import HacerPQR from './HacerPQR';
 import MisPQR from './misPQR';
 
-export default function PQR() {
+function PQR() {
   const [state, setState] = useState({ MisPQR: true });
   function click(e) {
     setState({ [e.target.name]: true });
@@ -22,3 +22,5 @@ export default function PQR() {
 
   );
 }
+
+export default PQR;
