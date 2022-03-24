@@ -22,6 +22,7 @@ function ClientExperienceSection() {
 
   return (
     <div className="client-experience-section">
+      <h2 className="client-experience-section__title">Qué dicen nuestros clientes</h2>
       <Carousel breakPoints={breakPoints}>
         {experiences.map((item) => <ClientExpCard key={item.id} details={item} />)}
       </Carousel>

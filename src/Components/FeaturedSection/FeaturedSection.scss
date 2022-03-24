@@ -1,6 +1,6 @@
 @import '../../App.scss';
 
-.home__mid-section {
+.mid-section {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
@@ -36,7 +36,7 @@
 }
 
 @media (min-width: 1440px) {
-    .home__mid-section {
+    .mid-section {
         gap: 1em;
     }
 

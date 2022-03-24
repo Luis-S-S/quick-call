@@ -42,14 +42,16 @@
 @media (min-width: 768px) {
     .intro-section {
         align-items: center;
-        display: grid;
+        display: inline-grid;
         grid-template-columns: repeat(2, 50%);
+        height: min-content;
         overflow: hidden;
         width: 100%;
     }
 
     .intro-section__description {
         padding-left: 2em;
+        height: min-content;
     }
 
     .intro-description__item {
