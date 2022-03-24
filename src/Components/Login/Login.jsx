@@ -14,9 +14,6 @@ function Login() {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // const datatosend = {
-    //   ...form, profile: 'imagen.png',
-    // };
   };
   return (
     <div className="login">
