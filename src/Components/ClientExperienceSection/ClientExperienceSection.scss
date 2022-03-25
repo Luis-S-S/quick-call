@@ -1,7 +1,17 @@
+@import '../../App.scss';
+
 .client-experience-section {
     display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
     margin: 1.5em;
+}
+
+.client-experience-section__title {
+    text-align: center;
+    color: $dark-grey;
+    @include link-sub-title;
 }
 
 .organize-display {
@@ -9,7 +19,7 @@
 }
 
 @media (min-width: 1440px) {
-    .organize-display {
-        display: block;
+    .client-experience-section__title {
+        @include text-big-title;
     }
 }

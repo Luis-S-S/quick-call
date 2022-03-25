@@ -11,8 +11,8 @@ function NavBar() {
         <input type="" placeholder="   ¿Qué necesitas?..." id="search" />
         <ul>
           <li><Link to="/search">Buscar</Link></li>
-          <li><Link to="/Signup">Registrarse</Link></li>
-          <li><Link to="/Login">Iniciar Sesión</Link></li>
+          <li><Link to="/signup">Registrarse</Link></li>
+          <li><Link to="/login">Iniciar Sesión</Link></li>
           <li><Link to="/editarperfil">Editar perfil</Link></li>
         </ul>
       </nav>

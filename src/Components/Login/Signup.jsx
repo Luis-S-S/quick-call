@@ -13,8 +13,8 @@ export default function Signup() {
           <img className="logo" src="images/logo/quick-call-logo.svg" alt="" />
         </Link>
         <div className="texto">
-          <span className="titulo_register"> Registrarse</span>
-          <span className="texto_register">Por favor escoge tu perfil</span>
+          <span className="titulo_register">Registrarse</span>
+          <span className="texto_register">Qué tipo de usuario quieres registrar</span>
         </div>
         <form className="formulario">
           <div className="boton11">
