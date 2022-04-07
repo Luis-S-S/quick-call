@@ -4,13 +4,14 @@ import ButtonSquare from '../ButtonSquare/ButtonSquare';
 
 function ProCard({
   details: {
-    name, myDescription, image, id,
+    name, myDescription, image, _id,
   },
 }) {
+  // console.log('image type ', typeof image.profile[0]);
   return (
     <div className="pro-card">
       <div className="pro-card__header">
-        <img className="pro-card__profile" src={image.profile[0]} alt="profile" />
+        <img className="pro-card__profile" src={(image.profile[0])} alt="profile" />
         <h1 className="pro-card__title">{name}</h1>
       </div>
       <p className="pro-card__body">{myDescription}</p>
@@ -22,7 +23,7 @@ function ProCard({
         <span className="fa fa-star-half-o" />
       </div>
       <div className="buttons">
-        <ButtonSquare link={`/ProfilePro/${id}`}>Ver Perfil</ButtonSquare>
+        <ButtonSquare link={`/ProfilePro/${_id}`}>Ver Perfil</ButtonSquare>
         <ButtonSquare>Iniciar Chat</ButtonSquare>
       </div>
     </div>
@@ -35,9 +36,9 @@ ProCard.propTypes = {
     name: PropTypes.string,
     myDescription: PropTypes.string,
     image: PropTypes.shape({
-      profile: PropTypes.shape([]),
+      profile: PropTypes.arrayOf(PropTypes.string),
     }),
-    id: PropTypes.number,
+    _id: PropTypes.string.isRequired,
   }),
 };
 
@@ -50,7 +51,6 @@ ProCard.defaultProps = {
         'url',
       ],
     },
-    id: 1,
   },
 };
 

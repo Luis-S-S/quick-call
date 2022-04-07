@@ -18,7 +18,7 @@ function Contratos() {
       </div>
       <div className="Cuerpo">
         {state.Historico && (<Historico />) }
-        {state.Proceso && (<Proceso />) }
+        {/* {state.Proceso && (<Proceso />) } */}
       </div>
     </div>
 

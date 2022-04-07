@@ -8,14 +8,22 @@ function Search() {
   const [pro, setPro] = useState([]);
 
   useEffect(() => {
-    getAllPro().then((data) => setPro(data));
+    try {
+      getAllPro().then((data) => {
+        // console.log("data:", data);
+        setPro(data);
+        console.log('pro:', pro);
+      });
+    } catch (error) {
+      console.log(error);
+    }
   }, []);
 
   return (
     <>
       <NavigationBar />
       <div className="grid">
-        {pro.map((item) => <ProCard key={item.id} details={item} />)}
+        {pro.map((item) => <ProCard key={item._id} details={item} />)}
       </div>
       <Footer />
     </>
