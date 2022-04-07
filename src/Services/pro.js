@@ -1,4 +1,4 @@
-const API_URL = 'https://quick-call-back.herokuapp.com/api'; // Actualizar a 3004 antes del pull && localmente (luis) solo sirve en 8080
+const API_URL = process.env.REACT_APP_API_BASE_URL;
 
 export async function getAllPro() {
   try {

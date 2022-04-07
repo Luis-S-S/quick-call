@@ -7,7 +7,7 @@ function EditarPerfil() {
   return (
     <div>
       <NavigationBar />
-      {/* <MenuLateral /> */}
+      <MenuLateral />
       <Filter />
       <Footer />
     </div>
