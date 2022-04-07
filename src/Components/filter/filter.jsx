@@ -18,8 +18,7 @@ export default function filter() {
 
   const handlerOnSubmit = (e) => {
     e.preventDefault()
-    console.log('handler submit', e);
-    // setSearchParams(value);
+    setSearchParams(value);
   };
 
   return (

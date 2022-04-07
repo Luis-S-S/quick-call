@@ -9,7 +9,7 @@ function ButtonSquare({ children, link, color }) {
 }
 
 ButtonSquare.propTypes = {
-  children: PropTypes.element.isRequired,
+  children: PropTypes.string.isRequired,
   link: PropTypes.string,
   color: PropTypes.string,
 };
