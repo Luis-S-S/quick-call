@@ -1,5 +1,3 @@
-/* eslint-disable no-underscore-dangle */
-
 import { useEffect, useState } from 'react';
 import ProCard from '../Components/Procard/ProCard';
 import { getAllPro } from '../Services/pro';
