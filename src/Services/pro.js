@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:3004/api'; // Actualizar a 3004 antes del pull && localmente (luis) solo sirve en 8080
+const API_URL = 'https://quick-call-back.herokuapp.com/api'; // Actualizar a 3004 antes del pull && localmente (luis) solo sirve en 8080
 
 export async function getAllPro() {
   try {
