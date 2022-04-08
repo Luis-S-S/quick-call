@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Historico from './Historico';
-import Proceso from './Proceso';
+// import Proceso from './Proceso';
 import '../VistaMenu.scss';
 
 function Contratos() {

@@ -20,6 +20,7 @@
     "rules": {
         "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
         "react/react-in-jsx-scope": "off",
+        "no-underscore-dangle": "off",
         "jsx-a11y/label-has-associated-control": ["error", {
           "required": {
             "some": ["nesting", "id"]

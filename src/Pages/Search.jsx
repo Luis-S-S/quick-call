@@ -8,15 +8,9 @@ function Search() {
   const [pro, setPro] = useState([]);
 
   useEffect(() => {
-    try {
-      getAllPro().then((data) => {
-        // console.log("data:", data);
-        setPro(data);
-        console.log('pro:', pro);
-      });
-    } catch (error) {
-      console.log(error);
-    }
+    getAllPro().then((data) => {
+      setPro(data);
+    });
   }, []);
 
   return (
