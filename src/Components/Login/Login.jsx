@@ -19,7 +19,9 @@ function Login() {
     <div className="login">
       <div className="container">
         {/* Quitamos el Link que va a home="/" */}
-        <img className="logo" src="images/logo/quick-call-logo.svg" alt="" />
+        <Link className="link__logo" to="/">
+          <img className="logo" src="images/logo/quick-call-logo.svg" alt="" />
+        </Link>
 
         <div className="texto">
           <span className="titulo_register"> Hola de nuevo! </span>

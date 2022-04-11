@@ -6,7 +6,9 @@ export default function Signup() {
   return (
     <div className="login">
       <div className="container">
-        <img className="logo" src="images/logo/quick-call-logo.svg" alt="" />
+        <Link className="link__logo" to="/">
+          <img className="logo" src="images/logo/quick-call-logo.svg" alt="" />
+        </Link>
         <div className="texto">
           <span className="titulo_register">Registrarse</span>
           <span className="texto_register">Qué tipo de usuario quieres registrar</span>
