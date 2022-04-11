@@ -26,7 +26,7 @@ export default function Signup() {
           </div>
           <div className="footer2">
             <span className="footer11">
-              ¿Ya tienes una cuenta?.
+              ¿Ya tienes una cuenta?
               <Link to="/login">Ingresa aqui</Link>
             </span>
           </div>
