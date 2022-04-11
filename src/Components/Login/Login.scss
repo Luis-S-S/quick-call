@@ -2,131 +2,120 @@
 
 .login {
   width: 100vw;
-  height: 100vh;
-  display: grid;
-  grid-template-columns: 1fr 2fr;
+  display: flex;
+  justify-content: center;
+  background-color: lightblue;
 
-  .imagen {
-    display: none;
+  img{
+    display:block;
   }
-  .logo{
-    width: 70%;
+
+
+  .container{
     display:flex;
-    padding-left: 30%;
-
-  }
-  .texto {
-    display: flex;
     flex-direction: column;
-    align-items: center;
-    margin-bottom: 1.75em;
-    .titulo_register {@include text-big-title;}
-    .texto_register {@include text-body}
-  }
+    flex-wrap: wrap;
+    border-radius: 20px;
+    background-color: white;
+    margin: 0px;
+    padding: 30px;
 
-  .formulario {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-left: 5vw;
-    padding-right: 5vw;
 
-    input {
+    .logo{
+      width: 80%;
       display:block;
-      @include text-body;
-      width: auto;
-      height: 44px;
+      margin:auto;
+
+    }
+    .texto {
       display: flex;
-      border: 1px solid $blue;
-      border-radius: 10px;
-      margin-bottom: 30px;
-      padding: 0.25em 0.5em;
-    }
-  }
-
-
-  .redes_sociales{
-    display: flex;
-    margin-top: 10px;
-    margin-left: 80px;
-    margin-right: 80px;
-    justify-content: space-evenly;
-
-    img{
-      height: 50px;
-      width: 50px;
-      margin: 20px;
-    }
-  }
-
-  .footer1 {
-    display:grid;
-    grid-template-columns:2fr 1fr;
-    align-items: flex-end;
-    justify-items: end;
-    span{
-      align-self: center;
-    }
-
-    .footer11{
-      height:70px;
-      margin-top: 40px;
-      display: flex;
-      justify-content: center;
+      flex-direction: column;
+      flex-wrap: wrap;
       align-items: center;
-      @include text-body
-
+      margin-bottom: 1.75em;
+      .titulo_register {@include text-big-title;}
+      .texto_register {@include text-body}
     }
-  }
 
-  .boton {
-    height:45px;
-    width: 120px;
-    background: $blue;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    align-self: center;
-    border-radius: 10px;
-    @include text-body;
-    color: $white;
-  }
+    .formulario {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-left: 5vw;
+      padding-right: 5vw;
 
-
-  .boton11{
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    gap: 1.25em;
-    width: 60%;
-
-  .boton1 {
-    height:45px;
-    width: 300px;
-    background: $blue;
-    margin-bottom: 40px;
-    border-radius: 10px;
-    @include text-body;
-    color: $white;
-  }
-}
-
-
-
-  @media (min-width: 720px) {
-    width: 100vw;
-    height: 100vh;
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    align-items: center;
-
-    .Registro_imagen{
-      display:none;
+      input {
+        display:block;
+        @include text-body;
+        width: 60%;
+        height: 44px;
+        display: flex;
+        border: 1px solid $blue;
+        border-radius: 10px;
+        margin-bottom: 30px;
+        padding: 0.25em 0.5em;
+      }
     }
-    .imagen {
-      display:flex;
-      width: 100%;
-      background-size:contain;
+
+
+    .redes_sociales{
+      display: flex;
+      margin-top: 10px;
+      margin-left: 80px;
+      margin-right: 80px;
+      justify-content: space-evenly;
+
+      img{
+        height: 50px;
+        width: 50px;
+        margin: 20px;
+      }
+    }
+
+    .boton11{
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      gap: 1.25em;
+      width: 60%;
+    }
+
+
+    .footer2{
+      display: flex;
+      align-items: center;
+      @include text-body;
+      margin-top:20px;
+    }
+    .footer1 {
+          display: flex;
+          flex-direction: column;
+      span{
+        align-self: center;
+        padding-right: 1vw;
+      }
+
+      .footer11{
+        height:70px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        @include text-body
+
+      }
+    }
+
+
+    @media (min-width: 720px) {
+      margin: 40px;
+      .footer1{
+        display:grid;
+      grid-template-columns:2fr 1fr;
+      align-items: flex-end;
+      justify-items: end;
+
+      }
     }
   }
 }

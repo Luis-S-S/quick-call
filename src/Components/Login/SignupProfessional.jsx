@@ -25,13 +25,8 @@ export default function SignupProfessional() {
 
   return (
     <div className="login">
-      <div>
-        <img className="imagen" src="images/img/planta.png" alt="" />
-      </div>
-      <div className="principal">
-        <Link to="/">
-          <img className="logo" src="images/logo/quick-call-logo.svg" alt="" />
-        </Link>
+      <div className="container">
+        <img className="logo" src="images/logo/quick-call-logo.svg" alt="" />
         <div className="texto">
           <span className="titulo_register">Registrarse</span>
           <span className="texto_register">Crea tu cuenta de profesional</span>
