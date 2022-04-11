@@ -13,10 +13,15 @@ const breakPoints = [
 function ClientExperienceSection() {
   const [experiences, setExperiences] = useState([]);
 
+  const getFourRandom = (array) => {
+    const randomArray = array.sort(() => 0.5 - Math.random()).slice(0, 4);
+    return randomArray;
+  };
+
   useEffect(() => {
     getAllClientExperience()
-      .then((response) => {
-        setExperiences(response);
+      .then((data) => {
+        setExperiences(getFourRandom(data));
       });
   }, []);
 
