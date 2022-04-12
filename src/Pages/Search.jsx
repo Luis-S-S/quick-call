@@ -1,17 +1,17 @@
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import ProCard from '../Components/Procard/ProCard';
-import { getAllPro } from '../Services/pro';
-import NavigationBar from '../Components/Navbar/NavigationBar';
-import Footer from '../Components/Footer/Footer';
-import Filter from '../Components/filter/filter';
+import ProCard from '../components/Procard/ProCard';
+import { getAllProfessional } from '../services/professional';
+import NavigationBar from '../components/Navbar/NavigationBar';
+import Footer from '../components/Footer/Footer';
+import Filter from '../components/filter/filter';
 
 function Search() {
   const [pro, setPro] = useState([]);
   const [searchParams] = useSearchParams();
 
   useEffect(() => {
-    getAllPro(window.location.search).then((data) => {
+    getAllProfessional(window.location.search).then((data) => {
       setPro(data);
     });
   }, [searchParams]);

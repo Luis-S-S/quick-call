@@ -1,8 +1,8 @@
-import NavigationBar from '../Components/Navbar/NavigationBar';
-import Footer from '../Components/Footer/Footer';
-import IntroSection from '../Components/IntroSection/IntroSection';
-import FeaturedSection from '../Components/FeaturedSection/FeaturedSection';
-import ClientExperienceSection from '../Components/ClientExperienceSection/ClientExperienceSection';
+import NavigationBar from '../components/Navbar/NavigationBar';
+import Footer from '../components/Footer/Footer';
+import IntroSection from '../components/IntroSection/IntroSection';
+import FeaturedSection from '../components/FeaturedSection/FeaturedSection';
+import ClientExperienceSection from '../components/ClientExperienceSection/ClientExperienceSection';
 
 function Home() {
   return (

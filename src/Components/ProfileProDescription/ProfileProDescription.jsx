@@ -2,14 +2,14 @@ import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import './ProfileProDescription.scss';
 import ButtonSquare from '../ButtonSquare/ButtonSquare';
-import { getSinglePro } from '../../Services/pro';
+import { getSingleProfessional } from '../../services/professional';
 
 function ProfileProDescription() {
   const { id } = useParams();
   const [pro, setPro] = useState([]);
 
   useEffect(() => {
-    getSinglePro(id).then((data) => setPro(data));
+    getSingleProfessional(id).then((data) => setPro(data));
   }, []);
   return (
     <div className="profileDescription">

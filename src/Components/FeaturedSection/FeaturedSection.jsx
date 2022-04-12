@@ -3,9 +3,9 @@ import './FeaturedSection.scss';
 import Carousel from 'react-elastic-carousel';
 import ButtonSquare from '../ButtonSquare/ButtonSquare';
 import ProCard from '../Procard/ProCard';
-import { allCategories } from '../../Services/categories';
-import { getAllPro } from '../../Services/pro';
-import { getFourRandom } from '../../Services/general';
+import { allCategories } from '../../services/categories';
+import { getAllProfessional } from '../../services/professional';
+import { getFourRandom } from '../../services/general';
 
 function FeaturedSection() {
   const [categories, setCategories] = useState([]);
@@ -20,7 +20,7 @@ function FeaturedSection() {
     allCategories()
       .then((data) => { setCategories(getFourRandom(filterSpecialty(data))); })
       .catch((error) => { throw error; });
-    getAllPro()
+    getAllProfessional()
       .then((data) => { setPro(getFourRandom(data)); })
       .catch((error) => { throw error; });
   }, []);

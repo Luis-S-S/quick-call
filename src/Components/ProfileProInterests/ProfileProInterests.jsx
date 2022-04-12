@@ -1,15 +1,15 @@
 import { useState, useEffect } from 'react';
 import Carousel from 'react-elastic-carousel';
-import { getAllPro } from '../../Services/pro';
+import { getAllProfessional } from '../../services/professional';
 import './ProfileProInterests.scss';
 import ProCard from '../Procard/ProCard';
-import { getFourRandom } from '../../Services/general';
+import { getFourRandom } from '../../services/general';
 
 function ProfileProInterest() {
   const [pro, setPro] = useState([]);
 
   useEffect(() => {
-    getAllPro()
+    getAllProfessional()
       .then((data) => { setPro(getFourRandom(data)); })
       .catch((error) => { throw error; });
   }, []);

@@ -1,7 +1,7 @@
 import './Login.scss';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { createUsuarios } from '../../Services/user';
+import { createClient } from '../../services/clients';
 import ButtonRound from '../ButtonRound/ButtonRound';
 
 export default function SignupProfessional() {
@@ -18,7 +18,7 @@ export default function SignupProfessional() {
     // const datatosend = {
     //   ...form, profile: 'imagen.png',
     // };
-    await createUsuarios(form);
+    await createClient(form);
     setForm({});
     document.querySelector('form').reset();
   };
@@ -33,12 +33,12 @@ export default function SignupProfessional() {
           <span className="titulo_register">Registrarse</span>
           <span className="texto_register">Crea tu cuenta de profesional</span>
         </div>
-        <div className="redes_sociales">
+        {/* <div className="redes_sociales">
           <img src="images/icons/whatsapp-logo.svg" alt="whatsapp" />
           <img src="images/icons/facebook-icon.svg" alt="facebook" />
           <img src="images/icons/twitter-icon.svg" alt="twitter" />
           <img src="images/icons/linkedin-logo.svg" alt="linkedin" />
-        </div>
+        </div> */}
         <form className="formulario" onSubmit={handleSubmit}>
           <input name="name" placeholder="Ingresa tu nombre" type="text" onChange={handleChange} />
           <input name="email" placeholder="Michelle@ejemplo.com" type="email" onChange={handleChange} />

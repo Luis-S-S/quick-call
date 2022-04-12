@@ -1,6 +1,6 @@
 const API_URL = process.env.REACT_APP_API_BASE_URL;
 
-export async function getAllUsers() {
+export async function getAllClients() {
   try {
     const response = await fetch(`${API_URL}/clients`);
     const data = await response.json();
@@ -10,7 +10,7 @@ export async function getAllUsers() {
   }
 }
 
-export async function getSingleUsers(id) {
+export async function getSingleClient(id) {
   try {
     const response = await fetch(`${API_URL}/clients/${id}`);
     const data = await response.json();
@@ -20,7 +20,7 @@ export async function getSingleUsers(id) {
   }
 }
 
-export async function createUsuarios(user) {
+export async function createClient(user) {
   const payload = {
     method: 'POST',
     headers: {
@@ -38,10 +38,10 @@ export async function createUsuarios(user) {
   }
 }
 
-export async function updateUsers(id, usuario) {
+export async function updateClient(id, usuario) {
   return { id, ...usuario };
 }
 
-export async function deleteUsers(id) {
+export async function deleteClient(id) {
   return id;
 }

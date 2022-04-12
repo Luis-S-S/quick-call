@@ -1,12 +1,12 @@
-import MenuLateral from '../Components/Menulateral/Menulateral';
-import NavigationBar from '../Components/Navbar/NavigationBar';
-import Footer from '../Components/Footer/Footer';
+// import MenuLateral from '../components/Menulateral/Menulateral';
+import NavigationBar from '../components/Navbar/NavigationBar';
+import Footer from '../components/Footer/Footer';
 
 function EditarPerfil() {
   return (
     <div>
       <NavigationBar />
-      <MenuLateral />
+      {/* <MenuLateral /> */}
       <Footer />
     </div>
 

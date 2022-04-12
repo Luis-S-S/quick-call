@@ -1,6 +1,6 @@
 const API_URL = process.env.REACT_APP_API_BASE_URL;
 
-export async function getAllPro(query) {
+export async function getAllProfessional(query) {
   const searchUrl = !query ? `${API_URL}/professionals` : `${API_URL}/professionals${query}`;
   try {
     const response = await fetch(searchUrl);
@@ -11,7 +11,7 @@ export async function getAllPro(query) {
   }
 }
 
-export async function getSinglePro(id) {
+export async function getSingleProfessional(id) {
   try {
     const response = await fetch(`${API_URL}/professional/${id}`);
     const data = await response.json();
@@ -21,6 +21,18 @@ export async function getSinglePro(id) {
   }
 }
 
-export function somethingElse() {
-  return true;
+export function createProfessional(form) {
+  try {
+    const payload = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(form),
+    };
+    const response = fetch(`${API_URL}/professionals`, payload);
+    return response;
+  } catch {
+    throw new Error('Error creating professional');
+  }
 }

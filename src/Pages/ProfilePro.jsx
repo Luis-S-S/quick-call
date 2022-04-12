@@ -1,7 +1,7 @@
-import NavigationBar from '../Components/Navbar/NavigationBar';
-import ProfileProDescription from '../Components/ProfileProDescription/ProfileProDescription';
-import ProfileProInterest from '../Components/ProfileProInterests/ProfileProInterests';
-import Footer from '../Components/Footer/Footer';
+import NavigationBar from '../components/Navbar/NavigationBar';
+import ProfileProDescription from '../components/ProfileProDescription/ProfileProDescription';
+import ProfileProInterest from '../components/ProfileProInterests/ProfileProInterests';
+import Footer from '../components/Footer/Footer';
 
 function ProfilePro() {
   return (

@@ -1,7 +1,7 @@
 import './Login.scss';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { createUsuarios } from '../../Services/user';
+import { createClient } from '../../services/clients';
 import ButtonRound from '../ButtonRound/ButtonRound';
 
 export default function SignupClient() {
@@ -18,7 +18,7 @@ export default function SignupClient() {
     // const datatosend = {
     //   ...form, profile: 'imagen.png',
     // };
-    await createUsuarios(form);
+    await createClient(form);
     setForm({});
     document.querySelector('form').reset();
   };
