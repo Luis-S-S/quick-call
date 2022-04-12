@@ -7,6 +7,7 @@ export default function filter() {
   const incomingSearchObject = urlQueryParamToObject(window.location.href);
   const [category, setCategory] = useState();
   const [, setSearchParams] = useSearchParams();
+
   const [searchObject, setSearchObject] = useState(incomingSearchObject);
 
   useEffect(async () => {
