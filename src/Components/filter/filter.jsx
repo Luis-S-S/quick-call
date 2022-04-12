@@ -52,7 +52,7 @@ export default function filter() {
           )}
         </select>
         <h4>Especialidad</h4>
-        <select name="specialty" id="specialty" onClick={handlerOnChange}>
+        <select name="specialty.certified" id="specialty.certified" onClick={handlerOnChange}>
           <option value="" key=""> </option>
           {category?.filter((result) => result.filter === 'specialty').map(
             (todo) => (
