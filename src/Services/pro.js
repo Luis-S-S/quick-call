@@ -1,8 +1,9 @@
 const API_URL = process.env.REACT_APP_API_BASE_URL;
 
-export async function getAllPro() {
+export async function getAllPro(query) {
+  const searchUrl = !query ? `${API_URL}/professionals` : `${API_URL}/professionals${query}`;
   try {
-    const response = await fetch(`${API_URL}/professionals`);
+    const response = await fetch(searchUrl);
     const data = await response.json();
     return data;
   } catch (error) {

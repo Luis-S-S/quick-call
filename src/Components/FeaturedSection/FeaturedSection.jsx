@@ -5,6 +5,7 @@ import ButtonSquare from '../ButtonSquare/ButtonSquare';
 import ProCard from '../Procard/ProCard';
 import { allCategories } from '../../Services/categories';
 import { getAllPro } from '../../Services/pro';
+import { getFourRandom } from '../../Services/general';
 
 function FeaturedSection() {
   const [categories, setCategories] = useState([]);
@@ -13,11 +14,6 @@ function FeaturedSection() {
   const filterSpecialty = (category) => {
     const specialtyArray = category.filter((item) => item.filter === 'specialty');
     return specialtyArray;
-  };
-
-  const getFourRandom = (array) => {
-    const randomArray = array.sort(() => 0.5 - Math.random()).slice(0, 4);
-    return randomArray;
   };
 
   useEffect(() => {
@@ -40,7 +36,7 @@ function FeaturedSection() {
       <div className="mid-section__right">
         <h2 className="mid-section__title">Categorías más buscadas</h2>
         {categories.map((category, idx) => (
-          <ButtonSquare key={category._id} color="white" link="/">
+          <ButtonSquare key={category._id} color="white" link={`/search?specialty.certified=${category.value}`}>
             <img
               className="mid-section__icon"
               src={idx % 2 === 0 ? 'images/icons/brush-icon-white.svg' : 'images/icons/tools-icon-white.svg'}

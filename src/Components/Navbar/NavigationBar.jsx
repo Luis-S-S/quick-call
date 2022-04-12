@@ -7,7 +7,7 @@ function NavBar() {
       <nav>
         <input type="checkbox" id="check" />
         <label htmlFor="check" className="checkbtn">&#9776;</label>
-        <Link to="/"><img className="logo" src="./images/logo/quick-call-logo--colored.svg" alt="logo" /></Link>
+        <Link to="/"><img className="logo" src="/images/logo/quick-call-logo--colored.svg" alt="logo" /></Link>
         <input type="" placeholder="   ¿Qué necesitas?..." id="search" />
         <ul>
           <li><Link to="/search">Buscar</Link></li>
