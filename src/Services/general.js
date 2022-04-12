@@ -6,15 +6,7 @@ function urlQueryParamToObject(URL) {
     const queryParams = queryString.split('&');
 
     for (let i = 0; i < queryParams.length; i += 1) {
-      let [key, value] = queryParams[i].split('=');
-
-      if (key.includes('+')) {
-        key = key.replace(/\+/g, ' ');
-      }
-
-      if (value.includes('+')) {
-        value = value.replace(/\+/g, ' ');
-      }
+      const [key, value] = queryParams[i].split('=');
 
       queryObject[key] = value;
     }
