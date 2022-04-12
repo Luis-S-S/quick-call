@@ -1,7 +1,7 @@
 import { React, useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { allCategories } from '../../Services/categories';
-import urlQueryParamToObject from '../../Services/general';
+import { urlQueryParamToObject } from '../../Services/general';
 
 export default function filter() {
   const incomingSearchObject = urlQueryParamToObject(window.location.href);

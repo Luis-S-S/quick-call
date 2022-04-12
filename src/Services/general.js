@@ -15,4 +15,12 @@ function urlQueryParamToObject(URL) {
   return queryObject;
 }
 
-export default urlQueryParamToObject;
+function getFourRandom(array) {
+  const randomArray = array.sort(() => 0.5 - Math.random()).slice(0, 4);
+  return randomArray;
+}
+
+export {
+  urlQueryParamToObject,
+  getFourRandom,
+};

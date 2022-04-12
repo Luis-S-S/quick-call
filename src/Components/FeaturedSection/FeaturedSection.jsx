@@ -5,6 +5,7 @@ import ButtonSquare from '../ButtonSquare/ButtonSquare';
 import ProCard from '../Procard/ProCard';
 import { allCategories } from '../../Services/categories';
 import { getAllPro } from '../../Services/pro';
+import { getFourRandom } from '../../Services/general';
 
 function FeaturedSection() {
   const [categories, setCategories] = useState([]);
@@ -13,11 +14,6 @@ function FeaturedSection() {
   const filterSpecialty = (category) => {
     const specialtyArray = category.filter((item) => item.filter === 'specialty');
     return specialtyArray;
-  };
-
-  const getFourRandom = (array) => {
-    const randomArray = array.sort(() => 0.5 - Math.random()).slice(0, 4);
-    return randomArray;
   };
 
   useEffect(() => {
