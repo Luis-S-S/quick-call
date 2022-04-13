@@ -2,14 +2,14 @@ import './App.scss';
 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-import Home from './Pages/Home';
-import Login from './Components/Login/Login';
-import Signup from './Components/Login/Signup';
-import SignupProfessional from './Components/Login/SignupProfessional';
-import SignupClient from './Components/Login/SignupClient';
-import Search from './Pages/Search';
-import ProfilePro from './Pages/ProfilePro';
-import EditarPerfil from './Pages/EditarPerfil';
+import Home from './pages/Home';
+import Login from './components/Login/Login';
+import Signup from './components/Login/Signup';
+import SignupProfessional from './components/Login/SignupProfessional';
+import SignupClient from './components/Login/SignupClient';
+import Search from './pages/Search';
+import ProfilePro from './pages/ProfilePro';
+import EditarPerfil from './pages/EditarPerfil';
 
 function App() {
   return (
