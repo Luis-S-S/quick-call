@@ -7,11 +7,10 @@ function ProCard({
     name, myDescription, image, _id,
   },
 }) {
-  // console.log('image type ', typeof image.profile[0]);
   return (
     <div className="pro-card">
       <div className="pro-card__header">
-        <img className="pro-card__profile" src={(image.profile[0])} alt="profile" />
+        <img className="pro-card__profile" src={(image?.profile[0])} alt="profile" />
         <h1 className="pro-card__title">{name}</h1>
       </div>
       <p className="pro-card__body">{myDescription}</p>
