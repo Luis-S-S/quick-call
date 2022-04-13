@@ -4,7 +4,7 @@ import ProCard from '../components/Procard/ProCard';
 import { getAllProfessional } from '../services/professional';
 import NavigationBar from '../components/Navbar/NavigationBar';
 import Footer from '../components/Footer/Footer';
-import Filter from '../components/filter/filter';
+import Filter from '../components/Filter/Filter';
 
 function Search() {
   const [pro, setPro] = useState([]);
