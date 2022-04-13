@@ -44,7 +44,7 @@
       padding-left: 5vw;
       padding-right: 5vw;
 
-      input {
+      input, textarea {
         display:block;
         @include text-body;
         width: 60%;
