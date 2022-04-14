@@ -6,11 +6,10 @@
 /* eslint-disable max-len */
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-// import { createProfessional } from '../../services/professional';
+import { createProfessional } from '../../services/professional';
 import { allCategories } from '../../services/categories';
 // import { removeElementFromArray, addElementInArray } from '../../services/general';
 import './SignupProfessional.scss';
-import ButtonRound from '../ButtonRound/ButtonRound';
 import Page1 from './Page1';
 import Page2 from './Page2';
 import Page3 from './Page3';
@@ -65,6 +64,12 @@ export default function SignupProfessional() {
     }
   };
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    await createProfessional({ ...form, specialty });
+    document.querySelector('form').reset();
+  };
+
   useEffect(async () => {
     const response = await allCategories();
     setCategories(response);
@@ -103,11 +108,6 @@ export default function SignupProfessional() {
           <span className="titulo_register">{FormTitles[page]}</span>
           <span className="texto_register">Crea tu cuenta de profesional</span>
         </div>
-        <div className="progressbar">
-          <div
-            style={{ width: page === 0 ? '33.3%' : page === 1 ? '66.6%' : '100%' }}
-          />
-        </div>
         {PageDisplay()}
         <div className="footersignup">
           {(page === 0) && (
@@ -126,8 +126,7 @@ export default function SignupProfessional() {
             type="submit"
             onClick={() => {
               if (page === FormTitles.length - 1) {
-                alert('FORM SUBMITTED');
-                console.log(formData);
+                handleSubmit(form);
               } else {
                 setPage((currPage) => currPage + 1);
               }
