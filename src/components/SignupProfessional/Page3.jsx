@@ -3,7 +3,7 @@
 import React from 'react';
 
 export default function Page3({
-  handlerAgregate, handlerEliminate, handlerOnChange, categories, specialty,
+  handlerNewSpecialty, handlerChoice, handlerEliminate, categories, specialty,
 }) {
   console.log('specialty: ', specialty);
   return (
@@ -13,12 +13,12 @@ export default function Page3({
         {specialty.map((todo) => (
           <div className="specialty">
             <label htmlFor={todo}>{todo}</label>
-            <button className="button-eliminate" type="submit" value={todo} onClick={handlerEliminate}>X</button>
+            <button className="button-eliminate" type="submit" value={todo} onClick={handlerEliminate}>x</button>
             <button className="button-agregate" type="submit" value={todo} onClick={handlerEliminate}>subir</button>
           </div>
         ))}
         <div className="specialty">
-          <select name="specialty" id="specialty" onClick={handlerOnChange}>
+          <select name="specialty" id="specialty" onClick={handlerChoice}>
             <option value="" key=""> </option>
             {categories?.filter((result) => result.filter === 'specialty').map(
               (todo) => (
@@ -31,7 +31,7 @@ export default function Page3({
               ),
             )}
           </select>
-          <button className="button-agregate" type="submit" onClick={handlerAgregate}> Agregar nueva</button>
+          <button className="button-agregate" type="submit" onClick={handlerNewSpecialty}> Agregar nueva</button>
 
         </div>
         {/* <label htmlFor="certified" hidden>Certificado</label>

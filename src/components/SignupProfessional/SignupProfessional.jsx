@@ -20,6 +20,7 @@ export default function SignupProfessional() {
   const [page, setPage] = useState(0);
   const [categories, setCategories] = useState();
   const [specialty, setSpecialty] = useState(['jardinero', 'plomero']);
+  const [choice, setChoice] = useState();
   const [form, setForm] = useState({
     name: '',
     email: '',
@@ -34,17 +35,24 @@ export default function SignupProfessional() {
     'availability.endTime': '',
   });
 
-  const handlerAgregate = (e) => {
-    const { value } = e.target.value;
-    if (specialty.filter((element) => (element === value)).length < 1) {
-      console.log("specialtyvalue", value);
-      setSpecialty([...specialty, value]);
+  const handlerNewSpecialty = (e) => {
+    if (choice) {
+      if (specialty.filter((element) => (element === choice)).length < 1) {
+        console.log('specialtyvalue', choice);
+        setSpecialty([...specialty, choice]);
+        setChoice();
+      }
     }
+  };
+
+  const handlerChoice = (e) => {
+    setChoice(e.target.value);
   };
 
   const handlerEliminate = (e) => {
     const { value } = e.target;
-    const special = specialty.filter((specialy) => !(specialy.id === value));
+    console.log(value);
+    const special = specialty.filter((specialy) => !(specialy === value));
     setSpecialty(special);
   };
 
@@ -71,7 +79,16 @@ export default function SignupProfessional() {
     } if (page === 1) {
       return <Page2 form={form} handlerOnChange={handlerOnChange} categories={categories} />;
     } if (page === 2) {
-      return <Page3 form={form} handlerAgregate={handlerAgregate} handlerEliminate={handlerEliminate} categories={categories} specialty={specialty} />;
+      return (
+        <Page3
+          form={form}
+          handlerNewSpecialty={handlerNewSpecialty}
+          handlerChoice={handlerChoice}
+          handlerEliminate={handlerEliminate}
+          categories={categories}
+          specialty={specialty}
+        />
+      );
     }
     return <Page4 form={form} handlerOnChange={handlerOnChange} categories={categories} />;
   }
