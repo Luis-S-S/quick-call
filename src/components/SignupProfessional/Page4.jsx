@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 
-// export default function Page4({ form, handlerOnChange, categories }) {
 export default function Page4({ handlerOnChange, categories }) {
   return (
     <div className="formulario">

@@ -1,14 +1,7 @@
-/* eslint-disable no-console */
-/* eslint-disable no-alert */
-/* eslint-disable no-nested-ternary */
-/* eslint-disable react/no-unstable-nested-components */
-/* eslint-disable react/button-has-type */
-/* eslint-disable max-len */
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { createProfessional } from '../../services/professional';
 import { allCategories } from '../../services/categories';
-// import { removeElementFromArray, addElementInArray } from '../../services/general';
 import './SignupProfessional.scss';
 import Page1 from './Page1';
 import Page2 from './Page2';
@@ -18,26 +11,13 @@ import Page4 from './Page4';
 export default function SignupProfessional() {
   const [page, setPage] = useState(0);
   const [categories, setCategories] = useState();
-  const [specialty, setSpecialty] = useState(['jardinero', 'plomero']);
+  const [specialty, setSpecialty] = useState([]);
   const [choice, setChoice] = useState();
-  const [form, setForm] = useState({
-    name: '',
-    email: '',
-    password: '',
-    confirmPassword: '',
-    phoneNumber: '',
-    city: '',
-    myDescription: '',
-    'socialSecurity.eps': '',
-    'socialSecurity.arl': '',
-    'availability.startTime': '',
-    'availability.endTime': '',
-  });
+  const [form, setForm] = useState({});
 
   const handlerNewSpecialty = () => {
     if (choice) {
       if (specialty.filter((element) => (element === choice)).length < 1) {
-        console.log('specialtyvalue', choice);
         setSpecialty([...specialty, choice]);
         setChoice();
       }
@@ -50,7 +30,6 @@ export default function SignupProfessional() {
 
   const handlerEliminate = (e) => {
     const { value } = e.target;
-    console.log(value);
     const special = specialty.filter((specialy) => !(specialy === value));
     setSpecialty(special);
   };
@@ -65,23 +44,8 @@ export default function SignupProfessional() {
   };
 
   const handleOnClickSubmit = async () => {
-    console.log('executing handle Submit');
-    console.log({ ...form, specialty });
-    await createProfessional({ ...form, 'specialty.nonCertified': specialty });
-    setForm({
-      name: '',
-      email: '',
-      password: '',
-      confirmPassword: '',
-      phoneNumber: '',
-      city: '',
-      myDescription: '',
-      'socialSecurity.eps': '',
-      'socialSecurity.arl': '',
-      'availability.startTime': '',
-      'availability.endTime': '',
-    });
-    document.querySelector('form').reset();
+    await createProfessional({ ...form, 'specialty.certified': specialty });
+    setForm({});
   };
 
   useEffect(async () => {
@@ -91,26 +55,6 @@ export default function SignupProfessional() {
 
   const FormTitles = ['Registrarse', 'Informacion de contacto',
     'Mis especialidades', 'Seguridad social y horario'];
-
-  function PageDisplay() {
-    if (page === 0) {
-      return <Page1 form={form} handlerOnChange={handlerOnChange} />;
-    } if (page === 1) {
-      return <Page2 form={form} handlerOnChange={handlerOnChange} categories={categories} />;
-    } if (page === 2) {
-      return (
-        <Page3
-          form={form}
-          handlerNewSpecialty={handlerNewSpecialty}
-          handlerChoice={handlerChoice}
-          handlerEliminate={handlerEliminate}
-          categories={categories}
-          specialty={specialty}
-        />
-      );
-    }
-    return <Page4 form={form} handlerOnChange={handlerOnChange} categories={categories} />;
-  }
 
   return (
     <div className="signupprofessional">
@@ -122,7 +66,24 @@ export default function SignupProfessional() {
           <span className="titulo_register">{FormTitles[page]}</span>
           <span className="texto_register">Crea tu cuenta de profesional</span>
         </div>
-        {PageDisplay()}
+        {(page === 0) && (
+          <Page1 form={form} handlerOnChange={handlerOnChange} />
+        )}
+        {(page === 1) && (
+          <Page2 form={form} handlerOnChange={handlerOnChange} categories={categories} />
+        )}
+        {(page === 2) && (
+          <Page3
+            handlerNewSpecialty={handlerNewSpecialty}
+            handlerChoice={handlerChoice}
+            handlerEliminate={handlerEliminate}
+            categories={categories}
+            specialty={specialty}
+          />
+        )}
+        {(page === 3) && (
+          <Page4 form={form} handlerOnChange={handlerOnChange} categories={categories} />
+        )}
         <div className="footersignup">
           {(page === 0) && (
           <span className="footer11">
@@ -131,7 +92,7 @@ export default function SignupProfessional() {
           </span>
           )}
           {!(page === 0) && (
-            <button className="button-round" onClick={() => { setPage((currPage) => currPage - 1); }}>
+            <button className="button-round" type="button" onClick={() => { setPage((currPage) => currPage - 1); }}>
               atras
             </button>
           )}
