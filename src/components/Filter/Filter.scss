@@ -1,0 +1,48 @@
+@import '../../App.scss';
+
+.filter__container {
+    border-right: 1px solid $dark-grey;
+    padding: 0 .75em;
+}
+
+.filter__input {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    margin-bottom: 0.75em;
+}
+
+.filter__label {
+    @include link-inline-title;
+}
+
+.filter__select {
+    padding: .25em;
+    @include text-body;
+    width: 250px;
+    border-radius: 5px;
+    border: 1px solid $blue;
+}
+
+.filter__select:focus {
+    box-shadow: 0 0 10px $light-blue;
+}
+
+.filter__option {
+    @include text-body;
+}
+
+.filter__button {
+    @include link-body;
+    padding: .25em .5em;
+    border-radius: 5px;
+    background-color: $blue;
+    color: white;
+    border: 2px solid $blue;
+    margin-bottom: 0.75em;
+}
+
+.filter__button:hover {
+    background-color: white;
+    color: $blue;
+}
