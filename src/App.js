@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import Login from './components/Login/Login';
 import Signup from './components/Login/Signup';
-import SignupProfessional from './components/Login/SignupProfessional';
+import SignupProfessional from './components/SignupProfessional/SignupProfessional';
 import SignupClient from './components/Login/SignupClient';
 import Search from './pages/Search';
 import ProfilePro from './pages/ProfilePro';

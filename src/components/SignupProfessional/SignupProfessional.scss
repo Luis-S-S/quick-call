@@ -1,0 +1,181 @@
+@import '../../App.scss';
+
+.signupprofessional {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  background-color: lightblue;
+
+  .container{
+    max-width: 750px;
+    display:flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    border-radius: 20px;
+    background-color: white;
+    margin: 0px;
+    padding: 30px;
+
+    .link__logo {
+      min-height: 200px;
+      text-align: center;
+      display: block;
+    }
+
+    .logo{
+      width: 60%;
+      margin:auto;
+      box-sizing: border-box;
+    }
+
+    .texto {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      align-items: center;
+      margin-bottom: 1.75em;
+      .titulo_register {@include text-big-title;}
+      .texto_register {@include text-body}
+    }
+
+    .formulario {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-left: 5vw;
+      padding-right: 5vw;
+
+      legend, label{
+        @include text-body;
+        text-align: center;
+      }
+
+      input, textarea, select {
+        min-width: 312px;
+        margin-left: 80px;
+        margin-right: 80px;
+        display:block;
+        @include text-body;
+        width: 60%;
+        height: 44px;
+        display: flex;
+        border: 1px solid $blue;
+        border-radius: 10px;
+        margin-bottom: 30px;
+        padding: 0.25em 0.5em;
+      }
+    }
+
+
+    .redes_sociales{
+      display: flex;
+      margin-top: 10px;
+      margin-left: 80px;
+      margin-right: 80px;
+      justify-content: space-evenly;
+
+      img{
+        height: 50px;
+        width: 50px;
+        margin: 20px;
+      }
+    }
+
+
+    .footersignup {
+          display: flex;
+          flex-direction: column;
+      span{
+        align-self: center;
+        padding-right: 1vw;
+      }
+
+      .footer11{
+        height:70px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        @include text-body
+
+      }
+    }
+
+  .button-round {
+      max-width: 120px;
+      max-height: 60px;
+      @include link-body;
+      background-color: $blue;
+      border-radius: 0.5em;
+      border: 3px solid $blue;
+      color: white;
+      display: inline-block;
+      padding: 0.25em .75em;
+      text-decoration: none;
+  }
+
+  .button-round:hover {
+      background-color: white;
+      color: $blue;
+  }
+
+  .button-eliminate {
+    max-width: 120px;
+    max-height: 60px;
+    @include link-body;
+    background-color: white;
+    border-radius: 0.5em;
+    border: 3px solid rgb(235, 72, 72);
+    color: rgb(235, 72, 72);
+    display: inline-block;
+    padding: 0.25em .75em;
+    text-decoration: none;
+}
+
+.button-agregate {
+  max-width: 120px;
+  max-height: 60px;
+  @include link-body;
+  background-color: white;
+  border-radius: 0.5em;
+  border: 3px solid rgb(54, 88, 243);
+  color: rgb(54, 88, 243);
+  display: inline-block;
+  padding: 0.25em .75em;
+  text-decoration: none;
+}
+
+.button-eliminate:hover {
+    background-color: rgb(235, 72, 72);
+    color: white;
+}
+
+.button-agregate:hover {
+  background-color: rgb(54, 88, 243);;
+  color: white;
+}
+
+
+
+    @media (min-width: 720px) {
+      margin: 40px;
+      .footersignup{
+        display:grid;
+      grid-template-columns:1fr 1fr;
+      justify-items: center;
+      }
+
+    .button-round {
+        @include link-sub-title;
+    }
+
+    .specialty{
+      display:grid;
+    grid-template-columns:2fr 1fr 1fr;
+    justify-items: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    }
+    }
+  }
+}
