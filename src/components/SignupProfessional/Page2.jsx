@@ -21,7 +21,7 @@ export default function Page2({ form, handlerOnChange, categories }) {
         )}
       </select>
       <label htmlFor="myDescription" hidden>Mi Descripción</label>
-      <textarea name="myDescription" placeholder="Cuentanos sobre ti" cols="30" rows="10" onChange={handlerOnChange} value={form.name} />
+      <textarea name="myDescription" placeholder="Cuentanos sobre ti" cols="30" rows="10" onChange={handlerOnChange} value={form.myDescription} />
     </div>
   );
 }

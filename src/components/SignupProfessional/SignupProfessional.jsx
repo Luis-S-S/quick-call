@@ -34,7 +34,7 @@ export default function SignupProfessional() {
     'availability.endTime': '',
   });
 
-  const handlerNewSpecialty = (e) => {
+  const handlerNewSpecialty = () => {
     if (choice) {
       if (specialty.filter((element) => (element === choice)).length < 1) {
         console.log('specialtyvalue', choice);
@@ -64,9 +64,23 @@ export default function SignupProfessional() {
     }
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    await createProfessional({ ...form, specialty });
+  const handleOnClickSubmit = async () => {
+    console.log('executing handle Submit');
+    console.log({ ...form, specialty });
+    await createProfessional({ ...form, 'specialty.nonCertified': specialty });
+    setForm({
+      name: '',
+      email: '',
+      password: '',
+      confirmPassword: '',
+      phoneNumber: '',
+      city: '',
+      myDescription: '',
+      'socialSecurity.eps': '',
+      'socialSecurity.arl': '',
+      'availability.startTime': '',
+      'availability.endTime': '',
+    });
     document.querySelector('form').reset();
   };
 
@@ -126,7 +140,7 @@ export default function SignupProfessional() {
             type="submit"
             onClick={() => {
               if (page === FormTitles.length - 1) {
-                handleSubmit(form);
+                handleOnClickSubmit(form);
               } else {
                 setPage((currPage) => currPage + 1);
               }

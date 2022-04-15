@@ -5,7 +5,6 @@ import React from 'react';
 export default function Page3({
   handlerNewSpecialty, handlerChoice, handlerEliminate, categories, specialty,
 }) {
-  console.log('specialty: ', specialty);
   return (
     <div className="formulario">
       <fieldset>
@@ -34,42 +33,6 @@ export default function Page3({
           <button className="button-agregate" type="submit" onClick={handlerNewSpecialty}> Agregar nueva</button>
 
         </div>
-        {/* <label htmlFor="certified" hidden>Certificado</label>
-        <div id="certified">
-          <p>Certificado</p>
-          {categories?.filter((category) => category.filter === 'specialty')
-            .map((category) => (
-              <label htmlFor="specialty.certified">
-                {category.value}
-                <input type="checkbox" name="specialty.certified"
-                 value={category.value} onClick={handlerOnClick} />
-              </label>
-            ))}
-        </div> */}
-        {/* <label htmlFor="inProgress" hidden>En Progreso</label>
-        <div id="inProgress">
-          <p>En Progreso</p>
-          {categories?.filter((category) => category.filter === 'specialty')
-            .map((category) => (
-              <label htmlFor="specialty.inProgress">
-                {category.value}
-                <input type="checkbox" name="specialty.inProgress"
-                value={category.value} onClick={handlerOnClick} />
-              </label>
-            ))}
-        </div>
-        <label htmlFor="nonCertified" hidden>No Certificado</label>
-        <div id="nonCertified">
-          <p>En Progreso</p>
-          {categories?.filter((category) => category.filter === 'specialty')
-            .map((category) => (
-              <label htmlFor="specialty.nonCertified">
-                {category.value}
-                <input type="checkbox" name="specialty.nonCertified"
-                value={category.value} onClick={handlerOnClick} />
-              </label>
-            ))}
-        </div> */}
       </fieldset>
     </div>
   );
