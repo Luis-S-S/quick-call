@@ -1,50 +1,27 @@
+/* eslint-disable max-len */
 /* eslint-disable no-await-in-loop */
 /* eslint-disable guard-for-in */
 /* eslint-disable no-restricted-syntax */
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { createProfessional } from '../../services/professional';
+import { createProfessional, createImage } from '../../services/professional';
 import { allCategories } from '../../services/categories';
 import './SignupProfessional.scss';
 import Page1 from './Page1';
 import Page2 from './Page2';
 import Page3 from './Page3';
 import Page4 from './Page4';
+import Validate from './Validate';
 
 export default function SignupProfessional() {
   const [page, setPage] = useState(0);
   const [categories, setCategories] = useState();
   const [specialty, setSpecialty] = useState([]);
-  const [choice, setChoice] = useState();
   const [form, setForm] = useState({});
-
-  const handlerNewSpecialty = () => {
-    if (choice) {
-      if (specialty.filter((element) => (element.name === choice)).length < 1) {
-        setSpecialty([...specialty, { name: choice }]);
-        setChoice();
-      }
-    }
-  };
-  const handlerEvidence = (e) => {
-    const value = e.target.name;
-    const search = specialty.filter((special) => !(special.name === value));
-    setSpecialty([...search, { name: value, evidence: e.target.files[0] }]);
-  };
-
-  const handlerChoice = (e) => {
-    setChoice(e.target.value);
-  };
-
-  function handlerEliminate(e) {
-    const { value } = e.target;
-    const special = specialty.filter((specialy) => !(specialy.name === value));
-    setSpecialty(special);
-  }
+  const [validate, setValidate] = useState({});
 
   const handlerOnChange = (e) => {
     const { name, value } = e.target;
-    console.log(name, value);
     if (value === '') {
       delete form[name];
     } else {
@@ -53,28 +30,19 @@ export default function SignupProfessional() {
   };
 
   const handleOnClickSubmit = async () => {
-    const formData = new FormData();
-    const names = [{}];
-
+    const names = [];
     for (const special of specialty) {
-      console.log('xxxx11212xx', special);
+      let result = null;
       if (special.evidence) {
-        console.log('xxxxxxxxxxxxzzxx');
-        await formData.append('files', special.evidence);
+        const formData = new FormData();
+        await formData.append('file', special.evidence);
+        result = await createImage(formData);
       }
-      names.push({ name: special.name, image: special.evidence.name });
+      names.push({ name: special.name, certification: result.url });
     }
-
-    // specialty.map((special) => (formData.append(special.name, special.evidence)));
-    // specialty.map((special) => (names.push(special.name)));
+    delete form.confirmPassword;
     const data = ({ ...form, specialty: [...names] });
-    console.log(form);
-    // await formData.append(JSON.stringify(data));
-
-    await createProfessional(formData, form);
-    // await createProfessional({ ...form, 'specialty.certified': specialty });
-
-    setForm({});
+    await createProfessional(data);
   };
 
   useEffect(async () => {
@@ -96,19 +64,16 @@ export default function SignupProfessional() {
           <span className="texto_register">Crea tu cuenta de profesional</span>
         </div>
         {(page === 0) && (
-          <Page1 form={form} handlerOnChange={handlerOnChange} />
+          <Page1 form={form} handlerOnChange={handlerOnChange} validate={validate} />
         )}
         {(page === 1) && (
           <Page2 form={form} handlerOnChange={handlerOnChange} categories={categories} />
         )}
         {(page === 2) && (
           <Page3
-            handlerEvidence={handlerEvidence}
-            handlerNewSpecialty={handlerNewSpecialty}
-            handlerEliminate={handlerEliminate}
-            handlerChoice={handlerChoice}
             categories={categories}
             specialty={specialty}
+            setSpecialty={setSpecialty}
           />
         )}
         {(page === 3) && (
@@ -126,21 +91,14 @@ export default function SignupProfessional() {
               atras
             </button>
           )}
-          <button
-            className="button-round"
-            type="submit"
-            onClick={() => {
-              if (page === FormTitles.length - 1) {
-                handleOnClickSubmit(form);
-              } else if (form.password === form.confirmPassword) {
-                setPage((currPage) => currPage + 1);
-              } else {
-                alert('Las contraseñas no coinciden');
-              }
-            }}
-          >
-            {page === FormTitles.length - 1 ? 'enviar' : 'sig'}
-          </button>
+          <Validate
+            handleOnClickSubmit={handleOnClickSubmit}
+            form={form}
+            setPage={setPage}
+            page={page}
+            setValidate={setValidate}
+            validate={validate}
+          />
         </div>
       </div>
     </div>

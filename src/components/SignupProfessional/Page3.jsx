@@ -1,10 +1,34 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 /* eslint-disable react/prop-types */
-import React from 'react';
+import { useState } from 'react';
 
 export default function Page3({
-  handlerNewSpecialty, handlerChoice, handlerEliminate, handlerEvidence, categories, specialty,
+  categories, specialty, setSpecialty,
 }) {
+  const [choice, setChoice] = useState();
+  const handlerNewSpecialty = () => {
+    if (choice) {
+      if (specialty.filter((element) => (element.name === choice)).length < 1) {
+        setSpecialty([...specialty, { name: choice }]);
+        setChoice();
+      }
+    }
+  };
+  const handlerEvidence = (e) => {
+    const value = e.target.name;
+    const search = specialty.filter((special) => !(special.name === value));
+    setSpecialty([...search, { name: value, evidence: e.target.files[0] }]);
+  };
+
+  const handlerChoice = (e) => {
+    setChoice(e.target.value);
+  };
+
+  function handlerEliminate(e) {
+    const { value } = e.target;
+    const special = specialty.filter((specialy) => !(specialy.name === value));
+    setSpecialty(special);
+  }
   return (
     <div className="formulario">
       <fieldset>

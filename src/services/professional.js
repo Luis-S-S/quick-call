@@ -1,5 +1,5 @@
-// const API_URL = process.env.REACT_APP_API_BASE_URL;
-const API_URL = 'http://localhost:8080/api';
+const API_URL = process.env.REACT_APP_API_BASE_URL;
+// const API_URL = 'http://localhost:8080/api';
 
 export async function getAllProfessional(query) {
   const searchUrl = !query ? `${API_URL}/professionals` : `${API_URL}/professionals${query}`;
@@ -22,18 +22,32 @@ export async function getSingleProfessional(id) {
   }
 }
 
-export async function createProfessional(form, data) {
+export async function createProfessional(data) {
   try {
-    console.log(`${API_URL}/professionals`);
     const payload = {
       method: 'POST',
       headers: {
-        'Content-type': 'multipart/form-data',
+        'Content-type': 'application/json',
       },
-      body: [form, JSON.stringify(data)],
+      body: JSON.stringify(data),
     };
     const response = await fetch(`${API_URL}/professionals`, payload);
+    const datas = await response.json();
+    return datas;
+  } catch {
+    throw new Error('Error creating professional');
+  }
+}
+
+export async function createImage(form) {
+  try {
+    const payload = {
+      method: 'POST',
+      body: form,
+    };
+    const response = await fetch(`${API_URL}/professionals/image`, payload);
     const result = await response.json();
+    return result;
   } catch {
     throw new Error('Error creating professional');
   }

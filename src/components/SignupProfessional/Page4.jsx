@@ -36,10 +36,16 @@ export default function Page4({ form, handlerOnChange, categories }) {
         </select>
       </fieldset>
       <fieldset>
-        <label htmlFor="availability.startTime">Hora de inicio</label>
-        <input name="availability.startTime" type="time" onChange={handlerOnChange} value={form['availability.startTime']} />
-        <label htmlFor="availability.endTime">Hora de terminación</label>
-        <input name="availability.endTime" type="time" onChange={handlerOnChange} value={form['availability.endTime']} />
+        {(form['availability.fullAvailability'] !== 'on') && (
+        <>
+          <label htmlFor="availability.startTime">Hora de inicio</label>
+          <input name="availability.startTime" type="time" onChange={handlerOnChange} value={form['availability.startTime']} />
+          <label htmlFor="availability.endTime">Hora de terminación</label>
+          <input name="availability.endTime" type="time" onChange={handlerOnChange} value={form['availability.endTime']} />
+        </>
+        )}
+        <label htmlFor="availability.endTime">Disponible 24 horas</label>
+        <input type="checkbox" name="availability.fullAvailability" onClick={handlerOnChange} />
       </fieldset>
     </div>
   );
