@@ -2,6 +2,7 @@ import { React, useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { allCategories } from '../../services/categories';
 import { urlQueryParamToObject } from '../../services/general';
+import './Filter.scss';
 
 export default function filter() {
   const incomingSearchObject = urlQueryParamToObject(window.location.href);
@@ -29,46 +30,59 @@ export default function filter() {
     }
   };
 
+  const handlerOnClick = () => {
+    setSearchParams({});
+    setSearchObject({});
+  };
+
   const handlerOnSubmit = (e) => {
     e.preventDefault();
+    e.target.reset();
     setSearchParams(searchObject);
+    setSearchObject({});
   };
 
   return (
-    <div className="Menulateral">
+    <div className="filter__container">
       <form onSubmit={handlerOnSubmit}>
-        <h4>Ciudad</h4>
-        <select name="city" id="city" onClick={handlerOnChange}>
-          <option value="" key=""> </option>
-          {category?.filter((result) => result.filter === 'city').map(
-            (todo) => (
-              <option
-                key={todo.value}
-                value={todo.value}
-              >
-                {todo.value}
-              </option>
-            ),
-          )}
-        </select>
-        <h4>Especialidad</h4>
-        <select name="specialty.certified" id="specialty.certified" onClick={handlerOnChange}>
-          <option value="" key=""> </option>
-          {category?.filter((result) => result.filter === 'specialty').map(
-            (todo) => (
-              <option
-                key={todo.value}
-                value={todo.value}
-              >
-                {todo.value}
-              </option>
-            ),
-          )}
-        </select>
+        <div className="filter__input">
+          <label htmlFor="city" className="filter__label">Ciudad</label>
+          <select name="city" id="city" className="filter__select" onClick={handlerOnChange}>
+            <option value="" key="" className="filter__option"> </option>
+            {category?.filter((result) => result.filter === 'city').map(
+              (todo) => (
+                <option
+                  key={todo.value}
+                  value={todo.value}
+                  className="filter__option"
+                >
+                  {todo.value}
+                </option>
+              ),
+            )}
+          </select>
+        </div>
+        <div className="filter__input">
+          <label htmlFor="specialty" className="filter__label">Especialidad</label>
+          <select name="specialty.certified" id="specialty.certified" className="filter__select" onClick={handlerOnChange}>
+            <option value="" key="" className="filter__option"> </option>
+            {category?.filter((result) => result.filter === 'specialty').map(
+              (todo) => (
+                <option
+                  key={todo.value}
+                  value={todo.value}
+                  className="filter__option"
+                >
+                  {todo.value}
+                </option>
+              ),
+            )}
+          </select>
+        </div>
         <br />
-        <button type="submit">Agregar filtro</button>
+        <button type="submit" className="filter__button">Agregar filtros</button>
         <br />
-        <button type="button">Limpiar formulario</button>
+        <button type="button" className="filter__button" onClick={handlerOnClick}>Limpiar filtros</button>
       </form>
     </div>
   );

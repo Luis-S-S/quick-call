@@ -57,9 +57,39 @@ function addElementInArray(element, array) {
   return array;
 }
 
+/**
+ *
+ * @param {*} URL string
+ * @returns Returns an array with the values from the query param, all decoded
+ */
+function urlQueryParamValuesToArray(URL) {
+  const queryObject = urlQueryParamToObject(URL);
+  const queryValues = Object.values(queryObject);
+  const queryArray = queryValues.map((value) => decodeURIComponent(value).replace(/\+/g, ' '));
+  return queryArray;
+}
+
+/**
+ *
+ * @param {*} URL string
+ * @param {*} value string
+ * @returns Returns an object with the value remove from Object.values(query params)
+ */
+function removeQueryValueFromObject(URL, value) {
+  const encodedValue = encodeURIComponent(value).replace(/%20/g, '+');
+  const queryObject = urlQueryParamToObject(URL);
+  const arrayValues = Object.values(queryObject);
+  const indexToRemove = arrayValues.indexOf(encodedValue);
+  if (indexToRemove === -1) { return queryObject; }
+  delete queryObject[Object.keys(queryObject)[indexToRemove]];
+  return queryObject;
+}
+
 export {
   urlQueryParamToObject,
+  urlQueryParamValuesToArray,
   getFourRandom,
   removeElementFromArray,
   addElementInArray,
+  removeQueryValueFromObject,
 };
