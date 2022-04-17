@@ -5,9 +5,9 @@ export default function Page2({ form, handlerOnChange, categories }) {
   return (
     <div className="formulario">
       <label htmlFor="phoneNumber" hidden>Numero de telefono</label>
-      <input name="phoneNumber" placeholder="Numero de contacto" type="tel" onChange={handlerOnChange} value={form.phonenumber} />
+      <input name="phoneNumber" placeholder="Numero de contacto" type="tel" onChange={handlerOnChange} value={form.phoneNumber} />
       <label htmlFor="city" hidden>Ciudad</label>
-      <select name="city" id="city" onClick={handlerOnChange}>
+      <select name="city" id="city" onChange={handlerOnChange} value={form.city}>
         <option value="" key=""> </option>
         {categories?.filter((category) => category.filter === 'city').map(
           (todo) => (

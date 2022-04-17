@@ -1,3 +1,6 @@
+/* eslint-disable no-await-in-loop */
+/* eslint-disable guard-for-in */
+/* eslint-disable no-restricted-syntax */
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { createProfessional } from '../../services/professional';
@@ -17,25 +20,31 @@ export default function SignupProfessional() {
 
   const handlerNewSpecialty = () => {
     if (choice) {
-      if (specialty.filter((element) => (element === choice)).length < 1) {
-        setSpecialty([...specialty, choice]);
+      if (specialty.filter((element) => (element.name === choice)).length < 1) {
+        setSpecialty([...specialty, { name: choice }]);
         setChoice();
       }
     }
+  };
+  const handlerEvidence = (e) => {
+    const value = e.target.name;
+    const search = specialty.filter((special) => !(special.name === value));
+    setSpecialty([...search, { name: value, evidence: e.target.files[0] }]);
   };
 
   const handlerChoice = (e) => {
     setChoice(e.target.value);
   };
 
-  const handlerEliminate = (e) => {
+  function handlerEliminate(e) {
     const { value } = e.target;
-    const special = specialty.filter((specialy) => !(specialy === value));
+    const special = specialty.filter((specialy) => !(specialy.name === value));
     setSpecialty(special);
-  };
+  }
 
   const handlerOnChange = (e) => {
     const { name, value } = e.target;
+    console.log(name, value);
     if (value === '') {
       delete form[name];
     } else {
@@ -44,7 +53,27 @@ export default function SignupProfessional() {
   };
 
   const handleOnClickSubmit = async () => {
-    await createProfessional({ ...form, 'specialty.certified': specialty });
+    const formData = new FormData();
+    const names = [{}];
+
+    for (const special of specialty) {
+      console.log('xxxx11212xx', special);
+      if (special.evidence) {
+        console.log('xxxxxxxxxxxxzzxx');
+        await formData.append('files', special.evidence);
+      }
+      names.push({ name: special.name, image: special.evidence.name });
+    }
+
+    // specialty.map((special) => (formData.append(special.name, special.evidence)));
+    // specialty.map((special) => (names.push(special.name)));
+    const data = ({ ...form, specialty: [...names] });
+    console.log(form);
+    // await formData.append(JSON.stringify(data));
+
+    await createProfessional(formData, form);
+    // await createProfessional({ ...form, 'specialty.certified': specialty });
+
     setForm({});
   };
 
@@ -74,9 +103,10 @@ export default function SignupProfessional() {
         )}
         {(page === 2) && (
           <Page3
+            handlerEvidence={handlerEvidence}
             handlerNewSpecialty={handlerNewSpecialty}
-            handlerChoice={handlerChoice}
             handlerEliminate={handlerEliminate}
+            handlerChoice={handlerChoice}
             categories={categories}
             specialty={specialty}
           />
@@ -102,8 +132,10 @@ export default function SignupProfessional() {
             onClick={() => {
               if (page === FormTitles.length - 1) {
                 handleOnClickSubmit(form);
-              } else {
+              } else if (form.password === form.confirmPassword) {
                 setPage((currPage) => currPage + 1);
+              } else {
+                alert('Las contraseñas no coinciden');
               }
             }}
           >

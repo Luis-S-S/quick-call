@@ -3,21 +3,22 @@
 import React from 'react';
 
 export default function Page3({
-  handlerNewSpecialty, handlerChoice, handlerEliminate, categories, specialty,
+  handlerNewSpecialty, handlerChoice, handlerEliminate, handlerEvidence, categories, specialty,
 }) {
   return (
     <div className="formulario">
       <fieldset>
         <legend>Especialidades</legend>
         {specialty.map((todo) => (
+
           <div className="specialty">
-            <label htmlFor={todo}>{todo}</label>
-            <button className="button-eliminate" type="submit" value={todo} onClick={handlerEliminate}>x</button>
-            <button className="button-agregate" type="submit" value={todo} onClick={handlerEliminate}>subir</button>
+            <label htmlFor={todo.name}>{todo.name}</label>
+            <button className="button-eliminate" type="submit" value={todo.name} onClick={handlerEliminate}>x</button>
+            <input className="button-agregate" type="file" name={todo.name} onChange={handlerEvidence} />
           </div>
         ))}
         <div className="specialty">
-          <select name="specialty" id="specialty" onClick={handlerChoice}>
+          <select name="specialty" id="specialty" onChange={handlerChoice}>
             <option value="" key=""> </option>
             {categories?.filter((result) => result.filter === 'specialty').map(
               (todo) => (

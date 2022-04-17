@@ -1,4 +1,5 @@
-const API_URL = process.env.REACT_APP_API_BASE_URL;
+// const API_URL = process.env.REACT_APP_API_BASE_URL;
+const API_URL = 'http://localhost:8080/api';
 
 export async function getAllProfessional(query) {
   const searchUrl = !query ? `${API_URL}/professionals` : `${API_URL}/professionals${query}`;
@@ -21,17 +22,18 @@ export async function getSingleProfessional(id) {
   }
 }
 
-export function createProfessional(form) {
+export async function createProfessional(form, data) {
   try {
+    console.log(`${API_URL}/professionals`);
     const payload = {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
+        'Content-type': 'multipart/form-data',
       },
-      body: JSON.stringify(form),
+      body: [form, JSON.stringify(data)],
     };
-    const response = fetch(`${API_URL}/professionals`, payload);
-    return response;
+    const response = await fetch(`${API_URL}/professionals`, payload);
+    const result = await response.json();
   } catch {
     throw new Error('Error creating professional');
   }
