@@ -1,38 +1,24 @@
+/* eslint-disable max-len */
+/* eslint-disable no-await-in-loop */
+/* eslint-disable guard-for-in */
+/* eslint-disable no-restricted-syntax */
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { createProfessional } from '../../services/professional';
+import { createProfessional, createImage } from '../../services/professional';
 import { allCategories } from '../../services/categories';
 import './SignupProfessional.scss';
 import Page1 from './Page1';
 import Page2 from './Page2';
 import Page3 from './Page3';
 import Page4 from './Page4';
+import Validate from './Validate';
 
 export default function SignupProfessional() {
   const [page, setPage] = useState(0);
   const [categories, setCategories] = useState();
   const [specialty, setSpecialty] = useState([]);
-  const [choice, setChoice] = useState();
   const [form, setForm] = useState({});
-
-  const handlerNewSpecialty = () => {
-    if (choice) {
-      if (specialty.filter((element) => (element === choice)).length < 1) {
-        setSpecialty([...specialty, choice]);
-        setChoice();
-      }
-    }
-  };
-
-  const handlerChoice = (e) => {
-    setChoice(e.target.value);
-  };
-
-  const handlerEliminate = (e) => {
-    const { value } = e.target;
-    const special = specialty.filter((specialy) => !(specialy === value));
-    setSpecialty(special);
-  };
+  const [validate, setValidate] = useState({});
 
   const handlerOnChange = (e) => {
     const { name, value } = e.target;
@@ -44,8 +30,19 @@ export default function SignupProfessional() {
   };
 
   const handleOnClickSubmit = async () => {
-    await createProfessional({ ...form, 'specialty.certified': specialty });
-    setForm({});
+    const names = [];
+    for (const special of specialty) {
+      let result = null;
+      if (special.evidence) {
+        const formData = new FormData();
+        await formData.append('file', special.evidence);
+        result = await createImage(formData);
+      }
+      names.push({ name: special.name, certification: result.url });
+    }
+    delete form.confirmPassword;
+    const data = ({ ...form, specialty: [...names] });
+    await createProfessional(data);
   };
 
   useEffect(async () => {
@@ -67,18 +64,16 @@ export default function SignupProfessional() {
           <span className="texto_register">Crea tu cuenta de profesional</span>
         </div>
         {(page === 0) && (
-          <Page1 form={form} handlerOnChange={handlerOnChange} />
+          <Page1 form={form} handlerOnChange={handlerOnChange} validate={validate} />
         )}
         {(page === 1) && (
           <Page2 form={form} handlerOnChange={handlerOnChange} categories={categories} />
         )}
         {(page === 2) && (
           <Page3
-            handlerNewSpecialty={handlerNewSpecialty}
-            handlerChoice={handlerChoice}
-            handlerEliminate={handlerEliminate}
             categories={categories}
             specialty={specialty}
+            setSpecialty={setSpecialty}
           />
         )}
         {(page === 3) && (
@@ -96,19 +91,14 @@ export default function SignupProfessional() {
               atras
             </button>
           )}
-          <button
-            className="button-round"
-            type="submit"
-            onClick={() => {
-              if (page === FormTitles.length - 1) {
-                handleOnClickSubmit(form);
-              } else {
-                setPage((currPage) => currPage + 1);
-              }
-            }}
-          >
-            {page === FormTitles.length - 1 ? 'enviar' : 'sig'}
-          </button>
+          <Validate
+            handleOnClickSubmit={handleOnClickSubmit}
+            form={form}
+            setPage={setPage}
+            page={page}
+            setValidate={setValidate}
+            validate={validate}
+          />
         </div>
       </div>
     </div>
