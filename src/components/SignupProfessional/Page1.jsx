@@ -3,7 +3,7 @@ import React from 'react';
 
 export default function Page1({ form, handlerOnChange, validate }) {
   let mystyle = {};
-  if (validate.password || validate.confirmPassword ) {
+  if (validate.password || validate.confirmPassword) {
     mystyle = {
       border: '2px solid red',
     };

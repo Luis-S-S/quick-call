@@ -30,7 +30,7 @@ export default function Validate({
           array = { ...array, confirmPassword: 'Las contraseñas no coinciden' };
         }
       }
-    };
+    }
     setValidate(array);
     if (Object.keys(array).length === 0) {
       setPage((currPage) => currPage + 1);
