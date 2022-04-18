@@ -1,5 +1,9 @@
 @import '../../App.scss';
 
+.button__container {
+    display: inline-block;
+}
+
 .button-square {
     @include link-body;
     display: flex;

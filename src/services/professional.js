@@ -13,7 +13,7 @@ export async function getAllProfessional(query) {
 
 export async function getSingleProfessional(id) {
   try {
-    const response = await fetch(`${API_URL}/professional/${id}`);
+    const response = await fetch(`${API_URL}/professionals/${id}`);
     const data = await response.json();
     return data;
   } catch (error) {

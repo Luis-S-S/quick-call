@@ -4,7 +4,9 @@ import './ButtonSquare.scss';
 
 function ButtonSquare({ children, link, color }) {
   return (
-    <Link className={`button-square ${color}`} to={link}>{children}</Link>
+    <div className="button__container">
+      <Link className={`button-square ${color}`} to={link}>{children}</Link>
+    </div>
   );
 }
 

@@ -9,7 +9,7 @@ function ButtonRound({ children, link }) {
 }
 
 ButtonRound.propTypes = {
-  children: PropTypes.element.isRequired,
+  children: PropTypes.node.isRequired,
   link: PropTypes.string,
 };
 

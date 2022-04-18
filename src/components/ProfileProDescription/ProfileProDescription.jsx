@@ -10,12 +10,13 @@ function ProfileProDescription() {
 
   useEffect(() => {
     getSingleProfessional(id).then((data) => setPro(data));
-  }, []);
+  }, [id]);
+
   return (
     <div className="profileDescription">
       <div className="row">
         <div className="column">
-          <img className="photo" src="./images/img/constructor.jpeg" alt="constructor" width={500} height={500} />
+          <img className="photo" src="/images/img/constructor.jpeg" alt="constructor" width={500} height={500} />
         </div>
         <div className="column">
           <div className="description">
