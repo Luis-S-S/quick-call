@@ -37,7 +37,6 @@ export default function Validate({
     }
     if (page === 3) {
       handleOnClickSubmit();
-      alert('Usuario registrado');
     }
   };
   return (
