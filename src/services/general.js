@@ -22,11 +22,12 @@ function urlQueryParamToObject(URL) {
 
 /**
  *
- * @param {*} array
+ * @param {*} num Quantity of elements to return
+ * @param {*} array Array to return elements from
  * @returns An array with four random elements from the input array
  */
-function getFourRandom(array) {
-  const randomArray = array.sort(() => 0.5 - Math.random()).slice(0, 4);
+function getRandomFromArray(num, array) {
+  const randomArray = array.sort(() => 0.5 - Math.random()).slice(0, num);
   return randomArray;
 }
 
@@ -88,7 +89,7 @@ function removeQueryValueFromObject(URL, value) {
 export {
   urlQueryParamToObject,
   urlQueryParamValuesToArray,
-  getFourRandom,
+  getRandomFromArray,
   removeElementFromArray,
   addElementInArray,
   removeQueryValueFromObject,

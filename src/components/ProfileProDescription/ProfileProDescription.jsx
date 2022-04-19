@@ -16,7 +16,7 @@ function ProfileProDescription() {
     <div className="profileDescription">
       <div className="row">
         <div className="column">
-          <img className="photo" src="/images/img/constructor.jpeg" alt="constructor" width={500} height={500} />
+          <img className="photo" src={pro.image?.profile} alt="constructor" width={500} height={500} />
         </div>
         <div className="column">
           <div className="description">
@@ -26,9 +26,9 @@ function ProfileProDescription() {
           <div className="categories">
             <h1>Mis especialidades</h1>
             <div className="categoriesList">
-              <h4>categorias</h4>
-              <h4>categorias</h4>
-              {/* <h4>{pro.specialty.certified[1]}</h4> */}
+              {pro.specialties?.map((specialty) => (
+                <h4>{specialty.name}</h4>
+              ))}
             </div>
           </div>
           <div className="calification">

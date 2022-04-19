@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import Carousel from 'react-elastic-carousel';
 import ClientExpCard from '../ClientExpCard/ClientExpCard';
 import { getAllClientExperience } from '../../services/clientExperience';
+import { getRandomFromArray } from '../../services/general';
 import './ClientExperienceSection.scss';
 
 const breakPoints = [
@@ -13,15 +14,10 @@ const breakPoints = [
 function ClientExperienceSection() {
   const [experiences, setExperiences] = useState([]);
 
-  const getFourRandom = (array) => {
-    const randomArray = array.sort(() => 0.5 - Math.random()).slice(0, 4);
-    return randomArray;
-  };
-
   useEffect(() => {
     getAllClientExperience()
       .then((data) => {
-        setExperiences(getFourRandom(data));
+        setExperiences(getRandomFromArray(8, data));
       });
   }, []);
 
