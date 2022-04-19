@@ -7,6 +7,7 @@ import './Filter.scss';
 export default function filter() {
   const incomingSearchObject = urlQueryParamToObject(window.location.href);
   console.log(incomingSearchObject);
+  // Llega encoded => envía espacio con %20
   const [category, setCategory] = useState();
   const [, setSearchParams] = useSearchParams();
 

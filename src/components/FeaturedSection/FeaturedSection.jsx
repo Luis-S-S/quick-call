@@ -8,14 +8,14 @@ import { getAllProfessional } from '../../services/professional';
 import { getRandomFromArray } from '../../services/general';
 
 function FeaturedSection() {
-  const [categories, setCategories] = useState([]);
+  const [specialties, setSpecialties] = useState([]);
   const [pro, setPro] = useState([]);
 
   useEffect(() => {
     allCategories()
       .then((data) => {
         const [document] = data;
-        setCategories(getRandomFromArray(4, document.specialties));
+        setSpecialties(getRandomFromArray(4, document.specialties));
       })
       .catch((error) => { throw error; });
     getAllProfessional()
@@ -33,8 +33,8 @@ function FeaturedSection() {
       </div>
       <div className="mid-section__right">
         <h2 className="mid-section__title">Categorías más buscadas</h2>
-        {categories.map((specialty, idx) => (
-          <ButtonSquare key={specialty.name} color="white" link={`/search?specialty=${encodeURIComponent(specialty.name)}`}>
+        {specialties.map((specialty, idx) => (
+          <ButtonSquare key={specialty.name} color="white" link={`/search?specialties.name=${specialty.name}`}>
             <img
               className="mid-section__icon"
               src={idx % 2 === 0 ? 'images/icons/brush-icon-white.svg' : 'images/icons/tools-icon-white.svg'}
