@@ -1,5 +1,4 @@
 const API_URL = process.env.REACT_APP_API_BASE_URL;
-// const API_URL = 'http://localhost:8080/api';
 
 export async function getAllProfessional(query) {
   const searchUrl = !query ? `${API_URL}/professionals` : `${API_URL}/professionals${query}`;

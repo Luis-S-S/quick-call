@@ -55,7 +55,7 @@ function ProfessionalCardDisplay() {
       {searchFilters.length > 0 && (
         searchFilters.map((filter) => (
           <div className="card-filters">
-            {filter}
+            {decodeURI(filter)}
             <button value={filter} type="button" className="card-filters__remove" onClick={handlerOnClickRemove}>x</button>
           </div>
         ))

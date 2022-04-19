@@ -6,6 +6,7 @@ import './Filter.scss';
 
 export default function filter() {
   const incomingSearchObject = urlQueryParamToObject(window.location.href);
+  // Llega encoded => envía espacio con %20
   const [category, setCategory] = useState();
   const [, setSearchParams] = useSearchParams();
 
@@ -13,7 +14,8 @@ export default function filter() {
 
   useEffect(async () => {
     const response = await allCategories();
-    setCategory(response);
+    const [document] = response;
+    setCategory(document);
   }, []);
 
   const handlerOnChange = (e) => {
@@ -49,14 +51,14 @@ export default function filter() {
           <label htmlFor="city" className="filter__label">Ciudad</label>
           <select name="city" id="city" className="filter__select" onClick={handlerOnChange}>
             <option value="" key="" className="filter__option"> </option>
-            {category?.filter((result) => result.filter === 'city').map(
-              (todo) => (
+            {category?.cities.map(
+              (city) => (
                 <option
-                  key={todo.value}
-                  value={todo.value}
+                  key={city}
+                  value={city}
                   className="filter__option"
                 >
-                  {todo.value}
+                  {city}
                 </option>
               ),
             )}
@@ -64,16 +66,16 @@ export default function filter() {
         </div>
         <div className="filter__input">
           <label htmlFor="specialty" className="filter__label">Especialidad</label>
-          <select name="specialty.certified" id="specialty.certified" className="filter__select" onClick={handlerOnChange}>
+          <select name="specialties.name" id="specialties.name" className="filter__select" onClick={handlerOnChange}>
             <option value="" key="" className="filter__option"> </option>
-            {category?.filter((result) => result.filter === 'specialty').map(
-              (todo) => (
+            {category?.specialties.map(
+              (specialty) => (
                 <option
-                  key={todo.value}
-                  value={todo.value}
+                  key={specialty.name}
+                  value={specialty.name}
                   className="filter__option"
                 >
-                  {todo.value}
+                  {specialty.name}
                 </option>
               ),
             )}

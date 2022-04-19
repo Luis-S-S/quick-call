@@ -22,11 +22,12 @@ function urlQueryParamToObject(URL) {
 
 /**
  *
- * @param {*} array
+ * @param {*} num Quantity of elements to return
+ * @param {*} array Array to return elements from
  * @returns An array with four random elements from the input array
  */
-function getFourRandom(array) {
-  const randomArray = array.sort(() => 0.5 - Math.random()).slice(0, 4);
+function getRandomFromArray(num, array) {
+  const randomArray = array.sort(() => 0.5 - Math.random()).slice(0, num);
   return randomArray;
 }
 
@@ -64,9 +65,8 @@ function addElementInArray(element, array) {
  */
 function urlQueryParamValuesToArray(URL) {
   const queryObject = urlQueryParamToObject(URL);
-  const queryValues = Object.values(queryObject);
-  const queryArray = queryValues.map((value) => decodeURIComponent(value).replace(/\+/g, ' '));
-  return queryArray;
+  const arrayValues = Object.values(queryObject);
+  return arrayValues;
 }
 
 /**
@@ -76,10 +76,9 @@ function urlQueryParamValuesToArray(URL) {
  * @returns Returns an object with the value remove from Object.values(query params)
  */
 function removeQueryValueFromObject(URL, value) {
-  const encodedValue = encodeURIComponent(value).replace(/%20/g, '+');
   const queryObject = urlQueryParamToObject(URL);
   const arrayValues = Object.values(queryObject);
-  const indexToRemove = arrayValues.indexOf(encodedValue);
+  const indexToRemove = arrayValues.indexOf(value);
   if (indexToRemove === -1) { return queryObject; }
   delete queryObject[Object.keys(queryObject)[indexToRemove]];
   return queryObject;
@@ -88,7 +87,7 @@ function removeQueryValueFromObject(URL, value) {
 export {
   urlQueryParamToObject,
   urlQueryParamValuesToArray,
-  getFourRandom,
+  getRandomFromArray,
   removeElementFromArray,
   addElementInArray,
   removeQueryValueFromObject,

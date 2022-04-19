@@ -10,7 +10,7 @@ function ProCard({
   return (
     <div className="pro-card">
       <div className="pro-card__header">
-        <img className="pro-card__profile" src={(image?.profile[0])} alt="profile" />
+        <img className="pro-card__profile" src={(image?.profile)} alt="profile" />
         <h1 className="pro-card__title">{name}</h1>
       </div>
       <p className="pro-card__body">{myDescription}</p>
@@ -35,7 +35,7 @@ ProCard.propTypes = {
     name: PropTypes.string,
     myDescription: PropTypes.string,
     image: PropTypes.shape({
-      profile: PropTypes.arrayOf(PropTypes.string),
+      profile: PropTypes.string,
     }),
     _id: PropTypes.string.isRequired,
   }),

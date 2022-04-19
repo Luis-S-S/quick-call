@@ -3,14 +3,14 @@ import Carousel from 'react-elastic-carousel';
 import { getAllProfessional } from '../../services/professional';
 import './ProfileProInterests.scss';
 import ProCard from '../Procard/ProCard';
-import { getFourRandom } from '../../services/general';
+import { getRandomFromArray } from '../../services/general';
 
 function ProfileProInterest() {
   const [pro, setPro] = useState([]);
 
   useEffect(() => {
     getAllProfessional()
-      .then((data) => { setPro(getFourRandom(data)); })
+      .then((data) => { setPro(getRandomFromArray(8, data)); })
       .catch((error) => { throw error; });
   }, []);
 
