@@ -65,8 +65,8 @@ function addElementInArray(element, array) {
  */
 function urlQueryParamValuesToArray(URL) {
   const queryObject = urlQueryParamToObject(URL);
-  const arrayValues = Object.values(queryObject);
-  return arrayValues;
+  const valuesArray = Object.values(queryObject);
+  return valuesArray;
 }
 
 /**
@@ -76,11 +76,23 @@ function urlQueryParamValuesToArray(URL) {
  * @returns Returns an object with the value remove from Object.values(query params)
  */
 function removeQueryValueFromObject(URL, value) {
-  const queryObject = urlQueryParamToObject(URL);
-  const arrayValues = Object.values(queryObject);
-  const indexToRemove = arrayValues.indexOf(value);
+  let queryObject = urlQueryParamToObject(URL);
+  const keysArray = Object.keys(queryObject);
+  const valuesArray = Object.values(queryObject);
+
+  const indexToRemove = valuesArray.indexOf(value);
   if (indexToRemove === -1) { return queryObject; }
-  delete queryObject[Object.keys(queryObject)[indexToRemove]];
+
+  queryObject = {};
+  valuesArray.splice(indexToRemove, 1);
+  keysArray.splice(indexToRemove, 1);
+
+  for (let i = 0; i < keysArray.length; i += 1) {
+    queryObject[keysArray[i]] = decodeURIComponent(valuesArray[i].replace(/\+/g, ' '));
+  }
+
+  console.log(queryObject);
+
   return queryObject;
 }
 

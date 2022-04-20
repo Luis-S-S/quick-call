@@ -36,9 +36,11 @@ function ProfessionalCardDisplay() {
 
   useEffect(() => {
     setCurrentPage(1);
-    getAllProfessional(window.location.search).then((data) => {
-      setPro(data);
-    });
+    getAllProfessional(window.location.search)
+      .then((data) => {
+        setPro(data);
+      })
+      .catch((error) => error);
   }, [searchParams]);
 
   useEffect(() => {
