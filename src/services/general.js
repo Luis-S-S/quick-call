@@ -13,10 +13,9 @@ function urlQueryParamToObject(URL) {
     for (let i = 0; i < queryParams.length; i += 1) {
       const [key, value] = queryParams[i].split('=');
 
-      queryObject[key] = value;
+      queryObject[key] = decodeURIComponent(value.replace(/\+/g, ' '));
     }
   }
-
   return queryObject;
 }
 
@@ -90,9 +89,6 @@ function removeQueryValueFromObject(URL, value) {
   for (let i = 0; i < keysArray.length; i += 1) {
     queryObject[keysArray[i]] = decodeURIComponent(valuesArray[i].replace(/\+/g, ' '));
   }
-
-  console.log(queryObject);
-
   return queryObject;
 }
 
