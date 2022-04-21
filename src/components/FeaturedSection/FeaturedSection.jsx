@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import './FeaturedSection.scss';
 import Carousel from 'react-elastic-carousel';
-import ButtonSquare from '../ButtonSquare/ButtonSquare';
+import LinkSquare from '../LinkSquare/LinkSquare';
 import ProCard from '../Procard/ProCard';
 import { allCategories } from '../../services/categories';
 import { getAllProfessional } from '../../services/professional';
@@ -34,14 +34,14 @@ function FeaturedSection() {
       <div className="mid-section__right">
         <h2 className="mid-section__title">Categorías más buscadas</h2>
         {specialties.map((specialty, idx) => (
-          <ButtonSquare key={specialty.name} color="white" link={`/search?specialties=${specialty.name}`}>
+          <LinkSquare key={specialty.name} color="white" link={`/search?specialties=${specialty.name}`}>
             <img
               className="mid-section__icon"
               src={idx % 2 === 0 ? 'images/icons/brush-icon-white.svg' : 'images/icons/tools-icon-white.svg'}
               alt="icon"
             />
             <span>{specialty.name}</span>
-          </ButtonSquare>
+          </LinkSquare>
         ))}
       </div>
     </div>

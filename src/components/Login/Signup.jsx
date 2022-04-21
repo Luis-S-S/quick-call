@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import './Login.scss';
-import ButtonRound from '../ButtonRound/ButtonRound';
+import LinkRound from '../LinkRound/LinkRound';
 
 export default function Signup() {
   return (
@@ -15,8 +15,8 @@ export default function Signup() {
         </div>
         <form className="formulario">
           <div className="boton11">
-            <ButtonRound link="/signup_client">Cliente</ButtonRound>
-            <ButtonRound link="/signup_professional">Profesional</ButtonRound>
+            <LinkRound link="/signup_client">Cliente</LinkRound>
+            <LinkRound link="/signup_professional">Profesional</LinkRound>
           </div>
           <div className="redes_sociales">
             <img src="images/icons/whatsapp-logo.svg" alt="whatsapp" />

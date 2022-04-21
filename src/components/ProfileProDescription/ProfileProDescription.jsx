@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import './ProfileProDescription.scss';
-import ButtonSquare from '../ButtonSquare/ButtonSquare';
+import LinkSquare from '../LinkSquare/LinkSquare';
 import { getSingleProfessional } from '../../services/professional';
 
 function ProfileProDescription() {
@@ -38,7 +38,7 @@ function ProfileProDescription() {
             <span className="fa fa-star" />
             <span className="fa fa-star-half-o" />
             <br />
-            <ButtonSquare>Iniciar Chat</ButtonSquare>
+            <LinkSquare>Iniciar Chat</LinkSquare>
           </div>
         </div>
       </div>
