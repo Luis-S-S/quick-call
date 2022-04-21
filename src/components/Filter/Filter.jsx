@@ -66,7 +66,7 @@ export default function filter() {
         </div>
         <div className="filter__input">
           <label htmlFor="specialty" className="filter__label">Especialidad</label>
-          <select name="specialties.name" id="specialties.name" className="filter__select" onClick={handlerOnChange}>
+          <select name="specialties" id="specialties" className="filter__select" onClick={handlerOnChange}>
             <option value="" key="" className="filter__option"> </option>
             {category?.specialties.map(
               (specialty) => (

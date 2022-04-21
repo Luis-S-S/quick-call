@@ -38,6 +38,23 @@ export async function createProfessional(data) {
   }
 }
 
+export async function editProfessional(id, body) {
+  try {
+    const payload = {
+      method: 'PATCH',
+      headers: {
+        'Content-type': 'application/json',
+      },
+      body: JSON.stringify(body),
+    };
+    const response = await fetch(`${API_URL}/professionals/${id}`, payload);
+    const data = await response.json();
+    return data;
+  } catch {
+    throw new Error('Error creating professional');
+  }
+}
+
 export async function createImage(form) {
   try {
     const payload = {

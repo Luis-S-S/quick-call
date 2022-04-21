@@ -34,7 +34,7 @@ function FeaturedSection() {
       <div className="mid-section__right">
         <h2 className="mid-section__title">Categorías más buscadas</h2>
         {specialties.map((specialty, idx) => (
-          <LinkSquare key={specialty.name} color="white" link={`/search?specialties.name=${specialty.name}`}>
+          <LinkSquare key={specialty.name} color="white" link={`/search?specialties=${specialty.name}`}>
             <img
               className="mid-section__icon"
               src={idx % 2 === 0 ? 'images/icons/brush-icon-white.svg' : 'images/icons/tools-icon-white.svg'}

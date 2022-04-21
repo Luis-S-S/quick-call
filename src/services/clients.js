@@ -20,13 +20,13 @@ export async function getSingleClient(id) {
   }
 }
 
-export async function createClient(user) {
+export async function createClient(body) {
   const payload = {
     method: 'POST',
     headers: {
       'Content-type': 'application/json',
     },
-    body: JSON.stringify(user),
+    body: JSON.stringify(body),
   };
   try {
     const response = await fetch(`${API_URL}/clients`, payload);
@@ -38,8 +38,21 @@ export async function createClient(user) {
   }
 }
 
-export async function updateClient(id, usuario) {
-  return { id, ...usuario };
+export async function updateClient(id, body) {
+  const payload = {
+    method: 'PATCH',
+    headers: {
+      'Content-type': 'application/json',
+    },
+    body: JSON.stringify(body),
+  };
+  try {
+    const response = await fetch(`${API_URL}/clients/${id}`, payload);
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    throw new Error(error);
+  }
 }
 
 export async function deleteClient(id) {
