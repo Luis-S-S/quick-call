@@ -1,7 +1,14 @@
-import './NavigationBar.scss';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import './NavigationBar.scss';
+import { userLogOut } from '../../services/auth';
 
 function NavBar() {
+  const [user, setUser] = useState(window.localStorage.user);
+  const handlerLogOut = () => {
+    userLogOut();
+    setUser(null);
+  };
   return (
     <div className="navbar">
       <nav>
@@ -11,12 +18,24 @@ function NavBar() {
         <input type="" placeholder="   ¿Qué necesitas?..." id="search" />
         <ul>
           <li><Link to="/search">Buscar</Link></li>
-          <li><Link to="/signup">Registrarse</Link></li>
-          <li><Link to="/login">Iniciar Sesión</Link></li>
-          <li><Link to="/editarperfil">Editar perfil</Link></li>
+          {!user
+            ? (
+              <>
+                <li><Link to="/signup">Registrarse</Link></li>
+                <li><Link to="/login">Iniciar Sesión</Link></li>
+
+              </>
+            )
+            : (
+              <>
+                <li><Link to="/editarperfil">Editar perfil</Link></li>
+                <li><button type="button" onClick={handlerLogOut}>Cerrar Sesión</button></li>
+              </>
+            )}
         </ul>
       </nav>
     </div>
+
   );
 }
 
