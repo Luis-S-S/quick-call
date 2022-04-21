@@ -49,19 +49,21 @@ $light-blue: #C0E4EA;
     line-height: 120px;
   }
 
-  nav ul li a {
+  nav ul li a, nav ul li button {
+    background-color: transparent;
+    border-radius: 3px;
+    border: none;
     color: $light-blue;
     font-family: 'League Gothic';
+    font-size: 24px;
     font-style: normal;
     font-weight: normal;
-    font-size: 24px;
     letter-spacing: 0.02em;
-    padding: 7px 13px;
-    border-radius: 3px;
     letter-spacing: 1px;
+    padding: 7px 13px;
   }
 
-  a.active, a:hover {
+  a.active, a:hover, nav ul li button:hover {
     background-color: #A6C1DE;
     transition: .5s;
   }

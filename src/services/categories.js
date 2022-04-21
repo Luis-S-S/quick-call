@@ -1,5 +1,4 @@
 const API_URL = process.env.REACT_APP_API_BASE_URL;
-// Actualizar a 3004 antes del pull && localmente (luis) solo sirve en 8080
 
 export async function allCategories() {
   try {
