@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import './ButtonSquare.scss';
+import './LinkSquare.scss';
 
-function ButtonSquare({ children, link, color }) {
+function LinkSquare({ children, link, color }) {
   return (
     <div className="button__container">
       <Link className={`button-square ${color}`} to={link}>{children}</Link>
@@ -10,15 +10,15 @@ function ButtonSquare({ children, link, color }) {
   );
 }
 
-ButtonSquare.propTypes = {
+LinkSquare.propTypes = {
   children: PropTypes.string.isRequired,
   link: PropTypes.string,
   color: PropTypes.string,
 };
 
-ButtonSquare.defaultProps = {
+LinkSquare.defaultProps = {
   link: '',
   color: 'dark-purple',
 };
 
-export default ButtonSquare;
+export default LinkSquare;

@@ -1,6 +1,6 @@
 import './ProCard.scss';
 import PropTypes from 'prop-types';
-import ButtonSquare from '../ButtonSquare/ButtonSquare';
+import LinkSquare from '../LinkSquare/LinkSquare';
 
 function ProCard({
   details: {
@@ -22,8 +22,8 @@ function ProCard({
         <span className="fa fa-star-half-o" />
       </div>
       <div className="buttons">
-        <ButtonSquare link={`/ProfilePro/${_id}`}>Ver Perfil</ButtonSquare>
-        <ButtonSquare>Iniciar Chat</ButtonSquare>
+        <LinkSquare link={`/ProfilePro/${_id}`}>Ver Perfil</LinkSquare>
+        <LinkSquare>Iniciar Chat</LinkSquare>
       </div>
     </div>
 

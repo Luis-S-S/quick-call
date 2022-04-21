@@ -1,20 +1,20 @@
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 import './ButtonRound.scss';
 
-function ButtonRound({ children, link }) {
+function ButtonRound({ children, onClickFunction, isSubmit }) {
   return (
-    <Link className="button-round" to={link}>{children}</Link>
+    <button className="button-round" onClick={onClickFunction} type={isSubmit ? 'submit' : 'button'}>{children}</button>
   );
 }
 
 ButtonRound.propTypes = {
   children: PropTypes.node.isRequired,
-  link: PropTypes.string,
+  onClickFunction: PropTypes.func,
+  isSubmit: PropTypes.bool.isRequired,
 };
 
 ButtonRound.defaultProps = {
-  link: '',
+  onClickFunction: () => {},
 };
 
 export default ButtonRound;
