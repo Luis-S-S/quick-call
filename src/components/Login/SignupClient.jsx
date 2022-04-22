@@ -1,11 +1,12 @@
 /* eslint-disable no-useless-escape */
 import './Login.scss';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { createClient } from '../../services/clients';
 import ButtonRound from '../ButtonRound/ButtonRound';
 
 export default function SignupClient() {
+  const navigation = useNavigate();
   const [form, setForm] = useState({});
   const [isValidated, setIsValidated] = useState(true);
   const [errorMsg, setErrorMsg] = useState();
@@ -77,6 +78,7 @@ export default function SignupClient() {
       [name]: value.trim(),
     });
   };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     validateOnSubmit();
@@ -84,7 +86,7 @@ export default function SignupClient() {
       await createClient(form);
       setForm({});
       setErrorMsg();
-      document.querySelector('form').reset();
+      navigation('/');
     }
   };
 
