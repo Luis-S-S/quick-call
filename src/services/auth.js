@@ -1,4 +1,4 @@
-const API_URL = process.env.REACT_APP_AUTH_BASE_URL;
+const API_URL = 'http://localhost:8080/auth/local';
 
 export async function userLogin(body) {
   try {

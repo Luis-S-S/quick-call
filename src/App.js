@@ -10,6 +10,7 @@ import SignupClient from './components/Login/SignupClient';
 import Search from './pages/Search';
 import ProfilePro from './pages/ProfilePro';
 import EditarPerfil from './pages/EditarPerfil';
+import Payments from './components/Payments/Payments';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route path="/search" element={<Search />} />
           <Route path="/profilePro/:id" element={<ProfilePro />} />
           <Route path="/editarperfil" element={<EditarPerfil />} />
+          <Route path="/payments" element={<Payments />} />
         </Routes>
       </Router>
     </div>
