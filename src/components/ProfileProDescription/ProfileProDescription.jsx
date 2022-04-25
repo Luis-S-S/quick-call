@@ -39,6 +39,7 @@ function ProfileProDescription() {
             <span className="fa fa-star-half-o" />
             <br />
             <LinkSquare>Iniciar Chat</LinkSquare>
+            <LinkSquare link="/payments">Pago</LinkSquare>
           </div>
         </div>
       </div>
