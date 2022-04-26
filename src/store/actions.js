@@ -1,3 +1,2 @@
-export const trabajo = (val) => ({ type: 'trabajo', payload: val });
-export const detalle = (val) => ({ type: 'detalle', payload: val });
-export const loadUsers = (users) => ({ type: 'LOAD_USERS', payload: users });
+export const setView = (view) => ({ type: 'SET_VIEW', payload: view });
+export const setUser = (val) => ({ type: 'SET_VIEW', payload: val });

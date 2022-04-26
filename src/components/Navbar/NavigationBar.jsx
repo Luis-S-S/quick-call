@@ -1,12 +1,14 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './NavigationBar.scss';
 import { userLogOut } from '../../services/auth';
 
 function NavBar() {
+  const navigation = useNavigate();
   const [user, setUser] = useState(window.localStorage.user);
   const handlerLogOut = () => {
     userLogOut();
+    navigation('/');
     setUser(null);
   };
   return (

@@ -9,8 +9,6 @@ export async function userLogin(body) {
       },
       body: JSON.stringify(body),
     });
-    // const data = await response.json();
-    // return data;
     return response;
   } catch (error) {
     throw new Error(error);

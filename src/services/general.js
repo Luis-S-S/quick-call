@@ -92,6 +92,16 @@ function removeQueryValueFromObject(URL, value) {
   return queryObject;
 }
 
+function objectDifference(obj1, obj2) {
+  const diff = {};
+  Object.keys(obj1).forEach((key) => {
+    if (obj1[key] !== obj2[key]) {
+      diff[key] = obj2[key];
+    }
+  });
+  return diff;
+}
+
 export {
   urlQueryParamToObject,
   urlQueryParamValuesToArray,
@@ -99,4 +109,5 @@ export {
   removeElementFromArray,
   addElementInArray,
   removeQueryValueFromObject,
+  objectDifference,
 };

@@ -1,14 +1,12 @@
-// import MenuLateral from '../components/Menulateral/Menulateral';
+import Dashboard from '../components/Dashboard/Dashboard';
 import NavigationBar from '../components/Navbar/NavigationBar';
 import Footer from '../components/Footer/Footer';
-
-// useEffect => getSingleClient => backend => isAuthenticated ? getSingleClient : redirect to login
 
 function EditarPerfil() {
   return (
     <div>
       <NavigationBar />
-      {/* <MenuLateral /> */}
+      <Dashboard />
       <Footer />
     </div>
 
