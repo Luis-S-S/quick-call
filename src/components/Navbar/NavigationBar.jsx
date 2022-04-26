@@ -1,15 +1,17 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import './NavigationBar.scss';
+import { useSelector } from 'react-redux';
 import { userLogOut } from '../../services/auth';
+import './NavigationBar.scss';
 
 function NavBar() {
+  const user = useSelector((state) => state.user);
   const navigation = useNavigate();
-  const [user, setUser] = useState(window.localStorage.user);
+  const [token, setToken] = useState(window.localStorage.user);
   const handlerLogOut = () => {
     userLogOut();
     navigation('/');
-    setUser(null);
+    setToken(null);
   };
   return (
     <div className="navbar">
@@ -20,7 +22,7 @@ function NavBar() {
         <input type="" placeholder="   ¿Qué necesitas?..." id="search" />
         <ul>
           <li><Link to="/search">Buscar</Link></li>
-          {!user
+          {!token
             ? (
               <>
                 <li><Link to="/signup">Registrarse</Link></li>
@@ -30,7 +32,7 @@ function NavBar() {
             )
             : (
               <>
-                <li><Link to="/editarperfil">Editar perfil</Link></li>
+                <li><Link to="/editarperfil">{user.name}</Link></li>
                 <li><button type="button" onClick={handlerLogOut}>Cerrar Sesión</button></li>
               </>
             )}

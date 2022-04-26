@@ -1,28 +1,14 @@
-import { useDispatch, useSelector } from 'react-redux';
+// import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
-import { fetchRemoveFavorite } from '../../store/actions';
+// import { fecthClientProfile } from '../../store/actions';
 import LinkSquare from '../LinkSquare/LinkSquare';
 import './ProListItem.scss';
 
 function ProListItem({
   details: {
     name, image, _id,
-  },
+  }, deleteFunction,
 }) {
-  const dashboardInformation = useSelector((state) => state.userDashboard);
-  const { favorites } = useSelector((state) => state.userDashboard);
-  const dispatch = useDispatch();
-
-  const handlerDeleteFavorite = (e) => {
-    const { id } = e.target;
-    const indexOf = favorites.indexOf(id);
-    if (indexOf !== -1) {
-      favorites.splice(indexOf, 1);
-    }
-    const payload = { key: 'favorites', value: favorites };
-    dispatch(fetchRemoveFavorite(dashboardInformation.id, payload));
-  };
-
   return (
     <div className="pro-list-item">
       <div className="pro-list-item__start">
@@ -32,7 +18,7 @@ function ProListItem({
       <div className="pro-list-item__end">
         <LinkSquare link={`/ProfilePro/${_id}`}>Ver Perfil</LinkSquare>
         <LinkSquare>Iniciar Chat</LinkSquare>
-        <button className="pro-list-item__button" type="button" onClick={handlerDeleteFavorite}>
+        <button className="pro-list-item__button" type="button" onClick={deleteFunction}>
           <img id={_id} className="pro-list-item__icon" src="/images/icons/warning-icon.svg" alt="Eliminar Favorito" />
         </button>
       </div>
@@ -50,6 +36,7 @@ ProListItem.propTypes = {
     }),
     _id: PropTypes.string.isRequired,
   }),
+  deleteFunction: PropTypes.func,
 };
 
 ProListItem.defaultProps = {
@@ -61,6 +48,7 @@ ProListItem.defaultProps = {
       ],
     },
   },
+  deleteFunction: () => {},
 };
 
 export default ProListItem;

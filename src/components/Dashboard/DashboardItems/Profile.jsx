@@ -2,19 +2,20 @@
 import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import ButtonRound from '../../ButtonRound/ButtonRound';
-import { updateClient } from '../../../services/clients';
+import { updateClient, getClientByEmail } from '../../../services/clients';
 import { objectDifference } from '../../../services/general';
 import { allCategories } from '../../../services/categories';
 import './Profile.scss';
 
 export default function Profile() {
-  const dashboardInformation = useSelector((state) => state.userDashboard);
-  const [citiesList, setCities] = useState([]);
+  const [citiesList, setCitiesList] = useState([]);
+  const [isSuccess, setIsSuccess] = useState(false);
   const [newUser, setNewUser] = useState({});
   const [phoneNumberError, setPhoneNumberError] = useState();
   const [responseMsg, setResponseMsg] = useState('');
-  const [isSuccess, setIsSuccess] = useState(false);
+  const [searchId, setSearchId] = useState('');
   const [user, setUser] = useState({});
+  const userEmail = useSelector((state) => state.user.email);
 
   const handleOnChange = (e) => {
     const { name: targetName, value } = e.target;
@@ -37,7 +38,7 @@ export default function Profile() {
         if (submitUser.phoneNumber) {
           submitUser.phoneNumber = parseInt(submitUser.phoneNumber, 10);
         }
-        const response = await updateClient(dashboardInformation.id, submitUser);
+        const response = await updateClient(searchId, submitUser);
         if (response.status === 200) {
           setIsSuccess(true);
           setResponseMsg('Se actualizó correctamente');
@@ -56,25 +57,25 @@ export default function Profile() {
   };
 
   useEffect(async () => {
-    const [document] = await allCategories();
-    setCities(document.cities);
-  }, []);
-
-  useEffect(() => {
+    const data = await getClientByEmail(userEmail);
     const {
-      name, email, phoneNumber, city,
-    } = dashboardInformation;
-    setNewUser({
-      name, email, phoneNumber, city,
-    });
+      id, name, email, phoneNumber, city, profilePicture,
+    } = await data.json();
+    const [document] = await allCategories();
+    setSearchId(id);
     setUser({
-      name, email, phoneNumber, city,
+      name, email, phoneNumber, city, profilePicture,
     });
-  }, [dashboardInformation]);
+    setNewUser({
+      name, email, phoneNumber, city, profilePicture,
+    });
+    setCitiesList(document.cities);
+  }, []);
 
   return (
     <div className="dashboard-profile">
       <h1 className="dashboard-profile__title">Actualiza tu perfil</h1>
+      <img className="dashboard-profile__picture" src={newUser?.profilePicture} alt="Foto de perfil" />
       <form className="profile-update">
         <div className="input-control">
           <label className="profile__label" htmlFor="name">Nombre: </label>

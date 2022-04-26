@@ -1,14 +1,15 @@
 @import '../../App.scss';
 
 .pro-list-item {
-  display: flex;
   align-items: center;
+  border-radius: 10px;
+  box-shadow: 0 0 10px 0px $dark-grey;
+  display: flex;
   justify-content: space-between;
-  width: 80%;
-  padding: 0.25em .75em;
   margin: 0;
-  box-shadow: 0 0 2px 3px $dark-grey;
+  padding: 0.25em .75em;
   transition: all 0.3s ease;
+  width: 80%;
   &:hover {
     transform: scale(1.05);
   }
@@ -20,8 +21,8 @@
 }
 
 .pro-list-item__button {
-    border: none;
     background: none;
+    border: none;
     cursor: pointer;
 }
 

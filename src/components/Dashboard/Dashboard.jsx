@@ -1,6 +1,5 @@
-import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { setView, fetchClientDashboard } from '../../store/actions';
+import { setView } from '../../store/actions';
 import Profile from './DashboardItems/Profile';
 import Chats from './DashboardItems/Chats';
 import Favorites from './DashboardItems/Favorites';
@@ -30,14 +29,9 @@ function MenuLateral() {
   };
 
   const handleClick = (e) => {
-    dispatch(fetchClientDashboard(localStorage.getItem('user')));
     const { value } = e.target;
     dispatch(setView(value));
   };
-
-  useEffect(() => {
-    dispatch(fetchClientDashboard());
-  }, []);
 
   return (
     <div className="dashboard">

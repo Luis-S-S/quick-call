@@ -1,0 +1,11 @@
+@import '../../../App.scss';
+
+.dashboard-favorites {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+    justify-content: center;
+    margin: 1.5em 0;
+    width: 100%;
+}
