@@ -22,6 +22,14 @@ function reducer(state = initialState, action) {
         ...state,
         error: action.payload,
       };
+    case 'EDIT_USER_DASHBOARD':
+      return {
+        ...state,
+        userDashboard: {
+          ...state.userDashboard,
+          [action.payload.key]: action.payload.value,
+        },
+      };
     default:
       return state;
   }

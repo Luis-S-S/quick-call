@@ -1,7 +1,6 @@
 /* eslint-disable react/no-array-index-key */
 import { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchClientDashboard } from '../../../store/actions';
+import { useSelector } from 'react-redux';
 import ButtonRound from '../../ButtonRound/ButtonRound';
 import { updateClient } from '../../../services/clients';
 import { objectDifference } from '../../../services/general';
@@ -10,7 +9,6 @@ import './Profile.scss';
 
 export default function Profile() {
   const dashboardInformation = useSelector((state) => state.userDashboard);
-  const dispatch = useDispatch();
   const [citiesList, setCities] = useState([]);
   const [newUser, setNewUser] = useState({});
   const [phoneNumberError, setPhoneNumberError] = useState();
@@ -31,28 +29,33 @@ export default function Profile() {
 
   const handleOnSubmit = async (e) => {
     e.preventDefault();
+
     const submitUser = objectDifference(user, newUser);
-    if (submitUser.phoneNumber) {
-      submitUser.phoneNumber = parseInt(submitUser.phoneNumber, 10);
-      setResponseMsg('Ocurrió un error, intente nuevamente');
-    }
-    if (!phoneNumberError) {
-      const result = await updateClient(dashboardInformation.id, submitUser);
-      switch (result.status) {
-        case 200:
+
+    if (Object.keys(submitUser).length !== 0) {
+      if (!phoneNumberError) {
+        if (submitUser.phoneNumber) {
+          submitUser.phoneNumber = parseInt(submitUser.phoneNumber, 10);
+        }
+        const response = await updateClient(dashboardInformation.id, submitUser);
+        if (response.status === 200) {
           setIsSuccess(true);
           setResponseMsg('Se actualizó correctamente');
-          break;
-        default:
+        } else {
           setIsSuccess(false);
-          setResponseMsg('Ocurrió un error, intente nuevamente');
-          break;
+          setResponseMsg('Ocurrió un error');
+        }
+      } else {
+        setResponseMsg('Ocurrió un error');
+        setIsSuccess(false);
       }
+    } else {
+      setResponseMsg('No hay cambios para actualizar');
+      setIsSuccess(false);
     }
   };
 
   useEffect(async () => {
-    dispatch(fetchClientDashboard(localStorage.getItem('user')));
     const [document] = await allCategories();
     setCities(document.cities);
   }, []);

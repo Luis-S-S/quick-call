@@ -20,17 +20,17 @@ export async function getSingleClientById(id) {
   }
 }
 
-export async function getClientDashboard(token) {
+export async function getClientDashboard() {
   try {
     const payload = {
       method: 'GET',
       headers: {
         'Content-type': 'application/json',
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${localStorage.getItem('user')}`,
       },
     };
     const response = await fetch(`${API_URL}/clients/dashboard/profile`, payload);
-    return await response.json();
+    return response;
   } catch (error) {
     throw new Error(error);
   }
@@ -55,6 +55,23 @@ export async function createClient(body) {
 }
 
 export async function updateClient(id, body) {
+  const payload = {
+    method: 'PATCH',
+    headers: {
+      'Content-type': 'application/json',
+      Authorization: `Bearer ${localStorage.getItem('user')}`,
+    },
+    body: JSON.stringify(body),
+  };
+  try {
+    const response = await fetch(`${API_URL}/clients/${id}`, payload);
+    return response;
+  } catch (error) {
+    throw new Error(error);
+  }
+}
+
+export async function removeFavorite(id, body) {
   const payload = {
     method: 'PATCH',
     headers: {
