@@ -1,29 +1,32 @@
 /* eslint-disable react/no-array-index-key */
 import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchClientDashboard } from '../../../store/actions';
 import ButtonRound from '../../ButtonRound/ButtonRound';
-import { getClientProfile, updateClient } from '../../../services/clients';
+import { updateClient } from '../../../services/clients';
 import { objectDifference } from '../../../services/general';
 import { allCategories } from '../../../services/categories';
 import './Profile.scss';
 
 export default function Profile() {
+  const dashboardInformation = useSelector((state) => state.userDashboard);
+  const dispatch = useDispatch();
   const [citiesList, setCities] = useState([]);
   const [newUser, setNewUser] = useState({});
   const [phoneNumberError, setPhoneNumberError] = useState();
   const [responseMsg, setResponseMsg] = useState('');
   const [isSuccess, setIsSuccess] = useState(false);
   const [user, setUser] = useState({});
-  const userToken = localStorage.getItem('user');
 
   const handleOnChange = (e) => {
-    const { name, value } = e.target;
-    if (name === 'phoneNumber' && value.length !== 10) {
+    const { name: targetName, value } = e.target;
+    if (targetName === 'phoneNumber' && value.length !== 10) {
       setPhoneNumberError('El número debe tener 10 dígitos');
       setIsSuccess(false);
     } else {
       setPhoneNumberError('');
     }
-    setNewUser({ ...newUser, [name]: value });
+    setNewUser({ ...newUser, [targetName]: value });
   };
 
   const handleOnSubmit = async (e) => {
@@ -34,7 +37,7 @@ export default function Profile() {
       setResponseMsg('Ocurrió un error, intente nuevamente');
     }
     if (!phoneNumberError) {
-      const result = await updateClient(user.id, submitUser);
+      const result = await updateClient(dashboardInformation.id, submitUser);
       switch (result.status) {
         case 200:
           setIsSuccess(true);
@@ -49,11 +52,22 @@ export default function Profile() {
   };
 
   useEffect(async () => {
+    dispatch(fetchClientDashboard(localStorage.getItem('user')));
     const [document] = await allCategories();
     setCities(document.cities);
-    setUser(await getClientProfile(userToken));
-    setNewUser(await getClientProfile(userToken));
   }, []);
+
+  useEffect(() => {
+    const {
+      name, email, phoneNumber, city,
+    } = dashboardInformation;
+    setNewUser({
+      name, email, phoneNumber, city,
+    });
+    setUser({
+      name, email, phoneNumber, city,
+    });
+  }, [dashboardInformation]);
 
   return (
     <div className="dashboard-profile">
@@ -75,7 +89,9 @@ export default function Profile() {
         <div className="input-control">
           <label className="profile__label" htmlFor="city">Ciudad: </label>
           <select className="profile__input" name="city" value={newUser?.city || ''} onChange={handleOnChange}>
-            {citiesList.map((city, idx) => (<option key={idx} value={city}>{city}</option>))}
+            {citiesList.map(
+              (cityItem, idx) => (<option key={idx} value={cityItem}>{cityItem}</option>),
+            )}
           </select>
         </div>
         <ButtonRound onClickFunction={handleOnSubmit} isSubmit>Actualizar</ButtonRound>

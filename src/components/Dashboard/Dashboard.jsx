@@ -1,10 +1,10 @@
 import { useSelector, useDispatch } from 'react-redux';
+import { setView } from '../../store/actions';
 import Profile from './DashboardItems/Profile';
 import Chats from './DashboardItems/Chats';
 import Favorites from './DashboardItems/Favorites';
 import Contracts from './DashboardItems/Contracts';
 import PQR from './DashboardItems/PQR';
-import { setView } from '../../store/actions';
 import './Dashboard.scss';
 
 function MenuLateral() {

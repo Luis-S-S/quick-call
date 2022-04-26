@@ -1,7 +1,8 @@
 /* eslint-disable default-param-last */
 const initialState = {
-  user: {},
+  userDashboard: {},
   view: 'Profile',
+  error: '',
 };
 
 function reducer(state = initialState, action) {
@@ -11,10 +12,15 @@ function reducer(state = initialState, action) {
         ...state,
         view: action.payload,
       };
-    case 'SET_USER':
+    case 'SET_USER_DASHBOARD':
       return {
         ...state,
-        user: action.payload,
+        userDashboard: action.payload,
+      };
+    case 'SET_GLOBAL_ERROR':
+      return {
+        ...state,
+        error: action.payload,
       };
     default:
       return state;

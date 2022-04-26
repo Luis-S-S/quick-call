@@ -20,7 +20,7 @@ export async function getSingleClientById(id) {
   }
 }
 
-export async function getClientProfile(token) {
+export async function getClientDashboard(token) {
   try {
     const payload = {
       method: 'GET',
