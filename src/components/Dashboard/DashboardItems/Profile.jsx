@@ -7,17 +7,19 @@ import { allCategories } from '../../../services/categories';
 import './Profile.scss';
 
 export default function Profile() {
-  const userToken = localStorage.getItem('user');
-  const [responseMsg, setResponseMsg] = useState('');
-  const [phoneNumberError, setPhoneNumberError] = useState();
-  const [user, setUser] = useState({});
-  const [newUser, setNewUser] = useState({});
   const [citiesList, setCities] = useState([]);
+  const [newUser, setNewUser] = useState({});
+  const [phoneNumberError, setPhoneNumberError] = useState();
+  const [responseMsg, setResponseMsg] = useState('');
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [user, setUser] = useState({});
+  const userToken = localStorage.getItem('user');
 
   const handleOnChange = (e) => {
     const { name, value } = e.target;
     if (name === 'phoneNumber' && value.length !== 10) {
       setPhoneNumberError('El número debe tener 10 dígitos');
+      setIsSuccess(false);
     } else {
       setPhoneNumberError('');
     }
@@ -35,9 +37,11 @@ export default function Profile() {
       const result = await updateClient(user.id, submitUser);
       switch (result.status) {
         case 200:
+          setIsSuccess(true);
           setResponseMsg('Se actualizó correctamente');
           break;
         default:
+          setIsSuccess(false);
           setResponseMsg('Ocurrió un error, intente nuevamente');
           break;
       }
@@ -76,7 +80,7 @@ export default function Profile() {
         </div>
         <ButtonRound onClickFunction={handleOnSubmit} isSubmit>Actualizar</ButtonRound>
       </form>
-      <div className="result-msg">{responseMsg}</div>
+      <div className={isSuccess ? 'response--success' : 'response--fail'}>{responseMsg}</div>
     </div>
 
   );

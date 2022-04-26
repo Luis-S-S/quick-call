@@ -41,3 +41,13 @@
     color: red;
     @include text-body;
 }
+
+.response--success {
+    @include text-body;
+    color: green;
+}
+
+.response--fail {
+    @include text-body;
+    color: red;
+}
