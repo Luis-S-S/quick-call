@@ -8,6 +8,7 @@ import './Profile.scss';
 
 export default function Profile() {
   const userToken = localStorage.getItem('user');
+  const [responseMsg, setResponseMsg] = useState('');
   const [phoneNumberError, setPhoneNumberError] = useState();
   const [user, setUser] = useState({});
   const [newUser, setNewUser] = useState({});
@@ -23,14 +24,23 @@ export default function Profile() {
     setNewUser({ ...newUser, [name]: value });
   };
 
-  const handleOnSubmit = (e) => {
+  const handleOnSubmit = async (e) => {
     e.preventDefault();
     const submitUser = objectDifference(user, newUser);
     if (submitUser.phoneNumber) {
       submitUser.phoneNumber = parseInt(submitUser.phoneNumber, 10);
+      setResponseMsg('Ocurrió un error, intente nuevamente');
     }
     if (!phoneNumberError) {
-      updateClient(user.id, submitUser);
+      const result = await updateClient(user.id, submitUser);
+      switch (result.status) {
+        case 200:
+          setResponseMsg('Se actualizó correctamente');
+          break;
+        default:
+          setResponseMsg('Ocurrió un error, intente nuevamente');
+          break;
+      }
     }
   };
 
@@ -47,25 +57,26 @@ export default function Profile() {
       <form className="profile-update">
         <div className="input-control">
           <label className="profile__label" htmlFor="name">Nombre: </label>
-          <input className="profile__input" name="name" value={newUser?.name} onChange={handleOnChange} />
+          <input className="profile__input" name="name" value={newUser?.name || ''} onChange={handleOnChange} />
         </div>
         <div className="input-control">
           <label className="profile__label" htmlFor="email">Correo electrónico: </label>
-          <input className="profile__input" name="email" value={newUser?.email} disabled />
+          <input className="profile__input" name="email" value={newUser?.email || ''} disabled />
         </div>
         <div className="input-control">
           <label className="profile__label" htmlFor="phoneNumber">Teléfono: </label>
-          <input className="profile__input" name="phoneNumber" value={newUser?.phoneNumber} onChange={handleOnChange} />
+          <input className="profile__input" name="phoneNumber" value={newUser?.phoneNumber || ''} onChange={handleOnChange} />
           <span className="error-msg">{phoneNumberError}</span>
         </div>
         <div className="input-control">
           <label className="profile__label" htmlFor="city">Ciudad: </label>
-          <select className="profile__input" name="city" value={newUser?.city} onChange={handleOnChange}>
+          <select className="profile__input" name="city" value={newUser?.city || ''} onChange={handleOnChange}>
             {citiesList.map((city, idx) => (<option key={idx} value={city}>{city}</option>))}
           </select>
         </div>
         <ButtonRound onClickFunction={handleOnSubmit} isSubmit>Actualizar</ButtonRound>
       </form>
+      <div className="result-msg">{responseMsg}</div>
     </div>
 
   );
