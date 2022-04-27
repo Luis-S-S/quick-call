@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
-import { fecthClientProfile } from '../../store/actions';
+import { fetchClientProfile } from '../../store/actions';
 import { userLogin } from '../../services/auth';
 import ButtonRound from '../ButtonRound/ButtonRound';
 import './Login.scss';
@@ -28,7 +28,7 @@ function Login() {
     const user = await userLogin(form);
     if (user.status === 200) {
       localStorage.setItem('user', await user.json());
-      dispatch(fecthClientProfile());
+      dispatch(fetchClientProfile());
       navigation('/');
     } else {
       setErrorMsg(await user.json());

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import LinkRound from '../../LinkRound/LinkRound';
 import { getClientByEmail, updateClient } from '../../../services/clients';
 import { getSingleProfessional } from '../../../services/professional';
 import ProListItem from '../../ProListItem/ProListItem';
@@ -32,13 +33,22 @@ export default function Favorites() {
 
   return (
     <div className="dashboard-favorites">
-      {favoritesProfessionals.map((item) => (
-        <ProListItem
-          key={item?._id}
-          details={item}
-          deleteFunction={handlerClickDeleteFavorite}
-        />
-      ))}
+      {
+      favoritesProfessionals.length > 0
+        ? favoritesProfessionals.map((item) => (
+          <ProListItem
+            key={item?._id}
+            details={item}
+            deleteFunction={handlerClickDeleteFavorite}
+          />
+        ))
+        : (
+          <>
+            <h1 className="dashboard-favorites--error">Actualmente no tienes ningún favorito seleccionado</h1>
+            <LinkRound link="/search">Encuentra a los mejores profesionales en QC</LinkRound>
+          </>
+        )
+      }
     </div>
   );
 }
