@@ -100,12 +100,6 @@ export default function SignupClient() {
           <span className="titulo_register">Registrarse</span>
           <span className="texto_register">Crea tu nueva cuenta</span>
         </div>
-        <div className="redes_sociales">
-          <img src="images/icons/whatsapp-logo.svg" alt="whatsapp" />
-          <img src="images/icons/facebook-icon.svg" alt="facebook" />
-          <img src="images/icons/twitter-icon.svg" alt="twitter" />
-          <img src="images/icons/linkedin-logo.svg" alt="linkedin" />
-        </div>
         {errorMsg && (<div className="error-msg">{errorMsg}</div>)}
         <form className="formulario" onSubmit={handleSubmit}>
           <input name="name" placeholder="Ingresa tu nombre" type="text" onChange={handleChange} />
