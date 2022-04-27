@@ -3,11 +3,13 @@ import './ErrorMessage.scss';
 
 function ErrorMessage({ code, message }) {
   return (
-    <div className="error-page">
-      <div>{code}</div>
-      <div className="txt">
-        {message}
-        <span className="blink">_</span>
+    <div className="error-message">
+      <div className="error-page">
+        <div>{code}</div>
+        <div className="txt">
+          {message}
+          <span className="blink">_</span>
+        </div>
       </div>
     </div>
   );
