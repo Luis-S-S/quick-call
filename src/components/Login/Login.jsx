@@ -34,9 +34,11 @@ function Login() {
   return (
     <div className="login">
       <div className="container">
-        <Link className="link__logo" to="/">
-          <img className="logo" src="images/logo/quick-call-logo.svg" alt="" />
-        </Link>
+        <div>
+          <Link className="link__logo" to="/">
+            <img className="logo" src="images/logo/quick-call-logo.svg" alt="" />
+          </Link>
+        </div>
 
         <div className="texto">
           <span className="titulo_register"> Hola de nuevo! </span>
@@ -46,12 +48,6 @@ function Login() {
           <input name="email" placeholder="Ingresa tu E-mail" type="email" onChange={handleChange} />
           <input name="password" placeholder="Ingresa tu Contraseña" type="password" onChange={handleChange} />
           {errorMsg && (<div className="error-msg">{errorMsg}</div>)}
-          <div className="redes_sociales">
-            <img src="images/icons/whatsapp-logo.svg" alt="whatsapp" />
-            <img src="images/icons/facebook-icon.svg" alt="facebook" />
-            <img src="images/icons/twitter-icon.svg" alt="twitter" />
-            <img src="images/icons/linkedin-logo.svg" alt="linkedin" />
-          </div>
           <div className="footer1">
             <span className="footer11">
               ¿No tienes una cuenta?.
