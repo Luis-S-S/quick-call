@@ -1,4 +1,4 @@
-@import '../../../App.scss';
+@import '../../../../App.scss';
 
 .dashboard-favorites {
     align-items: center;
@@ -8,6 +8,11 @@
     justify-content: center;
     margin: 1.5em 0;
     width: 100%;
+}
+
+.dashboard-favorites__title {
+    @include text-title;
+    color: $blue;
 }
 
 .dashboard-favorites--error {

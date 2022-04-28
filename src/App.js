@@ -3,13 +3,15 @@ import './App.scss';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import Home from './pages/Home';
-import Login from './components/Login/Login';
-import Signup from './components/Login/Signup';
-import SignupProfessional from './components/SignupProfessional/SignupProfessional';
-import SignupClient from './components/Login/SignupClient';
 import Search from './pages/Search';
 import ProfilePro from './pages/ProfilePro';
-import EditarPerfil from './pages/EditarPerfil';
+import Signup from './components/Login/Signup';
+import SignupClient from './components/Login/SignupClient';
+import SignupProfessional from './components/SignupProfessional/SignupProfessional';
+import Login from './components/Login/Login';
+import Profile from './pages/Profile';
+import PQRForm from './components/PQRForm/PQRForm';
+import PQRDetail from './components/PQRDetail/PQRDetail';
 import Payments from './components/Payments/Payments';
 import ErrorMessage from './components/ErrorMessage/ErrorMessage';
 
@@ -19,13 +21,15 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/search" element={<Search />} />
+          <Route path="/profilePro/:id" element={<ProfilePro />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/signup_client" element={<SignupClient />} />
           <Route path="/signup_professional" element={<SignupProfessional />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/search" element={<Search />} />
-          <Route path="/profilePro/:id" element={<ProfilePro />} />
-          <Route path="/editarperfil" element={<EditarPerfil />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/pqr_form" element={<PQRForm />} />
+          <Route path="/pqr/:id" element={<PQRDetail />} />
           <Route path="/payments" element={<Payments />} />
           <Route path="*" element={<ErrorMessage code={404} message="Oops! Pagina no encontrada" />} />
         </Routes>

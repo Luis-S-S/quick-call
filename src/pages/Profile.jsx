@@ -6,11 +6,11 @@ function EditarPerfil() {
   const userToken = localStorage.getItem('user');
 
   return (
-    <div>
+    <>
       <NavigationBar />
       {userToken ? <Dashboard /> : <div>Error 401</div>}
       <Footer />
-    </div>
+    </>
 
   );
 }

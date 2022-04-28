@@ -1,0 +1,31 @@
+@import '../../App.scss';
+
+.pqr-list-container {
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    padding: .75em;
+    width: 80%;
+    box-shadow: 0 0 10px 0px $dark-grey;
+    transition: all 0.3s ease;
+    @include text-body;
+
+    &:hover {
+        transform: scale(1.05);
+    }
+}
+
+.pqr-list__subject, .pqr-list__status {
+    width: 40%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.pqr-list__status {
+    width: 40%;
+}
+
+.pqr-list__link {
+    text-align: end;
+}

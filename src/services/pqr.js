@@ -18,7 +18,6 @@ export async function getPQRByPetitioner(petitionerId) {
         Authorization: `Bearer ${localStorage.getItem('user')}`,
       },
     };
-    console.log(`${API_URL}/PQRS/petitioner/${petitionerId}`);
     const response = await fetch(`${API_URL}/PQRS/petitioner/${petitionerId}`, payload);
     return response;
   } catch (error) {

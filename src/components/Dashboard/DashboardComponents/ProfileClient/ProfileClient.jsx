@@ -1,11 +1,11 @@
 /* eslint-disable react/no-array-index-key */
 import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import ButtonRound from '../../ButtonRound/ButtonRound';
-import { updateClient, getClientByEmail } from '../../../services/clients';
-import { objectDifference } from '../../../services/general';
-import { allCategories } from '../../../services/categories';
-import './Profile.scss';
+import ButtonRound from '../../../ButtonRound/ButtonRound';
+import { updateClient, getClientByEmail } from '../../../../services/clients';
+import { objectDifference } from '../../../../services/general';
+import { allCategories } from '../../../../services/categories';
+import './ProfileClient.scss';
 
 export default function Profile() {
   const [citiesList, setCitiesList] = useState([]);

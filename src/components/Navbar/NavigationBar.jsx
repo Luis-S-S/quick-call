@@ -31,7 +31,7 @@ function NavBar() {
             )
             : (
               <>
-                <li><Link to="/editarperfil">{user.name}</Link></li>
+                <li><Link to="/profile">{user.name}</Link></li>
                 <li><button type="button" onClick={handlerLogOut}>Cerrar Sesión</button></li>
               </>
             )}

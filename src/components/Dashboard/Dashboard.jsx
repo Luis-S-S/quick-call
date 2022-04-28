@@ -1,10 +1,10 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { setView } from '../../store/actions';
-import Profile from './DashboardItems/Profile';
-import Chats from './DashboardItems/Chats';
-import Favorites from './DashboardItems/Favorites';
-import Contracts from './DashboardItems/Contracts';
-import PQR from './DashboardItems/PQR';
+import ProfileClient from './DashboardComponents/ProfileClient/ProfileClient';
+import Chats from './DashboardComponents/Chats';
+import Favorites from './DashboardComponents/Favorites/Favorites';
+import Jobs from './DashboardComponents/Jobs/Jobs';
+import PQRs from './DashboardComponents/PQR/PQR';
 import './Dashboard.scss';
 
 function MenuLateral() {
@@ -14,15 +14,15 @@ function MenuLateral() {
   const renderDashboard = (view) => {
     switch (view) {
       case 'Profile':
-        return <Profile />;
+        return <ProfileClient />;
       case 'Chats':
         return <Chats />;
       case 'Favorites':
         return <Favorites />;
-      case 'Contracts':
-        return <Contracts />;
-      case 'PQR':
-        return <PQR />;
+      case 'Jobs':
+        return <Jobs />;
+      case 'PQRs':
+        return <PQRs />;
       default:
         return Error;
     }
@@ -39,8 +39,8 @@ function MenuLateral() {
         <button className="side-menu__btn" type="button" onClick={handleClick} value="Profile">Mi perfil</button>
         <button className="side-menu__btn" type="button" onClick={handleClick} value="Chats">Chats</button>
         <button className="side-menu__btn" type="button" onClick={handleClick} value="Favorites">Favoritos</button>
-        <button className="side-menu__btn" type="button" onClick={handleClick} value="Contracts">Contratos</button>
-        <button className="side-menu__btn" type="button" onClick={handleClick} value="PQR">PQRs</button>
+        <button className="side-menu__btn" type="button" onClick={handleClick} value="Jobs">Trabajos</button>
+        <button className="side-menu__btn" type="button" onClick={handleClick} value="PQRs">PQRs</button>
       </div>
       <div className="dashboard__view">
         {renderDashboard(viewState)}
