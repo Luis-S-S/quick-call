@@ -11,6 +11,7 @@ import Search from './pages/Search';
 import ProfilePro from './pages/ProfilePro';
 import EditarPerfil from './pages/EditarPerfil';
 import Payments from './components/Payments/Payments';
+import ErrorMessage from './components/ErrorMessage/ErrorMessage';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
           <Route path="/profilePro/:id" element={<ProfilePro />} />
           <Route path="/editarperfil" element={<EditarPerfil />} />
           <Route path="/payments" element={<Payments />} />
+          <Route path="*" element={<ErrorMessage code={404} message="Oops! Pagina no encontrada" />} />
         </Routes>
       </Router>
     </div>

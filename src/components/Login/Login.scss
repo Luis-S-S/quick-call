@@ -5,18 +5,16 @@
   display: flex;
   justify-content: center;
   background-color: lightblue;
+  min-height: 100vh;
+  align-items: center;
 
   .container{
-    display:flex;
-    flex-direction: column;
-    flex-wrap: wrap;
     border-radius: 20px;
     background-color: white;
     margin: 0px;
     padding: 30px;
 
     .link__logo {
-      min-height: 200px;
       text-align: center;
       display: block;
     }
@@ -54,7 +52,6 @@
       input, textarea {
         display:block;
         @include text-body;
-        width: 60%;
         height: 44px;
         display: flex;
         border: 1px solid $blue;
