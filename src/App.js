@@ -1,6 +1,9 @@
 import './App.scss';
 
+import { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchClientProfile } from './store/actions';
 
 import Home from './pages/Home';
 import Search from './pages/Search';
@@ -16,6 +19,14 @@ import Payments from './components/Payments/Payments';
 import ErrorMessage from './components/ErrorMessage/ErrorMessage';
 
 function App() {
+  const user = useSelector((state) => state.user);
+  const dispatch = useDispatch();
+
+  useEffect(async () => {
+    await dispatch(fetchClientProfile());
+    console.log(user);
+  }, []);
+
   return (
     <div className="App">
       <Router>

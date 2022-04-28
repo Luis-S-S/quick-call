@@ -8,8 +8,9 @@ export const fetchClientProfile = () => async (dispatch) => {
   try {
     const response = await isValidToken();
     const data = await response.json();
+    if (data.error) { throw new Error(data); }
     dispatch(setUser(data));
   } catch (error) {
-    dispatch(setGlobalError(await error.json()));
+    dispatch(setGlobalError(error));
   }
 };
