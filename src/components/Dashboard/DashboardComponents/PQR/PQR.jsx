@@ -1,18 +1,15 @@
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { getClientByEmail } from '../../../../services/clients';
 import { getPQRByPetitioner } from '../../../../services/pqrs';
 import PQRListItem from '../../../PQRListItem/PQRListItem';
 import LinkRound from '../../../LinkRound/LinkRound';
 import './PQR.scss';
 
 export default function PQRs() {
-  const userEmail = useSelector((state) => state.user.email);
+  const { id } = useSelector((state) => state.user);
   const [pqrArray, setPQRArray] = useState([]);
 
   useEffect(async () => {
-    const clientResp = await getClientByEmail(userEmail);
-    const { id } = await clientResp.json();
     const pqrResp = await getPQRByPetitioner(id);
     setPQRArray(await pqrResp.json());
   }, []);
