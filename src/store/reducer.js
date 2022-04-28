@@ -22,6 +22,14 @@ function reducer(state = initialState, action) {
         ...state,
         error: action.payload,
       };
+    case 'UPDATE_FAVORITES':
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          favorites: action.payload,
+        },
+      };
     default:
       return state;
   }

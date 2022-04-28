@@ -17,7 +17,6 @@ export async function userLogin(body) {
 
 export async function userLogOut() {
   window.localStorage.removeItem('user');
-  // destroy cookie
 }
 
 export async function isValidToken() {

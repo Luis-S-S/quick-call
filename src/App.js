@@ -2,7 +2,7 @@ import './App.scss';
 
 import { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { fetchClientProfile } from './store/actions';
 
 import Home from './pages/Home';
@@ -19,13 +19,10 @@ import Payments from './components/Payments/Payments';
 import ErrorMessage from './components/ErrorMessage/ErrorMessage';
 
 function App() {
-  // Ajustar con la cookie
-  const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
   useEffect(async () => {
     await dispatch(fetchClientProfile());
-    console.log(user);
   }, []);
 
   return (

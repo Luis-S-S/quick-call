@@ -1,35 +1,34 @@
 import { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
-import LinkRound from '../../../LinkRound/LinkRound';
-import { getClientByEmail, updateClient } from '../../../../services/clients';
+import { useSelector, useDispatch } from 'react-redux';
+import { updateFavorites } from '../../../../store/actions';
+import { updateClient } from '../../../../services/clients';
 import { getSingleProfessional } from '../../../../services/professionals';
+import LinkRound from '../../../LinkRound/LinkRound';
 import ProListItem from '../../../ProListItem/ProListItem';
 import './Favorites.scss';
 
 export default function Favorites() {
-  const userEmail = useSelector((state) => state.user.email);
-  const [favoritesIdArray, setFavoritesIdArray] = useState([]);
+  const dispatch = useDispatch();
+  const { id, favorites } = useSelector((state) => state.user);
+  const [favoritesId, setFavoritesId] = useState(favorites);
   const [favoritesProfessionals, setFavoritesProfessionals] = useState([]);
-  const [searchId, setSearchId] = useState('');
 
   const handlerClickDeleteFavorite = async (e) => {
-    const newArray = favoritesIdArray.filter((favorite) => favorite !== e.target.id);
-    const response = await updateClient(searchId, { favorites: newArray });
-    if (response.status === 200) { setFavoritesIdArray(newArray); } else { throw new Error('Error al eliminar intente nuevamente'); }
+    const newArray = favoritesId.filter((favorite) => favorite !== e.target.id);
+    const response = await updateClient(id, { favorites: newArray });
+    if (response.status === 200) {
+      dispatch(updateFavorites(newArray));
+      setFavoritesId(newArray);
+    } else {
+      throw new Error('Error al eliminar intente nuevamente');
+    }
   };
 
   useEffect(async () => {
-    const response = await getClientByEmail(userEmail);
-    const { id, favorites } = await response.json();
-    setSearchId(id);
-    setFavoritesIdArray(favorites);
-  }, [userEmail]);
-
-  useEffect(async () => {
-    const promiseArray = favoritesIdArray.map((favoriteId) => getSingleProfessional(favoriteId));
+    const promiseArray = favoritesId.map((favoriteId) => getSingleProfessional(favoriteId));
     const promiseAll = await Promise.all(promiseArray);
     setFavoritesProfessionals(promiseAll);
-  }, [favoritesIdArray]);
+  }, [favoritesId]);
 
   return (
     <div className="dashboard-favorites">
