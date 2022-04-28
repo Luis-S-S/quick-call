@@ -37,11 +37,11 @@ export default function PQRForm() {
 
     const response = await createPQR(baseId, form);
     if (response.status === 201) {
-      alert('Se creó correctamente');
+      // alert('Se creó correctamente');
       dispatch(setView('PQRs'));
       navigate('/profile');
     } else {
-      alert('Ocurrió un error');
+      // alert('Ocurrió un error');
     }
   };
 
