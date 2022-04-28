@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { getClientByEmail } from '../../../../services/clients';
-import { getPQRByPetitioner } from '../../../../services/pqr';
+import { getPQRByPetitioner } from '../../../../services/pqrs';
 import PQRListItem from '../../../PQRListItem/PQRListItem';
 import LinkRound from '../../../LinkRound/LinkRound';
 import './PQR.scss';

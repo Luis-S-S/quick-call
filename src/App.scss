@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=League+Gothic&family=Open+Sans:wght@300;400&display=swap');
 
+$full-height-without-header: calc(100vh - 120px);
 $blue: #18A0FB;
 $light-blue: #C0E4EA;
 $dark-purple: #483786;
@@ -8,7 +9,6 @@ $black: #000000;
 $white: #FFFFFF;
 $dark-grey: #4B4B4B;
 $light-grey: #A6C1DE;
-
 $letter-spacing: -0.02em;
 
 body {

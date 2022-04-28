@@ -10,7 +10,7 @@ import SignupClient from './components/Login/SignupClient';
 import SignupProfessional from './components/SignupProfessional/SignupProfessional';
 import Login from './components/Login/Login';
 import Profile from './pages/Profile';
-import PQRForm from './components/PQRForm/PQRForm';
+import CreatePQR from './pages/CreatePQR/CreatePQR';
 import PQRDetail from './components/PQRDetail/PQRDetail';
 import Payments from './components/Payments/Payments';
 import ErrorMessage from './components/ErrorMessage/ErrorMessage';
@@ -28,7 +28,7 @@ function App() {
           <Route path="/signup_professional" element={<SignupProfessional />} />
           <Route path="/login" element={<Login />} />
           <Route path="/profile" element={<Profile />} />
-          <Route path="/pqr_form" element={<PQRForm />} />
+          <Route path="/pqr_form" element={<CreatePQR />} />
           <Route path="/pqr/:id" element={<PQRDetail />} />
           <Route path="/payments" element={<Payments />} />
           <Route path="*" element={<ErrorMessage code={404} message="Oops! Pagina no encontrada" />} />

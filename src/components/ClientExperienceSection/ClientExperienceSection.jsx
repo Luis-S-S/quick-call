@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import Carousel from 'react-elastic-carousel';
 import ClientExpCard from '../ClientExpCard/ClientExpCard';
-import { getAllClientExperience } from '../../services/clientExperience';
+import { getAllClientExperience } from '../../services/clientExperiences';
 import { getRandomFromArray } from '../../services/general';
 import './ClientExperienceSection.scss';
 

@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import LinkRound from '../../../LinkRound/LinkRound';
 import { getClientByEmail, updateClient } from '../../../../services/clients';
-import { getSingleProfessional } from '../../../../services/professional';
+import { getSingleProfessional } from '../../../../services/professionals';
 import ProListItem from '../../../ProListItem/ProListItem';
 import './Favorites.scss';
 
