@@ -1,27 +1,26 @@
 /* eslint-disable default-param-last */
-const initiaState = {
-  user: 'gonzalesJuan@hotmail.com',
-  vista: 'Contratos',
-  id: '',
+const initialState = {
+  user: {},
+  view: 'Profile',
+  error: '',
 };
 
-function reducer(state = initiaState, action) {
+function reducer(state = initialState, action) {
   switch (action.type) {
-    case 'trabajo':
+    case 'SET_VIEW':
       return {
         ...state,
-        vista: action.payload,
+        view: action.payload,
       };
-    case 'detalle':
+    case 'SET_USER':
       return {
         ...state,
-        vista: action.payload[0],
-        id: action.payload[1],
+        user: action.payload,
       };
-    case 'MULTIPLICAR':
+    case 'SET_GLOBAL_ERROR':
       return {
         ...state,
-        count: state.count * 2,
+        error: action.payload,
       };
     default:
       return state;

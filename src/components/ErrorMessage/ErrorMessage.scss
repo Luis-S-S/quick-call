@@ -1,19 +1,15 @@
 @import url('https://fonts.googleapis.com/css?family=Press+Start+2P');
-
-
-$color: #18A0FB;
-$color2: #1a4f1a;
-$glowSize: 10px;
+@import '../../App.scss';
 
 .error-message{
    .error-page{
       padding: 1rem;
       background: white;
       display: flex;
-      height: calc(100vh - 120px);
-      justify-content: center; 
+      height: $full-height-without-header;
+      justify-content: center;
       align-items: center;
-      color: $color;
+      color: $blue;
       font-size: 6rem;
       flex-direction: column;
       font-family: 'Press Start 2P', cursive;
@@ -30,10 +26,10 @@ $glowSize: 10px;
        50%  {opacity: 1}
        100% {opacity: 1}
    }
-   
+
    .blink {
       animation-name: blink;
-       animation-duration: 1s;
+      animation-duration: 1s;
       animation-iteration-count: infinite;
    }
 }

@@ -2,7 +2,7 @@ import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import './ProfileProDescription.scss';
 import LinkSquare from '../LinkSquare/LinkSquare';
-import { getSingleProfessional } from '../../services/professional';
+import { getSingleProfessional } from '../../services/professionals';
 
 function ProfileProDescription() {
   const { id } = useParams();

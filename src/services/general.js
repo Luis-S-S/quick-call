@@ -92,6 +92,22 @@ function removeQueryValueFromObject(URL, value) {
   return queryObject;
 }
 
+/**
+ *
+ * @param {*} obj1 object to be compare from
+ * @param {*} obj2 object in comparison
+ * @returns object containing the keys and values that are different
+ */
+function objectDifference(obj1, obj2) {
+  const diff = {};
+  Object.keys(obj1).forEach((key) => {
+    if (obj1[key] !== obj2[key]) {
+      diff[key] = obj2[key];
+    }
+  });
+  return diff;
+}
+
 export {
   urlQueryParamToObject,
   urlQueryParamValuesToArray,
@@ -99,4 +115,5 @@ export {
   removeElementFromArray,
   addElementInArray,
   removeQueryValueFromObject,
+  objectDifference,
 };

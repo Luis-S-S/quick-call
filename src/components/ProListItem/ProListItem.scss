@@ -1,0 +1,31 @@
+@import '../../App.scss';
+
+.pro-list-item {
+  align-items: center;
+  border-radius: 10px;
+  box-shadow: 0 0 10px 0px $dark-grey;
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+  padding: 0.25em .75em;
+  transition: all 0.3s ease;
+  width: 80%;
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+.pro-list-item__end {
+    display: flex;
+    gap: .5em;
+}
+
+.pro-list-item__button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.pro-list-item__icon {
+    width: 45px;
+}

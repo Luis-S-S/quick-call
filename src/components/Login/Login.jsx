@@ -1,12 +1,15 @@
-import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-import ButtonRound from '../ButtonRound/ButtonRound';
+import { useDispatch } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
+import { fetchClientProfile } from '../../store/actions';
 import { userLogin } from '../../services/auth';
+import ButtonRound from '../ButtonRound/ButtonRound';
 import './Login.scss';
 
 function Login() {
   const [form, setForm] = useState({});
   const [errorMsg, setErrorMsg] = useState();
+  const dispatch = useDispatch();
   const navigation = useNavigate();
 
   const handleChange = (e) => {
@@ -25,6 +28,7 @@ function Login() {
     const user = await userLogin(form);
     if (user.status === 200) {
       localStorage.setItem('user', await user.json());
+      dispatch(fetchClientProfile());
       navigation('/');
     } else {
       setErrorMsg(await user.json());

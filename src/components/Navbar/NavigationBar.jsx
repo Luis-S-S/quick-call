@@ -1,13 +1,17 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import './NavigationBar.scss';
+import { Link, useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import { userLogOut } from '../../services/auth';
+import './NavigationBar.scss';
 
 function NavBar() {
-  const [user, setUser] = useState(window.localStorage.user);
+  const user = useSelector((state) => state.user);
+  const navigation = useNavigate();
+  const [token, setToken] = useState(window.localStorage.user);
   const handlerLogOut = () => {
     userLogOut();
-    setUser(null);
+    navigation('/');
+    setToken(null);
   };
   return (
     <div className="navbar">
@@ -17,7 +21,7 @@ function NavBar() {
         <Link to="/"><img className="logo" src="/images/logo/quick-call-logo--colored.svg" alt="logo" /></Link>
         <ul>
           <li><Link to="/search">Buscar</Link></li>
-          {!user
+          {!token
             ? (
               <>
                 <li><Link to="/signup">Registrarse</Link></li>
@@ -27,7 +31,7 @@ function NavBar() {
             )
             : (
               <>
-                <li><Link to="/editarperfil">Editar perfil</Link></li>
+                <li><Link to="/profile">{user.name}</Link></li>
                 <li><button type="button" onClick={handlerLogOut}>Cerrar Sesión</button></li>
               </>
             )}
