@@ -19,6 +19,7 @@ import Payments from './components/Payments/Payments';
 import ErrorMessage from './components/ErrorMessage/ErrorMessage';
 
 function App() {
+  // Ajustar con la cookie
   const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
 

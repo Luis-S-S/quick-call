@@ -83,7 +83,7 @@ export default function Profile() {
         </div>
         <div className="input-control">
           <label className="profile__label" htmlFor="email">Correo electrónico: </label>
-          <input className="profile__input" name="email" value={newUser?.email || ''} disabled />
+          <input className="profile__input profile__input--lock" name="email" value={newUser?.email || ''} disabled />
         </div>
         <div className="input-control">
           <label className="profile__label" htmlFor="phoneNumber">Teléfono: </label>
