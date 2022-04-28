@@ -1,21 +1,24 @@
 /* eslint-disable react/no-array-index-key */
 import { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
-import ButtonRound from '../../../ButtonRound/ButtonRound';
-import { updateClient, getClientByEmail } from '../../../../services/clients';
+import { useSelector, useDispatch } from 'react-redux';
+import { setUser } from '../../../../store/actions';
+import { updateClient } from '../../../../services/clients';
 import { objectDifference } from '../../../../services/general';
 import { allCategories } from '../../../../services/categories';
+import ButtonRound from '../../../ButtonRound/ButtonRound';
 import './ProfileClient.scss';
 
 export default function Profile() {
+  const dispatch = useDispatch();
   const [citiesList, setCitiesList] = useState([]);
   const [isSuccess, setIsSuccess] = useState(false);
   const [newUser, setNewUser] = useState({});
   const [phoneNumberError, setPhoneNumberError] = useState();
   const [responseMsg, setResponseMsg] = useState('');
-  const [searchId, setSearchId] = useState('');
-  const [user, setUser] = useState({});
-  const userEmail = useSelector((state) => state.user.email);
+  const [userCopy, setCopy] = useState({});
+  const {
+    id, name, email, phoneNumber, city, profilePicture,
+  } = useSelector((state) => state.user);
 
   const handleOnChange = (e) => {
     const { name: targetName, value } = e.target;
@@ -31,15 +34,19 @@ export default function Profile() {
   const handleOnSubmit = async (e) => {
     e.preventDefault();
 
-    const submitUser = objectDifference(user, newUser);
+    const submitUser = objectDifference(userCopy, newUser);
 
     if (Object.keys(submitUser).length !== 0) {
       if (!phoneNumberError) {
         if (submitUser.phoneNumber) {
           submitUser.phoneNumber = parseInt(submitUser.phoneNumber, 10);
         }
-        const response = await updateClient(searchId, submitUser);
+        const response = await updateClient(id, submitUser);
         if (response.status === 200) {
+          const {
+            password, payment, location, ...rest
+          } = await response.json();
+          dispatch(setUser(rest));
           setIsSuccess(true);
           setResponseMsg('Se actualizó correctamente');
         } else {
@@ -57,13 +64,8 @@ export default function Profile() {
   };
 
   useEffect(async () => {
-    const data = await getClientByEmail(userEmail);
-    const {
-      id, name, email, phoneNumber, city, profilePicture,
-    } = await data.json();
     const [document] = await allCategories();
-    setSearchId(id);
-    setUser({
+    setCopy({
       name, email, phoneNumber, city, profilePicture,
     });
     setNewUser({

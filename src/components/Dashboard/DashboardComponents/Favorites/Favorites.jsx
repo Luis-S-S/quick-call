@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { updateFavorites } from '../../../../store/actions';
+import { setUser } from '../../../../store/actions';
 import { updateClient } from '../../../../services/clients';
 import { getSingleProfessional } from '../../../../services/professionals';
 import LinkRound from '../../../LinkRound/LinkRound';
@@ -16,8 +16,11 @@ export default function Favorites() {
   const handlerClickDeleteFavorite = async (e) => {
     const newArray = favoritesId.filter((favorite) => favorite !== e.target.id);
     const response = await updateClient(id, { favorites: newArray });
+    const {
+      password, payment, location, ...rest
+    } = await response.json();
     if (response.status === 200) {
-      dispatch(updateFavorites(newArray));
+      dispatch(setUser(rest));
       setFavoritesId(newArray);
     } else {
       throw new Error('Error al eliminar intente nuevamente');
