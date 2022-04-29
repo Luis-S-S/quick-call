@@ -2,11 +2,13 @@ import PropTypes from 'prop-types';
 import LinkSquare from '../LinkSquare/LinkSquare';
 import './ProListItem.scss';
 
-function ProListItem({
-  details: {
-    name, image, _id,
-  }, deleteFunction,
-}) {
+function ProListItem({ details, deleteFunction }) {
+  const {
+    name,
+    image,
+    _id,
+  } = details;
+
   return (
     <div className="pro-list-item">
       <div className="pro-list-item__start">
