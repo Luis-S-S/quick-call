@@ -11,6 +11,7 @@ export const fetchUserProfile = () => async (dispatch) => {
     if (data.error) { throw new Error(data); }
     dispatch(setUser(data));
   } catch (error) {
+    window.localStorage.removeItem('user');
     dispatch(setGlobalError(error));
   }
 };
