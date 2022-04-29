@@ -8,10 +8,10 @@ export const fetchUserProfile = () => async (dispatch) => {
   try {
     const response = await isValidToken();
     const data = await response.json();
-    if (data.error) { throw new Error(data); }
+    if (data.error) { throw new Error(data.message); }
     dispatch(setUser(data));
   } catch (error) {
     window.localStorage.removeItem('user');
-    dispatch(setGlobalError(error));
+    dispatch(setGlobalError(error.message));
   }
 };
