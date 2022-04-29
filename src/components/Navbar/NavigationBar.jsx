@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { userLogOut } from '../../services/auth';
-import { emptyUser } from '../../store/actions';
+import { emptyUser, setView } from '../../store/actions';
 import './NavigationBar.scss';
 
 function NavBar() {
@@ -14,6 +14,7 @@ function NavBar() {
   const handlerLogOut = () => {
     userLogOut();
     dispatch(emptyUser());
+    dispatch(setView('Profile'));
     navigation('/');
     setToken(null);
   };
