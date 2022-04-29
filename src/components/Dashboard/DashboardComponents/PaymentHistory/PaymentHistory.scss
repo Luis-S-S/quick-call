@@ -1,0 +1,20 @@
+@import '../../../../App.scss';
+
+.dashboard-payment {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+    justify-content: center;
+    margin: 1.5em 0;
+    width: 100%;
+}
+
+.dashboard-payment__title {
+    @include text-title;
+    color: $blue;
+}
+
+.dashboard-payment--error {
+    @include text-sub-title;
+}
