@@ -22,6 +22,11 @@ function reducer(state = initialState, action) {
         ...state,
         error: action.payload,
       };
+    case 'EMPTY_USER':
+      return {
+        ...state,
+        user: {},
+      };
     default:
       return state;
   }
