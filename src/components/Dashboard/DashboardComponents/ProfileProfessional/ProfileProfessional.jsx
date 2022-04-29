@@ -6,18 +6,22 @@ import { updateClient } from '../../../../services/clients';
 import { objectDifference } from '../../../../services/general';
 import { allCategories } from '../../../../services/categories';
 import ButtonRound from '../../../ButtonRound/ButtonRound';
-import './ProfileClient.scss';
+import SpecialtyListItem from '../../../SpecialtyListItem/SpecialtyListItem';
+import './ProfileProfessional.scss';
 
-export default function ProfileClient() {
+export default function ProfileProfessional() {
   const dispatch = useDispatch();
   const [citiesList, setCitiesList] = useState([]);
+  const [epsList, setEpsList] = useState([]);
+  const [arlList, setArlList] = useState([]);
+  const [specialtiesList, setSpecialtiesList] = useState([]);
   const [isSuccess, setIsSuccess] = useState(false);
   const [newUser, setNewUser] = useState({});
   const [phoneNumberError, setPhoneNumberError] = useState();
   const [responseMsg, setResponseMsg] = useState('');
   const [userCopy, setCopy] = useState({});
   const {
-    id, name, email, phoneNumber, city, profilePicture,
+    password, availability, location, ...user
   } = useSelector((state) => state.user);
 
   const handleOnChange = (e) => {
@@ -41,10 +45,10 @@ export default function ProfileClient() {
         if (submitUser.phoneNumber) {
           submitUser.phoneNumber = parseInt(submitUser.phoneNumber, 10);
         }
-        const response = await updateClient(id, submitUser);
+        const response = await updateClient(user.id, submitUser);
         if (response.status === 200) {
           const {
-            password, payment, location, ...rest
+            passwordExt, locationExt, ...rest
           } = await response.json();
           dispatch(setUser(rest));
           setIsSuccess(true);
@@ -64,20 +68,19 @@ export default function ProfileClient() {
   };
 
   useEffect(async () => {
-    const [document] = await allCategories();
-    setCopy({
-      name, email, phoneNumber, city, profilePicture,
-    });
-    setNewUser({
-      name, email, phoneNumber, city, profilePicture,
-    });
-    setCitiesList(document.cities);
+    const [categories] = await allCategories();
+    setCopy({ ...user });
+    setNewUser({ ...user });
+    setCitiesList(categories.cities);
+    setEpsList(categories.EPSs);
+    setArlList(categories.ARLs);
+    setSpecialtiesList(categories.specialties);
   }, []);
 
   return (
     <div className="dashboard-profile">
       <h1 className="dashboard-profile__title">Actualiza tu perfil</h1>
-      <img className="dashboard-profile__picture" src={newUser?.profilePicture} alt="Foto de perfil" />
+      <img className="dashboard-profile__picture" src={newUser?.image?.profile} alt="Foto de perfil" />
       <form className="profile-update">
         <div className="input-control">
           <label className="profile__label" htmlFor="name">Nombre: </label>
@@ -100,6 +103,48 @@ export default function ProfileClient() {
             )}
           </select>
         </div>
+        <div className="input-control">
+          <label className="profile__label" htmlFor="myDescription">Descripción: </label>
+          <textarea className="profile__input" name="myDescription" value={newUser?.myDescription || ''} onChange={handleOnChange} rows={8} />
+        </div>
+        <div className="input-control">
+          <label className="profile__label" htmlFor="specialties">Especialidades: </label>
+          <div className="profile__input--specialty">
+            {
+                newUser?.specialties?.map((specialty, idx) => (
+                  <SpecialtyListItem key={idx} details={specialty} />
+                ))
+            }
+            <select className="profile__input" name="specialties" onChange={handleOnChange}>
+              {specialtiesList.map(
+                (specialtyItem, idx) => (
+                  <option key={idx} value={specialtyItem.name}>{specialtyItem.name}</option>
+                ),
+              )}
+            </select>
+          </div>
+        </div>
+        <div className="input-control">
+          <label className="profile__label" htmlFor="image.myJobs">Trabajos: </label>
+          <p>Imágenes para editar</p>
+        </div>
+        <div className="input-control">
+          <label className="profile__label" htmlFor="eps">EPS: </label>
+          <select className="profile__input" name="eps" value={newUser?.eps || ''} onChange={handleOnChange}>
+            {epsList.map(
+              (epsItem, idx) => (<option key={idx} value={epsItem}>{epsItem}</option>),
+            )}
+          </select>
+        </div>
+        <div className="input-control">
+          <label className="profile__label" htmlFor="arl">ARL: </label>
+          <select className="profile__input" name="arl" value={newUser?.arl || ''} onChange={handleOnChange}>
+            {arlList.map(
+              (arlItem, idx) => (<option key={idx} value={arlItem}>{arlItem}</option>),
+            )}
+          </select>
+        </div>
+        <div className="input-control" />
         <ButtonRound onClickFunction={handleOnSubmit} isSubmit>Actualizar</ButtonRound>
       </form>
       <div className={isSuccess ? 'response--success' : 'response--fail'}>{responseMsg}</div>

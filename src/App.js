@@ -3,7 +3,7 @@ import './App.scss';
 import { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { fetchClientProfile } from './store/actions';
+import { fetchUserProfile } from './store/actions';
 
 import Home from './pages/Home';
 import Search from './pages/Search';
@@ -22,7 +22,7 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(async () => {
-    await dispatch(fetchClientProfile());
+    await dispatch(fetchUserProfile());
   }, []);
 
   return (
