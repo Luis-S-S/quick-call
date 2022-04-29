@@ -1,15 +1,19 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { userLogOut } from '../../services/auth';
+import { emptyUser } from '../../store/actions';
 import './NavigationBar.scss';
 
 function NavBar() {
-  const user = useSelector((state) => state.user);
-  const navigation = useNavigate();
   const [token, setToken] = useState(window.localStorage.user);
+  const dispatch = useDispatch();
+  const navigation = useNavigate();
+  const user = useSelector((state) => state.user);
+
   const handlerLogOut = () => {
     userLogOut();
+    dispatch(emptyUser());
     navigation('/');
     setToken(null);
   };

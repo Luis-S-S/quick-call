@@ -1,6 +1,4 @@
-// import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
-// import { fecthClientProfile } from '../../store/actions';
 import LinkSquare from '../LinkSquare/LinkSquare';
 import './ProListItem.scss';
 

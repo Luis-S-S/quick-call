@@ -20,22 +20,6 @@ export async function getSingleClientById(id) {
   }
 }
 
-export async function getClientByEmail() { // probably delete
-  try {
-    const payload = {
-      method: 'GET',
-      headers: {
-        'Content-type': 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('user')}`,
-      },
-    };
-    const response = await fetch(`${API_URL}/clients/dashboard/profile`, payload);
-    return response;
-  } catch (error) {
-    throw new Error(error);
-  }
-}
-
 export async function createClient(body) {
   const payload = {
     method: 'POST',

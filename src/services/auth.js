@@ -31,6 +31,6 @@ export async function isValidToken() {
     const response = await fetch(`${API_URL}/validateToken`, payload);
     return response;
   } catch (error) {
-    throw new Error(error);
+    return error;
   }
 }

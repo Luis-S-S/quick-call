@@ -39,6 +39,10 @@
     @include text-body;
 }
 
+.profile__input--lock {
+    cursor: not-allowed;
+}
+
 .profile__input:focus {
     outline: none;
     border: 3px solid $blue;

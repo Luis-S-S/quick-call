@@ -1,7 +1,6 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { getClientByEmail } from '../../services/clients';
 import { createPQR } from '../../services/pqrs';
 import { setView } from '../../store/actions';
 import ButtonRound from '../ButtonRound/ButtonRound';
@@ -10,8 +9,7 @@ import './PQRForm.scss';
 export default function PQRForm() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const userEmail = useSelector((state) => state.user.email);
-  const [baseId, setBaseId] = useState();
+  const { id } = useSelector((state) => state.user);
   const [form, setForm] = useState({ subject: '', description: '' });
   const [subjectErrorMsg, setSubjectErrorMsg] = useState('');
   const [descriptionErrorMsg, setDescriptionErrorMsg] = useState('');
@@ -35,7 +33,7 @@ export default function PQRForm() {
     }
     setDescriptionErrorMsg('');
 
-    const response = await createPQR(baseId, form);
+    const response = await createPQR(id, form);
     if (response.status === 201) {
       // alert('Se creó correctamente');
       dispatch(setView('PQRs'));
@@ -44,12 +42,6 @@ export default function PQRForm() {
       // alert('Ocurrió un error');
     }
   };
-
-  useEffect(async () => {
-    const data = await getClientByEmail(userEmail);
-    const { id } = await data.json();
-    setBaseId(id);
-  }, []);
 
   return (
     <div className="pqr-form__container">
