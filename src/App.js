@@ -17,6 +17,7 @@ import CreatePQR from './pages/CreatePQR/CreatePQR';
 import PQRDetail from './components/PQRDetail/PQRDetail';
 import Payments from './components/Payments/Payments';
 import ErrorMessage from './components/ErrorMessage/ErrorMessage';
+import Chat from './components/Chat/Chat';
 
 function App() {
   const dispatch = useDispatch();
@@ -40,6 +41,7 @@ function App() {
           <Route path="/pqr_form" element={<CreatePQR />} />
           <Route path="/pqr/:id" element={<PQRDetail />} />
           <Route path="/payments" element={<Payments />} />
+          <Route path="/chat/:id" element={<Chat />} />
           <Route path="*" element={<ErrorMessage code={404} message="Oops! Pagina no encontrada" />} />
         </Routes>
       </Router>
