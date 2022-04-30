@@ -4,7 +4,8 @@
 /* eslint-disable no-restricted-syntax */
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { createProfessional, createImage } from '../../services/professionals';
+import { createProfessional } from '../../services/professionals';
+import { uploadImage } from '../../services/upload';
 import { allCategories } from '../../services/categories';
 import './SignupProfessional.scss';
 import Page1 from './Page1';
@@ -36,7 +37,7 @@ export default function SignupProfessional() {
       if (special.evidence) {
         const formData = new FormData();
         await formData.append('file', special.evidence);
-        result = await createImage(formData);
+        result = await uploadImage(formData);
       }
       names.push({ name: special.name, certification: result.url });
     }

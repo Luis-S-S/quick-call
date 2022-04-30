@@ -1,6 +1,7 @@
-import { createJobs } from '../../services/jobs';
-import './ButtonRound.scss';
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import { useState } from 'react';
+import { createJobs } from '../../services/jobs';
+import ButtonRound from '../ButtonRound/ButtonRound';
 
 export default function FormsProfessionals() {
   const [form, setForm] = useState({});
@@ -19,7 +20,7 @@ export default function FormsProfessionals() {
   };
   return (
     <div>
-      <form onSubmit={HandlerSubmit}>
+      <form onSubmit={handleSubmit}>
         <label htmlFor="Nombre de reforma" />
         <input name="Nombre de reforma" placeholder="Ingresa aqui el nombre de tu reforma" type="text" onChange={handleChange} />
         <label htmlFor="Descripcion breve " />
@@ -28,7 +29,7 @@ export default function FormsProfessionals() {
         <input name="Criterios de aceptacion" placeholder="Ingresa aqui los criterios de aceptacion del trabajo" type="text" onChange={handleChange} />
         <label htmlFor="Condiciones (opcional)" />
         <input name="Condiciones" placeholder="Ingresa aqui las condiciones del trabajo (opcional)" type="text" onChange={handleChange} />
-        <button type="submit" />
+        <ButtonRound isSubmit>Submit</ButtonRound>
       </form>
     </div>
   );

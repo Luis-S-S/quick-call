@@ -54,17 +54,3 @@ export async function editProfessional(id, body) {
     throw new Error('Error creating professional');
   }
 }
-
-export async function createImage(form) {
-  try {
-    const payload = {
-      method: 'POST',
-      body: form,
-    };
-    const response = await fetch(`${API_URL}/professionals/image`, payload);
-    const result = await response.json();
-    return result;
-  } catch {
-    throw new Error('Error creating professional');
-  }
-}

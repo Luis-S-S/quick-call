@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import './ProfileProDescription.scss';
 import ButtonRound from '../ButtonRound/ButtonRound';
-import { getSingleProfessional } from '../../services/professional';
+import { getSingleProfessional } from '../../services/professionals';
 
 function ProfileProDescription({ HandlerOnClick, vist, id }) {
   const [pro, setPro] = useState([]);

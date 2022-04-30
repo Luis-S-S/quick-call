@@ -3,7 +3,7 @@
  * @param {*} URL string
  * @returns An object created from the query string
  */
-function urlQueryParamToObject(URL) {
+export function urlQueryParamToObject(URL) {
   const queryObject = {};
   const queryString = URL.split('?')[1];
 
@@ -25,7 +25,7 @@ function urlQueryParamToObject(URL) {
  * @param {*} array Array to return elements from
  * @returns An array with four random elements from the input array
  */
-function getRandomFromArray(num, array) {
+export function getRandomFromArray(num, array) {
   const randomArray = array.sort(() => 0.5 - Math.random()).slice(0, num);
   return randomArray;
 }
@@ -37,7 +37,7 @@ function getRandomFromArray(num, array) {
  * @returns An array without the input element,
  * if the element is not found inside the array it will return the same array
  */
-function removeElementFromArray(element, array) {
+export function removeElementFromArray(element, array) {
   const position = array.indexOf(element);
   if (position === -1) {
     return array;
@@ -52,7 +52,7 @@ function removeElementFromArray(element, array) {
  * @param {*} array array to insert element into
  * @returns An array with the element inserted at the end
  */
-function addElementInArray(element, array) {
+export function addElementInArray(element, array) {
   array.splice(array.length - 1, 0, element);
   return array;
 }
@@ -62,7 +62,7 @@ function addElementInArray(element, array) {
  * @param {*} URL string
  * @returns Returns an array with the values from the query param, all decoded
  */
-function urlQueryParamValuesToArray(URL) {
+export function urlQueryParamValuesToArray(URL) {
   const queryObject = urlQueryParamToObject(URL);
   const valuesArray = Object.values(queryObject);
   return valuesArray;
@@ -74,7 +74,7 @@ function urlQueryParamValuesToArray(URL) {
  * @param {*} value string
  * @returns Returns an object with the value remove from Object.values(query params)
  */
-function removeQueryValueFromObject(URL, value) {
+export function removeQueryValueFromObject(URL, value) {
   let queryObject = urlQueryParamToObject(URL);
   const keysArray = Object.keys(queryObject);
   const valuesArray = Object.values(queryObject);
@@ -98,7 +98,7 @@ function removeQueryValueFromObject(URL, value) {
  * @param {*} obj2 object in comparison
  * @returns object containing the keys and values that are different
  */
-function objectDifference(obj1, obj2) {
+export function objectDifference(obj1, obj2) {
   const diff = {};
   Object.keys(obj1).forEach((key) => {
     if (obj1[key] !== obj2[key]) {
@@ -108,12 +108,9 @@ function objectDifference(obj1, obj2) {
   return diff;
 }
 
-export {
-  urlQueryParamToObject,
-  urlQueryParamValuesToArray,
-  getRandomFromArray,
-  removeElementFromArray,
-  addElementInArray,
-  removeQueryValueFromObject,
-  objectDifference,
-};
+export function obtainPublicIdFromUrl(url) {
+  const splittedUrl = url.split('/');
+  const fileName = splittedUrl[splittedUrl.length - 1];
+  const publicId = fileName.split('.')[0];
+  return publicId;
+}

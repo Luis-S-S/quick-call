@@ -1,9 +1,7 @@
-/* eslint-disable jsx-a11y/control-has-associated-label */
-/* eslint-disable jsx-a11y/label-has-associated-control */
 import { useState, useEffect } from 'react';
-import ButtonRound from '../ButtonRound/ButtonRound';
 // import { createJobs } from '../../services/jobs';
 import { allCategories } from '../../services/categories';
+import ButtonRound from '../ButtonRound/ButtonRound';
 
 export default function FormsClients() {
   const [form, setForm] = useState({});
@@ -12,7 +10,6 @@ export default function FormsClients() {
 
   useEffect(async () => {
     const response = await allCategories();
-    console.log('xxxxxx', response);
     const [document] = response;
     setCategory(document);
   }, []);

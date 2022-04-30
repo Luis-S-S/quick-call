@@ -2,9 +2,10 @@
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { setUser } from '../../../../store/actions';
+import { objectDifference } from '../../../../services/general'; // obtainPublicIdFromUrl
 import { updateClient } from '../../../../services/clients';
-import { objectDifference } from '../../../../services/general';
 import { allCategories } from '../../../../services/categories';
+import { uploadImage } from '../../../../services/upload'; // deleteImage
 import ButtonRound from '../../../ButtonRound/ButtonRound';
 import './ProfileClient.scss';
 
@@ -16,9 +17,7 @@ export default function ProfileClient() {
   const [phoneNumberError, setPhoneNumberError] = useState();
   const [responseMsg, setResponseMsg] = useState('');
   const [userCopy, setCopy] = useState({});
-  const {
-    id, name, email, phoneNumber, city, profilePicture,
-  } = useSelector((state) => state.user);
+  const reduxUser = useSelector((state) => state.user);
 
   const handleOnChange = (e) => {
     const { name: targetName, value } = e.target;
@@ -31,45 +30,76 @@ export default function ProfileClient() {
     setNewUser({ ...newUser, [targetName]: value });
   };
 
+  const handleFileOnChange = (e) => {
+    if (!e.target.files[0]) {
+      const correctedUser = { ...newUser };
+      delete correctedUser[e.target.name];
+      setNewUser(correctedUser);
+      return;
+    }
+    setNewUser({ ...newUser, [e.target.name]: e.target.files[0] });
+  };
+
   const handleOnSubmit = async (e) => {
     e.preventDefault();
 
     const submitUser = objectDifference(userCopy, newUser);
 
-    if (Object.keys(submitUser).length !== 0) {
-      if (!phoneNumberError) {
-        if (submitUser.phoneNumber) {
-          submitUser.phoneNumber = parseInt(submitUser.phoneNumber, 10);
-        }
-        const response = await updateClient(id, submitUser);
-        if (response.status === 200) {
-          const {
-            password, payment, location, ...rest
-          } = await response.json();
-          dispatch(setUser(rest));
-          setIsSuccess(true);
-          setResponseMsg('Se actualizó correctamente');
-        } else {
-          setIsSuccess(false);
-          setResponseMsg('Ocurrió un error');
-        }
-      } else {
-        setResponseMsg('Ocurrió un error');
-        setIsSuccess(false);
-      }
-    } else {
+    if (Object.keys(submitUser).length === 0) {
       setResponseMsg('No hay cambios para actualizar');
       setIsSuccess(false);
+      return;
+    }
+
+    if (phoneNumberError) {
+      setResponseMsg('Ocurrió un error');
+      setIsSuccess(false);
+      return;
+    }
+
+    if (submitUser.phoneNumber) {
+      submitUser.phoneNumber = parseInt(submitUser.phoneNumber, 10);
+    }
+
+    if (submitUser.profilePicture) {
+      // const publicId = obtainPublicIdFromUrl(reduxUser.profilePicture);
+      // if (publicId !== 'user-icon') { await deleteImage(publicId); }
+      const form = new FormData();
+      form.append('file', submitUser.profilePicture);
+      const response = await uploadImage(form);
+      submitUser.profilePicture = response.url;
+    }
+    const response = await updateClient(reduxUser._id, submitUser);
+    if (response.status === 200) {
+      const {
+        password, payment, location, createdAt, updatedAt, __v, ...rest
+      } = await response.json();
+      setIsSuccess(true);
+      setResponseMsg('Se actualizó correctamente');
+      setNewUser({ ...rest });
+      setCopy({ ...rest });
+      dispatch(setUser({ ...rest, role: reduxUser.role }));
+    } else {
+      setIsSuccess(false);
+      setResponseMsg('Ocurrió un error');
     }
   };
 
   useEffect(async () => {
     const [document] = await allCategories();
     setCopy({
-      name, email, phoneNumber, city, profilePicture,
+      name: reduxUser.name,
+      email: reduxUser.email,
+      phoneNumber: reduxUser.phoneNumber,
+      city: reduxUser.city,
+      profilePicture: reduxUser.profilePicture,
     });
     setNewUser({
-      name, email, phoneNumber, city, profilePicture,
+      name: reduxUser.name,
+      email: reduxUser.email,
+      phoneNumber: reduxUser.phoneNumber,
+      city: reduxUser.city,
+      profilePicture: reduxUser.profilePicture,
     });
     setCitiesList(document.cities);
   }, []);
@@ -77,7 +107,9 @@ export default function ProfileClient() {
   return (
     <div className="dashboard-profile">
       <h1 className="dashboard-profile__title">Actualiza tu perfil</h1>
-      <img className="dashboard-profile__picture" src={newUser?.profilePicture} alt="Foto de perfil" />
+      <img className="dashboard-profile__picture" src={userCopy?.profilePicture} alt="Foto de perfil" />
+      <label className="profile__label" htmlFor="profilePicture">Actualizar foto de perfil</label>
+      <input type="file" name="profilePicture" id="profilePicture" onChange={handleFileOnChange} />
       <form className="profile-update">
         <div className="input-control">
           <label className="profile__label" htmlFor="name">Nombre: </label>

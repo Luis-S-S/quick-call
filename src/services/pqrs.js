@@ -34,7 +34,6 @@ export function createPQR(id, form) {
         Authorization: `Bearer ${localStorage.getItem('user')}`,
       },
       body: JSON.stringify({ ...form, petitioner: id }),
-      // Hay error cuando no se valida bien la creacion del PQR
     };
     const response = fetch(`${API_URL}/PQRS`, payload);
     return response;

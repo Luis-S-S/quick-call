@@ -6,11 +6,11 @@ import LinkRound from '../../../LinkRound/LinkRound';
 import './PQR.scss';
 
 export default function PQRs() {
-  const { id } = useSelector((state) => state.user);
+  const { _id } = useSelector((state) => state.user);
   const [pqrArray, setPQRArray] = useState([]);
 
   useEffect(async () => {
-    const pqrResp = await getPQRByPetitioner(id);
+    const pqrResp = await getPQRByPetitioner(_id);
     setPQRArray(await pqrResp.json());
   }, []);
 

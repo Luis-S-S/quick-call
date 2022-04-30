@@ -7,7 +7,7 @@ import LinkRound from '../../../LinkRound/LinkRound';
 import './PaymentHistory.scss';
 
 export default function PaymentHistory() {
-  const { id, role } = useSelector((state) => state.user);
+  const { _id, role } = useSelector((state) => state.user);
   const [jobsArray, setJobsArray] = useState([]);
   const [paymentsArray, setPaymentArray] = useState([]);
 
@@ -28,13 +28,13 @@ export default function PaymentHistory() {
   };
 
   useEffect(async () => {
-    const jobs = await getJobsByUserId(id);
+    const jobs = await getJobsByUserId(_id);
     const response = await jobs.json();
     setJobsArray(response);
   }, []);
 
   useEffect(async () => {
-    const payments = jobsArray.map((job) => getPaymentsByUserId(id, job.payment));
+    const payments = jobsArray.map((job) => getPaymentsByUserId(_id, job.payment));
     const promises = await Promise.all(payments);
     const response = promises.map((payment) => payment.json());
     Promise.all(response)
