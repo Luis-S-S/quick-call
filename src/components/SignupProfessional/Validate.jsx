@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { getAllProfessional } from '../../services/professional';
+import { getAllProfessional } from '../../services/professionals';
 
 export default function Validate({
   handleOnClickSubmit, form, setPage, page, setValidate,

@@ -1,0 +1,25 @@
+@import '../../../../App.scss';
+
+.dashboard-pqrs {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+    justify-content: center;
+    margin: 1.5em 0;
+}
+
+.dashboard-pqrs__title {
+    @include text-title;
+    color: $blue;
+}
+
+.dashboard-pqrs__sub-header {
+    display: flex;
+    justify-content: flex-end;
+    width: 80%;
+}
+
+.dashboard-favorites--error {
+    @include text-sub-title;
+}

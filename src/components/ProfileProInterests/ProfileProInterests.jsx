@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import Carousel from 'react-elastic-carousel';
-import { getAllProfessional } from '../../services/professional';
+import { getAllProfessional } from '../../services/professionals';
 import './ProfileProInterests.scss';
 import ProCard from '../Procard/ProCard';
 import { getRandomFromArray } from '../../services/general';

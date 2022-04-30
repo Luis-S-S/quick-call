@@ -4,7 +4,7 @@ import Carousel from 'react-elastic-carousel';
 import LinkSquare from '../LinkSquare/LinkSquare';
 import ProCard from '../Procard/ProCard';
 import { allCategories } from '../../services/categories';
-import { getAllProfessional } from '../../services/professional';
+import { getAllProfessional } from '../../services/professionals';
 import { getRandomFromArray } from '../../services/general';
 
 function FeaturedSection() {

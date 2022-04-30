@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import ProCard from '../Procard/ProCard';
-import { getAllProfessional } from '../../services/professional';
+import { getAllProfessional } from '../../services/professionals';
 import { urlQueryParamValuesToArray, removeQueryValueFromObject } from '../../services/general';
 import './ProfessionalCardDisplay.scss';
 

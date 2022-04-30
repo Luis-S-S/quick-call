@@ -4,7 +4,7 @@
 /* eslint-disable no-restricted-syntax */
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { createProfessional, createImage } from '../../services/professional';
+import { createProfessional, createImage } from '../../services/professionals';
 import { allCategories } from '../../services/categories';
 import './SignupProfessional.scss';
 import Page1 from './Page1';

@@ -1,0 +1,26 @@
+@import '../../App.scss';
+
+.specialty-list-item {
+    align-items: center;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 0px $dark-grey;
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+    padding: 0.25em .75em;
+    transition: all 0.3s ease;
+    width: 100%;
+    &:hover {
+        transform: scale(1.05);
+    }
+}
+
+.specialty-list-item__button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.specialty-list-item__icon {
+    width: 30px;
+}

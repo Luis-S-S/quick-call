@@ -1,0 +1,10 @@
+// Styles copied from ProfileClient.scss
+@import '../../../../App.scss';
+
+.profile__input--specialty {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap:.75em;
+    @include text-body;
+}

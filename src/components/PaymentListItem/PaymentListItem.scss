@@ -1,0 +1,20 @@
+@import '../../App.scss';
+
+.payment-list-container {
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    padding: .75em;
+    width: 80%;
+    box-shadow: 0 0 10px 0px $dark-grey;
+    transition: all 0.3s ease;
+    @include text-body;
+
+    &:hover {
+        transform: scale(1.05);
+    }
+}
+
+.payment-list__link {
+    text-align: end;
+}

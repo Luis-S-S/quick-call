@@ -4,7 +4,7 @@
 import {
   CardExpiryElement, CardNumberElement, CardCvcElement, useElements, useStripe,
 } from '@stripe/react-stripe-js';
-import payments from '../../services/payments';
+import { paymentIntent } from '../../services/payments';
 import './Check.scss';
 
 export default function CheckoutForm() {
@@ -19,7 +19,7 @@ export default function CheckoutForm() {
       card: elements.getElement(CardNumberElement),
     });
     const amount = 100_00;
-    await payments(error, paymentMethod, amount);
+    await paymentIntent(error, paymentMethod, amount);
   };
   return (
     <div className="payment">
