@@ -1,6 +1,6 @@
 const API_URL = process.env.REACT_APP_API_BASE_URL;
 
-export default async function payments(error, paymentMethod, amount) {
+export async function paymentIntent(error, paymentMethod, amount) {
   try {
     let body;
     if (!error) {
@@ -12,7 +12,7 @@ export default async function payments(error, paymentMethod, amount) {
         },
         body: JSON.stringify({
           paymentMethod,
-          amount, // cents -> $100
+          amount,
         }),
       };
 
@@ -22,5 +22,21 @@ export default async function payments(error, paymentMethod, amount) {
     return body;
   } catch (e) {
     return e;
+  }
+}
+
+export async function getPaymentsByUserId(id, paymentId) {
+  try {
+    const payload = {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'Application/json',
+        Authorization: `Bearer ${localStorage.getItem('user')}`,
+      },
+    };
+    const response = fetch(`${API_URL}/payments/user/${id}/payment/${paymentId}`, payload);
+    return response;
+  } catch (error) {
+    return error;
   }
 }
