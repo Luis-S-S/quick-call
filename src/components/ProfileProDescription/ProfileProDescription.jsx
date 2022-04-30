@@ -1,11 +1,11 @@
-import { useParams } from 'react-router-dom';
+/* eslint-disable react/prop-types */
+/* eslint-disable react/button-has-type */
 import { useEffect, useState } from 'react';
 import './ProfileProDescription.scss';
-import LinkSquare from '../LinkSquare/LinkSquare';
+import ButtonRound from '../ButtonRound/ButtonRound';
 import { getSingleProfessional } from '../../services/professional';
 
-function ProfileProDescription() {
-  const { id } = useParams();
+function ProfileProDescription({ HandlerOnClick, vist, id }) {
   const [pro, setPro] = useState([]);
 
   useEffect(() => {
@@ -15,9 +15,11 @@ function ProfileProDescription() {
   return (
     <div className="profileDescription">
       <div className="row">
+        {(!vist) && (
         <div className="column">
-          <img className="photo" src={pro.image?.profile} alt="constructor" width={500} height={500} />
+          <img className="photo" src={pro.image?.profile} alt="constructor" />
         </div>
+        )}
         <div className="column">
           <div className="description">
             <h1>{pro.name}</h1>
@@ -38,8 +40,7 @@ function ProfileProDescription() {
             <span className="fa fa-star" />
             <span className="fa fa-star-half-o" />
             <br />
-            <LinkSquare>Iniciar Chat</LinkSquare>
-            <LinkSquare link="/payments">Pago</LinkSquare>
+            <ButtonRound isSubmit={false} onClickFunction={HandlerOnClick}>{vist ? 'Ocultar formulario' : 'Hacer consulta'}</ButtonRound>
           </div>
         </div>
       </div>

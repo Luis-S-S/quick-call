@@ -6,25 +6,24 @@
   }
 
   .column {
-    float: left;
-    width: 50%;
+    display: block;
     padding: 10px;
-    height: 600px;
+    max-width: 600px;
   }
 
-  .row:after {
-    content: "";
-    display: table;
-    clear: both;
+  .row {
+    display: flex;
+    justify-content: space-around;
+    margin:50px;
   }
 
   .photo {
     display: block;
-    margin-left: auto;
-    margin-right: auto;
+    margin: auto;
+    width: 450px;
   }
 
-  .description h1{
+  .description h1 {
     @include text-big-title;
     color: $purple;
     margin: 0;
