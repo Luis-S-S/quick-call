@@ -6,11 +6,11 @@ import LinkRound from '../../../LinkRound/LinkRound';
 import './Jobs.scss';
 
 export default function Jobs() {
-  const { id } = useSelector((state) => state.user);
+  const { _id } = useSelector((state) => state.user);
   const [jobsArray, setJobsArray] = useState([]);
 
   useEffect(async () => {
-    const jobsResp = await getJobsByUserId(id);
+    const jobsResp = await getJobsByUserId(_id);
     const response = await jobsResp.json();
     setJobsArray(response);
   }, []);

@@ -9,7 +9,7 @@ import './PQRForm.scss';
 export default function PQRForm() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { id } = useSelector((state) => state.user);
+  const { _id } = useSelector((state) => state.user);
   const [form, setForm] = useState({ subject: '', description: '' });
   const [subjectErrorMsg, setSubjectErrorMsg] = useState('');
   const [descriptionErrorMsg, setDescriptionErrorMsg] = useState('');
@@ -29,17 +29,14 @@ export default function PQRForm() {
 
     if (form.description.length === 0) {
       setDescriptionErrorMsg('Una descripción es requerida');
-      return; // Pequeño bug en el orden de los ifs
+      return;
     }
     setDescriptionErrorMsg('');
 
-    const response = await createPQR(id, form);
+    const response = await createPQR(_id, form);
     if (response.status === 201) {
-      // alert('Se creó correctamente');
       dispatch(setView('PQRs'));
       navigate('/profile');
-    } else {
-      // alert('Ocurrió un error');
     }
   };
 

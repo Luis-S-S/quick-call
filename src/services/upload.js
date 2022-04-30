@@ -17,3 +17,19 @@ export async function uploadImage(form) {
 export async function uploadVideo(form) {
   return form;
 }
+
+export async function deleteImage(publicId) {
+  try {
+    const payload = {
+      method: 'DELETE',
+      headers: {
+        'Content-type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('user')}`,
+      },
+    };
+    const response = await fetch(`${API_URL}/upload/image/${publicId}`, payload);
+    return response;
+  } catch (error) {
+    throw new Error('Error deleting image');
+  }
+}

@@ -45,12 +45,12 @@ export default function ProfileProfessional() {
         if (submitUser.phoneNumber) {
           submitUser.phoneNumber = parseInt(submitUser.phoneNumber, 10);
         }
-        const response = await updateClient(user.id, submitUser);
+        const response = await updateClient(user._id, submitUser);
         if (response.status === 200) {
           const {
             passwordExt, locationExt, ...rest
           } = await response.json();
-          dispatch(setUser(rest));
+          dispatch(setUser({ ...rest, role: user.role }));
           setIsSuccess(true);
           setResponseMsg('Se actualizó correctamente');
         } else {
