@@ -5,8 +5,8 @@ import NavigationBar from '../components/Navbar/NavigationBar';
 import ProfileProDescription from '../components/ProfileProDescription/ProfileProDescription';
 import ProfileProInterest from '../components/ProfileProInterests/ProfileProInterests';
 import Footer from '../components/Footer/Footer';
-import FormsClients from '../components/Formclients/FormClients';
-import '../components/Formclients/FormUsers.scss';
+import '../components/FormUser/FormUsers.scss';
+import FormsProfessionals from '../components/FormUser/FormProfessionals';
 
 function ProfilePro() {
   const { id } = useParams();
@@ -21,7 +21,7 @@ function ProfilePro() {
       <NavigationBar />
       <div className="bodyProfilePro">
         <ProfileProDescription HandlerOnClick={HandlerOnClick} vist={vist} id={id} />
-        {(vist) && (<FormsClients id={id} />)}
+        {(vist) && (<FormsProfessionals id={id} />)}
       </div>
       <ProfileProInterest />
       <Footer />

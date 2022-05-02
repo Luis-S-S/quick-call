@@ -44,16 +44,14 @@ export default function Page3({
         <div className="specialty">
           <select name="specialty" id="specialty" onChange={handlerChoice}>
             <option value="" key=""> </option>
-            {categories?.filter((result) => result.filter === 'specialty').map(
-              (todo) => (
-                <option
-                  key={todo.value}
-                  value={todo.value}
-                >
-                  {todo.value}
-                </option>
-              ),
-            )}
+            {categories?.specialty.map((result) => (
+              <option
+                key={result}
+                value={result}
+              >
+                {result}
+              </option>
+            ))}
           </select>
           <button className="button-agregate" type="submit" onClick={handlerNewSpecialty}> Agregar nueva</button>
 
