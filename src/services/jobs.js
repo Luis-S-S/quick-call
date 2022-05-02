@@ -1,14 +1,23 @@
 const API_URL = process.env.REACT_APP_API_BASE_URL;
 
-let payload = {
+/*
+const payload = {
   method: 'GET',
   headers: {
     'Content-Type': 'application/json',
     Authorization: `Bearer ${localStorage.getItem('user')}`,
   },
 };
+*/
 
 export async function getJobsByUserId(id) {
+  const payload = {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${localStorage.getItem('user')}`,
+    },
+  };
   try {
     const response = await fetch(`${API_URL}/jobs/user/${id}`, payload);
     return response;
@@ -18,6 +27,14 @@ export async function getJobsByUserId(id) {
 }
 
 export async function getJobById(id) {
+  const payload = {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${localStorage.getItem('user')}`,
+    },
+  };
+
   try {
     const response = await fetch(`${API_URL}/jobs/id/${id}`, payload);
     return response;
@@ -27,7 +44,15 @@ export async function getJobById(id) {
 }
 
 export async function updateJobById(id, body) {
-  payload = { ...payload, body, method: 'POST' };
+  const payload = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${localStorage.getItem('user')}`,
+    },
+    body: JSON.stringify(body),
+  };
+
   try {
     const response = await fetch(`${API_URL}/jobs/id/${id}`, payload);
     return response;
@@ -37,7 +62,14 @@ export async function updateJobById(id, body) {
 }
 
 export async function createJobs(body) {
-  payload = { ...payload, body, method: 'POST' };
+  const payload = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${localStorage.getItem('user')}`,
+    },
+    body: JSON.stringify(body),
+  };
   try {
     const response = await fetch(`${API_URL}/jobs`, payload);
     const data = await response.json();

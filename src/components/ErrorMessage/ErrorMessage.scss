@@ -32,4 +32,11 @@
       animation-duration: 1s;
       animation-iteration-count: infinite;
    }
+
+   .error-button__container {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 50px;
+      width: 60%;
+   }
 }

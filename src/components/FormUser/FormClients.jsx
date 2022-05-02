@@ -9,8 +9,7 @@ import ButtonRound from '../ButtonRound/ButtonRound';
 import LinkRound from '../LinkRound/LinkRound';
 
 export default function FormsClients() {
-  // const { _id } = useSelector((state) => state.user);
-  const _id = '625ded5d64b874d78ccee7e4';
+  const { _id } = useSelector((state) => state.user);
   const { id } = useParams();
 
   const [form, setForm] = useState({});
