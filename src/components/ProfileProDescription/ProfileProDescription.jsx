@@ -34,12 +34,6 @@ function ProfileProDescription({ HandlerOnClick, vist, id }) {
             </div>
           </div>
           <div className="calification">
-            <span className="fa fa-star" />
-            <span className="fa fa-star" />
-            <span className="fa fa-star" />
-            <span className="fa fa-star" />
-            <span className="fa fa-star-half-o" />
-            <br />
             <ButtonRound isSubmit={false} onClickFunction={HandlerOnClick}>{vist ? 'Ocultar formulario' : 'Hacer consulta'}</ButtonRound>
           </div>
         </div>
