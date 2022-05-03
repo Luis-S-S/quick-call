@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-escape */
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
@@ -13,10 +14,18 @@ function Login() {
   const navigation = useNavigate();
 
   const handleChange = (e) => {
+    const emailRegExp = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     const { name } = e.target;
     let { value } = e.target;
 
-    if (name === 'email') { value = value.toLowerCase(); }
+    if (name === 'email') {
+      value = value.toLowerCase().trim();
+      if (!emailRegExp.test(value)) {
+        setErrorMsg('Email no válido');
+      } else {
+        setErrorMsg('');
+      }
+    }
 
     setForm({
       ...form,
@@ -49,7 +58,7 @@ function Login() {
           <span className="texto_register">Ingresar a tu cuenta</span>
         </div>
         <form className="formulario" onSubmit={handleSubmit}>
-          <input name="email" placeholder="Ingresa tu E-mail" type="email" onChange={handleChange} />
+          <input name="email" placeholder="Ingresa tu E-mail" type="text" onChange={handleChange} />
           <input name="password" placeholder="Ingresa tu Contraseña" type="password" onChange={handleChange} />
           {errorMsg && (<div className="error-msg">{errorMsg}</div>)}
           <div className="footer1">
