@@ -150,7 +150,7 @@ export default function ProfileProfessional() {
             <select className="profile__input" name="specialties" onChange={handleOnChange}>
               {specialtiesList.map(
                 (specialtyItem, idx) => (
-                  <option key={idx} value={specialtyItem.name}>{specialtyItem.name}</option>
+                  <option key={idx} value={specialtyItem}>{specialtyItem}</option>
                 ),
               )}
             </select>
