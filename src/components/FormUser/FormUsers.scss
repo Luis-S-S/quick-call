@@ -93,6 +93,14 @@
       margin-bottom: 10px;
       column-gap: 10px;
     }
+    .section1{
+      display: grid;
+      grid-template-columns: 1fr;
+      justify-items: left;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      column-gap: 10px;
+    }
     fieldset {
       padding: 10px;
       border: 1px solid $blue;

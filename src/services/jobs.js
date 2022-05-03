@@ -1,15 +1,5 @@
 const API_URL = process.env.REACT_APP_API_BASE_URL;
 
-/*
-const payload = {
-  method: 'GET',
-  headers: {
-    'Content-Type': 'application/json',
-    Authorization: `Bearer ${localStorage.getItem('user')}`,
-  },
-};
-*/
-
 export async function getJobsByUserId(id) {
   const payload = {
     method: 'GET',
@@ -45,7 +35,7 @@ export async function getJobById(id) {
 
 export async function updateJobById(id, body) {
   const payload = {
-    method: 'POST',
+    method: 'PATCH',
     headers: {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${localStorage.getItem('user')}`,

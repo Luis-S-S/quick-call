@@ -40,9 +40,10 @@ export default function FormsClients() {
       professional: id,
       status: 'oferta',
       ...form,
-      'evidence.clients': [...evidence],
-      'conditions.clients': [...conditions],
+      evidenceClients: [...evidence],
+      conditionsClients: [...conditions],
     };
+    console.log('xxxxxxxxxxx');
     createJobs(formtodo);
     // setSend(true);
   };
@@ -115,7 +116,7 @@ export default function FormsClients() {
               <fieldset>
                 <legend>Evidencias (opcional)</legend>
                 {evidence.map((evide) => (
-                  <div className="section">
+                  <div className="section1">
                     <label htmlFor={evide.value}>{`${evide.name[0]} - ${evide.value.name}  `}</label>
                     <button className="button-eliminate" type="button" name="evidence" value={evide.name} onClick={handlerEliminate}>
                       x

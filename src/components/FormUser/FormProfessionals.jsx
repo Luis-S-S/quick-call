@@ -10,7 +10,7 @@ import LinkRound from '../LinkRound/LinkRound';
 
 export default function FormProfessionals() {
   // const { _id } = useSelector((state) => state.user);
-  const id = '627020dee23c7a9dec5ca8dc';
+  const id = '6270a63f96f1980ecd58c4e5';
   const { _id } = useParams();
 
   const [form, setForm] = useState({});
@@ -45,14 +45,14 @@ export default function FormProfessionals() {
 
   const HandlerSubmit = async (e) => {
     e.preventDefault();
-    // createJobs(jobs);
-    setSend(true);
+    const { title, objective } = job;
+    const update = {
+      title, objective, conditionsProfessionals: [...conditions],
+    };
+    updateJobById(id, update);
+    // setSend(true);
   };
 
-  const handlerEvidence = (e) => {
-    const { name } = e.target;
-    setEvidence([...evidence, { name: [name], value: e.target.files[0] }]);
-  };
   function handlerEliminate(e) {
     const { value, name } = e.target;
     if (name === 'conditions') {
@@ -77,7 +77,6 @@ export default function FormProfessionals() {
 
   const handlerEditChange = (e) => {
     const { value } = e.target;
-    console.log('sasasa');
     setJob({ ...job, ...form });
     setEdit({ [value]: false });
     setForm();
@@ -108,8 +107,8 @@ export default function FormProfessionals() {
                 {(edit.name)
                   ? (
                     <>
-                      <input name="title" placeholder="Ingresa nombre de reforma" type="text" onChange={handleChange} required />
-                      <button className="button-agregate" type="button" value="name" onClick={handlerEditChange}>Editar</button>
+                      <input name="title" placeholder={job.title} type="text" onChange={handleChange} required />
+                      <button className="button-agregate" type="button" value="name" onClick={handlerEditChange}>Cambiar</button>
                     </>
                   )
                   : (
@@ -125,20 +124,20 @@ export default function FormProfessionals() {
                 {(edit.objective)
                   ? (
                     <>
-                      <textarea name="objective" placeholder="Ingresa aqui una breve descripcion de tu reforma" type="text" onChange={handleChange} required />
-                      <button className="button-agregate" type="button" value="objective" onClick={handlerEditChange}>Editar</button>
+                      <textarea name="objective" placeholder={job.objective} type="text" onChange={handleChange} required />
+                      <button className="button-agregate" type="button" value="objective" onClick={handlerEditChange}>Cambiar</button>
                     </>
                   )
                   : (
                     <>
-                      <label htmlFor="title">{job.objective}</label>
-                      <button className="button-edit" type="button" value="name" onClick={handlerEdit}>Editar</button>
+                      <label htmlFor="objective">{job.objective}</label>
+                      <button className="button-edit" type="button" value="objective" onClick={handlerEdit}>Editar</button>
                     </>
                   )}
               </div>
               <br />
               <fieldset>
-                <legend>Condiciones</legend>
+                <legend>Condiciones profesional</legend>
                 {conditions.map((todo) => (
                   <div className="section">
                     <label htmlFor={todo.name}>{todo.name}</label>
@@ -155,37 +154,14 @@ export default function FormProfessionals() {
                   <button className="button-agregate" type="button" onClick={handlerConditions}>Agregar</button>
                 </div>
               </fieldset>
-              {/* {job.conditions((result) => (
-                  <div className="section">
-                    <label htmlFor={todo.name}>{todo.name}</label>
-                    <button className="button-eliminate" type="button" name="conditions" value={todo.name} onClick={handlerEliminate}>x</button>
-                  </div>
-                ))} */}
-
-              {/* <form onSubmit={handleSubmit}>
-                <label htmlFor="Nombre de reforma" />
-                <input name="Nombre de reforma" placeholder="Ingresa aqui el nombre de tu reforma" type="text" onChange={handleChange} />
-                <label htmlFor="Descripcion breve " />
-                <input name="Descripcion breve" placeholder="Ingresa aqui una breve descripcion de tu reforma" type="text" onChange={handleChange} />
-                <label htmlFor="Criterios de aceptacion" />
-                <input name="Criterios de aceptacion" placeholder="Ingresa aqui los criterios de aceptacion del trabajo" type="text" onChange={handleChange} />
-                <label htmlFor="Condiciones (opcional)" />
-                <input name="Condiciones" placeholder="Ingresa aqui las condiciones del trabajo (opcional)" type="text" onChange={handleChange} />
-                <ButtonRound isSubmit>Submit</ButtonRound>
-              </form> */}
               <fieldset>
-                <legend>Fotos (opcional)</legend>
-                {evidence.map((evide) => (
-                  <div className="section">
-                    <label htmlFor={evide.value}>{`${evide.name[0]} - ${evide.value.name}  `}</label>
-                    <button className="button-eliminate" type="button" name="evidence" value={evide.name} onClick={handlerEliminate}>
-                      x
-                    </button>
+                <legend>Condiciones Cliente</legend>
+                {job.conditionsClients?.map((todo) => (
+                  <div className="section1">
+                    <label htmlFor={todo.name}>{todo.name}</label>
                   </div>
                 ))}
-                <input type="file" name={`#${parseInt((Math.random() * 100000), 10)}`} onChange={handlerEvidence} />
               </fieldset>
-
               <div className="ButtonRound">
                 <ButtonRound type="submit" onClickFunction={HandlerSubmit}>Enviar</ButtonRound>
               </div>

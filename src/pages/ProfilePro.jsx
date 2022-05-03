@@ -7,14 +7,14 @@ import ProfileProDescription from '../components/ProfileProDescription/ProfilePr
 import ProfileProInterest from '../components/ProfileProInterests/ProfileProInterests';
 import Footer from '../components/Footer/Footer';
 import '../components/FormUser/FormUsers.scss';
-// import FormsProfessionals from '../components/FormUser/FormProfessionals';
-import FormClients from '../components/FormUser/FormClients';
+import FormsProfessionals from '../components/FormUser/FormProfessionals';
+// import FormClients from '../components/FormUser/FormClients';
 
 function ProfilePro() {
   const { id } = useParams();
   const { _id } = useSelector((state) => state.user);
   const navigation = useNavigate();
-  const [vist, setVist] = useState(false);
+  const [vist, setVist] = useState(true);
 
   const HandlerOnClick = (e) => {
     e.preventDefault();
@@ -29,7 +29,7 @@ function ProfilePro() {
       <NavigationBar />
       <div className="bodyProfilePro">
         <ProfileProDescription HandlerOnClick={HandlerOnClick} vist={vist} id={id} />
-        {(vist) && (<FormClients id={id} />)}
+        {(vist) && (<FormsProfessionals id={id} />)}
       </div>
       <ProfileProInterest />
       <Footer />

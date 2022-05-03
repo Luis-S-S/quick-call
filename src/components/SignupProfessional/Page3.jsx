@@ -43,8 +43,8 @@ export default function Page3({
         ))}
         <div className="specialty">
           <select name="specialty" id="specialty" onChange={handlerChoice}>
-            <option value="" key=""> </option>
-            {categories?.specialty.map((result) => (
+            <option value="" disabled selected hidden>Selecciona tus especialidades ...</option>
+            {categories[0].specialties?.map((result) => (
               <option
                 key={result}
                 value={result}
