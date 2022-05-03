@@ -23,7 +23,7 @@ export default function PQRs() {
       {
       pqrArray.length > 0
         ? pqrArray.map((pqr) => (
-          <PQRListItem pqrInfo={pqr} />
+          <PQRListItem key={pqr._id} pqrInfo={pqr} />
         ))
         : (
           <h1 className="dashboard-favorites--error">Actualmente no tienes PQRs</h1>

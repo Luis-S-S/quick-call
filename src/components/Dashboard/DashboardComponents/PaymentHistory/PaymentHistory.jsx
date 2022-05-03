@@ -34,7 +34,8 @@ export default function PaymentHistory() {
   }, []);
 
   useEffect(async () => {
-    const payments = jobsArray.map((job) => getPaymentsByUserId(_id, job.payment));
+    const filteredJobs = jobsArray.filter((job) => Object.keys(job).includes('payment'));
+    const payments = filteredJobs.map((job) => getPaymentsByUserId(_id, job.payment));
     const promises = await Promise.all(payments);
     const response = promises.map((payment) => payment.json());
     Promise.all(response)

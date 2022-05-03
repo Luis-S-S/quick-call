@@ -71,11 +71,11 @@ export default function filter() {
             {category?.specialties.map(
               (specialty) => (
                 <option
-                  key={specialty.name}
-                  value={specialty.name}
+                  key={specialty}
+                  value={specialty}
                   className="filter__option"
                 >
-                  {specialty.name}
+                  {specialty}
                 </option>
               ),
             )}

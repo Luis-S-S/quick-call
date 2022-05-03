@@ -13,7 +13,7 @@ function EditarPerfil() {
     if (!_id) {
       navigation('/login_redirect');
     }
-  }, []);
+  });
 
   return (
     <>
