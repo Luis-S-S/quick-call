@@ -16,6 +16,11 @@ export default function Chat() {
     const response = await getChatById(params.id);
     const data = await response.json();
     setChat(data);
+
+    socket.on(`${params.id}:create`, (socketResponse) => {
+      setChat(socketResponse);
+    });
+    return () => socket.off('chat:create');
   }, []);
 
   const handleOnChange = (e) => {
@@ -32,12 +37,6 @@ export default function Chat() {
     await updateChat(params.id, { messages: newMsgs });
     e.target.reset();
     setMsg({});
-
-    socket.on('chat:update', (data) => {
-      setChat(data);
-    });
-
-    return () => socket.off('chat:update');
   };
 
   return (
