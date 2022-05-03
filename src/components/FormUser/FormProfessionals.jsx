@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useParams, Redirect } from 'react-router-dom';
 
 import { getJobById, updateJobById } from '../../services/jobs';
 import { allCategories } from '../../services/categories';
@@ -10,8 +10,8 @@ import LinkRound from '../LinkRound/LinkRound';
 
 export default function FormProfessionals() {
   // const { _id } = useSelector((state) => state.user);
-  const _id = '625ded5d64b874d78ccee7e4';
-  const { id } = useParams();
+  const id = '627020dee23c7a9dec5ca8dc';
+  const { _id } = useParams();
 
   const [form, setForm] = useState({});
   const [category, setCategory] = useState();
@@ -22,11 +22,12 @@ export default function FormProfessionals() {
   const [job, setJob] = useState({});
   const [edit, setEdit] = useState({});
 
-  // useEffect(async () => {
-  //   const job = await getJobById(id);
-  //   const response = await job.json();
-  //   setJob(response);
-  // }, []);
+  useEffect(async () => {
+    const jobs = await getJobById(id);
+    const response = await jobs.json();
+    console.log('xxxxxxx', response);
+    setJob(response);
+  }, []);
 
   useEffect(async () => {
     const response = await allCategories();
@@ -42,19 +43,9 @@ export default function FormProfessionals() {
     });
   };
 
-
-
   const HandlerSubmit = async (e) => {
     e.preventDefault();
-    const formtodo = {
-      client: _id,
-      professional: id,
-      status: 'oferta',
-      ...form,
-      evidence: { clients: [...evidence] },
-      conditions: { clients: [...conditions] },
-    };
-    // createJobs(formtodo);
+    // createJobs(jobs);
     setSend(true);
   };
 
@@ -84,9 +75,16 @@ export default function FormProfessionals() {
     setChoice(e.target.value);
   };
 
+  const handlerEditChange = (e) => {
+    const { value } = e.target;
+    console.log('sasasa');
+    setJob({ ...job, ...form });
+    setEdit({ [value]: false });
+    setForm();
+  };
+
   const handlerEdit = (e) => {
     const { value } = e.target;
-    console.log("value", value);
     setEdit({ [value]: true });
   };
 
@@ -106,26 +104,41 @@ export default function FormProfessionals() {
             <form onSubmit={HandlerSubmit}>
 
               <label htmlFor="title">Nombre de reforma</label>
-              {(edit.name)
-                ? (
-                  <>
-                    <input name="title" placeholder="Ingresa nombre de reforma" type="text" onChange={handleChange} required />
-                    <button className="button-edit" type="button" value="description" onClick={handlerEditChange}>Editar</button>
-                  </>
-                )
-                : (
-                  <>
-                    <label htmlFor="title"></label>
-                    <button className="button-edit" type="button" value="name" onClick={handlerEdit}>Editar</button>
-                  </>
-                )}
-              ;
-
+              <div className="section">
+                {(edit.name)
+                  ? (
+                    <>
+                      <input name="title" placeholder="Ingresa nombre de reforma" type="text" onChange={handleChange} required />
+                      <button className="button-agregate" type="button" value="name" onClick={handlerEditChange}>Editar</button>
+                    </>
+                  )
+                  : (
+                    <>
+                      <label htmlFor="title">{job.title}</label>
+                      <button className="button-edit" type="button" value="name" onClick={handlerEdit}>Editar</button>
+                    </>
+                  )}
+              </div>
+              <br />
               <label htmlFor="objective">Breve descripcion</label>
-              <textarea name="objective" placeholder="Ingresa aqui una breve descripcion de tu reforma" type="text" onChange={handleChange} required />
-
+              <div className="section">
+                {(edit.objective)
+                  ? (
+                    <>
+                      <textarea name="objective" placeholder="Ingresa aqui una breve descripcion de tu reforma" type="text" onChange={handleChange} required />
+                      <button className="button-agregate" type="button" value="objective" onClick={handlerEditChange}>Editar</button>
+                    </>
+                  )
+                  : (
+                    <>
+                      <label htmlFor="title">{job.objective}</label>
+                      <button className="button-edit" type="button" value="name" onClick={handlerEdit}>Editar</button>
+                    </>
+                  )}
+              </div>
+              <br />
               <fieldset>
-                <legend>Condiciones (opcional)</legend>
+                <legend>Condiciones</legend>
                 {conditions.map((todo) => (
                   <div className="section">
                     <label htmlFor={todo.name}>{todo.name}</label>
@@ -142,6 +155,13 @@ export default function FormProfessionals() {
                   <button className="button-agregate" type="button" onClick={handlerConditions}>Agregar</button>
                 </div>
               </fieldset>
+              {/* {job.conditions((result) => (
+                  <div className="section">
+                    <label htmlFor={todo.name}>{todo.name}</label>
+                    <button className="button-eliminate" type="button" name="conditions" value={todo.name} onClick={handlerEliminate}>x</button>
+                  </div>
+                ))} */}
+
               {/* <form onSubmit={handleSubmit}>
                 <label htmlFor="Nombre de reforma" />
                 <input name="Nombre de reforma" placeholder="Ingresa aqui el nombre de tu reforma" type="text" onChange={handleChange} />
@@ -154,7 +174,7 @@ export default function FormProfessionals() {
                 <ButtonRound isSubmit>Submit</ButtonRound>
               </form> */}
               <fieldset>
-                <legend>Evidencias (opcional)</legend>
+                <legend>Fotos (opcional)</legend>
                 {evidence.map((evide) => (
                   <div className="section">
                     <label htmlFor={evide.value}>{`${evide.name[0]} - ${evide.value.name}  `}</label>

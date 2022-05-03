@@ -75,6 +75,15 @@
       background-color: $blue;
       color: white;
     }
+    .button-edit{
+      @include link-body;
+      border:none;
+      background-color: white;
+      color: $blue;
+    }
+    .button-edit:hover{
+      color: rgb(58, 224, 66);
+    }
 
     .section {
       display: grid;
