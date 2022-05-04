@@ -16,7 +16,7 @@ import Login from './components/Login/Login';
 import Profile from './pages/Profile';
 import CreatePQR from './pages/CreatePQR/CreatePQR';
 import PQRDetail from './components/PQRDetail/PQRDetail';
-import Payments from './components/Payments/Payments';
+import Payment from './components/Payment/Payment';
 import ErrorMessage from './components/ErrorMessage/ErrorMessage';
 import Chat from './components/Chat/Chat';
 
@@ -41,7 +41,7 @@ function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/pqr_form" element={<CreatePQR />} />
           <Route path="/pqr/:id" element={<PQRDetail />} />
-          <Route path="/payments" element={<Payments />} />
+          <Route path="/payments/:id" element={<Payment />} />
           <Route path="/chat/:id" element={<Chat />} />
           <Route path="/jobs/:id" element={<Job />} />
           <Route path="/login_redirect" element={<ErrorMessage code={401} message="Oops! Inicia sesión para continuar" />} />

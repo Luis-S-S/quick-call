@@ -2,14 +2,14 @@
 import { useState, useEffect } from 'react';
 // import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
+import { useNavigate } from 'react-router-dom';
 import { updateJobById } from '../../services/jobs';
 import { allCategories } from '../../services/categories';
 import ButtonRound from '../ButtonRound/ButtonRound';
 import LinkRound from '../LinkRound/LinkRound';
 
 export default function FormProfessionals({ job, id, setJob }) {
-  // const { _id } = useSelector((state) => state.user);
-
+  const navigate = useNavigate();
   const [form, setForm] = useState({});
   const [category, setCategory] = useState();
   const [evidence, setEvidence] = useState([]);
@@ -171,6 +171,7 @@ export default function FormProfessionals({ job, id, setJob }) {
                 ))}
               </fieldset>
               <div className="ButtonRound">
+                <ButtonRound isSubmit onClickFunction={() => navigate(-1)}>Regresar</ButtonRound>
                 <ButtonRound isSubmit onClickFunction={HandlerSubmit}>Enviar</ButtonRound>
               </div>
             </form>

@@ -1,12 +1,15 @@
 import { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { getJobById } from '../../services/jobs';
 import NavBar from '../../components/Navbar/NavigationBar';
 import Footer from '../../components/Footer/Footer';
+import JobDetail from '../../components/JobDetail/JobDetail';
 import FormProfessionals from '../../components/FormUser/FormProfessionals';
 import './Job.scss';
 
 export default function Job() {
+  const role = useSelector((state) => state.user.role);
   const [job, setJob] = useState({});
   const jobId = useParams().id;
 
@@ -19,18 +22,17 @@ export default function Job() {
   return (
     <>
       <NavBar />
-      {
-        job.status === 'En progreso' || job.status === 'Finalizado' || job.status === 'Cerrado'
+      <div className="job__container">
+        {
+        role === 'professional' && (job.status === 'Oferta' || job.status === 'Pendiente pago')
           ? (
-            <h1>Ya esta pago</h1>
+            <FormProfessionals job={job} id={jobId} setJob={setJob} />
           )
           : (
-            <div className="job__container">
-              <div className="job-offer">Lo que mando el cliente</div>
-              <FormProfessionals job={job} id={jobId} setJob={setJob} />
-            </div>
+            <JobDetail job={job} />
           )
       }
+      </div>
       <Footer />
     </>
   );

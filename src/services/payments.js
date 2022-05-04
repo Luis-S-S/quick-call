@@ -1,6 +1,6 @@
 const API_URL = process.env.REACT_APP_API_BASE_URL;
 
-export async function paymentIntent(error, paymentMethod, amount) {
+export async function paymentIntent(error, paymentMethod, amount, description, jobId) {
   try {
     let body;
     if (!error) {
@@ -13,6 +13,8 @@ export async function paymentIntent(error, paymentMethod, amount) {
         body: JSON.stringify({
           paymentMethod,
           amount,
+          description,
+          jobId,
         }),
       };
 

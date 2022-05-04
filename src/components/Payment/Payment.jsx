@@ -1,12 +1,10 @@
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements } from '@stripe/react-stripe-js';
-
 import CheckoutForm from './CheckoutForm';
-import './Check.scss';
 
-const stripePromise = loadStripe('pk_test_51Krv6hJ8N9jnWJGDkp3t64KqMPzcO0pEBYAu9tyHra11JNEwSXe7yoO9wOoxykQtJeYzGbm1SEQKHceGt8IPXKs000JEZrlnmd');
+const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PK);
 
-export default function Payments() {
+export default function Payment() {
   return (
     <Elements stripe={stripePromise}>
       <CheckoutForm />
