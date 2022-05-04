@@ -9,6 +9,22 @@ export async function getChatById(id) {
   }
 }
 
+export async function createChat(body) {
+  try {
+    const payload = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(body),
+    };
+    const response = fetch(`${API_URL}/chats`, payload);
+    return response;
+  } catch (error) {
+    return error;
+  }
+}
+
 export async function updateChat(id, body) {
   try {
     const payload = {

@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
 import { createJobs } from '../../services/jobs';
+import { createChat } from '../../services/chats';
 import { allCategories } from '../../services/categories';
 import ButtonRound from '../ButtonRound/ButtonRound';
 import LinkRound from '../LinkRound/LinkRound';
@@ -43,7 +44,8 @@ export default function FormsClients() {
       evidenceClients: [...evidence],
       conditionsClients: [...conditions],
     };
-    await createJobs(formtodo);
+    const result = await createJobs(formtodo);
+    await createChat({ jobId: result._id });
     setSend(true);
   };
 
