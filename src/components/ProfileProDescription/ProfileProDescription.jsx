@@ -27,6 +27,8 @@ function ProfileProDescription({ HandlerOnClick, vist, id }) {
     await updateClient(user._id, { favorites: [...update] });
     user.favorites = [...update];
     dispatch(setUser(user));
+    const user = useSelector((state) => state.user);
+    console.log('user', user);
   };
 
   useEffect(() => {

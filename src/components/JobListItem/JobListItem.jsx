@@ -22,6 +22,7 @@ export default function JobListItem({ jobInfo }) {
         {status}
       </div>
       <Link className="job-list__link" to={`/jobs/${_id}`}>Ver detalle</Link>
+      <Link className="job-list__link" to={`/jobs/${_id}`}>Ver detalle</Link>
     </div>
   );
 }
