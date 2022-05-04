@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { updateJobById } from '../../services/jobs';
+import { API_URL } from '../../services/download';
 import ButtonRound from '../ButtonRound/ButtonRound';
 import LinkRound from '../LinkRound/LinkRound';
 import './JobDetail.scss';
@@ -25,7 +26,11 @@ export default function JobDetail({ job }) {
     setJobInfo({ ...jobInfo, status: 'Cerrado' });
   };
 
-  const renderOption = () => {
+  const handleDownloadJobPdf = async () => {
+    window.open(`${API_URL}/download/job/${job._id}`);
+  };
+
+  const renderButtonActions = () => {
     if (user.role === 'client' && jobInfo?.status === 'Pendiente pago') {
       return (
         <LinkRound link={`/payments/${jobInfo?._id}`}>Pagar</LinkRound>
@@ -42,6 +47,17 @@ export default function JobDetail({ job }) {
       return (
         <ButtonRound isSubmit={false} onClickFunction={handleStatusClosed}>
           Confirmar trabajo
+        </ButtonRound>
+      );
+    }
+    return null;
+  };
+
+  const renderDownloadButton = () => {
+    if (jobInfo?.status === 'En progreso' || jobInfo?.status === 'Finalizado' || jobInfo?.status === 'Cerrado') {
+      return (
+        <ButtonRound isSubmit={false} onClickFunction={handleDownloadJobPdf}>
+          Descargar PDF
         </ButtonRound>
       );
     }
@@ -133,7 +149,8 @@ export default function JobDetail({ job }) {
         <ButtonRound isSubmit={false} onClickFunction={() => { navigate(-1); }}>
           Volver
         </ButtonRound>
-        {renderOption()}
+        {renderButtonActions()}
+        {renderDownloadButton()}
       </div>
     </div>
   );
