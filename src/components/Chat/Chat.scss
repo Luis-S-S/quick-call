@@ -1,0 +1,86 @@
+@import "../../App.scss";
+
+.chat_sasasas {
+    @include text-inline-title;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin:20px;
+ 
+  .chat__body {
+    display:flex;
+    flex-direction:column;
+    border: solid 1px black;
+    border-radius: 20px;
+    padding:30px;
+    .chat__header{
+        align-self: center;
+        display:flex;
+        img{
+            max-width:50px;
+            border-radius:20px;
+            margin-right:10px;
+        }
+    }
+    #chat__body__message {
+      display: flex;
+      flex-direction: column;
+      width: 600px;
+      height: 300px;
+      align-items: center;
+      overflow-y: scroll;
+      padding: 30px;
+      .chat__body__message__date__right, .chat__body__message__date__left  {
+        align-self: flex-end;
+        font-size: 13px;
+      }
+      .chat__body__message__date__left {
+        align-self: flex-start;
+      }
+      .chat__body__message__text__right,
+      .chat__body__message__text__left {
+        display: flex;
+          flex-wrap:wrap;
+        border-radius: 5px;
+        max-width: 300px;
+        padding: 10px;
+        font-size: 18px;
+        align-self: flex-end;
+        background-color: rgb(179, 243, 237);
+      }
+      .chat__body__message__text__left {
+        align-self: flex-start;
+        background-color: rgb(59, 241, 223);
+      }
+    }
+    .chat__input--control {
+      form {
+        display: flex;
+        justify-content: center;
+        textarea {
+          width: 400px;
+          height: 100px;
+          border-radius: 10px;
+          margin-right: 12px;
+          padding:10px;
+        }
+        button {
+          @include link-body;
+          background-color: $blue;
+          height: 40px;
+          border-radius: 0.5em;
+          border: 3px solid $blue;
+          color: white;
+          display: inline-block;
+          padding: 0.25em 0.75em;
+          text-decoration: none;
+        }
+
+        button:hover {
+          background-color: white;
+          color: $blue;
+        }
+      }
+    }
+  }
+}

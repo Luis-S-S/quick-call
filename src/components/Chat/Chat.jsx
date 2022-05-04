@@ -1,6 +1,9 @@
-import { useState, useEffect } from 'react';
+/* eslint-disable no-return-assign */
+import React, { useState, useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import { getSingleProfessional } from '../../services/professionals';
+import { getJobById } from '../../services/jobs';
 import { getChatById, updateChat } from '../../services/chats';
 import socket from '../../utils/socket';
 
@@ -10,12 +13,26 @@ export default function Chat() {
   const { name } = useSelector((state) => state.user);
   const [chat, setChat] = useState([]);
   const [msg, setMsg] = useState('');
+  const [professional, setProfessional] = useState({});
   const params = useParams();
 
+  const messagesEndRef = useRef(null);
+
+  useEffect(
+    () => {
+      messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
+    },
+    [chat],
+  );
+
   useEffect(async () => {
-    const response = await getChatById(params.id);
-    const data = await response.json();
-    setChat(data);
+    const chats = await (await getChatById(params.id)).json();
+    const job = await (await getJobById(params.id)).json();
+    const professionals = await (await getSingleProfessional(job.professional));
+    messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
+
+    setChat(chats);
+    setProfessional(professionals);
 
     socket.on(`${params.id}:create`, (socketResponse) => {
       setChat(socketResponse);
@@ -40,32 +57,36 @@ export default function Chat() {
   };
 
   return (
-    <div className="chat">
-      <div className="chat__header">
-        Texto
-      </div>
+    <div className="chat_sasasas ">
       <div className="chat__body">
-        <div className="chat__body__message">
-          {chat.messages?.map((message) => (
+        <div className="chat__header">
+          <img className="photo" src={professional?.image?.profile} alt="constructor" />
+          <p>{professional?.name}</p>
+        </div>
+        <div id="chat__body__message">
+          {chat?.messages?.map((message) => (
             <>
-              <div className="chat__body__message__text">
+              <div className={(message?.user === name) ? 'chat__body__message__text__right' : 'chat__body__message__text__left'}>
                 {message?.text}
               </div>
-              <div className="chat__body__message__date">
-                {message?.date}
-              </div>
-              <div className="chat__body__message__user">
-                {message?.user}
+              <div className={(message?.user === name) ? 'chat__body__message__date__right' : 'chat__body__message__date__left'}>
+                {message?.createdAt[11]}
+                {message?.createdAt[12]}
+                {message?.createdAt[13]}
+                {message?.createdAt[14]}
+                {message?.createdAt[15]}
               </div>
             </>
           ))}
+          <div ref={messagesEndRef} />
         </div>
-      </div>
-      <div className="chat__input--control">
-        <form onSubmit={handleSendMsg}>
-          <input type="text" className="chat__input" placeholder="Escribe un mensaje..." onChange={handleOnChange} />
-          <button type="submit">Enviar</button>
-        </form>
+
+        <div className="chat__input--control">
+          <form onSubmit={handleSendMsg}>
+            <textarea type="text" className="chat__input" placeholder="Escribe un mensaje..." onChange={handleOnChange} />
+            <button type="submit">Enviar</button>
+          </form>
+        </div>
       </div>
     </div>
   );
