@@ -38,14 +38,13 @@ export default function FormsClients() {
     const formtodo = {
       client: _id,
       professional: id,
-      status: 'oferta',
+      status: 'Oferta',
       ...form,
       evidenceClients: [...evidence],
       conditionsClients: [...conditions],
     };
-    console.log('xxxxxxxxxxx');
-    createJobs(formtodo);
-    // setSend(true);
+    await createJobs(formtodo);
+    setSend(true);
   };
 
   const handlerEvidence = (e) => {

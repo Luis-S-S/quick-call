@@ -1,33 +1,22 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
-import { useParams, Redirect } from 'react-router-dom';
-
-import { getJobById, updateJobById } from '../../services/jobs';
+// import { useSelector } from 'react-redux';
+import PropTypes from 'prop-types';
+import { useNavigate } from 'react-router-dom';
+import { updateJobById } from '../../services/jobs';
 import { allCategories } from '../../services/categories';
 import ButtonRound from '../ButtonRound/ButtonRound';
 import LinkRound from '../LinkRound/LinkRound';
 
-export default function FormProfessionals() {
-  // const { _id } = useSelector((state) => state.user);
-  const id = '6270a63f96f1980ecd58c4e5';
-  const { _id } = useParams();
-
+export default function FormProfessionals({ job, id, setJob }) {
+  const navigate = useNavigate();
   const [form, setForm] = useState({});
   const [category, setCategory] = useState();
   const [evidence, setEvidence] = useState([]);
   const [conditions, setConditions] = useState([]);
   const [choice, setChoice] = useState();
   const [send, setSend] = useState(false);
-  const [job, setJob] = useState({});
   const [edit, setEdit] = useState({});
-
-  useEffect(async () => {
-    const jobs = await getJobById(id);
-    const response = await jobs.json();
-    console.log('xxxxxxx', response);
-    setJob(response);
-  }, []);
 
   useEffect(async () => {
     const response = await allCategories();
@@ -36,21 +25,23 @@ export default function FormProfessionals() {
   }, []);
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
+    const { name } = e.target;
+    let { value } = e.target;
+    if (name === 'amount') { value = Number(value); } else { value = value.trim(); }
     setForm({
       ...form,
-      [name]: value.trim(),
+      [name]: value,
     });
   };
 
   const HandlerSubmit = async (e) => {
     e.preventDefault();
-    const { title, objective } = job;
+    const { title, objective, amount } = job;
     const update = {
-      title, objective, conditionsProfessionals: [...conditions],
+      title, objective, conditionsProfessionals: [...conditions], status: 'Pendiente pago', amount,
     };
-    updateJobById(id, update);
-    // setSend(true);
+    await updateJobById(id, update);
+    setSend(true);
   };
 
   function handlerEliminate(e) {
@@ -119,6 +110,23 @@ export default function FormProfessionals() {
                   )}
               </div>
               <br />
+              <label htmlFor="amount">Precio en COP</label>
+              <div className="section">
+                {(edit.amount)
+                  ? (
+                    <>
+                      <input name="amount" placeholder={job.amount} type="number" onChange={handleChange} required />
+                      <button className="button-agregate" type="button" value="amount" onClick={handlerEditChange}>Cambiar</button>
+                    </>
+                  )
+                  : (
+                    <>
+                      <label htmlFor="amount">{job.amount === 0 ? 'Digite el precio' : `$ ${job.amount}`}</label>
+                      <button className="button-edit" type="button" value="amount" onClick={handlerEdit}>Editar</button>
+                    </>
+                  )}
+              </div>
+              <br />
               <label htmlFor="objective">Breve descripcion</label>
               <div className="section">
                 {(edit.objective)
@@ -163,7 +171,8 @@ export default function FormProfessionals() {
                 ))}
               </fieldset>
               <div className="ButtonRound">
-                <ButtonRound type="submit" onClickFunction={HandlerSubmit}>Enviar</ButtonRound>
+                <ButtonRound isSubmit onClickFunction={() => navigate(-1)}>Regresar</ButtonRound>
+                <ButtonRound isSubmit onClickFunction={HandlerSubmit}>Enviar</ButtonRound>
               </div>
             </form>
           </div>
@@ -171,3 +180,15 @@ export default function FormProfessionals() {
     </div>
   );
 }
+
+FormProfessionals.propTypes = {
+  job: PropTypes.shape({
+    title: PropTypes.string,
+    objective: PropTypes.string,
+    conditionsClients: PropTypes.arrayOf(PropTypes.string),
+    status: PropTypes.string,
+    amount: PropTypes.number,
+  }).isRequired,
+  id: PropTypes.string.isRequired,
+  setJob: PropTypes.func.isRequired,
+};

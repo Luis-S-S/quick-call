@@ -48,7 +48,6 @@ export default function SignupProfessional() {
 
   useEffect(async () => {
     const response = await allCategories();
-    console.log('xxxxxxxxxsssxxxxxxx', response);
     setCategories(response);
   }, []);
 

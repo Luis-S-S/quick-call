@@ -1,5 +1,4 @@
 /* eslint-disable react/prop-types */
-/* eslint-disable react/button-has-type */
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -15,7 +14,7 @@ function ProfileProDescription({ HandlerOnClick, vist, id }) {
 
   const user = useSelector((state) => state.user);
 
-  const select = user.favorites.filter((favorite) => (favorite !== id));
+  const select = user.favorites?.filter((favorite) => (favorite !== id));
 
   const HandlerFavorites = async () => {
     let update;
@@ -57,15 +56,9 @@ function ProfileProDescription({ HandlerOnClick, vist, id }) {
             </div>
           </div>
           <div className="calification">
-            <span className="fa fa-star" />
-            <span className="fa fa-star" />
-            <span className="fa fa-star" />
-            <span className="fa fa-star" />
-            <span className="fa fa-star-half-o" />
-            <br />
             <ButtonRound isSubmit={false} onClickFunction={HandlerOnClick}>{vist ? 'Ocultar formulario' : 'Hacer consulta'}</ButtonRound>
             <ButtonRound isSubmit={false} onClickFunction={HandlerFavorites}>
-              {(select.length === user.favorites.length) ? 'Añadir a favorito' : 'Mi favorito'}
+              {(select?.length === user.favorites?.length) ? 'Añadir a favorito' : 'Mi favorito'}
             </ButtonRound>
           </div>
         </div>

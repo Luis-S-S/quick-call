@@ -11,7 +11,7 @@ export default function PaymentListItem({ details }) {
   } = details;
 
   const formatDate = () => new Date(createdAt).toLocaleDateString('es-ES');
-  const formatAmount = () => `$${(value / 100).toFixed(2)} ${currency}`;
+  const formatAmount = () => `$${(value / 100)} ${currency}`;
 
   return (
     <div className="payment-list-container">
