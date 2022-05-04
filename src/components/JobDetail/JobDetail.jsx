@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { updateJobById } from '../../services/jobs';
 import ButtonRound from '../ButtonRound/ButtonRound';
 import LinkRound from '../LinkRound/LinkRound';
 import './JobDetail.scss';
@@ -8,6 +9,13 @@ import './JobDetail.scss';
 export default function JobDetail({ job }) {
   const user = useSelector((state) => state.user);
   const navigate = useNavigate();
+
+  const handleStatusFinished = async () => {
+    await updateJobById(job._id, { status: 'Finalizado' });
+  };
+  const handleStatusClosed = async () => {
+    await updateJobById(job._id, { status: 'Cerrado' });
+  };
 
   const renderOption = () => {
     if (user.role === 'client' && job.status === 'Pendiente pago') {
@@ -17,12 +25,16 @@ export default function JobDetail({ job }) {
     }
     if (user.role === 'professional' && job.status === 'En progreso') {
       return (
-        <ButtonRound>Finalizar trabajo</ButtonRound>
+        <ButtonRound isSubmit={false} onClickFunction={handleStatusFinished}>
+          Finalizar trabajo
+        </ButtonRound>
       );
     }
-    if (user.role === 'professional' && job.status === 'Finalizado') {
+    if (user.role === 'client' && job.status === 'Finalizado') {
       return (
-        <ButtonRound>Confirmar trabajo</ButtonRound>
+        <ButtonRound isSubmit={false} onClickFunction={handleStatusClosed}>
+          Confirmar trabajo
+        </ButtonRound>
       );
     }
     return null;
