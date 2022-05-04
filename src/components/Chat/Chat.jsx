@@ -20,7 +20,7 @@ export default function Chat() {
     socket.on(`${params.id}:create`, (socketResponse) => {
       setChat(socketResponse);
     });
-    return () => socket.off('chat:create');
+    return () => socket.off(`${params.id}:create`);
   }, []);
 
   const handleOnChange = (e) => {
