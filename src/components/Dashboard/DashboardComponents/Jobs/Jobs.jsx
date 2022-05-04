@@ -6,7 +6,7 @@ import LinkRound from '../../../LinkRound/LinkRound';
 import './Jobs.scss';
 
 export default function Jobs() {
-  const { _id } = useSelector((state) => state.user);
+  const { _id, role } = useSelector((state) => state.user);
   const [jobsArray, setJobsArray] = useState([]);
 
   useEffect(async () => {
@@ -26,7 +26,7 @@ export default function Jobs() {
         : (
           <>
             <h1 className="dashboard-jobs--error">Actualmente no tienes trabajos pendientes</h1>
-            <LinkRound link="/search">Encuentra a los mejores profesionales en QC</LinkRound>
+            {role === 'client' && (<LinkRound link="/search">Encuentra a los mejores profesionales en QC</LinkRound>)}
           </>
         )
       }

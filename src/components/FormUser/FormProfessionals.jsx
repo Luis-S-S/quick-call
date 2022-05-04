@@ -37,8 +37,9 @@ export default function FormProfessionals({ job, id, setJob }) {
   const HandlerSubmit = async (e) => {
     e.preventDefault();
     const { title, objective, amount } = job;
+    const statusUpdate = amount !== 0 ? 'Pendiente pago' : 'Oferta';
     const update = {
-      title, objective, conditionsProfessionals: [...conditions], status: 'Pendiente pago', amount,
+      title, objective, conditionsProfessionals: [...conditions], status: statusUpdate, amount,
     };
     await updateJobById(id, update);
     setSend(true);
