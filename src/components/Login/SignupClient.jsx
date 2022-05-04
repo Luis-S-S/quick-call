@@ -6,9 +6,9 @@ import { createClient } from '../../services/clients';
 import ButtonRound from '../ButtonRound/ButtonRound';
 
 export default function SignupClient() {
+  let isValidated = true;
   const navigation = useNavigate();
   const [form, setForm] = useState({});
-  const [isValidated, setIsValidated] = useState(true);
   const [errorMsg, setErrorMsg] = useState();
   const [emailError, setEmailError] = useState();
   const [passwordError, setPasswordError] = useState();
@@ -21,28 +21,28 @@ export default function SignupClient() {
       case 'email':
         if (!emailRegExp.test(value)) {
           setEmailError('Email no válido');
-          setIsValidated(false);
+          isValidated = false;
         } else {
           setEmailError('');
-          setIsValidated(true);
+          isValidated = true;
         }
         break;
       case 'password':
         if (value.length < 8) {
           setPasswordError('Longitud mínima de 8 caracteres');
-          setIsValidated(false);
+          isValidated = false;
         } else {
           setPasswordError('');
-          setIsValidated(true);
+          isValidated = true;
         }
         break;
       case 'confirmPassword':
         if (value !== form.password) {
           setConfirmPasswordError('Las contraseñas no coinciden');
-          setIsValidated(false);
+          isValidated = false;
         } else {
           setConfirmPasswordError('');
-          setIsValidated(true);
+          isValidated = true;
         }
         break;
       default:
@@ -53,19 +53,23 @@ export default function SignupClient() {
   const validateOnSubmit = () => {
     if (!form.name) {
       setErrorMsg('El nombre es requerido');
-      return setIsValidated(false);
+      isValidated = false;
+      return isValidated;
     }
     if (!form.email) {
       setErrorMsg('El email es requerido');
-      return setIsValidated(false);
+      isValidated = false;
+      return isValidated;
     }
     if (!form.password) {
       setErrorMsg('La contraseña es requerida');
-      return setIsValidated(false);
+      isValidated = false;
+      return isValidated;
     }
     if (!form.confirmPassword) {
       setErrorMsg('Debe confirmar la contraseña');
-      return setIsValidated(false);
+      isValidated = false;
+      return isValidated;
     }
     return isValidated;
   };

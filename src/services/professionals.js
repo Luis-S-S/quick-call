@@ -44,12 +44,12 @@ export async function editProfessional(id, body) {
       method: 'PATCH',
       headers: {
         'Content-type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('user')}`,
       },
       body: JSON.stringify(body),
     };
     const response = await fetch(`${API_URL}/professionals/${id}`, payload);
-    const data = await response.json();
-    return data;
+    return response;
   } catch {
     throw new Error('Error creating professional');
   }

@@ -9,30 +9,28 @@ export default function Page4({ form, handlerOnChange, categories }) {
         <label htmlFor="eps">EPS</label>
         <select name="socialSecurity.eps" placeholder="Escoge tu EPS" onChange={handlerOnChange} value={form['socialSecurity.eps']}>
           <option value="" key=""> </option>
-          {categories?.filter((result) => result.type === 'eps').map(
-            (todo) => (
-              <option
-                key={todo.value}
-                value={todo.value}
-              >
-                {todo.value}
-              </option>
-            ),
-          )}
+          <option value="" disabled selected hidden>Selecciona tu EPS ...</option>
+          {categories[0].EPSs.filter((result) => (
+            <option
+              key={result}
+              value={result}
+            >
+              {result}
+            </option>
+          ))}
         </select>
         <label htmlFor="arl">ARL</label>
         <select name="socialSecurity.arl" id="socialSecurity.arl" onChange={handlerOnChange} value={form['socialSecurity.arl']}>
           <option value="" key=""> </option>
-          {categories?.filter((result) => result.type === 'arl').map(
-            (todo) => (
-              <option
-                key={todo.value}
-                value={todo.value}
-              >
-                {todo.value}
-              </option>
-            ),
-          )}
+          <option value="" disabled selected hidden>Selecciona tu ARL ...</option>
+          {categories[0].ARLs.map((result) => (
+            <option
+              key={result}
+              value={result}
+            >
+              {result}
+            </option>
+          ))}
         </select>
       </fieldset>
       <fieldset>

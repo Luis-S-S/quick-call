@@ -1,25 +1,26 @@
+import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import NavigationBar from '../components/Navbar/NavigationBar';
 import Dashboard from '../components/Dashboard/Dashboard';
-import ErrorMessage from '../components/ErrorMessage/ErrorMessage';
 import Footer from '../components/Footer/Footer';
 
 function EditarPerfil() {
-  const userToken = localStorage.getItem('user');
+  const { _id } = useSelector((state) => state.user);
+  const navigation = useNavigate();
+
+  useEffect(() => {
+    if (!_id) {
+      navigation('/login_redirect');
+    }
+  });
 
   return (
-    <div>
-      {
-        userToken
-          ? (
-            <>
-              <NavigationBar />
-              <Dashboard />
-              <Footer />
-            </>
-          )
-          : (<ErrorMessage code={401} message="Oops! Inicia sesión para continuar" />)
-      }
-    </div>
+    <>
+      <NavigationBar />
+      <Dashboard />
+      <Footer />
+    </>
   );
 }
 

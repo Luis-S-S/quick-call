@@ -1,12 +1,33 @@
 /* eslint-disable react/prop-types */
-/* eslint-disable react/button-has-type */
 import { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+
+import { updateClient } from '../../services/clients';
 import './ProfileProDescription.scss';
 import ButtonRound from '../ButtonRound/ButtonRound';
 import { getSingleProfessional } from '../../services/professionals';
+import { setUser } from '../../store/actions';
 
 function ProfileProDescription({ HandlerOnClick, vist, id }) {
   const [pro, setPro] = useState([]);
+  const dispatch = useDispatch();
+
+  let user = useSelector((state) => state.user);
+
+  const select = user.favorites?.filter((favorite) => (favorite !== id));
+
+  const HandlerFavorites = async () => {
+    let update;
+    if (select.length === user.favorites.length) {
+      update = [...select, id];
+    } else {
+      update = [...select];
+    }
+    await updateClient(user._id, { favorites: [...update] });
+    user.favorites = [...update];
+    dispatch(setUser(user));
+    user = useSelector((state) => state.user);
+  };
 
   useEffect(() => {
     getSingleProfessional(id).then((data) => setPro(data));
@@ -34,13 +55,10 @@ function ProfileProDescription({ HandlerOnClick, vist, id }) {
             </div>
           </div>
           <div className="calification">
-            <span className="fa fa-star" />
-            <span className="fa fa-star" />
-            <span className="fa fa-star" />
-            <span className="fa fa-star" />
-            <span className="fa fa-star-half-o" />
-            <br />
             <ButtonRound isSubmit={false} onClickFunction={HandlerOnClick}>{vist ? 'Ocultar formulario' : 'Hacer consulta'}</ButtonRound>
+            <ButtonRound isSubmit={false} onClickFunction={HandlerFavorites}>
+              {(select?.length === user.favorites?.length) ? 'Añadir a favorito' : 'Mi favorito'}
+            </ButtonRound>
           </div>
         </div>
       </div>

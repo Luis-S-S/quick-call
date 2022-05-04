@@ -2,7 +2,8 @@
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { setUser } from '../../../../store/actions';
-import { updateClient } from '../../../../services/clients';
+import { editProfessional } from '../../../../services/professionals';
+import { uploadImage } from '../../../../services/upload';
 import { objectDifference } from '../../../../services/general';
 import { allCategories } from '../../../../services/categories';
 import ButtonRound from '../../../ButtonRound/ButtonRound';
@@ -35,35 +36,64 @@ export default function ProfileProfessional() {
     setNewUser({ ...newUser, [targetName]: value });
   };
 
+  const handleFileOnChange = (e) => {
+    if (!e.target.files[0]) {
+      const correctedUser = { ...newUser };
+      delete correctedUser[e.target.name];
+      setNewUser(correctedUser);
+      return;
+    }
+    setNewUser({ ...newUser, [e.target.name]: e.target.files[0] });
+  };
+
   const handleOnSubmit = async (e) => {
     e.preventDefault();
 
     const submitUser = objectDifference(userCopy, newUser);
 
-    if (Object.keys(submitUser).length !== 0) {
-      if (!phoneNumberError) {
-        if (submitUser.phoneNumber) {
-          submitUser.phoneNumber = parseInt(submitUser.phoneNumber, 10);
-        }
-        const response = await updateClient(user._id, submitUser);
-        if (response.status === 200) {
-          const {
-            passwordExt, locationExt, ...rest
-          } = await response.json();
-          dispatch(setUser({ ...rest, role: user.role }));
-          setIsSuccess(true);
-          setResponseMsg('Se actualizó correctamente');
-        } else {
-          setIsSuccess(false);
-          setResponseMsg('Ocurrió un error');
-        }
-      } else {
-        setResponseMsg('Ocurrió un error');
-        setIsSuccess(false);
-      }
-    } else {
+    if (Object.keys(submitUser).length === 0) {
       setResponseMsg('No hay cambios para actualizar');
       setIsSuccess(false);
+      return;
+    }
+
+    if (phoneNumberError) {
+      setResponseMsg('Ocurrió un error');
+      setIsSuccess(false);
+      return;
+    }
+
+    if (submitUser.phoneNumber) {
+      submitUser.phoneNumber = parseInt(submitUser.phoneNumber, 10);
+    }
+
+    if (submitUser.profilePicture) {
+      // const publicId = obtainPublicIdFromUrl(reduxUser.profilePicture);
+      // if (publicId !== 'user-icon') { await deleteImage(publicId); }
+      const form = new FormData();
+      form.append('file', submitUser.profilePicture);
+      const response = await uploadImage(form);
+      submitUser.profilePicture = response.url;
+    }
+    const response = await editProfessional(user._id, submitUser);
+    if (response.status === 200) {
+      const {
+        password: passwordSecond,
+        payment, location:
+        locationSecond,
+        createdAt,
+        updatedAt,
+        __v,
+        ...rest
+      } = await response.json();
+      setIsSuccess(true);
+      setResponseMsg('Se actualizó correctamente');
+      setNewUser({ ...rest });
+      setCopy({ ...rest });
+      dispatch(setUser({ ...rest, role: user.role }));
+    } else {
+      setIsSuccess(false);
+      setResponseMsg('Ocurrió un error');
     }
   };
 
@@ -81,6 +111,8 @@ export default function ProfileProfessional() {
     <div className="dashboard-profile">
       <h1 className="dashboard-profile__title">Actualiza tu perfil</h1>
       <img className="dashboard-profile__picture" src={newUser?.image?.profile} alt="Foto de perfil" />
+      <label className="profile__label" htmlFor="profilePicture">Actualizar foto de perfil</label>
+      <input type="file" name="profilePicture" id="profilePicture" onChange={handleFileOnChange} />
       <form className="profile-update">
         <div className="input-control">
           <label className="profile__label" htmlFor="name">Nombre: </label>
@@ -118,7 +150,7 @@ export default function ProfileProfessional() {
             <select className="profile__input" name="specialties" onChange={handleOnChange}>
               {specialtiesList.map(
                 (specialtyItem, idx) => (
-                  <option key={idx} value={specialtyItem.name}>{specialtyItem.name}</option>
+                  <option key={idx} value={specialtyItem}>{specialtyItem}</option>
                 ),
               )}
             </select>
