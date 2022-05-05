@@ -13,6 +13,7 @@ import Page2 from './Page2';
 import Page3 from './Page3';
 import Page4 from './Page4';
 import Validate from './Validate';
+import Middle from '../Middle/Middle';
 
 export default function SignupProfessional() {
   const [page, setPage] = useState(0);
@@ -20,14 +21,11 @@ export default function SignupProfessional() {
   const [specialty, setSpecialty] = useState([]);
   const [form, setForm] = useState({});
   const [validate, setValidate] = useState({});
+  const [middle, setMiddle] = useState(false);
 
   const handlerOnChange = (e) => {
     const { name, value } = e.target;
-    if (value === '') {
-      delete form[name];
-    } else {
-      setForm({ ...form, [name]: value });
-    }
+    setForm({ ...form, [name]: value });
   };
 
   const handleOnClickSubmit = async () => {
@@ -43,6 +41,7 @@ export default function SignupProfessional() {
     }
     delete form.confirmPassword;
     const data = ({ ...form, specialty: [...names] });
+    setMiddle(true);
     await createProfessional(data);
   };
 
@@ -56,6 +55,7 @@ export default function SignupProfessional() {
 
   return (
     <div className="signupprofessional">
+      {(middle) && (<Middle title="Profesional creado" text="Tu cuenta de profesional a sido creada exitosamente" button="Ir a Login" link="/" />)}
       <div className="container">
         <Link className="link__logo" to="/">
           <img className="logo" src="images/logo/quick-call-logo.svg" alt="" />
