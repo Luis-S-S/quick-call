@@ -1,39 +1,63 @@
-import PropTypes from 'prop-types';
+import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { updateJobById } from '../../services/jobs';
+import { API_URL } from '../../services/download';
 import ButtonRound from '../ButtonRound/ButtonRound';
 import LinkRound from '../LinkRound/LinkRound';
 import './JobDetail.scss';
 
 export default function JobDetail({ job }) {
   const user = useSelector((state) => state.user);
+  const [jobInfo, setJobInfo] = useState();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    setJobInfo(job);
+  }, [job]);
 
   const handleStatusFinished = async () => {
     await updateJobById(job._id, { status: 'Finalizado' });
+    setJobInfo({ ...jobInfo, status: 'Finalizado' });
   };
   const handleStatusClosed = async () => {
     await updateJobById(job._id, { status: 'Cerrado' });
+    setJobInfo({ ...jobInfo, status: 'Cerrado' });
   };
 
-  const renderOption = () => {
-    if (user.role === 'client' && job.status === 'Pendiente pago') {
+  const handleDownloadJobPdf = async () => {
+    window.open(`${API_URL}/download/job/${job._id}`);
+  };
+
+  const renderButtonActions = () => {
+    if (user.role === 'client' && jobInfo?.status === 'Pendiente pago') {
       return (
-        <LinkRound link={`/payments/${job?._id}`}>Pagar</LinkRound>
+        <LinkRound link={`/payments/${jobInfo?._id}`}>Pagar</LinkRound>
       );
     }
-    if (user.role === 'professional' && job.status === 'En progreso') {
+    if (user.role === 'professional' && jobInfo?.status === 'En progreso') {
       return (
         <ButtonRound isSubmit={false} onClickFunction={handleStatusFinished}>
           Finalizar trabajo
         </ButtonRound>
       );
     }
-    if (user.role === 'client' && job.status === 'Finalizado') {
+    if (user.role === 'client' && jobInfo?.status === 'Finalizado') {
       return (
         <ButtonRound isSubmit={false} onClickFunction={handleStatusClosed}>
           Confirmar trabajo
+        </ButtonRound>
+      );
+    }
+    return null;
+  };
+
+  const renderDownloadButton = () => {
+    if (jobInfo?.status === 'En progreso' || jobInfo?.status === 'Finalizado' || jobInfo?.status === 'Cerrado') {
+      return (
+        <ButtonRound isSubmit={false} onClickFunction={handleDownloadJobPdf}>
+          Descargar PDF
         </ButtonRound>
       );
     }
@@ -46,30 +70,30 @@ export default function JobDetail({ job }) {
       <h3 className="job-detail__subtitle">
         Nombre de la reforma:
         {' '}
-        {job?.title}
+        {jobInfo?.title}
       </h3>
       <h3 className="job-detail__subtitle">
         Estado:
         {' '}
-        {job?.status}
+        {jobInfo?.status}
       </h3>
       <h3 className="job-detail__subtitle">
         Costo:
         {' '}
-        {job?.amount === 0 ? 'Por definir' : job?.amount}
+        {jobInfo?.amount === 0 ? 'Por definir' : jobInfo?.amount}
       </h3>
       <p className="job-detail__body">
         Descripción:
         {' '}
-        {job?.objective}
+        {jobInfo?.objective}
       </p>
       <h3 className="job-detail__subtitle">Condiciones</h3>
       <div className="job-detail__section">
         <ul className="section__list">
           <h6 className="section__list__title">Cliente</h6>
-          {job?.conditionsClients?.length > 0
+          {jobInfo?.conditionsClients?.length > 0
             ? (
-              job?.conditionsClients?.map((condition) => (
+              jobInfo?.conditionsClients?.map((condition) => (
                 <li key={condition.name}>
                   {condition.name}
                 </li>
@@ -80,9 +104,9 @@ export default function JobDetail({ job }) {
         </ul>
         <ul className="section__list">
           <h6 className="section__list__title">Profesional</h6>
-          {job?.conditionsProfessionals?.length > 0
+          {jobInfo?.conditionsProfessionals?.length > 0
             ? (
-              job?.conditionsProfessionals?.map((condition) => (
+              jobInfo?.conditionsProfessionals?.map((condition) => (
                 <li key={condition.name}>
                   {condition.name}
                 </li>
@@ -96,9 +120,9 @@ export default function JobDetail({ job }) {
       <div className="job-detail__section">
         <ul className="section__list">
           <h6 className="section__list__title">Cliente</h6>
-          {job?.evidenceClients?.length > 0
+          {jobInfo?.evidenceClients?.length > 0
             ? (
-              job?.evidenceClients?.map((condition) => (
+              jobInfo?.evidenceClients?.map((condition) => (
                 <li key={condition.name}>
                   {condition.name}
                 </li>
@@ -109,9 +133,9 @@ export default function JobDetail({ job }) {
         </ul>
         <ul className="section__list">
           <h6 className="section__list__title">Profesional</h6>
-          {job?.evidenceProfessionals?.length > 0
+          {jobInfo?.evidenceProfessionals?.length > 0
             ? (
-              job?.evidenceProfessionals?.map((condition) => (
+              jobInfo?.evidenceProfessionals?.map((condition) => (
                 <li key={condition.name}>
                   {condition.name}
                 </li>
@@ -125,7 +149,8 @@ export default function JobDetail({ job }) {
         <ButtonRound isSubmit={false} onClickFunction={() => { navigate(-1); }}>
           Volver
         </ButtonRound>
-        {renderOption()}
+        {renderButtonActions()}
+        {renderDownloadButton()}
       </div>
     </div>
   );

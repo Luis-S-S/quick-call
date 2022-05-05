@@ -9,13 +9,13 @@ import './Favorites.scss';
 
 export default function Favorites() {
   const dispatch = useDispatch();
-  const { id, favorites } = useSelector((state) => state.user);
+  const { _id, favorites } = useSelector((state) => state.user);
   const [favoritesId, setFavoritesId] = useState(favorites);
   const [favoritesProfessionals, setFavoritesProfessionals] = useState([]);
 
   const handlerClickDeleteFavorite = async (e) => {
     const newArray = favoritesId.filter((favorite) => favorite !== e.target.id);
-    const response = await updateClient(id, { favorites: newArray });
+    const response = await updateClient(_id, { favorites: newArray });
     const {
       password, payment, location, ...rest
     } = await response.json();

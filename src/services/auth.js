@@ -1,4 +1,4 @@
-const API_URL = 'https://quick-call-backend.herokuapp.com/auth/local';
+const API_URL = process.env.REACT_APP_AUTH_BASE_URL;
 
 export async function userLogin(body) {
   try {
