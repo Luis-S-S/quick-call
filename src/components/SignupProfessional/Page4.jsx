@@ -34,7 +34,7 @@ export default function Page4({ form, handlerOnChange, categories }) {
         </select>
       </fieldset>
       <fieldset>
-        {(form['availability.fullAvailability'] !== 'on') && (
+        {(!form['availability.fullAvailability']) && (
         <>
           <label htmlFor="availability.startTime">Hora de inicio</label>
           <input name="availability.startTime" type="time" onChange={handlerOnChange} value={form['availability.startTime']} />

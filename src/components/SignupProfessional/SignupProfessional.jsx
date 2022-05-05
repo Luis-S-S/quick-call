@@ -30,7 +30,11 @@ export default function SignupProfessional() {
     // } else {
     //   setForm({ ...form, [name]: value });
     // }
-    setForm({ ...form, [name]: value });
+    if (name === 'availability.fullAvailability') {
+      setForm({ ...form, [name]: e.target.checked });
+    } else {
+      setForm({ ...form, [name]: value });
+    }
   };
 
   const handleOnClickSubmit = async () => {
