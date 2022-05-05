@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:8080/auth/local';
+const API_URL = 'https://quick-call-backend.herokuapp.com/auth/local';
 
 export async function userLogin(body) {
   try {
