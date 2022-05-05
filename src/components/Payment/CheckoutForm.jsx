@@ -31,7 +31,8 @@ export default function CheckoutForm() {
     });
     const amount = job.amount * 100;
     const description = job.title;
-    await paymentIntent(error, paymentMethod, amount, description, jobId);
+    const data = await paymentIntent(error, paymentMethod, amount, description, jobId);
+    console.log(data); // Para testing ... PENDING
   };
 
   return (

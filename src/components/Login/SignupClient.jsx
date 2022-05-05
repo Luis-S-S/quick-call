@@ -1,14 +1,15 @@
 /* eslint-disable no-useless-escape */
 import './Login.scss';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { createClient } from '../../services/clients';
+import { getAllClients, createClient } from '../../services/clients';
 import ButtonRound from '../ButtonRound/ButtonRound';
 
 export default function SignupClient() {
   let isValidated = true;
   const navigation = useNavigate();
   const [form, setForm] = useState({});
+  const [clients, setClients] = useState([]);
   const [errorMsg, setErrorMsg] = useState();
   const [emailError, setEmailError] = useState();
   const [passwordError, setPasswordError] = useState();
@@ -51,6 +52,8 @@ export default function SignupClient() {
   };
 
   const validateOnSubmit = () => {
+    const clientsEmailArray = clients.map((client) => client.email);
+
     if (!form.name) {
       setErrorMsg('El nombre es requerido');
       isValidated = false;
@@ -58,6 +61,11 @@ export default function SignupClient() {
     }
     if (!form.email) {
       setErrorMsg('El email es requerido');
+      isValidated = false;
+      return isValidated;
+    }
+    if (clientsEmailArray.includes(form.email)) {
+      setErrorMsg('Este email ya está en uso');
       isValidated = false;
       return isValidated;
     }
@@ -93,6 +101,11 @@ export default function SignupClient() {
       navigation('/');
     }
   };
+
+  useEffect(async () => {
+    const data = await getAllClients();
+    setClients(data);
+  }, []);
 
   return (
     <div className="login">

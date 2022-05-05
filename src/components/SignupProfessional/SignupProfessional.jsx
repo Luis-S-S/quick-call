@@ -23,11 +23,14 @@ export default function SignupProfessional() {
 
   const handlerOnChange = (e) => {
     const { name, value } = e.target;
-    if (value === '') {
-      delete form[name];
-    } else {
-      setForm({ ...form, [name]: value });
-    }
+    // if (value === '') {
+    //   const copy = { ...form };
+    //   delete copy[name];
+    //   setForm(copy);
+    // } else {
+    //   setForm({ ...form, [name]: value });
+    // }
+    setForm({ ...form, [name]: value });
   };
 
   const handleOnClickSubmit = async () => {
