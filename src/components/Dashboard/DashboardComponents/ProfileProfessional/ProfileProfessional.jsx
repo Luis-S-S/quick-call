@@ -33,7 +33,17 @@ export default function ProfileProfessional() {
     } else {
       setPhoneNumberError('');
     }
-    setNewUser({ ...newUser, [targetName]: value });
+    if (targetName === 'eps') {
+      const copy = { ...newUser.socialSecurity };
+      copy.eps = value;
+      return setNewUser({ ...newUser, socialSecurity: { ...copy } });
+    }
+    if (targetName === 'arl') {
+      const copy = { ...newUser.socialSecurity };
+      copy.arl = value;
+      return setNewUser({ ...newUser, socialSecurity: { ...copy } });
+    }
+    return setNewUser({ ...newUser, [targetName]: value });
   };
 
   const handleFileOnChange = (e) => {
@@ -44,6 +54,13 @@ export default function ProfileProfessional() {
       return;
     }
     setNewUser({ ...newUser, [e.target.name]: e.target.files[0] });
+  };
+
+  const handleDeleteOnClick = (e) => {
+    const specialtiesArray = newUser.specialties.map((specialty) => specialty);
+    // eslint-disable-next-line max-len
+    const newSpecialtiesArray = specialtiesArray.filter((specialty) => specialty.name !== e.target.id);
+    setNewUser({ ...newUser, specialties: [...newSpecialtiesArray] });
   };
 
   const handleOnSubmit = async (e) => {
@@ -68,8 +85,6 @@ export default function ProfileProfessional() {
     }
 
     if (submitUser.profilePicture) {
-      // const publicId = obtainPublicIdFromUrl(reduxUser.profilePicture);
-      // if (publicId !== 'user-icon') { await deleteImage(publicId); }
       const form = new FormData();
       form.append('file', submitUser.profilePicture);
       const response = await uploadImage(form);
@@ -79,8 +94,8 @@ export default function ProfileProfessional() {
     if (response.status === 200) {
       const {
         password: passwordSecond,
-        payment, location:
-        locationSecond,
+        payment,
+        location: locationSecond,
         createdAt,
         updatedAt,
         __v,
@@ -141,28 +156,38 @@ export default function ProfileProfessional() {
         </div>
         <div className="input-control">
           <label className="profile__label" htmlFor="specialties">Especialidades: </label>
-          <div className="profile__input--specialty">
+          <div className="profile__list--specialty">
             {
                 newUser?.specialties?.map((specialty, idx) => (
-                  <SpecialtyListItem key={idx} details={specialty} />
+                  <SpecialtyListItem
+                    key={idx}
+                    details={specialty}
+                    onClickFunction={handleDeleteOnClick}
+                  />
                 ))
             }
-            <select className="profile__input" name="specialties" onChange={handleOnChange}>
+            <label className="profile__label" htmlFor="specialties">Añadir especialidad: </label>
+            <select className="profile__input" name="specialties">
               {specialtiesList.map(
                 (specialtyItem, idx) => (
-                  <option key={idx} value={specialtyItem}>{specialtyItem}</option>
+                  <option key={idx} value={specialtyItem.name}>{specialtyItem}</option>
                 ),
               )}
             </select>
+            <label htmlFor="specialtyCertificate" className="profile__label" aria-label="specialtyCertificate" />
+            <input type="file" name="specialtyCertificate" id="specialtyCertificate" onChange={handleFileOnChange} />
+            <ButtonRound className="profile__button--specialty" isSubmit={false}>
+              Añadir
+            </ButtonRound>
           </div>
         </div>
         <div className="input-control">
           <label className="profile__label" htmlFor="image.myJobs">Trabajos: </label>
-          <p>Imágenes para editar</p>
+          <p><i>Coming soon...</i></p>
         </div>
         <div className="input-control">
           <label className="profile__label" htmlFor="eps">EPS: </label>
-          <select className="profile__input" name="eps" value={newUser?.eps || ''} onChange={handleOnChange}>
+          <select className="profile__input" name="eps" value={newUser?.socialSecurity?.eps || ''} onChange={handleOnChange}>
             {epsList.map(
               (epsItem, idx) => (<option key={idx} value={epsItem}>{epsItem}</option>),
             )}
@@ -170,7 +195,7 @@ export default function ProfileProfessional() {
         </div>
         <div className="input-control">
           <label className="profile__label" htmlFor="arl">ARL: </label>
-          <select className="profile__input" name="arl" value={newUser?.arl || ''} onChange={handleOnChange}>
+          <select className="profile__input" name="arl" value={newUser?.socialSecurity?.arl || ''} onChange={handleOnChange}>
             {arlList.map(
               (arlItem, idx) => (<option key={idx} value={arlItem}>{arlItem}</option>),
             )}
