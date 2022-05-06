@@ -2,7 +2,7 @@ const API_URL = process.env.REACT_APP_API_BASE_URL;
 
 export async function paymentIntent(error, paymentMethod, amount, description, jobId) {
   try {
-    let body;
+    let response;
     if (!error) {
       const payload = {
         method: 'POST',
@@ -17,11 +17,9 @@ export async function paymentIntent(error, paymentMethod, amount, description, j
           jobId,
         }),
       };
-
-      const response = await fetch(`${API_URL}/payments`, payload);
-      body = await response.json();
+      response = await fetch(`${API_URL}/payments`, payload);
     }
-    return body;
+    return response;
   } catch (e) {
     return e;
   }

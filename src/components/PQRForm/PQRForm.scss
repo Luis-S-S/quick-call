@@ -46,6 +46,12 @@
     padding: .25em .5em;
 }
 
+.pqr-form__input--container {
+    display: flex;
+    justify-content: space-between;
+    gap: 1em;
+}
+
 .pqr-form__input--file {
     @include link-body;
     padding: .25em .5em;

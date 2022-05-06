@@ -2,7 +2,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { setView } from '../../store/actions';
 import ProfileClient from './DashboardComponents/ProfileClient/ProfileClient';
 import ProfileProfessional from './DashboardComponents/ProfileProfessional/ProfileProfessional';
-import Chats from './DashboardComponents/Chats';
 import Favorites from './DashboardComponents/Favorites/Favorites';
 import Jobs from './DashboardComponents/Jobs/Jobs';
 import PQRs from './DashboardComponents/PQR/PQR';
@@ -21,8 +20,6 @@ function MenuLateral() {
         if (role === 'client') { profile = <ProfileClient />; }
         if (role === 'professional') { profile = <ProfileProfessional />; }
         return profile;
-      case 'Chats':
-        return <Chats />;
       case 'Favorites':
         return <Favorites />;
       case 'Jobs':
@@ -45,7 +42,6 @@ function MenuLateral() {
     <div className="dashboard">
       <div className="dashboard__side-menu">
         <button className="side-menu__btn" type="button" onClick={handleClick} value="Profile">Mi perfil</button>
-        <button className="side-menu__btn" type="button" onClick={handleClick} value="Chats">Chats</button>
         <button className="side-menu__btn" type="button" onClick={handleClick} value="Jobs">Trabajos</button>
         <button className="side-menu__btn" type="button" onClick={handleClick} value="PaymentHistory">Historial de Pagos</button>
         {

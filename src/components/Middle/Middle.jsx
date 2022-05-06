@@ -2,12 +2,16 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Middle.scss';
+import { useDispatch } from 'react-redux';
+import { deactivateMiddle } from '../../store/actions';
 
 export default function Middle({
   title, text, button, link,
 }) {
+  const dispatch = useDispatch();
   const navigation = useNavigate();
   const handleClick = () => {
+    dispatch(deactivateMiddle());
     navigation(link);
   };
 

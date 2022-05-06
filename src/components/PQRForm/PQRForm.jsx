@@ -3,6 +3,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { createPQR } from '../../services/pqrs';
 import { setView } from '../../store/actions';
+import { uploadImage } from '../../services/upload';
+import FileInputPQR from '../FileInputPQR/FileInputPQR';
 import ButtonRound from '../ButtonRound/ButtonRound';
 import './PQRForm.scss';
 
@@ -11,6 +13,7 @@ export default function PQRForm() {
   const navigate = useNavigate();
   const { _id } = useSelector((state) => state.user);
   const [form, setForm] = useState({ subject: '', description: '' });
+  const [evidenceArray, setEvidenceArray] = useState([]);
   const [subjectErrorMsg, setSubjectErrorMsg] = useState('');
   const [descriptionErrorMsg, setDescriptionErrorMsg] = useState('');
 
@@ -19,8 +22,20 @@ export default function PQRForm() {
     setForm({ ...form, [name]: value.trim() });
   };
 
+  const handleAddEvidence = () => {
+    const $fileInput = document.getElementById('fileInput');
+    setEvidenceArray([...evidenceArray, $fileInput.files[0]]);
+    $fileInput.value = '';
+  };
+
+  const handleDeleteEvidence = (e) => {
+    const newArray = evidenceArray.filter((file) => file.name !== e.target.name);
+    setEvidenceArray(newArray);
+  };
+
   const handleOnSubmit = async (e) => {
     e.preventDefault();
+
     if (form.subject.length === 0) {
       setSubjectErrorMsg('El asunto es requerido');
       return;
@@ -33,7 +48,15 @@ export default function PQRForm() {
     }
     setDescriptionErrorMsg('');
 
-    const response = await createPQR(_id, form);
+    const promises = evidenceArray.map((file) => {
+      const formData = new FormData();
+      formData.append('file', file);
+      return uploadImage(formData);
+    });
+    const cloudinaryResp = await Promise.all(promises);
+    const evidence = cloudinaryResp.map((cloudinary) => cloudinary.url);
+
+    const response = await createPQR(_id, { ...form, evidence });
     if (response.status === 201) {
       dispatch(setView('PQRs'));
       navigate('/profile');
@@ -71,7 +94,27 @@ export default function PQRForm() {
         </div>
         <span className="pqr-form__msg--error">{descriptionErrorMsg}</span>
         <label htmlFor="file" className="pqr-form__label">Si tienes fotos o videos, puedes compartirlos para una solución más rápida</label>
-        <input name="file" type="file" className="pqr-form__input--file" aria-placeholder="Ingrese una frase que describa el problema" />
+        {
+          evidenceArray.map((evidence) => (
+            <FileInputPQR
+              key={evidence?.name}
+              name={evidence?.name}
+              onClickFunction={handleDeleteEvidence}
+            />
+          ))
+        }
+        <div className="pqr-form__input--container">
+          <input
+            id="fileInput"
+            name="file"
+            type="file"
+            className="pqr-form__input--file"
+            aria-label="Si tienes fotos o videos, puedes compartirlos para una solución más rápida"
+          />
+          <ButtonRound isSubmit={false} onClickFunction={handleAddEvidence}>
+            Añadir evidencia
+          </ButtonRound>
+        </div>
         <ButtonRound isSubmit>Subir</ButtonRound>
       </form>
     </div>

@@ -3,6 +3,7 @@ const initialState = {
   user: {},
   view: 'Profile',
   error: '',
+  middle: { isActive: false },
 };
 
 function reducer(state = initialState, action) {
@@ -26,6 +27,16 @@ function reducer(state = initialState, action) {
       return {
         ...state,
         user: {},
+      };
+    case 'ACTIVATE_MIDDLE':
+      return {
+        ...state,
+        middle: { ...action.payload, isActive: true },
+      };
+    case 'DEACTIVATE_MIDDLE':
+      return {
+        ...state,
+        middle: { isActive: false },
       };
     default:
       return state;

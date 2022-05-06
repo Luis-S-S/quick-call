@@ -1,10 +1,18 @@
 // Styles copied from ProfileClient.scss
 @import '../../../../App.scss';
 
-.profile__input--specialty {
+.profile__list--specialty {
     display: flex;
     flex-direction: column;
     justify-content: center;
     gap:.75em;
     @include text-body;
+}
+
+.profile__button--specialty {
+    align-self: center;
+}
+
+.err-msg {
+    color: red;
 }

@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import {
   CardExpiryElement, CardNumberElement, CardCvcElement, useElements, useStripe,
 } from '@stripe/react-stripe-js';
+import { setView } from '../../store/actions';
 import { paymentIntent } from '../../services/payments';
 import { getJobById } from '../../services/jobs';
 import NavBar from '../Navbar/NavigationBar';
@@ -12,6 +14,8 @@ import PaymentDetail from '../PaymentDetail/PaymentDetail';
 import './Check.scss';
 
 export default function CheckoutForm() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const stripe = useStripe();
   const elements = useElements();
   const [job, setJob] = useState({});
@@ -31,7 +35,17 @@ export default function CheckoutForm() {
     });
     const amount = job.amount * 100;
     const description = job.title;
-    await paymentIntent(error, paymentMethod, amount, description, jobId);
+    const response = await paymentIntent(error, paymentMethod, amount, description, jobId);
+    const data = await response.json();
+
+    if (data.decline_code) {
+      alert(data.decline_code);
+      navigate(-1);
+    } else {
+      alert('Payment Successful');
+      dispatch(setView('PaymentHistory'));
+      navigate('/profile');
+    }
   };
 
   return (

@@ -4,6 +4,8 @@
 /* eslint-disable no-restricted-syntax */
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { activateMiddle } from '../../store/actions';
 import { createProfessional } from '../../services/professionals';
 import { uploadImage } from '../../services/upload';
 import { allCategories } from '../../services/categories';
@@ -13,19 +15,30 @@ import Page2 from './Page2';
 import Page3 from './Page3';
 import Page4 from './Page4';
 import Validate from './Validate';
-import Middle from '../Middle/Middle';
 
 export default function SignupProfessional() {
+  const dispatch = useDispatch();
+
   const [page, setPage] = useState(0);
   const [categories, setCategories] = useState();
   const [specialty, setSpecialty] = useState([]);
   const [form, setForm] = useState({});
   const [validate, setValidate] = useState({});
-  const [middle, setMiddle] = useState(false);
 
   const handlerOnChange = (e) => {
     const { name, value } = e.target;
-    setForm({ ...form, [name]: value });
+    // if (value === '') {
+    //   const copy = { ...form };
+    //   delete copy[name];
+    //   setForm(copy);
+    // } else {
+    //   setForm({ ...form, [name]: value });
+    // }
+    if (name === 'availability.fullAvailability') {
+      setForm({ ...form, [name]: e.target.checked });
+    } else {
+      setForm({ ...form, [name]: value });
+    }
   };
 
   const handleOnClickSubmit = async () => {
@@ -41,7 +54,13 @@ export default function SignupProfessional() {
     }
     delete form.confirmPassword;
     const data = ({ ...form, specialty: [...names] });
-    setMiddle(true);
+    const payload = {
+      title: 'Has creado tu cuenta',
+      text: 'Ya tienes una cuenta de profesional, ya puedes iniciar sesion',
+      button: 'Aceptar',
+      link: '/',
+    };
+    dispatch(activateMiddle(payload));
     await createProfessional(data);
   };
 
@@ -55,7 +74,6 @@ export default function SignupProfessional() {
 
   return (
     <div className="signupprofessional">
-      {(middle) && (<Middle title="Profesional creado" text="Tu cuenta de profesional a sido creada exitosamente" button="Ir a Login" link="/" />)}
       <div className="container">
         <Link className="link__logo" to="/">
           <img className="logo" src="images/logo/quick-call-logo.svg" alt="" />
