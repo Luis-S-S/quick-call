@@ -13,7 +13,7 @@ function ProfilePro() {
   const { id } = useParams();
   const { _id } = useSelector((state) => state.user);
   const navigation = useNavigate();
-  const [vist, setVist] = useState(true);
+  const [vist, setVist] = useState(false);
 
   const HandlerOnClick = (e) => {
     e.preventDefault();

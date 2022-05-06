@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
+
 import { updateClient } from '../../services/clients';
 import './ProfileProDescription.scss';
 import ButtonRound from '../ButtonRound/ButtonRound';
@@ -10,6 +11,7 @@ import { setUser } from '../../store/actions';
 function ProfileProDescription({ HandlerOnClick, vist, id }) {
   const [pro, setPro] = useState([]);
   const dispatch = useDispatch();
+  let update;
 
   const user = useSelector((state) => state.user);
   const [favorites, setFavorites] = useState(user?.favorites);
@@ -17,8 +19,7 @@ function ProfileProDescription({ HandlerOnClick, vist, id }) {
   const select = user.favorites?.filter((favorite) => (favorite !== id));
 
   const HandlerFavorites = async () => {
-    let update;
-    if (select.length === user.favorites.length) {
+    if (select?.length === user.favorites?.length) {
       update = [...select, id];
     } else {
       update = [...select];
