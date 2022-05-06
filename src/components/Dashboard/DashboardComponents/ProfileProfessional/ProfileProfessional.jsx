@@ -54,7 +54,9 @@ export default function ProfileProfessional() {
       setNewUser(correctedUser);
       return;
     }
-    setNewUser({ ...newUser, [e.target.name]: e.target.files[0] });
+    const copy = { ...newUser.image };
+    copy.profile = e.target.files['0'];
+    setNewUser({ ...newUser, image: { ...copy } });
   };
 
   const handleAddSpecialty = () => {
@@ -101,8 +103,11 @@ export default function ProfileProfessional() {
     e.preventDefault();
 
     const submitUser = objectDifference(userCopy, newUser);
+    const verification = specialtiesToAdd.length === 0
+      && Object.keys(submitUser).length === 0
+      && !submitUser.image.profile;
 
-    if (specialtiesToAdd.length === 0 && Object.keys(submitUser).length === 0) {
+    if (verification) {
       setResponseMsg('No hay cambios para actualizar');
       setIsSuccess(false);
       return;
@@ -118,11 +123,11 @@ export default function ProfileProfessional() {
       submitUser.phoneNumber = parseInt(submitUser.phoneNumber, 10);
     }
 
-    if (submitUser.profilePicture) {
+    if (submitUser.image.profile) {
       const form = new FormData();
-      form.append('file', submitUser.profilePicture);
+      form.append('file', submitUser.image.profile);
       const response = await uploadImage(form);
-      submitUser.profilePicture = response.url;
+      submitUser.image.profile = response.url;
     }
 
     if (specialtiesToAdd.length > 0) {
@@ -154,6 +159,7 @@ export default function ProfileProfessional() {
         __v,
         ...rest
       } = await response.json();
+      document.getElementById('image.profile').value = '';
       setSpecialtiesToAdd([]);
       setIsSuccess(true);
       setResponseMsg('Se actualizó correctamente');
@@ -179,9 +185,9 @@ export default function ProfileProfessional() {
   return (
     <div className="dashboard-profile">
       <h1 className="dashboard-profile__title">Actualiza tu perfil</h1>
-      <img className="dashboard-profile__picture" src={newUser?.image?.profile} alt="Foto de perfil" />
-      <label className="profile__label" htmlFor="profilePicture">Actualizar foto de perfil</label>
-      <input type="file" name="profilePicture" id="profilePicture" onChange={handleProfilePictureOnChange} />
+      <img className="dashboard-profile__picture" src={userCopy?.image?.profile} alt="Foto de perfil" />
+      <label className="profile__label" htmlFor="image.profile">Actualizar foto de perfil</label>
+      <input type="file" name="image.profile" id="image.profile" onChange={handleProfilePictureOnChange} />
       <form className="profile-update">
         <div className="input-control">
           <label className="profile__label" htmlFor="name">Nombre: </label>

@@ -15,6 +15,12 @@
     }
 }
 
+.specialty-list__certified {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+}
+
 .specialty-list-item__button {
     background: none;
     border: none;

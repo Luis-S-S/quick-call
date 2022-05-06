@@ -45,6 +45,7 @@ export default function Chat() {
   }, []);
 
   const handleOnChange = (e) => {
+    console.log(client?.profilePicture);
     const newMsg = {
       text: e.target.value,
       user: name || 'user',
