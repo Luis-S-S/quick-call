@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 import { updateClient } from '../../services/clients';
 import './ProfileProDescription.scss';
@@ -11,14 +12,14 @@ import { setUser } from '../../store/actions';
 function ProfileProDescription({ HandlerOnClick, vist, id }) {
   const [pro, setPro] = useState([]);
   const dispatch = useDispatch();
+  let update;
 
-  let user = useSelector((state) => state.user);
+  const user = useSelector((state) => state.user);
 
   const select = user.favorites?.filter((favorite) => (favorite !== id));
 
   const HandlerFavorites = async () => {
-    let update;
-    if (select.length === user.favorites.length) {
+    if (select?.length === user.favorites?.length) {
       update = [...select, id];
     } else {
       update = [...select];
@@ -26,7 +27,6 @@ function ProfileProDescription({ HandlerOnClick, vist, id }) {
     await updateClient(user._id, { favorites: [...update] });
     user.favorites = [...update];
     dispatch(setUser(user));
-    user = useSelector((state) => state.user);
   };
 
   useEffect(() => {
@@ -57,7 +57,7 @@ function ProfileProDescription({ HandlerOnClick, vist, id }) {
           <div className="calification">
             <ButtonRound isSubmit={false} onClickFunction={HandlerOnClick}>{vist ? 'Ocultar formulario' : 'Hacer consulta'}</ButtonRound>
             <ButtonRound isSubmit={false} onClickFunction={HandlerFavorites}>
-              {(select?.length === user.favorites?.length) ? 'Añadir a favorito' : 'Mi favorito'}
+              {(select?.length !== user.favorites?.length) ? 'Añadir a favorito' : 'Mi favorito'}
             </ButtonRound>
           </div>
         </div>
