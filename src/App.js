@@ -2,7 +2,7 @@ import './App.scss';
 
 import { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { fetchUserProfile } from './store/actions';
 
 import Home from './pages/Home';
@@ -19,9 +19,13 @@ import PQRDetail from './components/PQRDetail/PQRDetail';
 import Payment from './components/Payment/Payment';
 import ErrorMessage from './components/ErrorMessage/ErrorMessage';
 import Chats from './pages/Chats';
+import Middle from './components/Middle/Middle';
 
 function App() {
   const dispatch = useDispatch();
+  const {
+    isActive, title, text, button, link,
+  } = useSelector((state) => (state.middle));
 
   useEffect(async () => {
     await dispatch(fetchUserProfile());
@@ -30,6 +34,7 @@ function App() {
   return (
     <div className="App">
       <Router>
+        {(isActive) && (<Middle title={title} text={text} button={button} link={link} />)}
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/search" element={<Search />} />

@@ -4,6 +4,8 @@ export const setView = (view) => ({ type: 'SET_VIEW', payload: view });
 export const setUser = (res) => ({ type: 'SET_USER', payload: res });
 export const setGlobalError = (err) => ({ type: 'SET_GLOBAL_ERROR', payload: err });
 export const emptyUser = () => ({ type: 'EMPTY_USER' });
+export const activateMiddle = (prop) => ({ type: 'ACTIVATE_MIDDLE', payload: prop });
+export const deactivateMiddle = () => ({ type: 'DEACTIVATE_MIDDLE' });
 
 export const fetchUserProfile = () => async (dispatch) => {
   try {

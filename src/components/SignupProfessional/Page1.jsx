@@ -13,7 +13,7 @@ export default function Page1({ form, handlerOnChange, validate }) {
     <div className="formulario">
       <label htmlFor="name" hidden>Nombre</label>
       {(validate.name) && (<label htmlFor="name" style={style}>{validate.name}</label>)}
-      <input name="name" placeholder="Ingresa tu nombre" type="text" onChange={handlerOnChange} value={form.name} />
+      <input name="name" placeholder="Ingresa tu nombre" type="text" onChange={handlerOnChange} value={(form.name)} />
       <label htmlFor="email" hidden>Correo Electrónico</label>
       {(validate.email) && (<label htmlFor="confirmPassword" style={style}>{validate.email}</label>)}
       <input name="email" placeholder="Michelle@ejemplo.com" type="email" onChange={handlerOnChange} value={form.email} />

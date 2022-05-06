@@ -1,13 +1,16 @@
 /* eslint-disable no-useless-escape */
 import './Login.scss';
 import { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+
+import { activateMiddle } from '../../store/actions';
 import { getAllClients, createClient } from '../../services/clients';
 import ButtonRound from '../ButtonRound/ButtonRound';
 
 export default function SignupClient() {
+  const dispatch = useDispatch();
   let isValidated = true;
-  const navigation = useNavigate();
   const [form, setForm] = useState({});
   const [clients, setClients] = useState([]);
   const [errorMsg, setErrorMsg] = useState();
@@ -98,7 +101,13 @@ export default function SignupClient() {
       await createClient(form);
       setForm({});
       setErrorMsg();
-      navigation('/');
+      const payload = {
+        title: 'Has creado tu cuenta',
+        text: 'Ya tienes una cuenta de cliente, ya puedes iniciar sesion',
+        button: 'Aceptar',
+        link: '/',
+      };
+      dispatch(activateMiddle(payload));
     }
   };
 

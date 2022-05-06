@@ -4,6 +4,8 @@
 /* eslint-disable no-restricted-syntax */
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { activateMiddle } from '../../store/actions';
 import { createProfessional } from '../../services/professionals';
 import { uploadImage } from '../../services/upload';
 import { allCategories } from '../../services/categories';
@@ -15,6 +17,8 @@ import Page4 from './Page4';
 import Validate from './Validate';
 
 export default function SignupProfessional() {
+  const dispatch = useDispatch();
+
   const [page, setPage] = useState(0);
   const [categories, setCategories] = useState();
   const [specialty, setSpecialty] = useState([]);
@@ -50,6 +54,13 @@ export default function SignupProfessional() {
     }
     delete form.confirmPassword;
     const data = ({ ...form, specialty: [...names] });
+    const payload = {
+      title: 'Has creado tu cuenta',
+      text: 'Ya tienes una cuenta de profesional, ya puedes iniciar sesion',
+      button: 'Aceptar',
+      link: '/',
+    };
+    dispatch(activateMiddle(payload));
     await createProfessional(data);
   };
 
