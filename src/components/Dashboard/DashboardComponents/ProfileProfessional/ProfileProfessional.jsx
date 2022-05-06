@@ -1,4 +1,3 @@
-/* eslint-disable react/no-array-index-key */
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { setUser } from '../../../../store/actions';
@@ -16,11 +15,13 @@ export default function ProfileProfessional() {
   const [epsList, setEpsList] = useState([]);
   const [arlList, setArlList] = useState([]);
   const [specialtiesList, setSpecialtiesList] = useState([]);
-  const [isSuccess, setIsSuccess] = useState(false);
   const [newUser, setNewUser] = useState({});
-  const [phoneNumberError, setPhoneNumberError] = useState();
-  const [responseMsg, setResponseMsg] = useState('');
   const [userCopy, setCopy] = useState({});
+  const [specialtiesToAdd, setSpecialtiesToAdd] = useState([]);
+  const [specialtiesErr, setSpecialtiesErr] = useState();
+  const [phoneNumberError, setPhoneNumberError] = useState();
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [responseMsg, setResponseMsg] = useState('');
   const {
     password, availability, location, ...user
   } = useSelector((state) => state.user);
@@ -46,7 +47,7 @@ export default function ProfileProfessional() {
     return setNewUser({ ...newUser, [targetName]: value });
   };
 
-  const handleFileOnChange = (e) => {
+  const handleProfilePictureOnChange = (e) => {
     if (!e.target.files[0]) {
       const correctedUser = { ...newUser };
       delete correctedUser[e.target.name];
@@ -56,7 +57,40 @@ export default function ProfileProfessional() {
     setNewUser({ ...newUser, [e.target.name]: e.target.files[0] });
   };
 
-  const handleDeleteOnClick = (e) => {
+  const handleAddSpecialty = () => {
+    const $specialty = document.getElementById('specialty');
+    const $specialtyCertificate = document.getElementById('specialtyCertificate');
+    const isAlreadySpecialty = newUser?.specialties?.some((spe) => spe.name === $specialty.value);
+    const isAlreadyAdded = specialtiesToAdd.some((spe) => spe.name === $specialty.value);
+
+    if (isAlreadySpecialty || isAlreadyAdded) {
+      setSpecialtiesErr('Especialidad ya agregada');
+      return;
+    }
+
+    if (!$specialtyCertificate.files[0]) {
+      setSpecialtiesErr('Debe adjuntar el certificado de la especialidad');
+      return;
+    }
+    setSpecialtiesErr('');
+    setSpecialtiesToAdd(
+      [
+        ...specialtiesToAdd,
+        { name: $specialty.value, certificate: $specialtyCertificate.files[0] },
+      ],
+    );
+
+    document.getElementById('specialtyCertificate').value = '';
+  };
+
+  const handleDeleteStagedSpecialty = (e) => {
+    const specialtiesArray = specialtiesToAdd.map((specialty) => specialty);
+    // eslint-disable-next-line max-len
+    const newSpecialtiesArray = specialtiesArray.filter((specialty) => specialty.name !== e.target.id);
+    setSpecialtiesToAdd([...newSpecialtiesArray]);
+  };
+
+  const handleDeleteExistingSpecialty = (e) => {
     const specialtiesArray = newUser.specialties.map((specialty) => specialty);
     // eslint-disable-next-line max-len
     const newSpecialtiesArray = specialtiesArray.filter((specialty) => specialty.name !== e.target.id);
@@ -68,7 +102,7 @@ export default function ProfileProfessional() {
 
     const submitUser = objectDifference(userCopy, newUser);
 
-    if (Object.keys(submitUser).length === 0) {
+    if (specialtiesToAdd.length === 0 && Object.keys(submitUser).length === 0) {
       setResponseMsg('No hay cambios para actualizar');
       setIsSuccess(false);
       return;
@@ -90,6 +124,25 @@ export default function ProfileProfessional() {
       const response = await uploadImage(form);
       submitUser.profilePicture = response.url;
     }
+
+    if (specialtiesToAdd.length > 0) {
+      const promises = specialtiesToAdd.map((specialty) => {
+        const form = new FormData();
+        form.append('file', specialty.certificate);
+        return uploadImage(form);
+      });
+      const cloudinaryRes = await Promise.all(promises);
+      const urls = cloudinaryRes.map((cloudinary) => cloudinary.url);
+      const specialtiesToPush = specialtiesToAdd.map((specialty, index) => {
+        // eslint-disable-next-line no-param-reassign
+        specialty.certificate = urls[index];
+        return specialty;
+      });
+      submitUser.specialties = !submitUser.specialties
+        ? [...newUser.specialties, ...specialtiesToPush]
+        : [...submitUser.specialties, ...specialtiesToPush];
+    }
+
     const response = await editProfessional(user._id, submitUser);
     if (response.status === 200) {
       const {
@@ -101,6 +154,7 @@ export default function ProfileProfessional() {
         __v,
         ...rest
       } = await response.json();
+      setSpecialtiesToAdd([]);
       setIsSuccess(true);
       setResponseMsg('Se actualizó correctamente');
       setNewUser({ ...rest });
@@ -127,7 +181,7 @@ export default function ProfileProfessional() {
       <h1 className="dashboard-profile__title">Actualiza tu perfil</h1>
       <img className="dashboard-profile__picture" src={newUser?.image?.profile} alt="Foto de perfil" />
       <label className="profile__label" htmlFor="profilePicture">Actualizar foto de perfil</label>
-      <input type="file" name="profilePicture" id="profilePicture" onChange={handleFileOnChange} />
+      <input type="file" name="profilePicture" id="profilePicture" onChange={handleProfilePictureOnChange} />
       <form className="profile-update">
         <div className="input-control">
           <label className="profile__label" htmlFor="name">Nombre: </label>
@@ -146,7 +200,7 @@ export default function ProfileProfessional() {
           <label className="profile__label" htmlFor="city">Ciudad: </label>
           <select className="profile__input" name="city" value={newUser?.city || ''} onChange={handleOnChange}>
             {citiesList.map(
-              (cityItem, idx) => (<option key={idx} value={cityItem}>{cityItem}</option>),
+              (city) => (<option key={city} value={city}>{city}</option>),
             )}
           </select>
         </div>
@@ -158,25 +212,42 @@ export default function ProfileProfessional() {
           <label className="profile__label" htmlFor="specialties">Especialidades: </label>
           <div className="profile__list--specialty">
             {
-                newUser?.specialties?.map((specialty, idx) => (
+                newUser?.specialties?.map((specialty) => (
                   <SpecialtyListItem
-                    key={idx}
+                    key={specialty.name}
                     details={specialty}
-                    onClickFunction={handleDeleteOnClick}
+                    onClickFunction={handleDeleteExistingSpecialty}
                   />
                 ))
             }
+            {
+              specialtiesToAdd.length > 0 && (
+                <>
+                  <p className="profile__label">Especialidades para añadir:</p>
+                  {specialtiesToAdd.map((specialty) => (
+                    <SpecialtyListItem
+                      key={specialty.name}
+                      details={specialty}
+                      onClickFunction={handleDeleteStagedSpecialty}
+                    />
+                  ))}
+                </>
+              )
+            }
             <label className="profile__label" htmlFor="specialties">Añadir especialidad: </label>
-            <select className="profile__input" name="specialties">
+            <select className="profile__input" name="specialty" id="specialty">
               {specialtiesList.map(
-                (specialtyItem, idx) => (
-                  <option key={idx} value={specialtyItem.name}>{specialtyItem}</option>
+                (specialtyItem) => (
+                  <option key={specialtyItem.name} value={specialtyItem.name}>
+                    {specialtyItem}
+                  </option>
                 ),
               )}
             </select>
             <label htmlFor="specialtyCertificate" className="profile__label" aria-label="specialtyCertificate" />
-            <input type="file" name="specialtyCertificate" id="specialtyCertificate" onChange={handleFileOnChange} />
-            <ButtonRound className="profile__button--specialty" isSubmit={false}>
+            <input type="file" name="specialtyCertificate" id="specialtyCertificate" />
+            <p className="profile__label err-msg">{specialtiesErr}</p>
+            <ButtonRound className="profile__button--specialty" isSubmit={false} onClickFunction={handleAddSpecialty}>
               Añadir
             </ButtonRound>
           </div>
@@ -189,7 +260,7 @@ export default function ProfileProfessional() {
           <label className="profile__label" htmlFor="eps">EPS: </label>
           <select className="profile__input" name="eps" value={newUser?.socialSecurity?.eps || ''} onChange={handleOnChange}>
             {epsList.map(
-              (epsItem, idx) => (<option key={idx} value={epsItem}>{epsItem}</option>),
+              (eps) => (<option key={eps} value={eps}>{eps}</option>),
             )}
           </select>
         </div>
@@ -197,7 +268,7 @@ export default function ProfileProfessional() {
           <label className="profile__label" htmlFor="arl">ARL: </label>
           <select className="profile__input" name="arl" value={newUser?.socialSecurity?.arl || ''} onChange={handleOnChange}>
             {arlList.map(
-              (arlItem, idx) => (<option key={idx} value={arlItem}>{arlItem}</option>),
+              (arl) => (<option key={arl} value={arl}>{arl}</option>),
             )}
           </select>
         </div>
