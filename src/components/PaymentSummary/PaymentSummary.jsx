@@ -2,7 +2,6 @@ import PropTypes from 'prop-types';
 import './PaymentSummary.scss';
 
 export default function PaymentDetail({ payment }) {
-  console.log(payment);
   return (
     <div className="payment-detail__container">
       <h1 className="payment-detail__title">Resumen de pago</h1>

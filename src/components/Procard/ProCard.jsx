@@ -16,7 +16,6 @@ function ProCard({
       <p className="pro-card__body">{myDescription}</p>
       <div className="buttons">
         <LinkSquare link={`/ProfilePro/${_id}`}>Ver Perfil</LinkSquare>
-        <LinkSquare>Iniciar Chat</LinkSquare>
       </div>
     </div>
 
