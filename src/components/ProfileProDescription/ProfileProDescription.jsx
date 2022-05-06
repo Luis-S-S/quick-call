@@ -58,7 +58,7 @@ function ProfileProDescription({ HandlerOnClick, vist, id }) {
           <div className={`calification ${user?.role === 'professional' ? 'disable' : ''}`}>
             <ButtonRound isSubmit={false} onClickFunction={HandlerOnClick}>{vist ? 'Ocultar formulario' : 'Hacer consulta'}</ButtonRound>
             <ButtonRound isSubmit={false} onClickFunction={HandlerFavorites}>
-              {(favorites?.includes(id)) ? 'Mi favorito' : 'Añadir a favorito'}
+              {(favorites?.includes(id)) ? 'Eliminar de favoritos' : 'Añadir a favoritos'}
             </ButtonRound>
           </div>
         </div>

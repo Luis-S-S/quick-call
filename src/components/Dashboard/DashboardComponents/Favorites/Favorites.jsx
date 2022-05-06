@@ -9,7 +9,7 @@ import './Favorites.scss';
 
 export default function Favorites() {
   const dispatch = useDispatch();
-  const { _id, favorites } = useSelector((state) => state.user);
+  const { _id, favorites, role } = useSelector((state) => state.user);
   const [favoritesId, setFavoritesId] = useState(favorites);
   const [favoritesProfessionals, setFavoritesProfessionals] = useState([]);
 
@@ -20,7 +20,7 @@ export default function Favorites() {
       password, payment, location, ...rest
     } = await response.json();
     if (response.status === 200) {
-      dispatch(setUser(rest));
+      dispatch(setUser({ ...rest, role }));
       setFavoritesId(newArray);
     } else {
       throw new Error('Error al eliminar intente nuevamente');

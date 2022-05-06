@@ -16,6 +16,15 @@
   }
 }
 
+.pro-card__profile {
+  max-width: 128px;
+}
+
+.pro-card__title {
+  @include text-inline-title;
+  text-align: center;
+}
+
 .pro-list-item__end {
     display: flex;
     gap: .5em;
