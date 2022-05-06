@@ -1,7 +1,13 @@
 @import '../../App.scss';
 
-.card-display__container {
+.card-display {
     align-items: center;
+    justify-content: center;
+}
+
+.card-display__container {
+    display: flex;
+    flex-wrap: wrap;
     justify-content: center;
 }
 

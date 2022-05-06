@@ -6,12 +6,13 @@
   left: 0px;
   background-color: rgba(0, 0, 0, 0.5);
   width: 100vw;
-  height: 100vh; 
-  
+  height: 100vh;
+  z-index: 9999;
 
   .messages {
     padding: 20px;
-    width: 500px;
+    max-width: 500px;
+    width: 80%;
     margin: auto;
     margin-top: 20vh;
     display: flex;
@@ -22,25 +23,26 @@
     background-color: white;
     .title__messages {
         @include text-big-title;
+        text-align: center;
         line-height: 50px;
         font-size: 40px;
-      
     }
     .text__messages {
       text-align: center;
         @include text-body;
         margin:30px;
-      
+
     }
     .button__messages {
-      max-width: 120px;
-      max-height: 60px;
       @include link-body;
       background-color: $blue;
       border-radius: 0.5em;
       border: 3px solid $blue;
       color: white;
+      cursor: pointer;
       display: inline-block;
+      max-height: 60px;
+      max-width: 120px;
       padding: 0.25em 0.75em;
       text-decoration: none;
     }

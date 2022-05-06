@@ -1,10 +1,28 @@
 import { isValidToken } from '../services/auth';
 
+/**
+ *
+ * @param {String} view A string from the following values:
+ * - Profile
+ * - Favorites *Only when logged in through a client account
+ * - Jobs
+ * - PQRs
+ * - PaymentHistory
+ * @returns void
+ */
 export const setView = (view) => ({ type: 'SET_VIEW', payload: view });
 export const setUser = (res) => ({ type: 'SET_USER', payload: res });
 export const setGlobalError = (err) => ({ type: 'SET_GLOBAL_ERROR', payload: err });
 export const emptyUser = () => ({ type: 'EMPTY_USER' });
-export const activateMiddle = (prop) => ({ type: 'ACTIVATE_MIDDLE', payload: prop });
+/**
+ * @param {Object} message An object with the following properties:
+ * - title: The title of the message
+ * - text: The text of the message
+ * - button: The text of the button
+ * - link: The reference used in navigate() function
+ * @returns void
+ */
+export const activateMiddle = (message) => ({ type: 'ACTIVATE_MIDDLE', payload: message });
 export const deactivateMiddle = () => ({ type: 'DEACTIVATE_MIDDLE' });
 
 export const fetchUserProfile = () => async (dispatch) => {

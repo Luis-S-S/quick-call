@@ -1,7 +1,6 @@
 @import '../../App.scss';
 
 .filter__container {
-    border-right: 1px solid $dark-grey;
     padding: 0 .75em;
 }
 
@@ -45,4 +44,12 @@
 .filter__button:hover {
     background-color: white;
     color: $blue;
+}
+
+@media (min-width: 620px) {
+    .filter__container {
+        align-self: flex-start;
+        border-right: 1px solid $dark-grey;
+        padding: 0 .75em;
+    }
 }

@@ -32,7 +32,7 @@ export default function Validate({
       }
     }
     setValidate(array);
-    
+
     if (page >= 3) {
       handleOnClickSubmit();
     } else if (Object.keys(array).length === 0) {

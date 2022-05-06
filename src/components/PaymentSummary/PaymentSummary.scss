@@ -1,0 +1,32 @@
+@import '../../App.scss';
+
+.payment-detail__container {
+    border-radius: 10px;
+    border: 1px solid $dark-grey;
+    display: flex;
+    flex-direction: column;
+    gap: .75em;
+    min-width: 320px;
+    padding: 1em;
+}
+
+.payment-detail__title {
+    @include text-sub-title;
+    color: $blue;
+    margin-bottom: 1em;
+    text-align: center;
+}
+
+.payment-detail__subtitle {
+    @include text-inline-title;
+}
+
+.payment-detail__body {
+    @include text-body;
+}
+
+@media (min-width: 375px) {
+    .payment-detail__container {
+        padding: 3em;
+    }
+}
