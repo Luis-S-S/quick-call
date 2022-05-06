@@ -8,6 +8,12 @@ import { getRandomFromArray } from '../../services/general';
 function ProfileProInterest() {
   const [pro, setPro] = useState([]);
 
+  const breakPoints = [
+    { width: 1, itemsToShow: 1 },
+    { width: 768, itemsToShow: 2 },
+    { width: 1024, itemsToShow: 3 },
+  ];
+
   useEffect(() => {
     getAllProfessional()
       .then((data) => { setPro(getRandomFromArray(8, data)); })
@@ -17,7 +23,7 @@ function ProfileProInterest() {
   return (
     <div className="interest">
       <h1>Quizas te interese ...</h1>
-      <Carousel itemsToShow={3}>
+      <Carousel breakPoints={breakPoints}>
         {pro.map((item) => <ProCard key={item.id} details={item} />)}
       </Carousel>
     </div>

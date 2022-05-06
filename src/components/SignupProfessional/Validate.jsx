@@ -32,16 +32,16 @@ export default function Validate({
       }
     }
     setValidate(array);
-    if (Object.keys(array).length === 0) {
-      setPage((currPage) => currPage + 1);
-    }
-    if (page === 3) {
+
+    if (page >= 3) {
       handleOnClickSubmit();
+    } else if (Object.keys(array).length === 0) {
+      setPage((currPage) => currPage + 1);
     }
   };
   return (
     <button className="button-round" type="submit" onClick={handlerPage}>
-      {page === 4 - 1 ? 'enviar' : 'sig'}
+      {page === 4 - 1 ? 'Registrar' : 'Siguiente'}
     </button>
   );
 }

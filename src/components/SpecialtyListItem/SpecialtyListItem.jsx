@@ -1,12 +1,18 @@
 import PropTypes from 'prop-types';
 import './SpecialtyListItem.scss';
 
-export default function SpecialtyListItem({ details: { name, isCertified } }) {
+export default function SpecialtyListItem({ details, onClickFunction }) {
+  const { name, isCertified } = details;
   return (
     <div className="specialty-list-item">
       <span>{name}</span>
-      {isCertified && <img className="specialty-list-item__icon" src="/images/icons/checkmark-icon-green.svg" alt="Certificado" />}
-      <button className="specialty-list-item__button" type="button">
+      {isCertified && (
+        <div className="specialty-list__certified">
+          <span>Certificado</span>
+          <img className="specialty-list-item__icon" src="/images/icons/checkmark-icon-green.svg" alt="Certificado" />
+        </div>
+      )}
+      <button className="specialty-list-item__button" type="button" onClick={onClickFunction}>
         <img id={name} className="specialty-list-item__icon" src="/images/icons/warning-icon.svg" alt="Eliminar Favorito" />
       </button>
     </div>
@@ -18,6 +24,7 @@ SpecialtyListItem.propTypes = {
     name: PropTypes.string,
     isCertified: PropTypes.bool,
   }),
+  onClickFunction: PropTypes.func.isRequired,
 };
 
 SpecialtyListItem.defaultProps = {

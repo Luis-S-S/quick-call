@@ -8,7 +8,7 @@ function Search() {
   return (
     <>
       <NavigationBar />
-      <div className="general-container">
+      <div className="search-container">
         <Filter />
         <ProfessionalCardDisplay />
       </div>

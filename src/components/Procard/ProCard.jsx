@@ -14,16 +14,8 @@ function ProCard({
         <h1 className="pro-card__title">{name}</h1>
       </div>
       <p className="pro-card__body">{myDescription}</p>
-      <div className="calification">
-        <span className="fa fa-star" />
-        <span className="fa fa-star" />
-        <span className="fa fa-star" />
-        <span className="fa fa-star" />
-        <span className="fa fa-star-half-o" />
-      </div>
       <div className="buttons">
         <LinkSquare link={`/ProfilePro/${_id}`}>Ver Perfil</LinkSquare>
-        <LinkSquare>Iniciar Chat</LinkSquare>
       </div>
     </div>
 

@@ -1,0 +1,14 @@
+@import '../../App.scss';
+
+.file-input__container {
+    @include text-body;
+    display: flex;
+    justify-content: space-between;
+    padding: .25em .5em;
+}
+
+.file-input__button {
+    border: none;
+    background: white;
+    cursor: pointer;
+}

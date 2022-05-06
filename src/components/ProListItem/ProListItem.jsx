@@ -17,7 +17,6 @@ function ProListItem({ details, deleteFunction }) {
       </div>
       <div className="pro-list-item__end">
         <LinkSquare link={`/ProfilePro/${_id}`}>Ver Perfil</LinkSquare>
-        <LinkSquare>Iniciar Chat</LinkSquare>
         <button className="pro-list-item__button" type="button" onClick={deleteFunction}>
           <img id={_id} className="pro-list-item__icon" src="/images/icons/warning-icon.svg" alt="Eliminar Favorito" />
         </button>

@@ -1,21 +1,30 @@
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import {
   CardExpiryElement, CardNumberElement, CardCvcElement, useElements, useStripe,
 } from '@stripe/react-stripe-js';
+import { setView, activateMiddle } from '../../store/actions';
 import { paymentIntent } from '../../services/payments';
 import { getJobById } from '../../services/jobs';
 import NavBar from '../Navbar/NavigationBar';
 import Footer from '../Footer/Footer';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
-import PaymentDetail from '../PaymentDetail/PaymentDetail';
+import PaymentSummary from '../PaymentSummary/PaymentSummary';
+import ButtonSquare from '../ButtonSquare/ButtonSquare';
 import './Check.scss';
 
 export default function CheckoutForm() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const stripe = useStripe();
   const elements = useElements();
   const [job, setJob] = useState({});
   const jobId = useParams().id;
+
+  const handleReturn = () => {
+    navigate(-1);
+  };
 
   useEffect(async () => {
     const jobs = await getJobById(jobId);
@@ -31,7 +40,28 @@ export default function CheckoutForm() {
     });
     const amount = job.amount * 100;
     const description = job.title;
-    await paymentIntent(error, paymentMethod, amount, description, jobId);
+    const response = await paymentIntent(error, paymentMethod, amount, description, jobId);
+    const data = await response.json();
+
+    if (data.decline_code) {
+      const middle = {
+        title: 'Su pago no fue procesado',
+        text: `El pago fue declinado con código: ${data.decline_code}. Revise con su banco e intente nuevamente`,
+        button: 'Volver',
+        link: '/profile',
+      };
+      dispatch(setView('PaymentHistory'));
+      dispatch(activateMiddle(middle));
+    } else {
+      const middle = {
+        title: 'Su pago no fue procesado',
+        text: `El pago fue declinado con código: ${data.decline_code}. Revise con su banco e intente nuevamente`,
+        button: 'Volver',
+        link: '/profile',
+      };
+      dispatch(setView('PaymentHistory'));
+      dispatch(activateMiddle(middle));
+    }
   };
 
   return (
@@ -43,15 +73,21 @@ export default function CheckoutForm() {
               <NavBar />
               <div className="payment-container">
                 <form className="payment-form" onSubmit={handleSubmit}>
-                  <label htmlFor="CardNumberElement">Card Number</label>
+                  <h1 className="payment-form__title">Información de pago</h1>
+                  <label className="payment-form__label" htmlFor="CardNumberElement">Card Number</label>
                   <CardNumberElement className="payment-form__input" />
-                  <label htmlFor="CardNumberElement">Valid thru</label>
+                  <label className="payment-form__label" htmlFor="CardNumberElement">Valid thru</label>
                   <CardExpiryElement className="payment-form__input" />
-                  <label htmlFor="CardNumberElement">CVV</label>
+                  <label className="payment-form__label" htmlFor="CardNumberElement">CVV</label>
                   <CardCvcElement className="payment-form__input" />
-                  <button className="form-button" type="submit">Realizar pago</button>
+                  <div className="payment-form__buttons">
+                    <ButtonSquare isSubmit={false} onClickFunction={handleReturn}>
+                      Cancelar
+                    </ButtonSquare>
+                    <ButtonSquare isSubmit>Realizar pago</ButtonSquare>
+                  </div>
                 </form>
-                <PaymentDetail payment={job} />
+                <PaymentSummary payment={job} />
               </div>
               <Footer />
             </>

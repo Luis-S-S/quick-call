@@ -1,8 +1,8 @@
 /* eslint-disable no-useless-escape */
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { Link, useNavigate } from 'react-router-dom';
-import { fetchUserProfile } from '../../store/actions';
+import { Link } from 'react-router-dom';
+import { fetchUserProfile, activateMiddle } from '../../store/actions';
 import { userLogin } from '../../services/auth';
 import ButtonRound from '../ButtonRound/ButtonRound';
 import './Login.scss';
@@ -11,7 +11,6 @@ function Login() {
   const [form, setForm] = useState({});
   const [errorMsg, setErrorMsg] = useState();
   const dispatch = useDispatch();
-  const navigation = useNavigate();
 
   const handleChange = (e) => {
     const emailRegExp = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
@@ -37,8 +36,14 @@ function Login() {
     const user = await userLogin(form);
     if (user.status === 200) {
       localStorage.setItem('user', await user.json());
+      const message = {
+        title: 'Bienvenido a QuickCall',
+        text: 'Haz iniciado sesión con éxito',
+        button: 'Aceptar',
+        link: '/',
+      };
+      dispatch(activateMiddle(message));
       dispatch(fetchUserProfile());
-      navigation('/');
     } else {
       setErrorMsg(await user.json());
       document.querySelector('form').reset();
@@ -67,7 +72,7 @@ function Login() {
               <Link to="/signup">Registrate aqui</Link>
             </span>
             <ButtonRound isSubmit>
-              Log in
+              Iniciar Sesión
             </ButtonRound>
           </div>
         </form>

@@ -10,7 +10,7 @@ export default function Page4({ form, handlerOnChange, categories }) {
         <select name="socialSecurity.eps" placeholder="Escoge tu EPS" onChange={handlerOnChange} value={form['socialSecurity.eps']}>
           <option value="" key=""> </option>
           <option value="" disabled selected hidden>Selecciona tu EPS ...</option>
-          {categories[0].EPSs.filter((result) => (
+          {categories[0].EPSs.map((result) => (
             <option
               key={result}
               value={result}
@@ -34,7 +34,7 @@ export default function Page4({ form, handlerOnChange, categories }) {
         </select>
       </fieldset>
       <fieldset>
-        {(form['availability.fullAvailability'] !== 'on') && (
+        {(!form['availability.fullAvailability']) && (
         <>
           <label htmlFor="availability.startTime">Hora de inicio</label>
           <input name="availability.startTime" type="time" onChange={handlerOnChange} value={form['availability.startTime']} />

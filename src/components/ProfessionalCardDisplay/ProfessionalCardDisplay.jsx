@@ -53,7 +53,7 @@ function ProfessionalCardDisplay() {
   }, [currentPage]);
 
   return (
-    <div className="card-display__container">
+    <div className="card-display">
       {searchFilters.length > 0 && (
         searchFilters.map((filter) => (
           <div className="card-filters">
@@ -62,7 +62,7 @@ function ProfessionalCardDisplay() {
           </div>
         ))
       )}
-      <div className={professionalsToShow.length > 0 ? 'grid' : 'search--error'}>
+      <div className={professionalsToShow.length > 0 ? 'card-display__container' : 'search--error'}>
         {professionalsToShow.length > 0
           ? (professionalsToShow.map((item) => <ProCard key={item._id} details={item} />))
           : 'hubo un error'}

@@ -1,6 +1,15 @@
-@media (min-width: 475px) {
-    .general-container {
-        display: grid;
-    grid-template-columns: 30% 70%;
+.search-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 1em;
+}
+
+@media (min-width: 620px) {
+    .search-container {
+        flex-direction: row;
     }
 }
+
+

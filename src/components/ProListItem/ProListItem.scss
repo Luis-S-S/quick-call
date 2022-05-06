@@ -5,6 +5,7 @@
   border-radius: 10px;
   box-shadow: 0 0 10px 0px $dark-grey;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   margin: 0;
   padding: 0.25em .75em;
@@ -13,6 +14,15 @@
   &:hover {
     transform: scale(1.05);
   }
+}
+
+.pro-card__profile {
+  max-width: 128px;
+}
+
+.pro-card__title {
+  @include text-inline-title;
+  text-align: center;
 }
 
 .pro-list-item__end {

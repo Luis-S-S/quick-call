@@ -3,6 +3,7 @@
 .pqr-list-container {
     border-radius: 10px;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     padding: .75em;
     width: 80%;
