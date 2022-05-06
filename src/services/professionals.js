@@ -31,8 +31,7 @@ export async function createProfessional(data) {
       body: JSON.stringify(data),
     };
     const response = await fetch(`${API_URL}/professionals`, payload);
-    const datas = await response.json();
-    return datas;
+    return response;
   } catch {
     throw new Error('Error creating professional');
   }
