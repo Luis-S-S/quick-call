@@ -41,7 +41,7 @@ export default function Validate({
   };
   return (
     <button className="button-round" type="submit" onClick={handlerPage}>
-      {page === 4 - 1 ? 'enviar' : 'sig'}
+      {page === 4 - 1 ? 'Registrar' : 'Siguiente'}
     </button>
   );
 }

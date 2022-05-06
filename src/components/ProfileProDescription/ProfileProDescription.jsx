@@ -1,7 +1,6 @@
-/* eslint-disable react/prop-types */
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-
+import PropTypes from 'prop-types';
 import { updateClient } from '../../services/clients';
 import './ProfileProDescription.scss';
 import ButtonRound from '../ButtonRound/ButtonRound';
@@ -12,7 +11,8 @@ function ProfileProDescription({ HandlerOnClick, vist, id }) {
   const [pro, setPro] = useState([]);
   const dispatch = useDispatch();
 
-  let user = useSelector((state) => state.user);
+  const user = useSelector((state) => state.user);
+  const [favorites, setFavorites] = useState(user?.favorites);
 
   const select = user.favorites?.filter((favorite) => (favorite !== id));
 
@@ -25,8 +25,8 @@ function ProfileProDescription({ HandlerOnClick, vist, id }) {
     }
     await updateClient(user._id, { favorites: [...update] });
     user.favorites = [...update];
+    setFavorites(user.favorites);
     dispatch(setUser(user));
-    user = useSelector((state) => state.user);
   };
 
   useEffect(() => {
@@ -38,7 +38,7 @@ function ProfileProDescription({ HandlerOnClick, vist, id }) {
       <div className="row">
         {(!vist) && (
         <div className="column">
-          <img className="photo" src={pro.image?.profile} alt="constructor" />
+          <img className="photo" src={pro.image?.profile} alt="profile" />
         </div>
         )}
         <div className="column">
@@ -54,10 +54,10 @@ function ProfileProDescription({ HandlerOnClick, vist, id }) {
               ))}
             </div>
           </div>
-          <div className="calification">
+          <div className={`calification ${user?.role === 'professional' ? 'disable' : ''}`}>
             <ButtonRound isSubmit={false} onClickFunction={HandlerOnClick}>{vist ? 'Ocultar formulario' : 'Hacer consulta'}</ButtonRound>
             <ButtonRound isSubmit={false} onClickFunction={HandlerFavorites}>
-              {(select?.length === user.favorites?.length) ? 'Añadir a favorito' : 'Mi favorito'}
+              {(favorites?.includes(id)) ? 'Mi favorito' : 'Añadir a favorito'}
             </ButtonRound>
           </div>
         </div>
@@ -66,5 +66,11 @@ function ProfileProDescription({ HandlerOnClick, vist, id }) {
 
   );
 }
+
+ProfileProDescription.propTypes = {
+  HandlerOnClick: PropTypes.func.isRequired,
+  vist: PropTypes.bool.isRequired,
+  id: PropTypes.string.isRequired,
+};
 
 export default ProfileProDescription;

@@ -107,7 +107,7 @@ export default function SignupProfessional() {
           )}
           {!(page === 0) && (
             <button className="button-round" type="button" onClick={() => { setPage((currPage) => currPage - 1); }}>
-              atras
+              Atras
             </button>
           )}
           <Validate

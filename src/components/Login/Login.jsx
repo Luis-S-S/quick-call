@@ -72,7 +72,7 @@ function Login() {
               <Link to="/signup">Registrate aqui</Link>
             </span>
             <ButtonRound isSubmit>
-              Log in
+              Iniciar Sesión
             </ButtonRound>
           </div>
         </form>

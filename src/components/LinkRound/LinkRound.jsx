@@ -4,7 +4,7 @@ import './LinkRound.scss';
 
 function LinkRound({ children, link, className }) {
   return (
-    <Link className={`button-round ${className}`} to={link}>{children}</Link>
+    <Link className={`link-round ${className}`} to={link}>{children}</Link>
   );
 }
 

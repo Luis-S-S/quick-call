@@ -101,10 +101,7 @@
     .footer1 {
           display: flex;
           flex-direction: column;
-      span{
-        align-self: center;
-        padding-right: 1vw;
-      }
+          align-items: center;
 
       .footer11{
         @include text-body;
@@ -121,11 +118,8 @@
     @media (min-width: 720px) {
       margin: 40px;
       .footer1{
-        display:grid;
-      grid-template-columns:2fr 1fr;
-      align-items: flex-end;
-      justify-items: end;
-
+        display: flex;
+        justify-content: space-around;
       }
     }
   }

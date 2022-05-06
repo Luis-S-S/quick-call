@@ -6,11 +6,12 @@
 
 .button-square {
     @include link-body;
-    display: flex;
     align-items: center;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
     padding: 0.25rem .75rem;
     text-decoration: none;
-    justify-content: center;
 }
 
 .white {

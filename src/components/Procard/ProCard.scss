@@ -2,76 +2,71 @@
 
 .pro-card {
   align-items: center;
+  background-color: $light-grey;
   border: 2px solid black;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   margin: .75em;
   padding: 1.75em;
   width: 288px;
-  background-color: $light-grey;
-}
 
-.pro-card__header {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-}
+  .pro-card__header {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+  }
 
-.pro-card__profile {
-  height: 165px;
-  padding: 0;
-  width: 165px;
-}
+  .pro-card__profile {
+    height: 165px;
+    padding: 0;
+    width: 165px;
+  }
 
-.pro-card__title {
-  @include text-inline-title;
-  color: $black;
-  text-align: center;
-}
+  .pro-card__title {
+    @include text-inline-title;
+    color: $black;
+    text-align: center;
+  }
 
-.pro-card__body {
-  @include text-body;
-  max-height: 191px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  padding-top: 20px;
-  text-align: center;
-}
+  .pro-card__body {
+    @include text-body;
+    max-height: 191px;
+    overflow: hidden;
+    padding-top: 20px;
+    text-align: justify;
+    text-overflow: ellipsis;
+  }
 
-.calification {
-  column-count: 1;
-  padding-top: 20px;
-  color: orange;
-  text-align: center;
-  padding-right: 110px;
-  padding-left: 90px;
-}
+  .buttons {
+    column-count: 2;
+    display: flex;
+    gap: .75em;
+    justify-content: center;
+    padding-top: 30px;
+  }
 
-.buttons {
-  display: flex;
-  justify-content: center;
-  gap: .75em;
-  column-count: 2;
-  padding-top: 30px;
+  @media (min-width: 1024px) {
+    .pro-card__header {
+        align-items: center;
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+    }
+
+    .pro-card__title {
+        order: 0;
+    }
+
+    .pro-card__profile {
+        order: 1;
+    }
+  }
+
 }
 
 @media (min-width: 1024px) {
   .pro-card {
-      width: 368px;
-  }
-
-  .pro-card__header {
-      align-items: center;
-      display: flex;
-      flex-direction: row;
-      gap: 10px;
-  }
-
-  .pro-card__title {
-      order: 0;
-  }
-
-  .pro-card__profile {
-      order: 1;
-  }
+    width: 368px;
+}
 }
