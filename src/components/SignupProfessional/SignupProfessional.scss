@@ -50,7 +50,7 @@
         text-align: center;
       }
 
-      input, textarea, select {
+      input, select {
         min-width: 312px;
         margin-left: 80px;
         margin-right: 80px;
@@ -58,6 +58,20 @@
         @include text-body;
         width: 60%;
         height: 44px;
+        display: flex;
+        border: 1px solid $blue;
+        border-radius: 10px;
+        margin-bottom: 30px;
+        padding: 0.25em 0.5em;
+      }
+
+      textarea {
+        min-width: 312px;
+        margin-left: 80px;
+        margin-right: 80px;
+        display:block;
+        @include text-body;
+        width: 60%;
         display: flex;
         border: 1px solid $blue;
         border-radius: 10px;
