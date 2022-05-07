@@ -41,3 +41,12 @@ export function createPQR(id, form) {
     return error;
   }
 }
+
+export function getPQRById(id) {
+  try {
+    const response = fetch(`${API_URL}/PQRS/${id}`);
+    return response;
+  } catch (error) {
+    return error;
+  }
+}

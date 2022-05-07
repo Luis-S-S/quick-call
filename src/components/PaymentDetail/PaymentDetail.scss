@@ -1,0 +1,55 @@
+@import '../../App.scss';
+
+.payment-detail {
+    background-color: $light-blue;
+    padding: 2em;
+    width: 100vw;
+}
+
+.payment-detail__container {
+    background-color: white;
+    border-radius: 10px;
+    border: 1px solid $dark-grey;
+    width: 60%;
+    margin: 0 auto;
+    min-width: 300px;
+    max-width: 600px;
+    padding: 2em;
+    box-shadow: 0 0 0.5em 0.5em $dark-grey;
+    text-overflow: ellipsis;
+}
+
+.payment-detail__title {
+    @include text-sub-title;
+    text-align: center;
+    color: $blue;
+}
+
+.payment-detail__subtitle {
+    @include text-inline-title;
+    margin-top: 1em;
+    margin-bottom: .5em;
+}
+
+.payment-detail__body {
+    @include text-body;
+}
+
+.payment-detail__evidence {
+    width: 300px;
+}
+
+.payment-detail__button {
+    align-self: center;
+}
+
+@media (min-width: 768px) {
+    .payment-detail {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        min-height: 100vh;
+        min-height: calc(100vh -  120px);
+        width: 100%;
+    }
+}

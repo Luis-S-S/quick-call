@@ -20,6 +20,7 @@ import Payment from './components/Payment/Payment';
 import ErrorMessage from './components/ErrorMessage/ErrorMessage';
 import Chats from './pages/Chats';
 import Middle from './components/Middle/Middle';
+import PaymentDetail from './components/PaymentDetail/PaymentDetail';
 
 function App() {
   const dispatch = useDispatch();
@@ -46,7 +47,8 @@ function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/pqr_form" element={<CreatePQR />} />
           <Route path="/pqr/:id" element={<PQRDetail />} />
-          <Route path="/payments/:id" element={<Payment />} />
+          <Route path="/payment_suite/:id" element={<Payment />} />
+          <Route path="/payment/:id" element={<PaymentDetail />} />
           <Route path="/chat/:id" element={<Chats />} />
           <Route path="/jobs/:id" element={<Job />} />
           <Route path="/login_redirect" element={<ErrorMessage code={401} message="Oops! Inicia sesión para continuar" />} />

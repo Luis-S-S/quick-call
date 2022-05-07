@@ -43,6 +43,7 @@
     flex-direction: column;
     gap: 1rem;
     margin: 1.25rem 0;
+    width: 60%;
 }
 
 .footer__copyright > .footer--body {
@@ -52,9 +53,25 @@
 .copyright__social-media {
     align-items: center;
     display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
     gap: 1.75rem;
     justify-content: space-around;
     width: 90%;
+}
+
+.copyright__social-content {
+    @include text-inline-title;
+    text-align: center;
+    color: $light-blue;
+    margin: 0;
+}
+
+.social-content__icon {
+    align-items: center;
+    display: flex;
+    gap: .25em;
+    justify-content: center;
 }
 
 .copyright__social-media img {

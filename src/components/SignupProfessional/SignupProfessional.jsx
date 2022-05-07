@@ -47,21 +47,31 @@ export default function SignupProfessional() {
       let result = null;
       if (special.evidence) {
         const formData = new FormData();
-        await formData.append('file', special.evidence);
+        formData.append('file', special.evidence);
         result = await uploadImage(formData);
       }
-      names.push({ name: special.name, certification: result.url });
+      names.push({ name: special.name, certificate: result.url });
     }
     delete form.confirmPassword;
-    const data = ({ ...form, specialty: [...names] });
-    const payload = {
-      title: 'Has creado tu cuenta',
-      text: 'Ya tienes una cuenta de profesional, ya puedes iniciar sesion',
-      button: 'Aceptar',
-      link: '/',
-    };
-    dispatch(activateMiddle(payload));
-    await createProfessional(data);
+    const data = ({ ...form, specialties: [...names] });
+    const response = await createProfessional(data);
+    if (response.status === 201) {
+      const payload = {
+        title: 'Has creado tu cuenta',
+        text: 'Ya tienes una cuenta de profesional, ya puedes iniciar sesion',
+        button: 'Aceptar',
+        link: '/',
+      };
+      dispatch(activateMiddle(payload));
+    } else {
+      const payload = {
+        title: 'Ha habido un error creando la cuenta',
+        text: 'Intente crear la cuenta más tarde',
+        button: 'Inicio',
+        link: '/',
+      };
+      dispatch(activateMiddle(payload));
+    }
   };
 
   useEffect(async () => {
