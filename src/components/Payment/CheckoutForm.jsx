@@ -43,7 +43,9 @@ export default function CheckoutForm() {
     const response = await paymentIntent(error, paymentMethod, amount, description, jobId);
     const data = await response.json();
 
-    if (data.decline_code) {
+    console.log('Checkout form data: ', data.decline_code);
+
+    if (!data.decline_code) {
       const middle = {
         title: 'Su pago no fue procesado',
         text: `El pago fue declinado con código: ${data.decline_code}. Revise con su banco e intente nuevamente`,

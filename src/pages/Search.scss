@@ -4,11 +4,13 @@
     justify-content: center;
     align-items: center;
     margin: 1em;
+    width: 100%;
 }
 
 @media (min-width: 620px) {
     .search-container {
         flex-direction: row;
+        justify-content: initial;
     }
 }
 
