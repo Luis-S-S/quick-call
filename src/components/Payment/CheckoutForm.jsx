@@ -43,8 +43,6 @@ export default function CheckoutForm() {
     const response = await paymentIntent(error, paymentMethod, amount, description, jobId);
     const data = await response.json();
 
-    console.log('Checkout form data: ', data.decline_code);
-
     if (!data.decline_code) {
       const middle = {
         title: 'Su pago no fue procesado',

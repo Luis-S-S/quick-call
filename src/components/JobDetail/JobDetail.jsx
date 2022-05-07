@@ -33,7 +33,7 @@ export default function JobDetail({ job }) {
   const renderButtonActions = () => {
     if (user.role === 'client' && jobInfo?.status === 'Pendiente pago') {
       return (
-        <LinkRound link={`/payments/${jobInfo?._id}`}>Pagar</LinkRound>
+        <LinkRound link={`/payment_suite/${jobInfo?._id}`}>Pagar</LinkRound>
       );
     }
     if (user.role === 'professional' && jobInfo?.status === 'En progreso') {

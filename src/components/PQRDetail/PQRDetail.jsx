@@ -1,14 +1,18 @@
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import Carousel from 'react-elastic-carousel';
 import { getPQRById } from '../../services/pqrs';
 import NavBar from '../Navbar/NavigationBar';
 import Footer from '../Footer/Footer';
+import ButtonRound from '../ButtonRound/ButtonRound';
 import './PQRDetail.scss';
 
 export default function PQRDetail() {
+  const navigate = useNavigate();
   const [pqr, setPQR] = useState({});
   const { id } = useParams();
+
+  const returnToProfile = () => navigate(-1);
 
   useEffect(async () => {
     const response = await getPQRById(id);
@@ -45,6 +49,7 @@ export default function PQRDetail() {
           <Carousel>
             {pqr?.evidence?.map((evidence) => <img className="pqr-detail__evidence" src={evidence} alt="evidence" />)}
           </Carousel>
+          <ButtonRound className="pqr-detail__button" onClickFunction={returnToProfile}>Volver</ButtonRound>
         </div>
       </div>
       <Footer />

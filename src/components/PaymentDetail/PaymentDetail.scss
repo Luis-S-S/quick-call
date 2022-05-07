@@ -1,12 +1,12 @@
 @import '../../App.scss';
 
-.pqr-detail {
+.payment-detail {
     background-color: $light-blue;
     padding: 2em;
     width: 100vw;
 }
 
-.pqr-detail__container {
+.payment-detail__container {
     background-color: white;
     border-radius: 10px;
     border: 1px solid $dark-grey;
@@ -16,35 +16,35 @@
     max-width: 600px;
     padding: 2em;
     box-shadow: 0 0 0.5em 0.5em $dark-grey;
+    text-overflow: ellipsis;
 }
 
-.pqr-detail__title {
+.payment-detail__title {
     @include text-sub-title;
     text-align: center;
     color: $blue;
 }
 
-.pqr-detail__subtitle {
+.payment-detail__subtitle {
     @include text-inline-title;
     margin-top: 1em;
     margin-bottom: .5em;
 }
 
-.pqr-detail__body {
+.payment-detail__body {
     @include text-body;
 }
 
-.pqr-detail__evidence {
+.payment-detail__evidence {
     width: 300px;
 }
 
-.pqr-detail__button {
-    display: block;
-    margin: 1em auto 0 auto;
+.payment-detail__button {
+    align-self: center;
 }
 
 @media (min-width: 768px) {
-    .pqr-detail {
+    .payment-detail {
         align-items: center;
         display: flex;
         justify-content: center;

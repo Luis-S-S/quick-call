@@ -40,3 +40,12 @@ export async function getPaymentsByUserId(id, paymentId) {
     return error;
   }
 }
+
+export async function getPaymentById(id) {
+  try {
+    const response = fetch(`${API_URL}/payments/${id}`);
+    return response;
+  } catch (error) {
+    return error;
+  }
+}
