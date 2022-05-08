@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux';
 import { deactivateMiddle } from '../../store/actions';
 
 export default function Middle({
-  title, text, button, link,
+  title, text, button, link, back,
 }) {
   const dispatch = useDispatch();
   const navigation = useNavigate();
@@ -14,13 +14,27 @@ export default function Middle({
     dispatch(deactivateMiddle());
     navigation(link);
   };
+  const handleClickBack = () => {
+    dispatch(deactivateMiddle());
+    // navigation(back);
+  };
 
   return (
     <div className="middle">
       <div className="messages">
-        <label className="title__messages" htmlFor="name">{title}</label>
-        <label className="text__messages" htmlFor="name">{text}</label>
-        <button className="button__messages" type="button" onClick={handleClick}>{button}</button>
+
+        {!(title === undefined) ? (
+          <>
+            <label className="title__messages" htmlFor="name">{title}</label>
+            <label className="text__messages" htmlFor="name">{text}</label>
+            <div className="flex__button">
+              {!(back === undefined) && (
+              <button className="button__messages" type="button" onClick={handleClickBack}>Cancelar</button>)}
+              <button className="button__messages" type="button" onClick={handleClick}>{button}</button>
+            </div>
+          </>
+        )
+          : (<div className="loader" />)}
       </div>
     </div>
   );

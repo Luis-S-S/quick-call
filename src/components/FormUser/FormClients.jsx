@@ -1,7 +1,10 @@
+/* eslint-disable no-restricted-syntax */
 /* eslint-disable max-len */
+/* eslint-disable no-await-in-loop */
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
+import { uploadImage } from '../../services/upload';
 
 import { activateMiddle, setView } from '../../store/actions';
 
@@ -37,29 +40,42 @@ export default function FormsClients() {
 
   const HandlerSubmit = async (e) => {
     e.preventDefault();
+    const names = [];
+    dispatch(activateMiddle());
+    for (const evi of evidence) {
+      let result = null;
+      if (evi.value) {
+        const formData = new FormData();
+        await formData.append('file', evi.value);
+        result = await uploadImage(formData);
+        console.log('result.url', result.url);
+      }
+      names.push({ name: evi.name, value: result.url });
+    }
+    delete form.confirmPassword;
     const formtodo = {
       client: _id,
       professional: id,
       status: 'Oferta',
       ...form,
-      evidenceClients: [...evidence],
+      evidenceClients: [...names],
       conditionsClients: [...conditions],
     };
     dispatch(setView('Jobs'));
-    const payload = {
-      title: 'Hemos recibido tu solicitud',
-      text: 'El profesional se contactara con usted en las proximas 24 hrs',
-      button: 'Aceptar',
-      link: '/profile',
-    };
-    dispatch(activateMiddle(payload));
+    // const payload = {
+    //   title: 'Hemos recibido tu solicitud',
+    //   text: 'El profesional se contactara con usted en las proximas 24 hrs',
+    //   button: 'Aceptar',
+    //   link: '/profile',
+    // };
+    // dispatch(activateMiddle(payload));
     const result = await createJobs(formtodo);
     await createChat({ jobId: result._id });
   };
 
   const handlerEvidence = (e) => {
     const { name } = e.target;
-    setEvidence([...evidence, { name: [name], value: e.target.files[0] }]);
+    setEvidence([...evidence, { name, value: e.target.files[0] }]);
   };
   function handlerEliminate(e) {
     const { value, name } = e.target;

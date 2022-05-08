@@ -3,7 +3,7 @@ import './App.scss';
 import { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchUserProfile } from './store/actions';
+import { fetchUserProfile, activateMiddle } from './store/actions';
 
 import Home from './pages/Home';
 import Search from './pages/Search';
@@ -20,21 +20,46 @@ import Payment from './components/Payment/Payment';
 import ErrorMessage from './components/ErrorMessage/ErrorMessage';
 import Chats from './pages/Chats';
 import Middle from './components/Middle/Middle';
+import socket from './utils/socket';
 
 function App() {
+  const { _id, role } = useSelector((state) => state.user);
   const dispatch = useDispatch();
+  console.log('role', role);
   const {
-    isActive, title, text, button, link,
+    isActive, title, text, button, link, back,
   } = useSelector((state) => (state.middle));
-
   useEffect(async () => {
     await dispatch(fetchUserProfile());
-  }, []);
+    // if (role === 'clients') {
+    //   let titles = 'Has creado una nueva consulta';
+    // } else {
+    //   titles = 'Nueva solicitud de consulta';
+    // }
+    socket.on(`${_id}:createJobs`, async (idJob) => {
+      const payload = {
+        title: ((role === 'client') ? ('Has creado una nueva consulta') : ('Nueva solicitud de consulta')),
+        text: 'Da click en aceptar para ver el detalle de la consulta o cancelar para mantenerte en la vista',
+        button: 'Aceptar',
+        link: `/jobs/${idJob}`,
+        back: (-1),
+      };
+      dispatch(activateMiddle(payload));
+    });
+  }, [_id, role]);
 
   return (
     <div className="App">
       <Router>
-        {(isActive) && (<Middle title={title} text={text} button={button} link={link} />)}
+        {(isActive) && (
+        <Middle
+          title={title}
+          text={text}
+          button={button}
+          link={link}
+          back={back}
+        />
+        )}
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/search" element={<Search />} />

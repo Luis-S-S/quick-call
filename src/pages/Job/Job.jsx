@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import Carousel from 'react-elastic-carousel';
+
 import { getJobById } from '../../services/jobs';
 import NavBar from '../../components/Navbar/NavigationBar';
 import Footer from '../../components/Footer/Footer';
@@ -26,11 +28,29 @@ export default function Job() {
         {
         role === 'professional' && (job.status === 'Oferta' || job.status === 'Pendiente pago')
           ? (
-            <FormProfessionals job={job} id={jobId} setJob={setJob} />
+            <div className="flex_job">
+              <FormProfessionals job={job} id={jobId} setJob={setJob} />
+              <div className="conditions__Clients">
+                <h3>Imagenes de trabajo de Cliente</h3>
+                <Carousel className="Carousel">
+                  {(job.evidenceClients).map((evidence) => (<img src={evidence.value} alt="img" />))}
+                </Carousel>
+                <fieldset>
+                  <legend>Condiciones Cliente</legend>
+                  {job.conditionsClients?.map((todo, index) => (
+                    <div className="section1">
+                      <label htmlFor={todo.name}>{`${index + 1} -`}</label>
+                      <label htmlFor={todo.name}>{todo.name}</label>
+                    </div>
+                  ))}
+                </fieldset>
+              </div>
+            </div>
           )
           : (
             <JobDetail job={job} />
           )
+
       }
       </div>
       <Footer />
