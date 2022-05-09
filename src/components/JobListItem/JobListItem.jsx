@@ -15,7 +15,7 @@ export default function JobListItem({ jobInfo, role }) {
   } else if (status === 'En progreso') {
     style = { color: 'rgb(234, 154, 15)' };
   } else if (status === 'Pendiente pago') {
-    style = { color: 'rgb(242, 255, 0)' };
+    style = { color: 'rgb(198, 188, 0)' };
   } else if (status === 'Finalizado') {
     style = { color: 'rgb(35, 216, 53)' };
   } else {
@@ -25,7 +25,7 @@ export default function JobListItem({ jobInfo, role }) {
   return (
     <div className="job-list-container">
       <div className="job-list__id">
-        {`${_id[15]}${_id[16]}${_id[17]}${_id[18]}${_id[19]}${_id[20]}${_id[21]}${_id[22]}`}
+        {_id?.slice(15, 22)}
       </div>
       <div className="job-list__title">
         {(role === 'client') ? professionalName : clientName}
