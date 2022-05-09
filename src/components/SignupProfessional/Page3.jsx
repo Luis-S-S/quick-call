@@ -36,7 +36,10 @@ export default function Page3({
         {specialty.map((todo) => (
 
           <div className="specialty">
-            <label htmlFor={todo.name}>{todo.name}</label>
+            <label htmlFor={todo.name}>
+              {todo.name}
+              {' '}
+            </label>
             <button className="button-eliminate" type="submit" value={todo.name} onClick={handlerEliminate}>x</button>
             <input className="button-agregate" type="file" name={todo.name} onChange={handlerEvidence} />
           </div>
