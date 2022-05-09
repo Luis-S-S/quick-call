@@ -45,7 +45,6 @@ export default function FormsClients() {
     const names = [];
     dispatch(activateMiddle());
     const nameProfesional = (await getSingleProfessional(id)).name;
-    console.log('nameClient', nameClient, 'nameProfesional', nameProfesional);
     for (const evi of evidence) {
       let result = null;
 
@@ -68,13 +67,6 @@ export default function FormsClients() {
       conditionsClients: [...conditions],
     };
     dispatch(setView('Jobs'));
-    // const payload = {
-    //   title: 'Hemos recibido tu solicitud',
-    //   text: 'El profesional se contactara con usted en las proximas 24 hrs',
-    //   button: 'Aceptar',
-    //   link: '/profile',
-    // };
-    // dispatch(activateMiddle(payload));
     const result = await createJobs(formtodo);
     await createChat({ jobId: result._id });
   };
