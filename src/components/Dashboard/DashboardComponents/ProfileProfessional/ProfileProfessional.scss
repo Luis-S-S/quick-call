@@ -18,14 +18,13 @@
     color: red;
   }
 
-  .input-control1 {
+  .input-control--specialties {
     display: flex;
     flex-direction: column;
   }
-  @media (min-width: 1024px) {
-    .input-control1 {
-        flex-direction: row;
-      }
+  @media (min-width: 475px) and (max-width: 1024px) {
+    .input-control--specialties {
+      width: 60%;
+    }
   }
-
 }
