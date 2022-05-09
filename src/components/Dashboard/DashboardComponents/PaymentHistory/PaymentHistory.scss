@@ -23,13 +23,13 @@
     .payment-list__id{
         font-weight: bold;
     }
-   }
+  }
 
-   .payment-list__namehead{
-        display:none;
-   }
+  .payment-list__namehead{
+      display:none;
+  }
 
-  .dashboard-payment__titlehead {
+  .dashboard-payment__title {
     @include text-title;
     color: $blue;
   }

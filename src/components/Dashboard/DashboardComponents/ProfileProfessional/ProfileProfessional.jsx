@@ -214,7 +214,7 @@ export default function ProfileProfessional() {
           <label className="profile__label" htmlFor="myDescription">Descripción: </label>
           <textarea className="profile__input" name="myDescription" value={newUser?.myDescription || ''} onChange={handleOnChange} rows={8} />
         </div>
-        <div className="input-control1">
+        <div className="input-control--specialties">
           <label className="profile__label" htmlFor="specialties">Especialidades: </label>
           <div className="profile__list--specialty">
             {

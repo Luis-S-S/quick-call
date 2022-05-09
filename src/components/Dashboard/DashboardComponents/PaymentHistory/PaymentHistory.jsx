@@ -16,14 +16,14 @@ export default function PaymentHistory() {
       case 'client':
         return (
           <>
-            <h1 className="dashboard-jobs--error">Actualmente no has realizado pagos</h1>
+            <h1 className="dashboard-payment--error">Actualmente no has realizado pagos</h1>
             <LinkRound link="/search">Solicita un trabajo con un profesional!</LinkRound>
           </>
         );
       case 'professional':
-        return (<h1 className="dashboard-jobs--error">Actualmente no has recibido pagos</h1>);
+        return (<h1 className="dashboard-payment--error">Actualmente no has recibido pagos</h1>);
       default:
-        return (<h1 className="dashboard-jobs--error">No existe registro de pago</h1>);
+        return (<h1 className="dashboard-payment--error">No existe registro de pago</h1>);
     }
   };
 

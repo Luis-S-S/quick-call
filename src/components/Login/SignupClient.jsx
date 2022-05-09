@@ -10,7 +10,7 @@ import ButtonRound from '../ButtonRound/ButtonRound';
 
 export default function SignupClient() {
   const dispatch = useDispatch();
-  let isValidated = true;
+  let isValidated = false;
   const [form, setForm] = useState({});
   const [clients, setClients] = useState([]);
   const [errorMsg, setErrorMsg] = useState();
@@ -56,33 +56,38 @@ export default function SignupClient() {
 
   const validateOnSubmit = () => {
     const clientsEmailArray = clients.map((client) => client.email);
-
-    if (!form.name) {
-      setErrorMsg('El nombre es requerido');
+    if (emailError || passwordError || confirmPasswordError) {
       isValidated = false;
+      setErrorMsg('Por favor, corriga los campos marcados en rojo');
+      return isValidated;
+    }
+    if (!form.name) {
+      isValidated = false;
+      setErrorMsg('El nombre es requerido');
       return isValidated;
     }
     if (!form.email) {
-      setErrorMsg('El email es requerido');
       isValidated = false;
+      setErrorMsg('El email es requerido');
       return isValidated;
     }
     if (clientsEmailArray.includes(form.email)) {
-      setErrorMsg('Este email ya está en uso');
       isValidated = false;
+      setErrorMsg('Este email ya está en uso');
       return isValidated;
     }
     if (!form.password) {
-      setErrorMsg('La contraseña es requerida');
       isValidated = false;
+      setErrorMsg('La contraseña es requerida');
       return isValidated;
     }
     if (!form.confirmPassword) {
-      setErrorMsg('Debe confirmar la contraseña');
       isValidated = false;
+      setErrorMsg('Debe confirmar la contraseña');
       return isValidated;
     }
-    return isValidated;
+    isValidated = true;
+    return null;
   };
 
   const handleChange = (e) => {

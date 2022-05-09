@@ -17,7 +17,7 @@ export default function PaymentListItem({ details }) {
   return (
     <div className="payment-list-container">
       <div className="payment-list__id">
-        {`${_id[15]}${_id[16]}${_id[17]}${_id[18]}${_id[19]}${_id[12]}`}
+        {_id?.slice(15, 22)}
       </div>
       <div className="payment-list__text">
         {description}
