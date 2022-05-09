@@ -8,13 +8,42 @@
     justify-content: center;
     margin: 1.5em 0;
     width: 100%;
+    .job-list-containers {
+        border-radius: 10px;
+        display: grid;
+        flex-wrap: wrap;
+        grid-template-columns: 2fr 3fr 3fr 1fr 1fr;
+        justify-items: center;
+        padding: .75em;
+        width: 80%;
+        box-shadow: 0 0 10px 0px $dark-grey;
+        @include text-body;
+        font-weight: bold;
+    }
+    .dashboard-jobs__title {
+        @include text-title;
+        color: $blue;
+    }
+    .job-list__idhead {
+
+    }
+
+    .job-list__titlehead,  .job-list__statushead{
+        display:none;
+    }
+
+    .dashboard-jobs--error {
+        @include text-sub-title;
+    }
+    @media (min-width: 1024px) {
+        .dashboard-jobs__title {
+            @include text-title;
+            color: $blue;
+        }
+        .job-list__titlehead,  .job-list__statushead{
+            display:flex;
+        }
+    }
 }
 
-.dashboard-jobs__title {
-    @include text-title;
-    color: $blue;
-}
 
-.dashboard-jobs--error {
-    @include text-sub-title;
-}

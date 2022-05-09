@@ -1,20 +1,46 @@
-@import '../../../../App.scss';
+@import "../../../../App.scss";
 
 .dashboard-payment {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    gap: 2em;
-    justify-content: center;
-    margin: 1.5em 0;
-    width: 100%;
-}
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+  justify-content: center;
+  margin: 1.5em 0;
+  width: 100%;
 
-.dashboard-payment__title {
+  .payment-list-containers {
+    border-radius: 10px;
+    display: grid;
+    flex-wrap: wrap;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-items: center;
+    padding: .75em;
+    width: 80%;
+    box-shadow: 0 0 10px 0px $dark-grey;
+    @include text-body;
+    font-weight: bold;
+    .payment-list__id{
+        font-weight: bold;
+    }
+   }
+
+   .payment-list__namehead{
+        display:none;
+   }
+
+  .dashboard-payment__titlehead {
     @include text-title;
     color: $blue;
-}
+  }
 
-.dashboard-payment--error {
+  .dashboard-payment--error {
     @include text-sub-title;
+  }
+  @media (min-width: 1024px) {
+    grid-template-columns: 1fr 3fr 1fr 2fr 1fr;
+    .payment-list__namehead{
+        display:flex;
+   }
+}
 }

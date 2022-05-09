@@ -1,64 +1,85 @@
-@import '../../../../App.scss';
+@import "../../../../App.scss";
 
 .dashboard-profile {
+  margin: 1.5em 0;
+  display: flex;
+  display: block;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  width: 100%;
+
+  .dashboard-profile__title {
+    @include text-title;
+    color: $blue;
+  }
+
+  .dashboard-profile__picture {
+    border-radius: 50%;
+    display: block;
+    margin: auto;
+    width: 80%;
+  }
+
+  .input-control {
+    margin: 1em;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+  }
+
+  .profile__label {
+    @include text-body;
+    color: $dark-grey;
+  }
+
+  .profile__input {
+    width: 100%;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 0.5em 0.25em;
+    @include text-body;
+  }
+
+  .profile__input--lock {
+    cursor: not-allowed;
+  }
+
+  .profile__input:focus {
+    outline: none;
+    border: 3px solid $blue;
+  }
+
+  .error-msg {
+    color: red;
+    @include text-body;
+  }
+
+  .response--success {
+    @include text-body;
+    color: green;
+  }
+
+  .response--fail {
+    @include text-body;
+    color: red;
+  }
+  @media (min-width: 1024px) {
     margin: 1.5em 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100%;
-}
-
-.dashboard-profile__title {
-    @include text-title;
-    color: $blue;
-}
-
-.dashboard-profile__picture {
-    border-radius: 50%;
-    margin: 1.5em 0;
-    width: 250px;
-}
-
-.input-control {
-    margin: 1em;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-}
-
-.profile__label {
-    @include text-body;
-    color: $dark-grey;
-}
-
-.profile__input {
-    width: 350px;
-    border: 1px solid black;
-    border-radius: 10px;
-    padding: 0.5em 0.25em;
-    @include text-body;
-}
-
-.profile__input--lock {
-    cursor: not-allowed;
-}
-
-.profile__input:focus {
-    outline: none;
-    border: 3px solid $blue;
-}
-
-.error-msg {
-    color: red;
-    @include text-body;
-}
-
-.response--success {
-    @include text-body;
-    color: green;
-}
-
-.response--fail {
-    @include text-body;
-    color: red;
+    .input-control {
+        margin: 1em;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+      .profile__input {
+        width: 60%;
+        border: 1px solid black;
+        border-radius: 10px;
+        padding: 0.5em 0.25em;
+        @include text-body;
+      }
+  }
 }

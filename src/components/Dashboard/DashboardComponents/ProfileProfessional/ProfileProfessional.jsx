@@ -123,7 +123,7 @@ export default function ProfileProfessional() {
       submitUser.phoneNumber = parseInt(submitUser.phoneNumber, 10);
     }
 
-    if (submitUser.image.profile) {
+    if (submitUser?.image?.profile) {
       const form = new FormData();
       form.append('file', submitUser.image.profile);
       const response = await uploadImage(form);

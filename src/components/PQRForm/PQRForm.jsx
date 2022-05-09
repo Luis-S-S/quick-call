@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
 import { createPQR } from '../../services/pqrs';
-import { setView } from '../../store/actions';
+import { setView, activateMiddle } from '../../store/actions';
 import { uploadImage } from '../../services/upload';
 import FileInputPQR from '../FileInputPQR/FileInputPQR';
 import ButtonRound from '../ButtonRound/ButtonRound';
@@ -10,7 +9,6 @@ import './PQRForm.scss';
 
 export default function PQRForm() {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const { _id } = useSelector((state) => state.user);
   const [form, setForm] = useState({ subject: '', description: '' });
   const [evidenceArray, setEvidenceArray] = useState([]);
@@ -58,8 +56,14 @@ export default function PQRForm() {
 
     const response = await createPQR(_id, { ...form, evidence });
     if (response.status === 201) {
+      const payload = {
+        title: 'Solicitud de PQR',
+        text: 'PQR creada con éxito',
+        button: 'Aceptar',
+        link: '/profile',
+      };
       dispatch(setView('PQRs'));
-      navigate('/profile');
+      dispatch(activateMiddle(payload));
     }
   };
 

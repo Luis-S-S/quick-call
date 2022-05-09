@@ -3,13 +3,16 @@ import { useState, useEffect } from 'react';
 // import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import { updateJobById } from '../../services/jobs';
 import { allCategories } from '../../services/categories';
+import { setView, activateMiddle } from '../../store/actions';
 import ButtonRound from '../ButtonRound/ButtonRound';
 import LinkRound from '../LinkRound/LinkRound';
 
 export default function FormProfessionals({ job, id, setJob }) {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [form, setForm] = useState({});
   const [category, setCategory] = useState();
   const [evidence, setEvidence] = useState([]);
@@ -36,6 +39,7 @@ export default function FormProfessionals({ job, id, setJob }) {
 
   const HandlerSubmit = async (e) => {
     e.preventDefault();
+    dispatch(activateMiddle());
     const { title, objective, amount } = job;
     const statusUpdate = amount !== 0 ? 'Pendiente pago' : 'Oferta';
     const update = {
@@ -43,6 +47,14 @@ export default function FormProfessionals({ job, id, setJob }) {
     };
     await updateJobById(id, update);
     setSend(true);
+    dispatch(setView('Jobs'));
+    const payload = {
+      title: 'Estado del trabajo',
+      text: 'El trabajo ha sido actualizado',
+      button: 'Aceptar',
+      link: '/profile',
+    };
+    dispatch(activateMiddle(payload));
   };
 
   function handlerEliminate(e) {

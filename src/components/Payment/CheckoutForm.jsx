@@ -34,6 +34,7 @@ export default function CheckoutForm() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    dispatch(activateMiddle());
     const { error, paymentMethod } = await stripe.createPaymentMethod({
       type: 'card',
       card: elements.getElement(CardNumberElement),
@@ -42,17 +43,7 @@ export default function CheckoutForm() {
     const description = job.title;
     const response = await paymentIntent(error, paymentMethod, amount, description, jobId);
     const data = await response.json();
-
-    if (data.decline_code) {
-      const middle = {
-        title: 'Su pago no fue procesado',
-        text: `El pago fue declinado con código: ${data.decline_code}. Revise con su banco e intente nuevamente`,
-        button: 'Volver',
-        link: '/profile',
-      };
-      dispatch(setView('PaymentHistory'));
-      dispatch(activateMiddle(middle));
-    } else {
+    if (data?.decline_code) {
       const middle = {
         title: 'Su pago no fue procesado',
         text: `El pago fue declinado con código: ${data.decline_code}. Revise con su banco e intente nuevamente`,
@@ -62,6 +53,18 @@ export default function CheckoutForm() {
       dispatch(setView('PaymentHistory'));
       dispatch(activateMiddle(middle));
     }
+    // else {
+    //   const middle = {
+    //     title: 'Su pago fue realizado con éxito',
+    //     text: 'La confirmación de pago se ha enviado a su
+    // correo electrónico. El profesional ha sido notificado también
+    //  para iniciar con el trabajo',
+    //     button: 'Continuar',
+    //     link: '/profile',
+    //   };
+    //   dispatch(setView('PaymentHistory'));
+    //   dispatch(activateMiddle(middle));
+    // }
   };
 
   return (

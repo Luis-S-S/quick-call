@@ -23,10 +23,48 @@ function Footer() {
       <div className="footer__copyright">
         <p className="footer--body">Siguenos en nuestras redes sociales</p>
         <div className="copyright__social-media">
-          <a href="https://web.whatsapp.com/" target="_blank" rel="noreferrer"><img src="/images/icons/whatsapp-logo-white.svg" alt="whatsapp" /></a>
-          <a href="https://web.facebook.com/" target="_blank" rel="noreferrer"><img src="/images/icons/facebook-icon-white.svg" alt="facebook" /></a>
-          <a href="https://twitter.com/" target="_blank" rel="noreferrer"><img src="/images/icons/twitter-icon-white.svg" alt="twitter" /></a>
-          <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer"><img src="/images/icons/linkedin-logo-white.svg" alt="linkedin" /></a>
+          <div className="copyright__social-content">
+            Jesus Osorio
+            <div className="social-content__icon">
+              <a href="https://github.com/JesusOsorioJ" target="_blank" rel="noopener noreferrer">
+                <img src="/images/icons/github-icon-white.svg" alt="Facebook" />
+              </a>
+              <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">
+                <img src="/images/icons/linkedIn-logo-white.svg" alt="Facebook" />
+              </a>
+              <a href="mailto:jesdaos@hotmail.com" target="_blank" rel="noopener noreferrer">
+                <img src="/images/icons/email-logo-white.svg" alt="Facebook" />
+              </a>
+            </div>
+          </div>
+          <div className="copyright__social-content">
+            Francisco Huertas
+            <div className="social-content__icon">
+              <a href="https://github.com/franciscocruz29" target="_blank" rel="noopener noreferrer">
+                <img src="/images/icons/github-icon-white.svg" alt="Facebook" />
+              </a>
+              <a href="https://www.linkedin.com/in/francisco-huertas-cruz/" target="_blank" rel="noopener noreferrer">
+                <img src="/images/icons/linkedIn-logo-white.svg" alt="Facebook" />
+              </a>
+              <a href="mailto:franciscohuertas25@gmail.com" target="_blank" rel="noopener noreferrer">
+                <img src="/images/icons/email-logo-white.svg" alt="Facebook" />
+              </a>
+            </div>
+          </div>
+          <div className="copyright__social-content">
+            Luis Salcedo Salas
+            <div className="social-content__icon">
+              <a href="https://github.com/Luis-S-S" target="_blank" rel="noopener noreferrer">
+                <img src="/images/icons/github-icon-white.svg" alt="Facebook" />
+              </a>
+              <a href="https://www.linkedin.com/in/luis-salcedo-salas/" target="_blank" rel="noopener noreferrer">
+                <img src="/images/icons/linkedIn-logo-white.svg" alt="Facebook" />
+              </a>
+              <a href="mailto:rideluis@hotmail.com" target="_blank" rel="noopener noreferrer">
+                <img src="/images/icons/email-logo-white.svg" alt="Facebook" />
+              </a>
+            </div>
+          </div>
         </div>
         <h2 className="footer--title">&copy; Quick Call. 2022</h2>
       </div>

@@ -21,21 +21,16 @@ import ErrorMessage from './components/ErrorMessage/ErrorMessage';
 import Chats from './pages/Chats';
 import Middle from './components/Middle/Middle';
 import socket from './utils/socket';
+import PaymentDetail from './components/PaymentDetail/PaymentDetail';
 
 function App() {
   const { _id, role } = useSelector((state) => state.user);
   const dispatch = useDispatch();
-  console.log('role', role);
   const {
     isActive, title, text, button, link, back,
   } = useSelector((state) => (state.middle));
   useEffect(async () => {
     await dispatch(fetchUserProfile());
-    // if (role === 'clients') {
-    //   let titles = 'Has creado una nueva consulta';
-    // } else {
-    //   titles = 'Nueva solicitud de consulta';
-    // }
     socket.on(`${_id}:createJobs`, async (idJob) => {
       const payload = {
         title: ((role === 'client') ? ('Has creado una nueva consulta') : ('Nueva solicitud de consulta')),
@@ -43,6 +38,17 @@ function App() {
         button: 'Aceptar',
         link: `/jobs/${idJob}`,
         back: (-1),
+      };
+      dispatch(activateMiddle(payload));
+    });
+    socket.on(`${_id}:createPayment`, async (idJob) => {
+      const payload = {
+        title: ((role === 'client') ? ('Su pago fue realizado con éxito') : ('Se ha generado nuevo pago')),
+        text: ((role === 'client') ? ('La confirmación de pago se ha enviado a su correo electrónico. Da click en aceptar para ver el detalle de la compra')
+          : ('Has recibido nuevo pago, presiona aceptar para ver detalle de trabajo o cancelar para mantenerte en la vista')),
+        button: 'Aceptar',
+        link: ((role === 'client') ? (`/payment/${idJob}`) : (`/jobs/${idJob}`)),
+        back: ((role === 'client') ? (undefined) : (-1)),
       };
       dispatch(activateMiddle(payload));
     });
@@ -71,7 +77,8 @@ function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/pqr_form" element={<CreatePQR />} />
           <Route path="/pqr/:id" element={<PQRDetail />} />
-          <Route path="/payments/:id" element={<Payment />} />
+          <Route path="/payment_suite/:id" element={<Payment />} />
+          <Route path="/payment/:id" element={<PaymentDetail />} />
           <Route path="/chat/:id" element={<Chats />} />
           <Route path="/jobs/:id" element={<Job />} />
           <Route path="/login_redirect" element={<ErrorMessage code={401} message="Oops! Inicia sesión para continuar" />} />

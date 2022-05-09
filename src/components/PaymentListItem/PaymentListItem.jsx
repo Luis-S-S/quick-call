@@ -5,6 +5,7 @@ import './PaymentListItem.scss';
 export default function PaymentListItem({ details }) {
   const {
     _id,
+    description,
     createdAt,
     currency,
     value,
@@ -15,17 +16,19 @@ export default function PaymentListItem({ details }) {
 
   return (
     <div className="payment-list-container">
+      <div className="payment-list__id">
+        {`${_id[15]}${_id[16]}${_id[17]}${_id[18]}${_id[19]}${_id[12]}`}
+      </div>
       <div className="payment-list__text">
-        Fecha:
-        {' '}
+        {description}
+      </div>
+      <div className="payment-list__text">
         {formatDate()}
       </div>
-      <div className="payment-list__text">
-        Monto:
-        {' '}
+      <div className="payment-list__amount">
         {formatAmount()}
       </div>
-      <Link className="payment-list__link" to={`/payment/${_id}`}>Ver detalle</Link>
+      <Link className="payment-list__link" to={`/payment/${_id}`}>Detalle</Link>
     </div>
   );
 }

@@ -1,48 +1,54 @@
-@import '../../App.scss';
+@import "../../App.scss";
 
 .job-detail__container {
-    border-radius: 10px;
-    border: 1px solid $dark-grey;
-    display: flex;
-    flex-direction: column;
-    gap: 1em;
-    padding: 2em;
-}
+  border-radius: 10px;
+  border: 1px solid $dark-grey;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  padding: 2em;
 
-.job-detail__title {
+  .job-detail__title {
     @include text-title;
     text-align: center;
     color: $blue;
-}
+  }
 
-.job-detail__subtitle {
+  .job-detail__subtitle {
     @include text-inline-title;
     text-align: center;
-}
+  }
 
-.job-detail__body {
+  .job-detail__body {
     @include text-body;
     text-align: justify;
-}
+  }
 
-.job-detail__section {
+  .job-detail__section {
     display: flex;
     flex-wrap: nowrap;
     gap: 1em;
-}
+  }
 
-.section__list {
+  .section__list {
     @include text-body;
     width: 45%;
-}
+  }
 
-.section__list__title {
+  .section__list__title {
     text-align: center;
-}
+  }
 
-.action__buttons {
+  .action__buttons {
     display: flex;
     justify-content: space-around;
     width: 100%;
     margin-top: 1em;
+  }
+
+  .ButtonRound,
+  .LinkRound {
+    line-height: 20px;
+    margin: 15px;
+  }
 }

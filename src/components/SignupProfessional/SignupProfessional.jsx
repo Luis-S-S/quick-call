@@ -28,13 +28,6 @@ export default function SignupProfessional() {
 
   const handlerOnChange = (e) => {
     const { name, value } = e.target;
-    // if (value === '') {
-    //   const copy = { ...form };
-    //   delete copy[name];
-    //   setForm(copy);
-    // } else {
-    //   setForm({ ...form, [name]: value });
-    // }
     if (name === 'availability.fullAvailability') {
       setForm({ ...form, [name]: e.target.checked });
     } else {
@@ -49,20 +42,30 @@ export default function SignupProfessional() {
       let result = null;
       if (special.evidence) {
         const formData = new FormData();
-        await formData.append('file', special.evidence);
+        formData.append('file', special.evidence);
         result = await uploadImage(formData);
       }
-      names.push({ name: special.name, certification: result.url });
+      names.push({ name: special.name, certificate: result.url });
     }
     delete form.confirmPassword;
-    const data = ({ ...form, specialty: [...names] });
-    await createProfessional(data);
-    const payload = {
-      title: 'Has creado tu cuenta',
-      text: 'Ya tienes una cuenta de profesional, ya puedes iniciar sesion',
-      button: 'Aceptar',
-      link: '/',
-    };
+    const data = ({ ...form, specialties: [...names] });
+    const response = await createProfessional(data);
+    let payload;
+    if (response.status === 201) {
+      payload = {
+        title: 'Has creado tu cuenta',
+        text: 'Ya tienes una cuenta de profesional, ya puedes iniciar sesion',
+        button: 'Aceptar',
+        link: '/',
+      };
+    } else {
+      payload = {
+        title: 'Ha habido un error creando la cuenta',
+        text: 'Intente crear la cuenta más tarde',
+        button: 'Inicio',
+        link: '/',
+      };
+    }
     dispatch(deactivateMiddle());
     dispatch(activateMiddle(payload));
   };

@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-escape */
 /* eslint-disable react/prop-types */
 import { useEffect } from 'react';
 import { getAllProfessional } from '../../services/professionals';

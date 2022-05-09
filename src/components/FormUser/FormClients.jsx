@@ -4,18 +4,20 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { uploadImage } from '../../services/upload';
 
 import { activateMiddle, setView } from '../../store/actions';
-
+import { getSingleProfessional } from '../../services/professionals';
+import { uploadImage } from '../../services/upload';
 import { createJobs } from '../../services/jobs';
 import { createChat } from '../../services/chats';
 import { allCategories } from '../../services/categories';
 import ButtonRound from '../ButtonRound/ButtonRound';
 
 export default function FormsClients() {
-  const { _id } = useSelector((state) => state.user);
+  const idClient = useSelector((state) => state.user._id);
+  const nameClient = useSelector((state) => state.user.name);
   const { id } = useParams();
+
   const dispatch = useDispatch();
 
   const [form, setForm] = useState({});
@@ -42,20 +44,24 @@ export default function FormsClients() {
     e.preventDefault();
     const names = [];
     dispatch(activateMiddle());
+    const nameProfesional = (await getSingleProfessional(id)).name;
+    console.log('nameClient', nameClient, 'nameProfesional', nameProfesional);
     for (const evi of evidence) {
       let result = null;
+
       if (evi.value) {
         const formData = new FormData();
         await formData.append('file', evi.value);
         result = await uploadImage(formData);
-        console.log('result.url', result.url);
       }
       names.push({ name: evi.name, value: result.url });
     }
     delete form.confirmPassword;
     const formtodo = {
-      client: _id,
+      client: idClient,
+      clientName: nameClient,
       professional: id,
+      professionalName: nameProfesional,
       status: 'Oferta',
       ...form,
       evidenceClients: [...names],

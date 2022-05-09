@@ -33,19 +33,19 @@ export default function JobDetail({ job }) {
   const renderButtonActions = () => {
     if (user.role === 'client' && jobInfo?.status === 'Pendiente pago') {
       return (
-        <LinkRound link={`/payments/${jobInfo?._id}`}>Pagar</LinkRound>
+        <LinkRound className="LinkRound" link={`/payment_suite/${jobInfo?._id}`}>Pagar</LinkRound>
       );
     }
     if (user.role === 'professional' && jobInfo?.status === 'En progreso') {
       return (
-        <ButtonRound isSubmit={false} onClickFunction={handleStatusFinished}>
+        <ButtonRound className="ButtonRound" isSubmit={false} onClickFunction={handleStatusFinished}>
           Finalizar trabajo
         </ButtonRound>
       );
     }
     if (user.role === 'client' && jobInfo?.status === 'Finalizado') {
       return (
-        <ButtonRound isSubmit={false} onClickFunction={handleStatusClosed}>
+        <ButtonRound className="ButtonRound" isSubmit={false} onClickFunction={handleStatusClosed}>
           Confirmar trabajo
         </ButtonRound>
       );
@@ -56,7 +56,7 @@ export default function JobDetail({ job }) {
   const renderDownloadButton = () => {
     if (jobInfo?.status === 'En progreso' || jobInfo?.status === 'Finalizado' || jobInfo?.status === 'Cerrado') {
       return (
-        <ButtonRound isSubmit={false} onClickFunction={handleDownloadJobPdf}>
+        <ButtonRound className="ButtonRound" isSubmit={false} onClickFunction={handleDownloadJobPdf}>
           Descargar PDF
         </ButtonRound>
       );
@@ -146,7 +146,7 @@ export default function JobDetail({ job }) {
         </ul>
       </div>
       <div className="action__buttons">
-        <ButtonRound isSubmit={false} onClickFunction={() => { navigate(-1); }}>
+        <ButtonRound className="ButtonRound" isSubmit={false} onClickFunction={() => { navigate(-1); }}>
           Volver
         </ButtonRound>
         {renderButtonActions()}

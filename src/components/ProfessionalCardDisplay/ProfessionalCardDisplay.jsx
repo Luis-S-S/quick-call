@@ -65,7 +65,7 @@ function ProfessionalCardDisplay() {
       <div className={professionalsToShow.length > 0 ? 'card-display__container' : 'search--error'}>
         {professionalsToShow.length > 0
           ? (professionalsToShow.map((item) => <ProCard key={item._id} details={item} />))
-          : 'hubo un error'}
+          : <div className="loader" />}
       </div>
       <button
         className={`page-handling__button ${currentPage === 1 ? 'disabled' : ''}`}
