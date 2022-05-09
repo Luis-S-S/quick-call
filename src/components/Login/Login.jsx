@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { fetchUserProfile, activateMiddle } from '../../store/actions';
+import { fetchUserProfile, activateMiddle, deactivateMiddle } from '../../store/actions';
 import { userLogin } from '../../services/auth';
 import ButtonRound from '../ButtonRound/ButtonRound';
 import './Login.scss';
@@ -33,6 +33,7 @@ function Login() {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
+    dispatch(activateMiddle());
     const user = await userLogin(form);
     if (user.status === 200) {
       localStorage.setItem('user', await user.json());
@@ -46,6 +47,7 @@ function Login() {
       dispatch(fetchUserProfile());
     } else {
       setErrorMsg(await user.json());
+      dispatch(deactivateMiddle());
       document.querySelector('form').reset();
     }
   };

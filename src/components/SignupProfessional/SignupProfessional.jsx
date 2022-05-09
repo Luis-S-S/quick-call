@@ -5,7 +5,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { activateMiddle } from '../../store/actions';
+import { activateMiddle, deactivateMiddle } from '../../store/actions';
 import { createProfessional } from '../../services/professionals';
 import { uploadImage } from '../../services/upload';
 import { allCategories } from '../../services/categories';
@@ -24,16 +24,10 @@ export default function SignupProfessional() {
   const [specialty, setSpecialty] = useState([]);
   const [form, setForm] = useState({});
   const [validate, setValidate] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
 
   const handlerOnChange = (e) => {
     const { name, value } = e.target;
-    // if (value === '') {
-    //   const copy = { ...form };
-    //   delete copy[name];
-    //   setForm(copy);
-    // } else {
-    //   setForm({ ...form, [name]: value });
-    // }
     if (name === 'availability.fullAvailability') {
       setForm({ ...form, [name]: e.target.checked });
     } else {
@@ -43,6 +37,7 @@ export default function SignupProfessional() {
 
   const handleOnClickSubmit = async () => {
     const names = [];
+    dispatch(activateMiddle());
     for (const special of specialty) {
       let result = null;
       if (special.evidence) {
@@ -55,23 +50,24 @@ export default function SignupProfessional() {
     delete form.confirmPassword;
     const data = ({ ...form, specialties: [...names] });
     const response = await createProfessional(data);
+    let payload;
     if (response.status === 201) {
-      const payload = {
+      payload = {
         title: 'Has creado tu cuenta',
         text: 'Ya tienes una cuenta de profesional, ya puedes iniciar sesion',
         button: 'Aceptar',
         link: '/',
       };
-      dispatch(activateMiddle(payload));
     } else {
-      const payload = {
+      payload = {
         title: 'Ha habido un error creando la cuenta',
         text: 'Intente crear la cuenta más tarde',
         button: 'Inicio',
         link: '/',
       };
-      dispatch(activateMiddle(payload));
     }
+    dispatch(deactivateMiddle());
+    dispatch(activateMiddle(payload));
   };
 
   useEffect(async () => {
@@ -93,7 +89,7 @@ export default function SignupProfessional() {
           <span className="texto_register">Crea tu cuenta de profesional</span>
         </div>
         {(page === 0) && (
-          <Page1 form={form} handlerOnChange={handlerOnChange} validate={validate} />
+          <Page1 form={form} handlerOnChange={handlerOnChange} validate={validate} isLoading={isLoading} />
         )}
         {(page === 1) && (
           <Page2 form={form} handlerOnChange={handlerOnChange} categories={categories} />
@@ -127,6 +123,7 @@ export default function SignupProfessional() {
             page={page}
             setValidate={setValidate}
             validate={validate}
+            setIsLoading={setIsLoading}
           />
         </div>
       </div>

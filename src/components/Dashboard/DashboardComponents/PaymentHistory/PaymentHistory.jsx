@@ -49,9 +49,18 @@ export default function PaymentHistory() {
       {
         paymentsArray.length > 0
           ? (
-            paymentsArray.map((payment) => (
-              <PaymentListItem details={payment} />
-            ))
+            <>
+              <div className="payment-list-containers">
+                <div className="payment-list__idhead"># Id</div>
+                <div className="payment-list__namehead">Descripcion</div>
+                <div className="payment-list__namehead">Fecha</div>
+                <div className="payment-list__datehead">Monto</div>
+                <div />
+              </div>
+              {paymentsArray.map((payment) => (
+                <PaymentListItem details={payment} />
+              ))}
+            </>
           )
           : (
             renderError()

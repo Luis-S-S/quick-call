@@ -1,57 +1,76 @@
-@import '../../App.scss';
+@import "../../App.scss";
 
 .card-display {
-    align-items: center;
-    justify-content: center;
-}
+  align-items: center;
+  justify-content: center;
 
-.card-display__container {
+  .loader {
+    border: 16px solid #f3f3f3; /* Light grey */
+    border-top: 16px solid #3498db; /* Blue */
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+    margin:100px;
+  }
+
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  .card-display__container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-}
+  }
 
-.card-filters {
-    margin: .5em;
+  .card-filters {
+    margin: 0.5em;
     display: inline-block;
-    padding: .25em .75em;
+    padding: 0.25em 0.75em;
     border: 1px solid $blue;
     @include link-body;
     color: $blue;
     background-color: white;
     border-radius: 5px;
-}
+  }
 
-.card-filters__remove {
+  .card-filters__remove {
     color: white;
     background-color: red;
     border-radius: 5px;
     border: 1px solid red;
     @include link-body;
-    padding: .25em;
-    margin: 0 .25em;
-}
+    padding: 0.25em;
+    margin: 0 0.25em;
+  }
 
-.card-filters__remove:hover {
+  .card-filters__remove:hover {
     background-color: rgb(218, 96, 97);
     border-color: rgb(218, 96, 97);
     cursor: pointer;
-}
+  }
 
-.page-handling__button {
+  .page-handling__button {
     @include link-body;
     color: $dark-purple;
-    padding: .5em .75em;
+    padding: 0.5em 0.75em;
     border: 1px solid $dark-purple;
     border-radius: 5px;
-    margin: .5em;
-}
+    margin: 0.5em;
+  }
 
-.page-handling__button:hover {
+  .page-handling__button:hover {
     box-shadow: 0 0 10px $dark-purple;
-}
+  }
 
-.disabled {
+  .disabled {
     pointer-events: none;
-    opacity: .5;
+    opacity: 0.5;
+  }
+
 }

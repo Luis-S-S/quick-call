@@ -18,11 +18,26 @@ export default function Jobs() {
   return (
     <div className="dashboard-jobs">
       <h1 className="dashboard-jobs__title">Tus Trabajos</h1>
+
       {
       jobsArray.length > 0
-        ? jobsArray.map((job) => (
-          <JobListItem jobInfo={job} />
-        ))
+        ? (
+          <>
+            <div className="job-list-containers">
+              <div className="job-list__idhead"># Id</div>
+              <div className="job-list__titlehead">
+                {(role === 'client') ? ('Profesional') : ('Cliente')}
+              </div>
+              <div className="job-list__statushead">Estado</div>
+              <div />
+              <div />
+            </div>
+            {jobsArray.map((job) => (
+              <JobListItem jobInfo={job} role={role} />
+            ))}
+          </>
+        )
+
         : (
           <>
             <h1 className="dashboard-jobs--error">Actualmente no tienes trabajos pendientes</h1>

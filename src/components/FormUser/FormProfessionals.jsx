@@ -39,6 +39,7 @@ export default function FormProfessionals({ job, id, setJob }) {
 
   const HandlerSubmit = async (e) => {
     e.preventDefault();
+    dispatch(activateMiddle());
     const { title, objective, amount } = job;
     const statusUpdate = amount !== 0 ? 'Pendiente pago' : 'Oferta';
     const update = {
@@ -174,14 +175,7 @@ export default function FormProfessionals({ job, id, setJob }) {
                   <button className="button-agregate" type="button" onClick={handlerConditions}>Agregar</button>
                 </div>
               </fieldset>
-              <fieldset>
-                <legend>Condiciones Cliente</legend>
-                {job.conditionsClients?.map((todo) => (
-                  <div className="section1">
-                    <label htmlFor={todo.name}>{todo.name}</label>
-                  </div>
-                ))}
-              </fieldset>
+
               <div className="ButtonRound">
                 <ButtonRound isSubmit onClickFunction={() => navigate(-1)}>Regresar</ButtonRound>
                 <ButtonRound isSubmit onClickFunction={HandlerSubmit}>Enviar</ButtonRound>

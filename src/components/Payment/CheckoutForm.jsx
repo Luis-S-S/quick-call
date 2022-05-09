@@ -34,6 +34,7 @@ export default function CheckoutForm() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    dispatch(activateMiddle());
     const { error, paymentMethod } = await stripe.createPaymentMethod({
       type: 'card',
       card: elements.getElement(CardNumberElement),
@@ -51,16 +52,19 @@ export default function CheckoutForm() {
       };
       dispatch(setView('PaymentHistory'));
       dispatch(activateMiddle(middle));
-    } else {
-      const middle = {
-        title: 'Su pago fue realizado con éxito',
-        text: 'La confirmación de pago se ha enviado a su correo electrónico. El profesional ha sido notificado también para iniciar con el trabajo',
-        button: 'Continuar',
-        link: '/profile',
-      };
-      dispatch(setView('PaymentHistory'));
-      dispatch(activateMiddle(middle));
     }
+    // else {
+    //   const middle = {
+    //     title: 'Su pago fue realizado con éxito',
+    //     text: 'La confirmación de pago se ha enviado a su
+    // correo electrónico. El profesional ha sido notificado también
+    //  para iniciar con el trabajo',
+    //     button: 'Continuar',
+    //     link: '/profile',
+    //   };
+    //   dispatch(setView('PaymentHistory'));
+    //   dispatch(activateMiddle(middle));
+    // }
   };
 
   return (

@@ -1,32 +1,52 @@
-@import '../../App.scss';
+@import "../../App.scss";
 
 .pqr-list-container {
-    border-radius: 10px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    padding: .75em;
-    width: 80%;
-    box-shadow: 0 0 10px 0px $dark-grey;
-    transition: all 0.3s ease;
-    @include text-body;
+  border-radius: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 0.75em;
+  width: 80%;
+  box-shadow: 0 0 10px 0px $dark-grey;
+  transition: all 0.3s ease;
+  @include text-body;
 
-    &:hover {
-        transform: scale(1.05);
-    }
-}
+  &:hover {
+    transform: scale(1.05);
+  }
 
-.pqr-list__subject, .pqr-list__status {
+  .pqr-list__subject,
+  .pqr-list__status {
     width: 40%;
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
-}
+  }
 
-.pqr-list__status {
+  .pqr-list__status {
     width: 40%;
-}
+  }
+  .pqr-list__status{
+      display: none;
+  }
 
-.pqr-list__link {
+  .pqr-list__link {
+    border: solid 1px rgb(99, 213, 224);
+    border-radius: 12px;
+    margin-right: 12px;
+    padding: 5px;
     text-align: end;
+    color: white;
+    background-color: rgb(99, 213, 224);
+    text-align: center;
+    &:hover {
+      background-color: rgb(15, 155, 211);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .pqr-list__status{
+        display: flex;
+    }
+  }
 }

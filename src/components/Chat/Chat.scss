@@ -4,10 +4,11 @@
     @include text-inline-title;
   display: flex;
   justify-content: center;
-  width: 100%;
-  margin:20px;
- 
+  width: 100vw;
+
+
   .chat__body {
+    width:100%;
     display:flex;
     flex-direction:column;
     border: solid 1px black;
@@ -21,11 +22,27 @@
             border-radius:20px;
             margin-right:10px;
         }
+        .buttonBack {
+          @include link-body;
+          margin-right: 10px;
+          background-color: rgb(192, 55, 55);
+          height: 40px;
+          border-radius: 0.5em;
+          border: 3px solid rgb(192, 55, 55);
+          color: white;
+          display: inline-block;
+          padding: 0.25em 0.75em;
+          text-decoration: none;
+        }
+
+        .buttonBack:hover {
+          background-color: white;
+          color: rgb(192, 55, 55);;
+        }
     }
     #chat__body__message {
       display: flex;
       flex-direction: column;
-      width: 600px;
       height: 300px;
       align-items: center;
       overflow-y: scroll;
@@ -42,7 +59,6 @@
         display: flex;
           flex-wrap:wrap;
         border-radius: 5px;
-        max-width: 300px;
         padding: 10px;
         font-size: 18px;
         align-self: flex-end;
@@ -58,13 +74,13 @@
         display: flex;
         justify-content: center;
         textarea {
-          width: 400px;
+          // width: 400px;
           height: 100px;
           border-radius: 10px;
           margin-right: 12px;
           padding:10px;
         }
-        button {
+        .buttonSubmit {
           @include link-body;
           background-color: $blue;
           height: 40px;
@@ -76,11 +92,21 @@
           text-decoration: none;
         }
 
-        button:hover {
+        .buttonSubmit:hover {
           background-color: white;
           color: $blue;
         }
       }
+    }
+
+  }
+  @media (min-width: 1024px) {
+    margin:20px;
+    .chat__body{
+      width: 60%;
+    }
+    textarea {
+      width: 60%;
     }
   }
 }

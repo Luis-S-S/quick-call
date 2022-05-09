@@ -1,3 +1,4 @@
+/* eslint-disable no-unsafe-optional-chaining */
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { getPaymentById } from '../../services/payments';
@@ -6,7 +7,7 @@ import Footer from '../Footer/Footer';
 import ButtonRound from '../ButtonRound/ButtonRound';
 import './PaymentDetail.scss';
 
-export default function PQRDetail() {
+export default function PaymentDetail() {
   const navigate = useNavigate();
   const [payment, setPayment] = useState({});
   const { id } = useParams();
@@ -42,7 +43,7 @@ export default function PQRDetail() {
           <p className="payment-detail__body">
             Monto:
             {' '}
-            {`${payment?.value} ${payment?.currency}`}
+            {`${payment?.value / 100} ${payment?.currency}`}
           </p>
           <ButtonRound className="payment-detail__button" onClickFunction={returnToProfile}>Volver</ButtonRound>
         </div>
