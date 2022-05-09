@@ -1,3 +1,4 @@
+/* eslint-disable no-unsafe-optional-chaining */
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { getPaymentById } from '../../services/payments';
@@ -6,7 +7,7 @@ import Footer from '../Footer/Footer';
 import ButtonRound from '../ButtonRound/ButtonRound';
 import './PaymentDetail.scss';
 
-export default function PQRDetail() {
+export default function PaymentDetail() {
   const navigate = useNavigate();
   const [payment, setPayment] = useState({});
   const { id } = useParams();

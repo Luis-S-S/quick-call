@@ -97,7 +97,7 @@ export default function PQRForm() {
           />
         </div>
         <span className="pqr-form__msg--error">{descriptionErrorMsg}</span>
-        {/* <label htmlFor="file" className="pqr-form__label">Si tienes fotos o videos, puedes compartirlos para una solución más rápida</label> */}
+        <label htmlFor="file" className="pqr-form__label">Si tienes fotos o videos, puedes compartirlos para una solución más rápida</label>
         {
           evidenceArray.map((evidence) => (
             <FileInputPQR

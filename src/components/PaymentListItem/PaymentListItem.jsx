@@ -36,6 +36,7 @@ export default function PaymentListItem({ details }) {
 PaymentListItem.propTypes = {
   details: PropTypes.shape({
     _id: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
     createdAt: PropTypes.string.isRequired,
     currency: PropTypes.string.isRequired,
     value: PropTypes.number.isRequired,
