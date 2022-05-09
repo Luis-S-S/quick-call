@@ -69,6 +69,13 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    .dashboard-profile__picture {
+        border-radius: 50%;
+        display: block;
+        margin: auto;
+        width:200px;
+      }
+
     .input-control {
         margin: 1em;
         display: grid;

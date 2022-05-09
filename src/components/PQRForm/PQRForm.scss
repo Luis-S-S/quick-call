@@ -1,17 +1,17 @@
-@import '../../App.scss';
+@import "../../App.scss";
 
 .pqr-form__container {
-    align-items: center;
-    background: $light-blue;
-    display: flex;
-    justify-content: center;
-    margin: 0;
-    min-height: $full-height-without-header;
-    padding: 2em 3em;
-    width: 100%;
-}
+  align-items: center;
+  background: $light-blue;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  min-height: $full-height-without-header;
 
-.pqr-form {
+  width: 100%;
+
+  .pqr-form {
+    width: 100%;
     background: $white;
     border-radius: 10px;
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
@@ -19,46 +19,52 @@
     flex-direction: column;
     justify-content: center;
     gap: 2em;
-    max-width: 800px;
     padding: 2em;
-}
+  }
 
-.pqr-form__title {
+  .pqr-form__title {
     @include text-title;
     color: $blue;
     text-align: center;
-}
+  }
 
-.pqr-form__control {
+  .pqr-form__control {
     display: flex;
     flex-direction: column;
     gap: 1em;
-}
+  }
 
-.pqr-form__label {
+  .pqr-form__label {
     @include text-inline-title;
-}
+  }
 
-.pqr-form__input {
+  .pqr-form__input {
     @include text-body;
     border: 1px solid $blue;
     border-radius: 5px;
-    padding: .25em .5em;
-}
+    padding: 0.25em 0.5em;
+  }
 
-.pqr-form__input--container {
+  .pqr-form__input--container {
     display: flex;
     justify-content: space-between;
     gap: 1em;
-}
+  }
 
-.pqr-form__input--file {
+  .pqr-form__input--file {
     @include link-body;
-    padding: .25em .5em;
-}
+    padding: 0.25em 0.5em;
+  }
 
-.pqr-form__msg--error {
+  .pqr-form__msg--error {
     @include text-body;
     color: red;
     text-align: center;
+  }
+  @media (min-width: 1024px) {
+    padding: 2em 3em;
+    .pqr-form {
+        width: 60%;
+    }
+  }
 }

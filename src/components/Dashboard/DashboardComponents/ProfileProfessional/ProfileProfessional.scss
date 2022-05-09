@@ -1,18 +1,31 @@
 // Styles copied from ProfileClient.scss
-@import '../../../../App.scss';
+@import "../../../../App.scss";
 
-.profile__list--specialty {
+.dashboard-profile {
+  .profile__list--specialty {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap:.75em;
+    gap: 0.75em;
     @include text-body;
-}
+  }
 
-.profile__button--specialty {
+  .profile__button--specialty {
     align-self: center;
-}
+  }
 
-.err-msg {
+  .err-msg {
     color: red;
+  }
+
+  .input-control1 {
+    display: flex;
+    flex-direction: column;
+  }
+  @media (min-width: 1024px) {
+    .input-control1 {
+        flex-direction: row;
+      }
+  }
+
 }

@@ -38,7 +38,10 @@
     @include text-sub-title;
   }
   @media (min-width: 1024px) {
+    .payment-list-containers {
     grid-template-columns: 1fr 3fr 1fr 2fr 1fr;
+    }
+
     .payment-list__namehead{
         display:flex;
    }

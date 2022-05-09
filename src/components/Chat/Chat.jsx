@@ -1,7 +1,10 @@
 /* eslint-disable no-return-assign */
 import React, { useState, useEffect, useRef } from 'react';
-import { useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { useParams, useNavigate } from 'react-router-dom';
+
+import { setView } from '../../store/actions';
+
 import { getSingleProfessional } from '../../services/professionals';
 import { getSingleClientById } from '../../services/clients';
 import { getJobById } from '../../services/jobs';
@@ -17,6 +20,8 @@ export default function Chat() {
   const [professional, setProfessional] = useState({});
   const [client, setClient] = useState({});
   const params = useParams();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const messagesEndRef = useRef(null);
 
@@ -59,11 +64,16 @@ export default function Chat() {
     e.target.reset();
     setMsg({});
   };
+  const handleBack = () => {
+    dispatch(setView('Jobs'));
+    navigate('/profile');
+  };
 
   return (
     <div className="chat_sasasas ">
       <div className="chat__body">
         <div className="chat__header">
+          <button className="buttonBack" type="button" onClick={handleBack}>{'<'}</button>
           { role === 'client'
             ? (
               <>
@@ -99,7 +109,8 @@ export default function Chat() {
         <div className="chat__input--control">
           <form onSubmit={handleSendMsg}>
             <textarea type="text" className="chat__input" placeholder="Escribe un mensaje..." onChange={handleOnChange} />
-            <button type="submit">Enviar</button>
+            <button className="buttonSubmit" type="submit">Enviar</button>
+
           </form>
         </div>
       </div>
