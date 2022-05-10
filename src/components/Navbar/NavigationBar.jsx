@@ -25,7 +25,7 @@ function NavBar() {
         <label htmlFor="check" className="checkbtn">&#9776;</label>
         <Link to="/"><img className="logo" src="/images/logo/quick-call-logo--colored.svg" alt="logo" data-cy="home-logo" /></Link>
         <ul>
-          <li><Link to="/search">Buscar</Link></li>
+          <li><Link to="/search" data-cy="home-search">Buscar</Link></li>
           {!token
             ? (
               <>

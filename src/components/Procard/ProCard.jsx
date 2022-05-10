@@ -15,7 +15,7 @@ function ProCard({
       </div>
       <p className="pro-card__body">{myDescription}</p>
       <div className="buttons">
-        <LinkSquare link={`/ProfilePro/${_id}`}>Ver Perfil</LinkSquare>
+        <LinkSquare link={`/ProfilePro/${_id}`} data-cy="procard-link">Ver Perfil</LinkSquare>
       </div>
     </div>
 

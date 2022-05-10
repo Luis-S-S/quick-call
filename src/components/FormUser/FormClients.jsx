@@ -105,10 +105,10 @@ export default function FormsClients() {
         <form onSubmit={HandlerSubmit}>
 
           <label htmlFor="title">Nombre de reforma</label>
-          <input name="title" placeholder="Ingresa aqui el nombre de tu reforma" type="text" onChange={handleChange} required />
+          <input name="title" placeholder="Ingresa aqui el nombre de tu reforma" type="text" onChange={handleChange} required data-cy="jobForm-title" />
 
           <label htmlFor="objective">Breve descripcion</label>
-          <textarea name="objective" placeholder="Ingresa aqui una breve descripcion de tu reforma" type="text" onChange={handleChange} required />
+          <textarea name="objective" placeholder="Ingresa aqui una breve descripcion de tu reforma" type="text" onChange={handleChange} required data-cy="jobForm-objective" />
           <fieldset>
             <legend>Condiciones (opcional)</legend>
             {conditions.map((todo) => (
@@ -118,13 +118,13 @@ export default function FormsClients() {
               </div>
             ))}
             <div className="section">
-              <select name="conditions" id="conditions" onChange={handlerChoice}>
+              <select name="conditions" id="conditions" onChange={handlerChoice} data-cy="jobForm-conditions">
                 <option value="" disabled selected hidden>Selecciona las condiciones ...</option>
                 {category?.conditions.map((condi) => (
                   <option value={condi}>{condi}</option>
                 ))}
               </select>
-              <button className="button-agregate" type="button" onClick={handlerConditions}>Agregar</button>
+              <button className="button-agregate" type="button" onClick={handlerConditions} data-cy="jobForm-addConditions">Agregar</button>
             </div>
           </fieldset>
 
@@ -138,11 +138,11 @@ export default function FormsClients() {
                 </button>
               </div>
             ))}
-            <input type="file" name={`#${parseInt((Math.random() * 100000), 10)}`} onChange={handlerEvidence} />
+            <input type="file" name={`#${parseInt((Math.random() * 100000), 10)}`} onChange={handlerEvidence} data-cy="jobForm-evidence" />
           </fieldset>
 
           <div className="ButtonRound">
-            <ButtonRound type="submit" onClickFunction={HandlerSubmit}>Enviar</ButtonRound>
+            <ButtonRound type="submit" onClickFunction={HandlerSubmit} data-cy="jobForm-submit">Enviar</ButtonRound>
           </div>
         </form>
       </div>

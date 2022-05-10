@@ -17,7 +17,7 @@ describe('PQR testing', () => {
     cy.get('[data-cy="pqr-create"]').click();
     cy.get('[data-cy="pqr-subject"]').type('PQR subject test');
     cy.get('[data-cy="pqr-description"]').type('PQR description test');
-    cy.get('[data-cy="pqr-input"]').click();
+    cy.get('[data-cy="pqr-input"]').selectFile('./public/images/img/evidence.png');
     cy.get('[data-cy="pqr-addFile"]').click();
     cy.get('[data-cy="pqr-submit"]').click();
     cy.contains('PQR creada con éxito');
@@ -28,8 +28,6 @@ describe('PQR testing', () => {
   it('should create PQR', () => {
     cy.get('[data-cy="pqr-create"]').click();
     cy.get('[data-cy="pqr-description"]').type('PQR description test');
-    cy.get('[data-cy="pqr-input"]').click();
-    cy.get('[data-cy="pqr-addFile"]').click();
     cy.get('[data-cy="pqr-submit"]').click();
     cy.contains('El asunto es requerido');
   });
