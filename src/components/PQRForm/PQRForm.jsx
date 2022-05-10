@@ -80,6 +80,7 @@ export default function PQRForm() {
             placeholder="Ingrese una frase que describa el problema"
             aria-placeholder="Ingrese una frase que describa el problema"
             onChange={handleOnChange}
+            data-cy="pqr-subject"
           />
         </div>
         <span className="pqr-form__msg--error">{subjectErrorMsg}</span>
@@ -92,6 +93,7 @@ export default function PQRForm() {
             aria-placeholder="Por favor describa en detalle su inconveniente"
             onChange={handleOnChange}
             placeholder="Por favor describa en detalle su inconveniente"
+            data-cy="pqr-description"
             rows={5}
             cols={50}
           />
@@ -114,12 +116,13 @@ export default function PQRForm() {
             type="file"
             className="pqr-form__input--file"
             aria-label="Si tienes fotos o videos, puedes compartirlos para una solución más rápida"
+            data-cy="pqr-input"
           />
-          <ButtonRound isSubmit={false} onClickFunction={handleAddEvidence}>
+          <ButtonRound isSubmit={false} onClickFunction={handleAddEvidence} data-cy="pqr-addFile">
             Añadir evidencia
           </ButtonRound>
         </div>
-        <ButtonRound isSubmit>Subir</ButtonRound>
+        <ButtonRound isSubmit data-cy="pqr-submit">Subir</ButtonRound>
       </form>
     </div>
   );

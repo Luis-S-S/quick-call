@@ -41,13 +41,13 @@ function MenuLateral() {
   return (
     <div className="dashboard">
       <div className="dashboard__side-menu">
-        <button className={(viewState === 'Profile') ? 'side-menu__btn1' : 'side-menu__btn'} type="button" onClick={handleClick} value="Profile">Mi perfil</button>
-        <button className={(viewState === 'Jobs') ? 'side-menu__btn1' : 'side-menu__btn'} type="button" onClick={handleClick} value="Jobs">Trabajos</button>
-        <button className={(viewState === 'PaymentHistory') ? 'side-menu__btn1' : 'side-menu__btn'} type="button" onClick={handleClick} value="PaymentHistory">Historial de Pagos</button>
+        <button className={(viewState === 'Profile') ? 'side-menu__btn1' : 'side-menu__btn'} type="button" onClick={handleClick} value="Profile" data-cy="dashboard-profile">Mi perfil</button>
+        <button className={(viewState === 'Jobs') ? 'side-menu__btn1' : 'side-menu__btn'} type="button" onClick={handleClick} value="Jobs" data-cy="dashboard-jobs">Trabajos</button>
+        <button className={(viewState === 'PaymentHistory') ? 'side-menu__btn1' : 'side-menu__btn'} type="button" onClick={handleClick} value="PaymentHistory" data-cy="dashboard-payment">Historial de Pagos</button>
         {
-          role === 'client' && (<button className={(viewState === 'Favorites') ? 'side-menu__btn1' : 'side-menu__btn'} type="button" onClick={handleClick} value="Favorites">Favoritos</button>)
+          role === 'client' && (<button className={(viewState === 'Favorites') ? 'side-menu__btn1' : 'side-menu__btn'} type="button" onClick={handleClick} value="Favorites" data-cy="dashboard-favorites">Favoritos</button>)
         }
-        <button className={(viewState === 'PQRs') ? 'side-menu__btn1' : 'side-menu__btn'} type="button" onClick={handleClick} value="PQRs">PQRs</button>
+        <button className={(viewState === 'PQRs') ? 'side-menu__btn1' : 'side-menu__btn'} type="button" onClick={handleClick} value="PQRs" data-cy="dashboard-pqr">PQRs</button>
       </div>
       {/* <div className="dashboard__view"> */}
       {renderDashboard(viewState)}
