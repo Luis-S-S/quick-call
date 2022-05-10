@@ -65,15 +65,15 @@ function Login() {
           <span className="texto_register">Ingresar a tu cuenta</span>
         </div>
         <form className="formulario" onSubmit={handleSubmit}>
-          <input name="email" placeholder="Ingresa tu E-mail" type="text" onChange={handleChange} />
-          <input name="password" placeholder="Ingresa tu Contraseña" type="password" onChange={handleChange} />
+          <input name="email" placeholder="Ingresa tu E-mail" type="text" onChange={handleChange} data-cy="login-name" />
+          <input name="password" placeholder="Ingresa tu Contraseña" type="password" onChange={handleChange} data-cy="login-password" />
           {errorMsg && (<div className="error-msg">{errorMsg}</div>)}
           <div className="footer1">
             <span className="footer11">
               ¿No tienes una cuenta?.
               <Link to="/signup">Registrate aqui</Link>
             </span>
-            <ButtonRound isSubmit>
+            <ButtonRound isSubmit data-cy="login-button">
               Iniciar Sesión
             </ButtonRound>
           </div>

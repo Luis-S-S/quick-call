@@ -17,8 +17,8 @@ export default function Signup() {
         </div>
         <form className="formulario">
           <div className="boton11">
-            <LinkRound link="/signup_client">Cliente</LinkRound>
-            <LinkRound link="/signup_professional">Profesional</LinkRound>
+            <LinkRound link="/signup_client" data-cy="signup-client">Cliente</LinkRound>
+            <LinkRound link="/signup_professional" data-cy="signup-professional">Profesional</LinkRound>
           </div>
           <div className="footer2">
             <span className="footer11">
