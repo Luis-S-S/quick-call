@@ -133,19 +133,19 @@ export default function SignupClient() {
         </div>
         {errorMsg && (<div className="error-msg">{errorMsg}</div>)}
         <form className="formulario" onSubmit={handleSubmit}>
-          <input name="name" placeholder="Ingresa tu nombre" type="text" onChange={handleChange} />
-          <input name="email" placeholder="Ejemplo@ejemplo.com" type="text" onChange={handleChange} />
+          <input name="name" placeholder="Ingresa tu nombre" type="text" onChange={handleChange} data-cy="clientSignup-name" />
+          <input name="email" placeholder="Ejemplo@ejemplo.com" type="text" onChange={handleChange} data-cy="clientSignup-email" />
           {emailError && (<div className="error-msg">{emailError}</div>)}
-          <input name="password" placeholder="Ingresa tu contraseña" type="password" onChange={handleChange} />
+          <input name="password" placeholder="Ingresa tu contraseña" type="password" onChange={handleChange} data-cy="clientSignup-password" />
           {passwordError && (<div className="error-msg">{passwordError}</div>)}
-          <input name="confirmPassword" placeholder="Repite tu contraseña" type="password" onChange={handleChange} />
+          <input name="confirmPassword" placeholder="Repite tu contraseña" type="password" onChange={handleChange} data-cy="clientSignup-confirm" />
           {confirmPasswordError && (<div className="error-msg">{confirmPasswordError}</div>)}
           <div className="footer1">
             <span className="footer11">
-              Ya tienes un cuenta?
+              Ya tienes una cuenta?
               <Link to="/login">Ingresa</Link>
             </span>
-            <ButtonRound isSubmit>
+            <ButtonRound isSubmit data-cy="clientSignup-button">
               Registrarse
             </ButtonRound>
           </div>

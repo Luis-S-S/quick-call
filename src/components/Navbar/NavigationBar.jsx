@@ -23,21 +23,21 @@ function NavBar() {
       <nav>
         <input type="checkbox" id="check" />
         <label htmlFor="check" className="checkbtn">&#9776;</label>
-        <Link to="/"><img className="logo" src="/images/logo/quick-call-logo--colored.svg" alt="logo" /></Link>
+        <Link to="/"><img className="logo" src="/images/logo/quick-call-logo--colored.svg" alt="logo" data-cy="home-logo" /></Link>
         <ul>
-          <li><Link to="/search">Buscar</Link></li>
+          <li><Link to="/search" data-cy="home-search">Buscar</Link></li>
           {!token
             ? (
               <>
-                <li><Link to="/signup">Registrarse</Link></li>
-                <li><Link to="/login">Iniciar Sesión</Link></li>
+                <li><Link to="/signup" data-cy="home-signup">Registrarse</Link></li>
+                <li><Link to="/login" data-cy="home-login">Iniciar Sesión</Link></li>
 
               </>
             )
             : (
               <>
-                <li><Link to="/profile">{user.name}</Link></li>
-                <li><button type="button" onClick={handlerLogOut}>Cerrar Sesión</button></li>
+                <li><Link to="/profile" data-cy="home-profile">{user.name}</Link></li>
+                <li><button type="button" onClick={handlerLogOut} data-cy="home-logout">Cerrar Sesión</button></li>
               </>
             )}
         </ul>

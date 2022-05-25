@@ -18,7 +18,7 @@ export default function PQRs() {
     <div className="dashboard-pqrs">
       <div className="dashboard-pqrs__title">Tus PQRs</div>
       <div className="dashboard-pqrs__sub-header">
-        <LinkRound link="/pqr_form">Crear</LinkRound>
+        <LinkRound link="/pqr_form" data-cy="pqr-create">Crear</LinkRound>
       </div>
       {
       pqrArray.length > 0

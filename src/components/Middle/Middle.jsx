@@ -16,7 +16,6 @@ export default function Middle({
   };
   const handleClickBack = () => {
     dispatch(deactivateMiddle());
-    // navigation(back);
   };
 
   return (
@@ -26,11 +25,11 @@ export default function Middle({
         {!(title === undefined) ? (
           <>
             <label className="title__messages" htmlFor="name">{title}</label>
-            <label className="text__messages" htmlFor="name">{text}</label>
+            <label className="text__messages" htmlFor="name" data-cy="middle-text">{text}</label>
             <div className="flex__button">
               {!(back === undefined) && (
               <button className="button__messages" type="button" onClick={handleClickBack}>Cancelar</button>)}
-              <button className="button__messages" type="button" onClick={handleClick}>{button}</button>
+              <button className="button__messages" type="button" onClick={handleClick} data-cy="middle-button">{button}</button>
             </div>
           </>
         )

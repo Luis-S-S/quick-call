@@ -49,7 +49,7 @@ export default function filter() {
       <form onSubmit={handlerOnSubmit}>
         <div className="filter__input">
           <label htmlFor="city" className="filter__label">Ciudad</label>
-          <select name="city" id="city" className="filter__select" onClick={handlerOnChange}>
+          <select name="city" id="city" className="filter__select" onClick={handlerOnChange} data-cy="filter-city">
             <option value="" key="" className="filter__option"> </option>
             {category?.cities.map(
               (city) => (
@@ -66,7 +66,7 @@ export default function filter() {
         </div>
         <div className="filter__input">
           <label htmlFor="specialty" className="filter__label">Especialidad</label>
-          <select name="specialties" id="specialties" className="filter__select" onClick={handlerOnChange}>
+          <select name="specialties" id="specialties" className="filter__select" onClick={handlerOnChange} data-cy="filter-specialty">
             <option value="" key="" className="filter__option"> </option>
             {category?.specialties.map(
               (specialty) => (
@@ -82,7 +82,7 @@ export default function filter() {
           </select>
         </div>
         <br />
-        <button type="submit" className="filter__button">Agregar filtros</button>
+        <button type="submit" className="filter__button" data-cy="filter-button">Agregar filtros</button>
         <br />
         <button type="button" className="filter__button" onClick={handlerOnClick}>Limpiar filtros</button>
       </form>
